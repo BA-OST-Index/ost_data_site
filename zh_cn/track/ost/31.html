@@ -24,7 +24,9 @@
             position: relative;
         }
     </style>
+    <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
+    <script src="/static/js/highlight_element.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -34,6 +36,9 @@
 
       gtag('config', 'G-BKTB7R8TC3');
     </script>
+    
+    <script src="/static/js/track_player.js"></script>
+
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
@@ -70,7 +75,7 @@
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
             <br />
             <span>也可在<a href="/">此处</a>返回语言选择页。</span>
         </div>
@@ -207,7 +212,7 @@
     
         <tr>
             <td class="infobox-col-title">原版</td>
-            <td class="infobox-col-value"><a href="https://www.youtube.com/watch?v=X64iuwOr3jg"><img src="/static/images/social/YouTube.png" class="social-logo">YouTube</a> ()<br/></td>
+            <td class="infobox-col-value"><a href="https://www.youtube.com/watch?v=X64iuwOr3jg" target="_blank"><img src="/static/images/social/YouTube.png" class="social-logo">YouTube</a> ()<br/><a href="https://www.bilibili.com/video/BV1Jh411d7kd/?p=31" target="_blank"><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩</a> ()<br/></td>
         </tr>
     
     <tr><td colspan="2" class="infobox-subtitle">特殊信息</td></tr>
@@ -247,6 +252,24 @@
             <li>无内容可显示！</li>
         
     </ul>
+    <h2>在线播放音乐</h2>
+    <p>提示：为避免潜在版权侵犯风险，我们此处使用的<b>第三方嵌入式网页播放器</b>来提供服务。你也可以在信息栏（infobox）中手动访问它们。</p>
+    
+        
+
+        <h3>原版</h3>
+        
+            <div onclick="play_video('https://www.youtube.com/watch?v=X64iuwOr3jg', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+                <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=X64iuwOr3jg)</p>
+            </div>
+            <div id="track-video-1-1-container"></div>
+        
+            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=31', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+                <p><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩 (https://www.bilibili.com/video/BV1Jh411d7kd/?p=31)</p>
+            </div>
+            <div id="track-video-1-2-container"></div>
+        
+    
     <h2>使用信息</h2>
     <p>此处显示引用了这首曲子的实例。</p>
     <h3>背景</h3>
@@ -254,11 +277,11 @@
     <table class="gallery">
         <tr>
             
-                <td class="gallery-img"><img src="/static/images/background/BG_CraftChamber.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_CraftChamber.jpg.html">BG_CraftChamber.jpg Description</a></p></td>
+                <td class="gallery-img" id="db7fd7ba-f5e5-42b9-b06b-ad17cdfc25f3"><img src="/static/images/background/BG_CraftChamber.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_CraftChamber.jpg.html">BG_CraftChamber.jpg Description</a></p></td>
             
-                <td class="gallery-img"><img src="/static/images/background/BG_UpperOffice.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_UpperOffice.jpg.html">BG_UpperOffice.jpg Description</a></p></td>
+                <td class="gallery-img" id="dac11c82-154a-410b-bf20-35c492533330"><img src="/static/images/background/BG_UpperOffice.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_UpperOffice.jpg.html">BG_UpperOffice.jpg Description</a></p></td>
             
-                <td class="gallery-img"><img src="/static/images/background/BG_VIPLounge.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_VIPLounge.jpg.html">BG_VIPLounge.jpg Description</a></p></td>
+                <td class="gallery-img" id="a3d2f9a4-350e-4284-9e2e-43c923ccd55d"><img src="/static/images/background/BG_VIPLounge.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_VIPLounge.jpg.html">BG_VIPLounge.jpg Description</a></p></td>
             
         </tr>
     </table>
@@ -267,24 +290,44 @@
     
     <ul>
         
+            <li id="story-MAIN_2_2_5">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/2/2/5.html">
-                    主线故事第2篇第2章第5话：<span class="lang-zh-cn-cn">不可思议的机器（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">不可思议的机器（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">不可思议的机器（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                    主线故事第2篇第2章第5话：<span class="lang-zh-cn-cn">～爱丽丝和被引导的人们～（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝和被引导的人们～（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝和被引导的人们～（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
                     
                     
                         
-                            
+                    
+                
+                    
+                    
+                        
+                    
+                
+                    
+                    
+                        
+                    
+                
+                    
+                    
+                        
+                    
+                        
+                    
                         
                     
                 
@@ -292,48 +335,43 @@
                     
                         
                             
+                                
+                            
+                            
+                
+                    
+                    
                         
                     
                 
                     
                     
                         
-                            
+                    
+                        
+                    
                         
                     
                 
-                    
-                    
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                    
                 
-                    
-                    
-                        
-                            
-                        
-                    
-                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/2/2/5.html#story-part-5"><i><span class="lang-zh-cn-cn">教授连招</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">教授连招</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">教授连招</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-MAIN_2_2_25">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/2/2/25.html">
                     主线故事第2篇第2章第25话：<span class="lang-zh-cn-cn">千年科学学园</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">千年科学学园</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">千年科学学园</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
@@ -341,50 +379,43 @@
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-1"><i><span class="lang-zh-cn-cn">封存的城市</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">封存的城市</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">封存的城市</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
                     
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-2"><i><span class="lang-zh-cn-cn">莉央的卸任</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉央的卸任</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央的卸任</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
                     
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-3"><i><span class="lang-zh-cn-cn">C&C的庆祝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">C&C的庆祝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C的庆祝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
-                
-                    
-                    
-                        
                             
-                        
-                    
-                
-                    
-                    
-                        
                             
+                
+                    
+                    
                         
                     
                 
                     
                     
                         
-                            
+                    
+                
+                    
+                    
                         
                     
                 
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/2/2/25.html#story-part-1"><i><span class="lang-zh-cn-cn">封存的城市</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">封存的城市</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">封存的城市</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>，<a href="/zh_cn/main/story/main/2/2/25.html#story-part-2"><i><span class="lang-zh-cn-cn">莉央的卸任</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉央的卸任</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央的卸任</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>，<a href="/zh_cn/main/story/main/2/2/25.html#story-part-3"><i><span class="lang-zh-cn-cn">C&C的庆祝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">C&C的庆祝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C的庆祝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
@@ -414,6 +445,131 @@
         
     </ul>
 
+    <h3>人物角色</h3>
+    <p>注意：以下列表主要基于引用次数（见下表的数字）进行排序。</p>
+    
+    
+    <ul>
+        
+            
+            
+
+            <li id="Akane"><span>【2】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/akane/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_Akane_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">茜</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">朱音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">茜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Neru"><span>【2】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/neru/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_Neru_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Aris"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/aris/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_Aris_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Asuna"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/asuna/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_Asuna_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">明日奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">明日奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">明日奈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Himari"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/himari/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_CH0159_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">日鞠</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳葵</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日鞠</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">特异现象调查部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">特异现象搜查部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">特异现象调查部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Karin"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/karin/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_Karin_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">花凛</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">花凛</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花凛</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Noa"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/noa/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_CH0095_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">诺亚</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">乃爱</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">诺亚</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Toki"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/toki/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_CH0187_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">トキ</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Yuuka"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/yuuka/#track-OST_31">
+                    <img src="/static/images/student/icon/Student_Portrait_Yuuka_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">优香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">优香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">优香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+    </ul>
+
 
         </div>
     </div>
@@ -427,6 +583,7 @@
         <p>此网站托管在 GitHub Pages 上并由 CloudFlare 进行增强。</p>
     </div>
 </footer>
+    <script>display_char_lang_element('zh');</script>
 
     <script>display_zhcn_element();</script>
 </div>
@@ -434,7 +591,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-08-27 03:00:25
+Generated time (UTC): 2023-08-28 11:38:11
 -->
 </body>
 </html>

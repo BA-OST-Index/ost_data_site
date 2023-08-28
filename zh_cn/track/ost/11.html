@@ -24,7 +24,9 @@
             position: relative;
         }
     </style>
+    <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
+    <script src="/static/js/highlight_element.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -34,6 +36,9 @@
 
       gtag('config', 'G-BKTB7R8TC3');
     </script>
+    
+    <script src="/static/js/track_player.js"></script>
+
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
@@ -70,7 +75,7 @@
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
             <br />
             <span>也可在<a href="/">此处</a>返回语言选择页。</span>
         </div>
@@ -207,7 +212,7 @@
     
         <tr>
             <td class="infobox-col-title">原版</td>
-            <td class="infobox-col-value"><a href="https://www.youtube.com/watch?v=DzhcJxrS5Z8"><img src="/static/images/social/YouTube.png" class="social-logo">YouTube</a> ()<br/></td>
+            <td class="infobox-col-value"><a href="https://www.youtube.com/watch?v=DzhcJxrS5Z8" target="_blank"><img src="/static/images/social/YouTube.png" class="social-logo">YouTube</a> ()<br/><a href="https://www.bilibili.com/video/BV1Jh411d7kd/?p=11" target="_blank"><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩</a> ()<br/></td>
         </tr>
     
     <tr><td colspan="2" class="infobox-subtitle">特殊信息</td></tr>
@@ -247,6 +252,24 @@
             <li>无内容可显示！</li>
         
     </ul>
+    <h2>在线播放音乐</h2>
+    <p>提示：为避免潜在版权侵犯风险，我们此处使用的<b>第三方嵌入式网页播放器</b>来提供服务。你也可以在信息栏（infobox）中手动访问它们。</p>
+    
+        
+
+        <h3>原版</h3>
+        
+            <div onclick="play_video('https://www.youtube.com/watch?v=DzhcJxrS5Z8', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+                <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=DzhcJxrS5Z8)</p>
+            </div>
+            <div id="track-video-1-1-container"></div>
+        
+            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=11', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+                <p><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩 (https://www.bilibili.com/video/BV1Jh411d7kd/?p=11)</p>
+            </div>
+            <div id="track-video-1-2-container"></div>
+        
+    
     <h2>使用信息</h2>
     <p>此处显示引用了这首曲子的实例。</p>
     <h3>背景</h3>
@@ -254,13 +277,13 @@
     <table class="gallery">
         <tr>
             
-                <td class="gallery-img"><img src="/static/images/background/BG_CityOffice.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_CityOffice.jpg.html">BG_CityOffice.jpg Description</a></p></td>
+                <td class="gallery-img" id="04e4f041-399e-4f46-b3b3-f10ed53c4966"><img src="/static/images/background/BG_CityOffice.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_CityOffice.jpg.html">BG_CityOffice.jpg Description</a></p></td>
             
-                <td class="gallery-img"><img src="/static/images/background/BG_RailWay.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_RailWay.jpg.html">BG_RailWay.jpg Description</a></p></td>
+                <td class="gallery-img" id="9b8574ea-5b7a-498e-9d3e-133a842285f9"><img src="/static/images/background/BG_RailWay.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_RailWay.jpg.html">BG_RailWay.jpg Description</a></p></td>
             
-                <td class="gallery-img"><img src="/static/images/background/BG_GameDevRoom.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_GameDevRoom.jpg.html">BG_GameDevRoom.jpg Description</a></p></td>
+                <td class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c"><img src="/static/images/background/BG_GameDevRoom.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_GameDevRoom.jpg.html">BG_GameDevRoom.jpg Description</a></p></td>
             
-                <td class="gallery-img"><img src="/static/images/background/BG_ReceptionRoom.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_ReceptionRoom.jpg.html">BG_ReceptionRoom.jpg Description</a></p></td>
+                <td class="gallery-img" id="09f30267-0472-43bb-8d06-e2022eb60438"><img src="/static/images/background/BG_ReceptionRoom.jpg"><p class="gallery-caption"><a href="/zh_cn/background/BG_ReceptionRoom.jpg.html">BG_ReceptionRoom.jpg Description</a></p></td>
             
         </tr>
     </table>
@@ -269,22 +292,48 @@
     
     <ul>
         
+            <li id="story-MAIN_1_1_2">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/1/1/2.html">
                     主线故事第1篇第1章第2话：<span class="lang-zh-cn-cn">在阿拜多斯的第一天</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在阿拜多斯的第一天</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在阿拜多斯的第一天</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
                     
                     
+                
+                    
+                    
+                        
+                    
+                
+                    
+                    
+                        
+                    
+                
+                    
+                    
+                        
+                    
+                
+                    
+                    
+                        
+                    
+                
+                    
+                    
                         
                     
                 
@@ -292,69 +341,48 @@
                     
                         
                             
-                        
-                    
-                
-                    
-                    
-                        
-                            
-                        
-                    
-                
-                    
-                    
-                        
-                            
-                        
-                    
-                
-                    
-                    
-                        
-                            
-                        
-                    
-                
-                    
-                    
-                        
-                            
-                        
-                    
-                
-                    
-                    
-                        
-                            
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-7"><i><span class="lang-zh-cn-cn">胜利</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">胜利</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">胜利</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/1/1/2.html#story-part-7"><i><span class="lang-zh-cn-cn">胜利</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">胜利</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">胜利</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-MAIN_1_1_3">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/1/1/3.html">
                     主线故事第1篇第1章第3话：<span class="lang-zh-cn-cn">大人的力量，不是盖的！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大人的力量，不是盖的！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大人的力量，不是盖的！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
                     
                     
                         
-                            
+                    
                         
-                            
+                    
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                
+                    
+                    
                         
                     
                 
@@ -362,41 +390,29 @@
                     
                         
                             
-                        
-                            
-                        
-                    
-                
-                    
-                    
-                        
-                            
-                        
-                    
-                
-                    
-                    
-                        
-                            
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-4"><i><span class="lang-zh-cn-cn">返回学校</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">返回学校</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">返回学校</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/1/1/3.html#story-part-4"><i><span class="lang-zh-cn-cn">返回学校</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">返回学校</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">返回学校</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-MAIN_1_1_5">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/1/1/5.html">
                     主线故事第1篇第1章第5话：<span class="lang-zh-cn-cn">茜香平凡的一天</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茜香平凡的一天</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香平凡的一天</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
@@ -404,83 +420,83 @@
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-1"><i><span class="lang-zh-cn-cn">撞见茜香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">撞见茜香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">撞见芹香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
+                            
+                            
+                
+                    
+                    
+                        
                     
                 
                     
                     
                         
-                            
+                    
                         
                     
                 
-                    
-                    
-                        
-                            
-                        
-                            
-                        
-                    
                 
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/1/1/5.html#story-part-1"><i><span class="lang-zh-cn-cn">撞见茜香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">撞见茜香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">撞见芹香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-MAIN_1_1_6">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/1/1/6.html">
                     主线故事第1篇第1章第6话：<span class="lang-zh-cn-cn">解救作战！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">解救作战！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">解救作战！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
                     
                     
                         
-                            
-                        
                     
                 
                     
                     
                         
-                            
+                    
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-2"><i><span class="lang-zh-cn-cn">芹香的碎碎念</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">芹香的碎碎念</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香的碎碎念</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
-                
-                    
-                    
-                        
                             
+                            
+                
+                    
+                    
                         
                     
                 
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/1/1/6.html#story-part-2"><i><span class="lang-zh-cn-cn">芹香的碎碎念</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">芹香的碎碎念</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香的碎碎念</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-MAIN_1_1_9">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/1/1/9.html">
                     主线故事第1篇第1章第9话：<span class="lang-zh-cn-cn">背信弃义的血斗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">背信弃义的血斗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">背信弃义的血斗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
@@ -488,46 +504,44 @@
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-1"><i><span class="lang-zh-cn-cn">后知后觉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">后知后觉</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">后知后觉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
-                
-                    
-                    
-                        
                             
-                        
-                    
-                
-                    
-                    
-                        
                             
+                
+                    
+                    
                         
                     
                 
                     
                     
                         
-                            
+                    
+                
+                    
+                    
                         
                     
                 
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/1/1/9.html#story-part-1"><i><span class="lang-zh-cn-cn">后知后觉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">后知后觉</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">后知后觉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-MAIN_2_1_19">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/2/1/19.html">
                     主线故事第2篇第1章第19话：<span class="lang-zh-cn-cn">Double O</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Double O</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Double O</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
@@ -535,122 +549,112 @@
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-1"><i><span class="lang-zh-cn-cn">完成作品</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">完成作品</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">完成作品</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
                     
                     
-                        
-                            
-                        
-                    
-                
-                    
-                    
-                        
-                            
-                        
-                            
-                        
-                            
                         
                     
                 
                     
                     
                         
-                            
+                    
+                        
+                    
                         
                     
                 
                     
                     
                         
-                            
+                    
+                
+                    
+                    
                         
                     
                 
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/2/1/19.html#story-part-1"><i><span class="lang-zh-cn-cn">完成作品</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">完成作品</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">完成作品</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-MAIN_2_1_20">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/2/1/20.html">
                     主线故事第2篇第1章第20话：<span class="lang-zh-cn-cn">千年大赏</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">千年大赏</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">千年大赏</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
                     
                     
                         
-                            
-                        
                     
                 
                     
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-2"><i><span class="lang-zh-cn-cn">阴霾不散</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阴霾不散</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阴霾不散</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
-                
-                    
-                    
-                        
                             
-                        
-                    
-                
-                    
-                    
-                        
                             
-                        
-                            
-                        
-                    
                 
                     
                     
                         
                     
                 
+                    
+                    
+                        
+                    
+                        
+                    
+                
+                    
+                    
+                
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/2/1/20.html#story-part-2"><i><span class="lang-zh-cn-cn">阴霾不散</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阴霾不散</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阴霾不散</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-MAIN_2_2_4">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/main/2/2/4.html">
                     主线故事第2篇第2章第4话：<span class="lang-zh-cn-cn">～爱丽丝和被引导的人们～（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝和被引导的人们～（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝和被引导的人们～（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
                     
                     
                         
-                            
+                    
                         
-                            
-                        
-                            
+                    
                         
                     
                 
@@ -658,64 +662,65 @@
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-2"><i><span class="lang-zh-cn-cn">千年郊外</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">千年郊外</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">千年郊外</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
                     
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-3"><i><span class="lang-zh-cn-cn">结束</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">结束</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">结束</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/main/2/2/4.html#story-part-2"><i><span class="lang-zh-cn-cn">千年郊外</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">千年郊外</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">千年郊外</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>，<a href="/zh_cn/main/story/main/2/2/4.html#story-part-3"><i><span class="lang-zh-cn-cn">结束</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">结束</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">结束</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
+            <li id="story-OTHER_1_1_1">
             
             
-            <li>
                 
                     
                     
+                
                 
                 <a href="/zh_cn/main/story/other/1/1/1.html">
                     其它故事第1篇第1章第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
                 </a>
             
+
+            
             
                 
                 
                     
                     
                         
-                            
-                        
                     
                 
                     
                     
                         
-                            
+                    
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-2"><i><span class="lang-zh-cn-cn">醒来</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">醒来</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">醒来</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
                     
                     
                         
                             
-                                <span>&nbsp;(第一次出现于 <a href="#story-part-3"><i><span class="lang-zh-cn-cn">招待室里的争吵</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">招待室里的争吵</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">招待室里的争吵</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
                                 
-                                
-                    
+                            
+                            
                 
+                
+                <span>&nbsp;(出现于<a href="/zh_cn/main/story/other/1/1/1.html#story-part-2"><i><span class="lang-zh-cn-cn">醒来</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">醒来</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">醒来</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>，<a href="/zh_cn/main/story/other/1/1/1.html#story-part-3"><i><span class="lang-zh-cn-cn">招待室里的争吵</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">招待室里的争吵</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">招待室里的争吵</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a>)</span>
             
             </li>
         
@@ -745,6 +750,296 @@
         
     </ul>
 
+    <h3>人物角色</h3>
+    <p>注意：以下列表主要基于引用次数（见下表的数字）进行排序。</p>
+    
+    
+    <ul>
+        
+            
+            
+
+            <li id="Aris"><span>【4】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/aris/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Aris_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Serika"><span>【4】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/serika/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Serika_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茜香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Ayane"><span>【3】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/ayane/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Ayane_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Hoshino"><span>【3】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/hoshino/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Hoshino_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Nonomi"><span>【3】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/nonomi/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Nonomi_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Shiroko"><span>【3】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/shiroko/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Shiroko_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Asuna"><span>【2】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/asuna/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Asuna_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">明日奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">明日奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">明日奈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Karin"><span>【2】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/karin/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Karin_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">花凛</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">花凛</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花凛</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Midori"><span>【2】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/midori/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Midori_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Momoi"><span>【2】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/momoi/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Momoi_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="8a9c956f-4a3a-41f3-8343-b27d6697bb8a"><span>【2】</span>
+            
+                <a href="/zh_cn/character/npc/rin/#track-OST_11">
+                    <span class="lang-zh-cn-cn">琳</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">琳</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">琳</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+            
+            </li>
+        
+            
+            
+
+            <li id="Yuzu"><span>【2】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/yuzu/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Yuzu_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Aru"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/aru/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Aru_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">阿露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿露</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">万事屋68</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">便利屋68</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">万事屋68</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Chinatsu"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/chinatsu/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Chinatsu_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">千夏</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">千夏</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">千夏</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Haruka"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/haruka/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Haruka_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">遥香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">遥香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">遥香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">万事屋68</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">便利屋68</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">万事屋68</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Hasumi"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/hasumi/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Hasumi_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">莲见</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莲实</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莲见</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">正义实现委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">实现正义部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">正义实现委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Kayoko"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/kayoko/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Kayoko_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">佳代子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">佳世子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">佳代子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">万事屋68</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">便利屋68</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">万事屋68</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Kotori"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/kotori/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Kotori_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">柯托莉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚都梨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柯托莉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">工程部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">工程师部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">工程部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="6a1b8d37-559f-40e1-a963-6392585e19ef"><span>【1】</span>
+            
+                <a href="/zh_cn/character/npc/momoka/#track-OST_11">
+                    <span class="lang-zh-cn-cn">桃香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+            
+            </li>
+        
+            
+            
+
+            <li id="Mutsuki"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/mutsuki/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Mutsuki_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">睦月</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">无月</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">睦月</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">万事屋68</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">便利屋68</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">万事屋68</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Suzumi"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/suzumi/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Suzumi_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">铃美</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">铃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">铃美</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">三一自卫队</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">三一自卫队</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">三一自卫队</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+            
+            
+
+            <li id="Yuuka"><span>【1】</span>
+            
+                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+                <a href="/zh_cn/character/student/yuuka/#track-OST_11">
+                    <img src="/static/images/student/icon/Student_Portrait_Yuuka_Collection.png" class="icon-stu"/><span class="lang-zh-cn-cn">优香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">优香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">优香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>
+                </a>
+                &nbsp;<span>[<span class="lang-zh-cn-cn">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">研讨会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+            </li>
+        
+    </ul>
+
 
         </div>
     </div>
@@ -758,6 +1053,7 @@
         <p>此网站托管在 GitHub Pages 上并由 CloudFlare 进行增强。</p>
     </div>
 </footer>
+    <script>display_char_lang_element('zh');</script>
 
     <script>display_zhcn_element();</script>
 </div>
@@ -765,7 +1061,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-08-27 03:00:25
+Generated time (UTC): 2023-08-28 11:38:11
 -->
 </body>
 </html>
