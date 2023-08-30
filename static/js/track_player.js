@@ -69,7 +69,7 @@ function play_video(video_url, element_id) {
             video_id = getBilibiliIDfromURL(video_url);
             let video_page_id = getParameterByName("p", video_url);
             if (video_page_id === null) {video_page_id = "1";}
-            container.innerHTML = "<iframe src=\"https://player.bilibili.com/player.html?bvid=" + video_id + "&page=" + video_page_id + "\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\" class=\"track-video-player\"> </iframe>";
+            container.innerHTML = "<iframe src=\"https://player.bilibili.com/player.html?bvid=" + video_id + "&p=" + video_page_id + "\" scrolling=\"no\" border=\"0\" frameborder=\"no\" framespacing=\"0\" allowfullscreen=\"true\" class=\"track-video-player\"> </iframe>";
         }
     }
     resize_all_players();

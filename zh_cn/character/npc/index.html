@@ -38,6 +38,7 @@
     </script>
     
     <script src="/static/js/char_lang_display.js"></script>
+    <script src="/static/js/char_desc_display.js"></script>
 
 </head>
 
@@ -153,19 +154,24 @@
 
             
     <h1>全部NPC</h1>
+    <p>本页列出所有蔚蓝档案的NPC（不可游玩角色）。</p>
     <div>
-        <p>选择显示角色名字的模式：</p>
-        <select id="char_lang_display" onchange="set_char_lang_display_status('zh', this)">
-            <option value="0">仅中文</option>
-            <option value="1">中文+英文</option>
-            <option value="2">中文+日语</option>
-            <option value="3">中文+英文+日语</option>
-        </select>
+        <p>选择显示角色名字的模式：
+            <select id="char_lang_display" onchange="set_char_lang_display_status('zh', this)">
+                <option value="0">仅中文</option>
+                <option value="1">中文+英文</option>
+                <option value="2">中文+日语</option>
+                <option value="3">中文+英文+日语</option>
+            </select>
+        </p>
         <script>display_char_lang_element('zh'); document.getElementById("char_lang_display").value = localStorage.getItem("char_lang_zh");</script>
+        <p>是否启用显示学生详细信息？&nbsp;
+            <input type="radio" name="desc_enable" value="enable" id="char_desc_radio_1">&nbsp;启用&nbsp;
+            <input type="radio" name="desc_enable" value="disable" id="char_desc_radio_0">&nbsp;禁用
+        </p>
+        <script>set_listen_char_desc_preference(); check_char_desc_radio();</script>
     </div>
     
-        <h1>全部NPC</h1>
-        <p>本页列出所有蔚蓝档案的NPC（不可游玩角色）。</p>
         <ul class="stu-list">
             
                 
@@ -225,6 +231,7 @@
             
         </ul>
     
+    <script>display_char_desc_element();</script>
 
         </div>
     </div>
@@ -246,7 +253,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-08-28 12:35:11
+Generated time (UTC): 2023-08-30 18:08:06
 -->
 </body>
 </html>
