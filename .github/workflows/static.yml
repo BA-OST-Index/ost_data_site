@@ -41,3 +41,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+      - name: CloudFlare Page Purge
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CF_PURGE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CF_TOKEN }}
