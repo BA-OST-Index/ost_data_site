@@ -27,6 +27,14 @@ function display_zhcn_element() {
         set_element_display("lang-zh-cn-cn", "inline");
         set_element_display("lang-zh-cn-tw", "inline");
         set_element_display("lang-zh-cn-splitter", "inline");
+
+        set_element_display("lang-zh-cn-jp-block", "block");
+        set_element_display("lang-zh-cn-cn-block", "block");
+        set_element_display("lang-zh-cn-tw-block", "block");
+
+        set_element_display("lang-zh-cn-jp-block-br", "inline-block");
+        set_element_display("lang-zh-cn-cn-block-br", "inline-block");
+        set_element_display("lang-zh-cn-tw-block-br", "inline-block");
     }
     else {
         set_element_display("lang-zh-cn-splitter", "none")
@@ -34,17 +42,41 @@ function display_zhcn_element() {
             set_element_display("lang-zh-cn-jp", "inline");
             set_element_display("lang-zh-cn-cn", "none");
             set_element_display("lang-zh-cn-tw", "none");
+
+            set_element_display("lang-zh-cn-jp-block", "block");
+            set_element_display("lang-zh-cn-cn-block", "none");
+            set_element_display("lang-zh-cn-tw-block", "none");
+
+            set_element_display("lang-zh-cn-jp-block-br", "inline-block");
+            set_element_display("lang-zh-cn-cn-block-br", "none");
+            set_element_display("lang-zh-cn-tw-block-br", "none");
         }
         else {
             if (preference === "zh_cn_cn") {
                 set_element_display("lang-zh-cn-jp", "none");
                 set_element_display("lang-zh-cn-cn", "inline");
                 set_element_display("lang-zh-cn-tw", "none");
+
+                set_element_display("lang-zh-cn-jp-block", "none");
+                set_element_display("lang-zh-cn-cn-block", "block");
+                set_element_display("lang-zh-cn-tw-block", "none");
+
+                set_element_display("lang-zh-cn-jp-block-br", "none");
+                set_element_display("lang-zh-cn-cn-block-br", "inline-block");
+                set_element_display("lang-zh-cn-tw-block-br", "none");
             }
             else {
                 set_element_display("lang-zh-cn-jp", "none");
                 set_element_display("lang-zh-cn-cn", "none");
                 set_element_display("lang-zh-cn-tw", "inline");
+
+                set_element_display("lang-zh-cn-jp-block", "none");
+                set_element_display("lang-zh-cn-cn-block", "none");
+                set_element_display("lang-zh-cn-tw-block", "block");
+
+                set_element_display("lang-zh-cn-jp-block-br", "none");
+                set_element_display("lang-zh-cn-cn-block-br", "none");
+                set_element_display("lang-zh-cn-tw-block-br", "inline-block");
             }
         }
     }
