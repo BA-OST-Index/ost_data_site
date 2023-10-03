@@ -8,9 +8,15 @@
     <title>Track/Alert (Hard Arrange)- BA OST Index</title>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
     <link rel="stylesheet" href="/static/css/custom.css">
+    <link rel="stylesheet" href="/static/css/tooltip.css">
+
     <link rel="shortcut icon" type="image/png" href="/static/images/site/favicon.png">
     <style>
         body {
@@ -27,6 +33,8 @@
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
     <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/tooltip.js"></script>
+    <script src="/static/js/lang_switch.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -36,6 +44,7 @@
 
       gtag('config', 'G-BKTB7R8TC3');
     </script>
+    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
     
     <script src="/static/js/track_player.js"></script>
 
@@ -66,8 +75,14 @@
         </div>
 
         <div>
-            <span>Choose another language? Click <a href="/">here</a>.</span>
-            <br />
+            <span>You can switch page language here:</span>
+            <select id="lang_switcher" onchange="lang_switch()">
+                <option value="en"><span lang="en">English</span></option>
+                <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
+                <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
+            </select>
+            <script>lang_switch_show();</script>
+            <br /><br />
         </div>
 
         <div class="git-wiki-page-list">
@@ -269,17 +284,47 @@
     <p>This section shows instances where the song has been referenced.</p>
     <h3>Backgrounds</h3>
     
+    
+        
+        
+    
+
     <table class="gallery">
         <tr>
             
-                <td class="gallery-img" id="55657b32-ab5d-4c67-b755-07ba3d15432b"><img src="/static/images/background/BG_GameDevRoom_Night.jpg"><p class="gallery-caption"><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-OST_75">BG_GameDevRoom_Night.jpg Description</a></p></td>
+                
+                    
+                
+
+                <td class="gallery-img" id="55657b32-ab5d-4c67-b755-07ba3d15432b"><img src="/static/images/background/BG_GameDevRoom_Night.jpg"><p class="gallery-caption"><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-OST_75" onmouseover="showTooltip(this, 'm08rmY')">BG_GameDevRoom_Night.jpg</a></p></td>
+
+                
+                    
+                
             
-                <td class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73"><img src="/static/images/background/BG_EriduCityTown_Night.jpg"><p class="gallery-caption"><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_75">BG_EriduCityTown_Night.jpg Description</a></p></td>
+                
+                    
+                
+
+                <td class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73"><img src="/static/images/background/BG_EriduCityTown_Night.jpg"><p class="gallery-caption"><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_75" onmouseover="showTooltip(this, 'SvJyMS')">BG_EriduCityTown_Night.jpg</a></p></td>
+
+                
+                    
+                
             
         </tr>
     </table>
 
+    
+        
+    <script>
+        add_tooltip_data({ 'm08rmY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/9.html> Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1 </a></li></ol></div>','SvJyMS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li><li><a href=/en/main/story/main/2/2/19.html> Main Story Volume 2 Chapter 2 Episode 19: Cheater! </a></li></ol></div>', });
+    </script>
+
+    
+
     <h3>Stories</h3>
+    
     
     
 
@@ -288,7 +333,9 @@
         
             
             
-            <h4>Main</h4><ul>
+            <h4>Main Story</h4><ul>
+        
+
         
 
         <li id="story-MAIN_2_2_2">
@@ -298,12 +345,13 @@
                 
             
             
-            <a href="/en/main/story/main/2/2/2.html">
+            <a href="/en/main/story/main/2/2/2.html" onmouseover="showTooltip(this, 'IZFIPE')">
                 
         Main
 Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department
             </a>
         
+        
 
         
         
@@ -339,8 +387,12 @@ Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department
                         
 
                         
+
+                        
                             
                         
+
+                        
                         
             
                 
@@ -351,13 +403,16 @@ Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department
                 
             
             
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/2.html#story-part-5" class="text-primary"><i>[5] Yuzu, the UZQueen</i></a>)</span>
+
+            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/2.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'Al_Mqt')"><i>[5] Yuzu, the UZQueen</i></a>)</span>
         
         </li>
     
         
         
             
+        
+
         
 
         <li id="story-MAIN_2_2_9">
@@ -367,12 +422,13 @@ Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department
                 
             
             
-            <a href="/en/main/story/main/2/2/9.html">
+            <a href="/en/main/story/main/2/2/9.html" onmouseover="showTooltip(this, 'iKohcT')">
                 
         Main
 Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1
             </a>
         
+        
 
         
         
@@ -405,8 +461,12 @@ Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1
                         
 
                         
+
+                        
                             
                         
+
+                        
                         
             
                 
@@ -420,13 +480,16 @@ Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1
                 
             
             
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/9.html#story-part-4" class="text-primary"><i>[4] Betrayal</i></a>)</span>
+
+            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/9.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'gUZGAu')"><i>[4] Betrayal</i></a>)</span>
         
         </li>
     
         
         
             
+        
+
         
 
         <li id="story-MAIN_2_2_15">
@@ -436,12 +499,13 @@ Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1
                 
             
             
-            <a href="/en/main/story/main/2/2/15.html">
+            <a href="/en/main/story/main/2/2/15.html" onmouseover="showTooltip(this, 'F2Jn_7')">
                 
         Main
 Story Volume 2 Chapter 2 Episode 15: A Trap
             </a>
         
+        
 
         
         
@@ -466,7 +530,11 @@ Story Volume 2 Chapter 2 Episode 15: A Trap
                         
 
                         
+
+                        
                             
+                        
+
                         
                         
             
@@ -478,7 +546,11 @@ Story Volume 2 Chapter 2 Episode 15: A Trap
                         
 
                         
+
+                        
                             
+                        
+
                         
                         
             
@@ -490,18 +562,25 @@ Story Volume 2 Chapter 2 Episode 15: A Trap
                         
 
                         
+
+                        
                             
                         
+
+                        
                         
             
             
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/15.html#story-part-2" class="text-primary"><i>[2] The Trolley Problem</i></a>,&nbsp;<a href="/en/main/story/main/2/2/15.html#story-part-3" class="text-danger"><i>[3] The Combat with Avant Guard</i></a>,&nbsp;<a href="/en/main/story/main/2/2/15.html#story-part-4" class="text-primary"><i>[4] All Within the Plan</i></a>)</span>
+
+            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/15.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'sDaDkh')"><i>[2] The Trolley Problem</i></a>,&nbsp;<a href="/en/main/story/main/2/2/15.html#story-part-3" class="text-danger" onmouseover="showTooltip(this,'IVPwjG')"><i>[3] The Combat with Avant Guard</i></a>,&nbsp;<a href="/en/main/story/main/2/2/15.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'DPFr6d')"><i>[4] All Within the Plan</i></a>)</span>
         
         </li>
     
         
         
             
+        
+
         
 
         <li id="story-MAIN_2_2_19">
@@ -511,12 +590,13 @@ Story Volume 2 Chapter 2 Episode 15: A Trap
                 
             
             
-            <a href="/en/main/story/main/2/2/19.html">
+            <a href="/en/main/story/main/2/2/19.html" onmouseover="showTooltip(this, 'k1OPJa')">
                 
         Main
 Story Volume 2 Chapter 2 Episode 19: Cheater!
             </a>
         
+        
 
         
         
@@ -535,8 +615,12 @@ Story Volume 2 Chapter 2 Episode 19: Cheater!
                         
 
                         
+
+                        
                             
                         
+
+                        
                         
             
                 
@@ -552,13 +636,16 @@ Story Volume 2 Chapter 2 Episode 19: Cheater!
                 
             
             
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/19.html#story-part-2" class="text-primary"><i>[2] Up At The Roof</i></a>)</span>
+
+            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/19.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'FYKMj_')"><i>[2] Up At The Roof</i></a>)</span>
         
         </li>
     
         
         
             
+        
+
         
 
         <li id="story-MAIN_2_2_21">
@@ -568,12 +655,13 @@ Story Volume 2 Chapter 2 Episode 19: Cheater!
                 
             
             
-            <a href="/en/main/story/main/2/2/21.html">
+            <a href="/en/main/story/main/2/2/21.html" onmouseover="showTooltip(this, '4VZ7jK')">
                 
         Main
 Story Volume 2 Chapter 2 Episode 21: What's in a Name?
             </a>
         
+        
 
         
         
@@ -607,16 +695,26 @@ Story Volume 2 Chapter 2 Episode 21: What's in a Name?
                         
 
                         
+
+                        
                             
                         
+
+                        
                         
             
             
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/21.html#story-part-5" class="text-primary"><i>[5] The Real Fight</i></a>)</span>
+
+            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/21.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'2WKh23')"><i>[5] The Real Fight</i></a>)</span>
         
         </li>
     
     </ul>
+    
+    <script>
+        add_tooltip_data({ 'IZFIPE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Day at the Game Dev Department</p><ul><li>Sensei pays the Game Development Department a visit for the first time in a while. The members are fielding ideas for the development of their next project, but get distracted watching Aris playing a video game. Aris struggles mid-game upon encountering a cheating player, but gains a dramatic victory thanks to Yuzu&#x27s exhilarating performance. However, they fail to make any progress on plans for their next project, and decide to try again tomorrow.</li></ul></div>','Al_Mqt': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Yuzu, the UZQueen</p><p>Based on her in-depth insight of game features, combined with professional and precise operations, Yuzu defeated the cheater successfully. Everyone was amazed again. Yuzu said such tricks should not be used unless they don&#x27t obey the rules.</p><hr><p>Character:  <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a>   <a href=/en/track/ost/75.html>OST 75. Alert (Hard Arrange)</a></p></div>','iKohcT': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','gUZGAu': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Betrayal</p><p>Rio said that the C&C was under her direct command after all. She also stressed that no one should be harmed if no resistance occurred. Yet Neru was pretty upset at Rio&#x27s actions as well and began revolting; but Rio was too familiar with Neru, and was well prepared for that.</p><hr><p>Character:  <span> <a href=/en/character/student/neru/> <img class=icon-stu src=/static/images/student/icon/10008.webp>Neru </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/122.html>OST 122. [UNNAMED]</a>   <a href=/en/track/ost/75.html>OST 75. Alert (Hard Arrange)</a></p></div>','F2Jn_7': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Trap</p><ul><li>The C&C succeed in pinning down Toki with a powerful pincer attack. Toki retaliates by changing the structure of Eridu to isolate Neru. Meanwhile, the Game Development Department&#x27s uninterrupted progress is cut off with the appearance of Rio&#x27s powerful weapon, the Avant Guard.</li><li>While the members of the C&C stand off against Toki, Rio (having already predicted that Sensei and the Game Development Department would come to Aris&#x27 rescue) attempts to stop the party in their path with the use of a powerful robot called the Avant Guard.</li></ul></div>','sDaDkh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Trolley Problem</p><p>The communication with Veritas was cut off all at once, and everyone was greeted by Rio. Rio wasn&#x27t surprised by the current situation, and mentioned the "Trolley Problem" with Sensei - which repeated her theory of "sacrificing little in exchange of the lives of the most". Momoi cut it off and made her position clear and loud. Seeing no turning back, Rio put Avant Guard into use.</p><hr><p>Character:  <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <a href=/en/character/npc/rio/>Rio</a>   <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/65.html>OST 65. Accelerator</a>   <a href=/en/track/ost/32.html>OST 32. GGF</a>   <a href=/en/track/ost/75.html>OST 75. Alert (Hard Arrange)</a></p></div>','IVPwjG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Combat with Avant Guard</p><p>Though ugly, the firepower of the Avant Guard was not meant to be underestimated. The GDD and the ED lost the battle against Avant Guard at last.</p><hr><p>Character:  <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span></p><hr><p>Track:  <a href=/en/track/ost/75.html>OST 75. Alert (Hard Arrange)</a></p></div>','DPFr6d': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">All Within the Plan</p><p>Since Neru was not there, it was then did everyone realize that it was the best time for the President to suppress Sensei. The President said it was all their doings and commanded Avant Guard to end all of this.</p><hr><p>Character:  <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <a href=/en/character/npc/rio/>Rio</a></p><hr><p>Track:  <a href=/en/track/ost/75.html>OST 75. Alert (Hard Arrange)</a></p></div>','k1OPJa': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Cheater!</p><ul><li>The combat capabilities of Abi-Eshuh leave everyone stunned. Identifying the weapon&#x27s weaknesses based on Akane&#x27s advice, Sensei and Neru attempt to draw the battle to aerial warfare. Toki, anticipating such a move, takes this in stride and Neru ends up seriously injured. The group quickly retreats.</li></ul></div>','FYKMj_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Up At The Roof</p><p>Sensei realized something all of a sudden, commanding Neru to get to the rooftop. Rio said it was useless to do so, but Sensei didn&#x27t respond. Toki fired at Neru and blew up the rooftop, as the two falling down from the top.</p><hr><p>Character:  <span> <a href=/en/character/student/neru/> <img class=icon-stu src=/static/images/student/icon/10008.webp>Neru </a> </span>   <span> <a href=/en/character/student/toki/> <img class=icon-stu src=/static/images/student/icon/10062.webp>Toki </a> </span>   <a href=/en/character/npc/rio/>Rio</a></p><hr><p>Track:  <a href=/en/track/ost/75.html>OST 75. Alert (Hard Arrange)</a>   <a href=/en/track/ost/74.html>OST 74. Tech N Tech (Hard Arrange)</a></p></div>','4VZ7jK': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What&#x27s in a Name?</p><ul><li>Thanks to everyone&#x27s collaborative efforts, the students of Millennium successfully back Toki into a corner, and victory is secured due to "Double O" Neru&#x27s performance.</li></ul></div>','2WKh23': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Real Fight</p><p>Neru got up from the ground, while Veritas had successfully hacked the freight elevator. They forced Toki into the elevator - a thing that Momoi had talked before. It was only then that Rio realized their plan - to use the elevator to ineffective the system - but was too late. With the acceleration speed of 10x the gravity, Toki was no way winning. Rio was impressed by "OO".</p><hr><p>Character:  <a href=/en/character/npc/rio/>Rio</a>   <span> <a href=/en/character/student/neru/> <img class=icon-stu src=/static/images/student/icon/10008.webp>Neru </a> </span>   <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp>Chihiro </a> </span>   <span> <a href=/en/character/student/toki/> <img class=icon-stu src=/static/images/student/icon/10062.webp>Toki </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/75.html>OST 75. Alert (Hard Arrange)</a></p></div>', });
+    </script>
+
 
     <h3>Battles</h3>
     
@@ -654,189 +752,253 @@ Story Volume 2 Chapter 2 Episode 21: What's in a Name?
     <p>Note: The following list is sorted by mainly the reference count (the number showed below).</p>
     
     
+    
+
     <ul>
         
             
             
 
+            
+
             <li id="Midori"><span>【4】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/midori/#track-OST_75">
+                <a href="/en/character/student/midori/#track-OST_75" onmouseover="showTooltip(this, 'duAnMq')">
                     <img src="/static/images/student/icon/10016.webp" class="icon-stu"/>Midori
                 </a>
                 &nbsp;<span>[Game Development Department]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Yuzu"><span>【4】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/yuzu/#track-OST_75">
+                <a href="/en/character/student/yuzu/#track-OST_75" onmouseover="showTooltip(this, 'u9hJXb')">
                     <img src="/static/images/student/icon/10018.webp" class="icon-stu"/>Yuzu
                 </a>
                 &nbsp;<span>[Game Development Department]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Neru"><span>【3】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/neru/#track-OST_75">
+                <a href="/en/character/student/neru/#track-OST_75" onmouseover="showTooltip(this, 'JiW2c9')">
                     <img src="/static/images/student/icon/10008.webp" class="icon-stu"/>Neru
                 </a>
                 &nbsp;<span>[Cleaning & Clearing]</span>
+            
+
             
             </li>
         
             
             
 
+            
+
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【3】</span>
             
-                <a href="/en/character/npc/rio/#track-OST_75">
+                <a href="/en/character/npc/rio/#track-OST_75" onmouseover="showTooltip(this, 'ek5xdZ')">
                     Rio
                 </a>
+            
+
             
             </li>
         
             
+            
+
             
 
             <li id="Aris"><span>【2】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/aris/#track-OST_75">
+                <a href="/en/character/student/aris/#track-OST_75" onmouseover="showTooltip(this, 'cHSpPZ')">
                     <img src="/static/images/student/icon/10015.webp" class="icon-stu"/>Aris
                 </a>
                 &nbsp;<span>[Game Development Department]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Momoi"><span>【2】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/momoi/#track-OST_75">
+                <a href="/en/character/student/momoi/#track-OST_75" onmouseover="showTooltip(this, '3Lcc3b')">
                     <img src="/static/images/student/icon/13011.webp" class="icon-stu"/>Momoi
                 </a>
                 &nbsp;<span>[Game Development Department]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Toki"><span>【2】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/toki/#track-OST_75">
+                <a href="/en/character/student/toki/#track-OST_75" onmouseover="showTooltip(this, 'FHJvTj')">
                     <img src="/static/images/student/icon/10062.webp" class="icon-stu"/>Toki
                 </a>
                 &nbsp;<span>[Cleaning & Clearing]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Chihiro"><span>【1】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/chihiro/#track-OST_75">
+                <a href="/en/character/student/chihiro/#track-OST_75" onmouseover="showTooltip(this, 'xGRwVB')">
                     <img src="/static/images/student/icon/20013.webp" class="icon-stu"/>Chihiro
                 </a>
                 &nbsp;<span>[Veritas]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Hare"><span>【1】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/hare/#track-OST_75">
+                <a href="/en/character/student/hare/#track-OST_75" onmouseover="showTooltip(this, 'TiriXZ')">
                     <img src="/static/images/student/icon/23003.webp" class="icon-stu"/>Hare
                 </a>
                 &nbsp;<span>[Veritas]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Hibiki"><span>【1】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/hibiki/#track-OST_75">
+                <a href="/en/character/student/hibiki/#track-OST_75" onmouseover="showTooltip(this, 'PoaZZh')">
                     <img src="/static/images/student/icon/20000.webp" class="icon-stu"/>Hibiki
                 </a>
                 &nbsp;<span>[Engineering Department]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Kotama"><span>【1】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/kotama/#track-OST_75">
+                <a href="/en/character/student/kotama/#track-OST_75" onmouseover="showTooltip(this, 'N1BhOA')">
                     <img src="/static/images/student/icon/26001.webp" class="icon-stu"/>Kotama
                 </a>
                 &nbsp;<span>[Veritas]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Kotori"><span>【1】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/kotori/#track-OST_75">
+                <a href="/en/character/student/kotori/#track-OST_75" onmouseover="showTooltip(this, '0EoMDM')">
                     <img src="/static/images/student/icon/16002.webp" class="icon-stu"/>Kotori
                 </a>
                 &nbsp;<span>[Engineering Department]</span>
             
+
+            
             </li>
         
             
+            
+
             
 
             <li id="Maki"><span>【1】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/maki/#track-OST_75">
+                <a href="/en/character/student/maki/#track-OST_75" onmouseover="showTooltip(this, 'iyWBt2')">
                     <img src="/static/images/student/icon/10007.webp" class="icon-stu"/>Maki
                 </a>
                 &nbsp;<span>[Veritas]</span>
+            
+
             
             </li>
         
             
             
 
+            
+
             <li id="Utaha"><span>【1】</span>
             
                 <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/utaha/#track-OST_75">
+                <a href="/en/character/student/utaha/#track-OST_75" onmouseover="showTooltip(this, 'wQ6ZGk')">
                     <img src="/static/images/student/icon/23004.webp" class="icon-stu"/>Utaha
                 </a>
                 &nbsp;<span>[Engineering Department]</span>
             
+
+            
             </li>
         
     </ul>
+
+    
+    <script>
+        add_tooltip_data({ 'duAnMq': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li><li><a href=/en/main/story/main/2/2/9.html> Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1 </a></li><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li><li><a href=/en/main/story/main/2/2/21.html> Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name? </a></li></ol></div>','u9hJXb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li><li><a href=/en/main/story/main/2/2/9.html> Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1 </a></li><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li><li><a href=/en/main/story/main/2/2/21.html> Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name? </a></li></ol></div>','JiW2c9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/9.html> Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1 </a></li><li><a href=/en/main/story/main/2/2/19.html> Main Story Volume 2 Chapter 2 Episode 19: Cheater! </a></li><li><a href=/en/main/story/main/2/2/21.html> Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name? </a></li></ol></div>','ek5xdZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li><li><a href=/en/main/story/main/2/2/19.html> Main Story Volume 2 Chapter 2 Episode 19: Cheater! </a></li><li><a href=/en/main/story/main/2/2/21.html> Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name? </a></li></ol></div>','cHSpPZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li><li><a href=/en/main/story/main/2/2/9.html> Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1 </a></li></ol></div>','3Lcc3b': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li></ol></div>','FHJvTj': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/19.html> Main Story Volume 2 Chapter 2 Episode 19: Cheater! </a></li><li><a href=/en/main/story/main/2/2/21.html> Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name? </a></li></ol></div>','xGRwVB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/21.html> Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name? </a></li></ol></div>','TiriXZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li></ol></div>','PoaZZh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li></ol></div>','N1BhOA': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li></ol></div>','0EoMDM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li></ol></div>','iyWBt2': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li></ol></div>','wQ6ZGk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/15.html> Main Story Volume 2 Chapter 2 Episode 15: A Trap </a></li></ol></div>', });
+    </script>
+
 
 
         </div>
@@ -849,7 +1011,7 @@ Story Volume 2 Chapter 2 Episode 21: What's in a Name?
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 15:38:04 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-03 15:58:44 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
@@ -860,7 +1022,7 @@ Story Volume 2 Chapter 2 Episode 21: What's in a Name?
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 15:38:04
+Generated time (UTC): 2023-10-03 15:58:44
 -->
 </body>
 </html>
