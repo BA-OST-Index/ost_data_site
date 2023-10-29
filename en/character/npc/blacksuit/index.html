@@ -7,10 +7,10 @@
 
     <title>NPC/The Black Suit- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,94 +84,83 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
             
-            
+                
                 
                     
-                    <p class="navi-p"><a href="/en/character/npc/arona">&lt;-- Previous page: Arona</a></p>
+                        
+                        <p class="navi-p"><a href="/en/character/npc/arona">&lt;-- Previous page: Arona</a></p>
+                    
                 
             
-        
-        
             
-            
+                
                 
                     
-                    <p class="navi-p"><a href="/en/character/npc/mai">--&gt; Next page: Mai</a></p>
+                        
+                        <p class="navi-p"><a href="/en/character/npc/mai">--&gt; Next page: Mai</a></p>
+                    
                 
             
         
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
 
     <h1>NPC/The Black Suit</h1>
@@ -199,13 +188,23 @@
     
         
             
+
             
-                <span>
-                    <a href="/en/character/student/hoshino/">
-                        <img src="/static/images/student/icon/10005.webp" class="icon-stu"/>Hoshino
-                    </a>
-                </span>
+    
+        
+        
+        <span>
+            <a href="/en/character/student/hoshino/"  target="_blank">
+                <img src="/static/images/student/icon/10005.webp" class="icon-stu">
+                <span>Hoshino</span>
+            </a>
+        </span>
+        
             
+        
+    
+
+
             
         
     
@@ -237,16 +236,13 @@
         <li id="story-MAIN_1_1_12">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/12.html" onmouseover="showTooltip(this, 'GIcrwv')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/12.html"  onmouseover="showTooltip(this)" data-tooltip="vqTRNo">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;12:&nbsp;To the Black Market! Part 2</a>
+    
+
         
 
         
@@ -256,58 +252,83 @@ Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
                     
-                
-                    
-                
                     
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/12.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'KmtxZl')"><i>[2] PMC's Confusion</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/12.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="OJr6pM"><i>[2]&nbsp;PMC's Confusion</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -321,16 +342,13 @@ Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2
         <li id="story-MAIN_1_1_17">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/17.html" onmouseover="showTooltip(this, 'hYKBgy')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/17.html"  onmouseover="showTooltip(this)" data-tooltip="CFrYPG">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;17:&nbsp;The Gathering Storm</a>
+    
+
         
 
         
@@ -340,53 +358,84 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/17.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'Ln5iV2')"><i>[4] The Black Suit</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/17.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="JMfOQK"><i>[4]&nbsp;The Black Suit</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -400,16 +449,13 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
         <li id="story-MAIN_1_2_10">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/10.html" onmouseover="showTooltip(this, 'u9F7sk')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/10.html"  onmouseover="showTooltip(this)" data-tooltip="sAnXri">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;Kaiser PMC Part 2</a>
+    
+
         
 
         
@@ -419,50 +465,75 @@ Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
-                    
-                
-                    
-                
-            
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/10.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'4EbRuz')"><i>[2] A Secret Meeting</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/10.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="59kPvR"><i>[2]&nbsp;A Secret Meeting</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -476,16 +547,13 @@ Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
         <li id="story-MAIN_1_2_12">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/12.html" onmouseover="showTooltip(this, '4ng9xo')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 12: Secrets
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/12.html"  onmouseover="showTooltip(this)" data-tooltip="EgQF1D">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>
+    
+
         
 
         
@@ -495,66 +563,115 @@ Story Volume 1 Chapter 2 Episode 12: Secrets
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/12.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'wNBthY')"><i>[5] A Deal</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/12.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="XTlitz"><i>[5]&nbsp;A Deal</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -568,16 +685,13 @@ Story Volume 1 Chapter 2 Episode 12: Secrets
         <li id="story-MAIN_1_2_13">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/13.html" onmouseover="showTooltip(this, 'Fcn7NP')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/13.html"  onmouseover="showTooltip(this)" data-tooltip="sh4ccs">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;What Slipped Through the Cracks</a>
+    
+
         
 
         
@@ -586,75 +700,136 @@ Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
             
                 
                 
+                    
+                    
+                    
+                
+
+                
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                    
+                
 
-                        
-                            
-                        
+                
+            
+                
+                
+                    
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
                         
-            
-                
-                
-            
-                
-                
-            
-                
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-            
-                
-                
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
-                    
-                
-            
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/13.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'pQ9FtC')"><i>[2] Signing</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/13.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="VyWbAn"><i>[2]&nbsp;Signing</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -668,16 +843,13 @@ Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
         <li id="story-MAIN_1_2_14">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/14.html" onmouseover="showTooltip(this, 'Z9Pjz_')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/14.html"  onmouseover="showTooltip(this)" data-tooltip="G9vCFw">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Abydos Siege Part 1</a>
+    
+
         
 
         
@@ -687,81 +859,124 @@ Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
-                            
+                    
                         
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
+                    
                         
-            
-                
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/14.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'hArrUv')"><i>[2] Hoshino</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/14.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="0bEzHn"><i>[2]&nbsp;Hoshino</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -775,16 +990,13 @@ Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
         <li id="story-MAIN_1_2_15">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/15.html" onmouseover="showTooltip(this, 'tJ66L7')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/15.html"  onmouseover="showTooltip(this)" data-tooltip="dcx0Zr">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;15:&nbsp;The Abydos Siege Part 2</a>
+    
+
         
 
         
@@ -794,73 +1006,104 @@ Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/15.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'bhCDJ_')"><i>[4] With Black Suit</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/15.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="65CMlr"><i>[4]&nbsp;With Black Suit</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -874,16 +1117,13 @@ Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
         <li id="story-MAIN_1_2_16">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/16.html" onmouseover="showTooltip(this, 'PjC2E0')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 16: Battle Between Adults
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/16.html"  onmouseover="showTooltip(this)" data-tooltip="cvUhYH">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Battle Between Adults</a>
+    
+
         
 
         
@@ -893,166 +1133,274 @@ Story Volume 1 Chapter 2 Episode 16: Battle Between Adults
                 
                 
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
-            
-                
-                
                     
                         
                             
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
-                            
-                        
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
-                    
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
-                    
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
-                    
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
                     
                 
             
                 
                 
                     
-                
+                    
                     
                 
-                    
+
                 
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
                     
                 
             
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/16.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'gMhROR')"><i>[1] The People Outside Kivotos</i></a>,&nbsp;<a href="/en/main/story/main/1/2/16.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'Az1vlb')"><i>[3] Sensei's Criticism</i></a>,&nbsp;<a href="/en/main/story/main/1/2/16.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'Gu8672')"><i>[4] The Truth About The World</i></a>,&nbsp;<a href="/en/main/story/main/1/2/16.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'fNVtLY')"><i>[5] Adult's Card</i></a>,&nbsp;<a href="/en/main/story/main/1/2/16.html#story-part-6" class="text-primary" onmouseover="showTooltip(this,'cbiXjy')"><i>[6] Adult's Responsibility</i></a>,&nbsp;<a href="/en/main/story/main/1/2/16.html#story-part-7" class="text-primary" onmouseover="showTooltip(this,'UzU7nv')"><i>[7] An Incorrect Thought</i></a>,&nbsp;<a href="/en/main/story/main/1/2/16.html#story-part-8" class="text-primary" onmouseover="showTooltip(this,'EvvPbz')"><i>[8] Everyone Of The Foreclosure Task Force</i></a>,&nbsp;<a href="/en/main/story/main/1/2/16.html#story-part-9" class="text-primary" onmouseover="showTooltip(this,'vWEFPA')"><i>[9] Keep On Watch</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/16.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="w0912A"><i>[1]&nbsp;The People Outside Kivotos</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/16.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="1q55P0"><i>[3]&nbsp;Sensei's Criticism</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/16.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="lhY5PN"><i>[4]&nbsp;The Truth About The World</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/16.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="yurACF"><i>[5]&nbsp;Adult's Card</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/16.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Ortzj7"><i>[6]&nbsp;Adult's Responsibility</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/16.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="xIu6wz"><i>[7]&nbsp;An Incorrect Thought</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/16.html#story-part-8-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="7zHfht"><i>[8]&nbsp;Everyone Of The Foreclosure Task Force</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/16.html#story-part-9-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="aVdqCq"><i>[9]&nbsp;Keep On Watch</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'GIcrwv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">To the Black Market! Part 2</p><ul><li>Hifumi agrees to guide The Foreclosure Task Force around the market in return for helping her earlier. Meanwhile, the boss of Problem Solver 68, Aru, struggles to get a loan so she can pay off her earlier mistake.</li></ul></div>','KmtxZl': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC&#x27s Confusion</p><p>The failed mission carried out by Problem Solver 68 shocked the PMC, who insisted that the data must be wrong. Yet Black Suit thought the data was nothing wrong and decided to investigate the reasons.</p><hr><p>Character:  <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','hYKBgy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Gathering Storm</p><ul><li>Aru grapples with the thought of using funds acquired by the Foreclosure Task Force to attack Abydos High School. To lift her spirits, Problem Solver takes her to get Shiba Seki ramen. Meanwhile, a man in a black suit appears before Hoshino with a clandestine proposal.</li></ul></div>','Ln5iV2': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Black Suit</p><p>Hoshino left school and had a meeting with the Black Suit. Black Suit repurposed the so-called "proposal", claiming to give her "a condition that she&#x27ll never be able to decline".</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','u9F7sk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC Part 2</p><ul><li>A supposed Kaiser board member appears before the Foreclosure Task Force and introduces themselves as the creditor of Abydos.</li></ul></div>','4EbRuz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Secret Meeting</p><p>Hoshino remembered that, in that previous meeting, the Black Suit mentioned about that "deal" in front of herself and the PMC director.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a>   <a href=/en/character/npc/pmcceo/>PMC CEO</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','4ng9xo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Secrets</p><ul><li>After sending her enraged underclassmen home, Hoshino reveals to Sensei the secret deal she was offered by the man in the black suit. Sensei tries to console her, but the next day finds no trace of Hoshino, save for her resignation letter.</li></ul></div>','wNBthY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Deal</p><p>It turned out that deal is, if Hoshino&#x27s willing to join in PMC (to become a mercenary), then the Black Suit would be willing to take on half of the school&#x27s debt.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','Fcn7NP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What Slipped Through the Cracks</p><ul><li>In her letter, Hoshino reveals that she joined Kaiser PMC in exchange for Abydos High School&#x27s debt being forgiven. Now, without Hoshino, the remaining members of the Foreclosure Task Force scramble when PMC forces close in on Abydos High School.</li></ul></div>','pQ9FtC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Signing</p><p>Hoshino signed at PMC office. Black Suit said that in this way, Hoshino would be transferring all her rights to him (in other words, Hoshino sold herself), and promised the debt would be taken care as promised.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/35.html>OST 35. Morose Dreamer</a></p></div>','Z9Pjz_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 1</p><ul><li>After joining up with Kaiser PMC, Hoshino defects when she learns that Abydos High School is under attack, but is then arrested by Black Suit. When all hope seems lost, Problem Solver 68 returns to Abydos to lend their aid to the Foreclosure Task Force.</li></ul></div>','hArrUv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hoshino</p><p>Hoshino was in great shock upon hearing PMC were attacking Abydos. The Black Suit explained that, after her dropout, Abydos would no longer have a student belonging to the Student Union (i.e. no Student Union), and therefore the school would not exist. The Black suit expressed his interest on establishing a new school purposed by PMC, but then clarified that their goal was actually Hoshino herself. The fact of cooperating with Kaiser was simply because the interests weren&#x27t in conflict. The Black Suit said, as the highest "Mythic" in Kivotos, he would be carrying out experiments on her.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','tJ66L7': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 2</p><ul><li>Despite the Kaiser director&#x27s outrage, Sensei, the Foreclosure Task Force, and Problem Solver make use of the sudden turn of events to launch a counteroffensive against the PMC forces.</li><li>The PMC forces finally retreat following an arduous battle. Later, Sensei seeks out Black Suit personally to negotiate Hoshino&#x27s return.</li></ul></div>','bhCDJ_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">With Black Suit</p><p>That night, Sensei arrived in front of a building. At the top-floor office, Sensei met the Black Suit.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>','PjC2E0': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Battle Between Adults</p><ul><li>Black Suit attempts to coerce [USERNAME] Sensei into giving Hoshino up for his experiments, but Sensei makes it perfectly clear that Hoshino will be rescued—no matter what.</li></ul></div>','gMhROR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The People Outside Kivotos</p><p>The Black Suit said he knew quite well about Sensei. In Black Suit&#x27s eyes, Sensei was the biggest obstacle and so he didn&#x27t and shouldn&#x27t be hostile with Sensei, but rather he should seek cooperation. Sensei asked about his identity, and Black Suit said he was a member of "Gematria". He then asked what Sensei was looking for in Kivotos, but Sensei didn&#x27t listen. The Black Suit added that, Sensei&#x27s behaviour was no longer justified at this time, and he asked whether Sensei even knew well about his rights. He said that Hoshino was no longer a student belonging to Abydos, and mentioned about the resignation letter.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>','Az1vlb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Sensei&#x27s Criticism</p><p>The Black Suit got the idea and disdained such troublesome procedures. Sensei then went on criticizing the Black Suits, saying they "Not only deceived those childrens, tramped their hearts, but also took advantages of their sufferings." The Black Suit did not deny the fact that he pursued self-interests, but with a clear boundary defined: the desertification of Abydos wasn&#x27t their doings, and they were just taking advantages of this disaster.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>','Gu8672': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Truth About The World</p><p>"Those with power exploit those without, those with knowledge exploit those without," Black Suit explained the truth about the world to Sensei. The Black Suit repeated that deal, wanting Sensei to stop interfering them. They promised they would take on half of the debt, and they could keep others at Abydos High School safe and sound. But Sensei rejected it still.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>','fNVtLY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Adult&#x27s Card</p><p>The Black Suit could not comprehend Sensei&#x27s choice. He doubted about the ability that Sensei possess to be enemy with them, and Sensei took out the Adult&#x27s Card - a weapon exclusive to Sensei. But the Black Suit warned Sensei, that the more you use it, the more it will be destroyed - it will also cost Sensei&#x27s life and time. The Black Suit reminded Sensei that he still need to do a lot of daily stuff with it, and mentioned again that this had nothing to do with him in the very beginning. Yet Sensei rejected that again.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>','cbiXjy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Adult&#x27s Responsibility</p><p>The Black Suit could not understand Sensei&#x27s choice. He asked, questioned Sensei, while Sensei just said, "For the sufferings of those children, no one&#x27s willing to take the responsibility." The Black Suit was confused, saying that Sensei had neither any kinship nor consanguinity with them, but only an outsider who happened to meet them - and none of the responsibilities should be shouldered by Sensei. Sensei then said, "That&#x27s something an adult should do."</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>','UzU7nv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Incorrect Thought</p><p>The Black Suit now understood, but began to correct Sensei&#x27s ideas. "The so-called adults, are the ones who are able to transform the society to one that fits well in their own ideal dream, the ones who make rules, define what&#x27s normal or not, who&#x27s ordinary or not. The ones who use authority, knowledge and power to govern those without - and that&#x27s what I call an adult." The Black Suit stressed that it wasn&#x27t unrelated to Sensei, as Sensei could have become the ruler of the Kivotos, yet Sensei didn&#x27t. The Black Suit couldn&#x27t get Sensei&#x27s intent.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>','EvvPbz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everyone Of The Foreclosure Task Force</p><p>Sensei said that even speaking out would not make him understood. The Black Suit declared that the negotiation had broken since, and told Sensei the location of Hoshino and the contents of the experiment at last. The Black Suit ended with "Then you&#x27d be just rescuing your students," contemptuously, and wished Sensei good luck.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>','vWEFPA': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Keep On Watch</p><p>Before leaving, the Black Suit said they would be watching on him.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/70.html>OST 70. Black Suit</a></p></div>', });
+        add_tooltip_data({ 'vqTRNo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">To the Black Market! Part 2</p><ul><li>Hifumi agrees to guide The Foreclosure Task Force around the market in return for helping her earlier. Meanwhile, the boss of Problem Solver 68, Aru, struggles to get a loan so she can pay off her earlier mistake.</li></ul></div>','OJr6pM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC&#x27s Confusion</p><p>The failed mission carried out by Problem Solver 68 shocks the PMC, who insists that the data must be wrong. Yet Black Suit thinks the data is nothing wrong and decides to investigate the reason.</p><hr><p>Character:<span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','CFrYPG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Gathering Storm</p><ul><li>Aru grapples with the thought of using funds acquired by the Foreclosure Task Force to attack Abydos High School. To lift her spirits, Problem Solver takes her to get Shiba Seki ramen. Meanwhile, a man in a black suit appears before Hoshino with a clandestine proposal.</li></ul></div>','JMfOQK': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Black Suit</p><p>Hoshino leaves school and has a meeting with the Black Suit. Black Suit repurposes the so-called "proposal", claiming to give her "a condition that she&#x27ll never be able to decline".</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','sAnXri': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC Part 2</p><ul><li>A supposed Kaiser board member appears before the Foreclosure Task Force and introduces themselves as the creditor of Abydos.</li></ul></div>','59kPvR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Secret Meeting</p><p>Hoshino remembers that, in that previous meeting, the Black Suit mentioned about that "deal" in front of herself and the PMC director.</p><hr><p>Character:<span> <a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a>  | </span><a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','EgQF1D': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Secrets</p><ul><li>After sending her enraged underclassmen home, Hoshino reveals to Sensei the secret deal she was offered by the man in the black suit. Sensei tries to console her, but the next day finds no trace of Hoshino, save for her resignation letter.</li></ul></div>','XTlitz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Deal</p><p>It turns out that deal is, if Hoshino&#x27s willing to join in PMC (to become a mercenary), then the Black Suit will be willing to take on half of the school&#x27s debt.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','sh4ccs': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What Slipped Through the Cracks</p><ul><li>In her letter, Hoshino reveals that she joined Kaiser PMC in exchange for Abydos High School&#x27s debt being forgiven. Now, without Hoshino, the remaining members of the Foreclosure Task Force scramble when PMC forces close in on Abydos High School.</li></ul></div>','VyWbAn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Signing</p><p>Hoshino signs at PMC office. Black Suit says that in this way, Hoshino will be transferring all her rights to him (in other words, Hoshino just sold herself), and promises the debt will be taken care as promised.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/35.html> <span>OST 35. Morose Dreamer</span></a></p></div>','G9vCFw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 1</p><ul><li>After joining up with Kaiser PMC, Hoshino defects when she learns that Abydos High School is under attack, but is then arrested by Black Suit. When all hope seems lost, Problem Solver 68 returns to Abydos to lend their aid to the Foreclosure Task Force.</li></ul></div>','0bEzHn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hoshino</p><p>Hoshino is in great shock upon hearing PMC were attacking Abydos. The Black Suit explains that, after her dropout, Abydos will no longer have a student belonging to the Student Union, and therefore the school will not exist. The Black suit expresses his interest on establishing a new school purposed by PMC, but then clarifies that their goal is actually Hoshino herself. The fact of cooperating with Kaiser is simply because the interests aren&#x27t in conflict. The Black Suit says, as the highest "Mythic" in Kivotos, he will be carrying out experiments on her.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','dcx0Zr': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 2</p><ul><li>Despite the Kaiser director&#x27s outrage, Sensei, the Foreclosure Task Force, and Problem Solver make use of the sudden turn of events to launch a counteroffensive against the PMC forces.</li><li>The PMC forces finally retreats following an arduous battle. Later, Sensei seeks out Black Suit personally to negotiate Hoshino&#x27s return.</li></ul></div>','65CMlr': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">With Black Suit</p><p>That night, Sensei arrives in front of a building. At the top-floor office, Sensei meets the Black Suit.</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>','cvUhYH': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Battle Between Adults</p><ul><li>Black Suit attempts to coerce [USERNAME] Sensei into giving Hoshino up for his experiments, but Sensei makes it perfectly clear that Hoshino will be rescued—no matter what.</li></ul></div>','w0912A': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The People Outside Kivotos</p><p>The Black Suit says he knows quite well about Sensei. In Black Suit&#x27s eyes, Sensei is the biggest obstacle and so he doesn&#x27t and shouldn&#x27t be hostile with Sensei, but rather he should seek cooperation. Sensei asks about his identity, and Black Suit says he is a member of "Gematria". He then asks what Sensei is looking for in Kivotos, but Sensei doesn&#x27t listen. The Black Suit adds that, Sensei&#x27s behaviour is no longer justified at this time, and he asks whether Sensei even knows well about his rights. He says that Hoshino is no longer a student belonging to Abydos, and mentions about the resignation letter.</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>','1q55P0': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Sensei&#x27s Criticism</p><p>The Black Suit gets the idea and disdains such troublesome procedures. Sensei then goes on criticizing the Black Suits, saying they "not only deceive those childrens, tramp their hearts, but also take advantages of their sufferings." The Black Suit doesn&#x27t deny the fact that he pursues self-interests, but that&#x27s with a clear boundary: the desertification of Abydos isn&#x27t their doings, and they are just taking advantages of this disaster.</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>','lhY5PN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Truth About The World</p><p>"Those with power exploit those without, those with knowledge exploit those without," Black Suit explains the truth about the world to Sensei. The Black Suit repeats that deal, wanting Sensei to stop interfering them. They promises they will take on half of the debt, and they can keep others at Abydos High School safe and sound. But Sensei rejects it still.</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>','yurACF': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Adult&#x27s Card</p><p>The Black Suit cannot comprehend Sensei&#x27s choice. He doubts about the ability that Sensei possesses to be enemy with them, and Sensei takes out the Adult&#x27s Card - a weapon exclusive to Sensei. But the Black Suit warns Sensei, that the more he use it, the more it will be destroyed, and it will also cost Sensei&#x27s life and time. The Black Suit reminds Sensei that he still need to do a lot of daily stuff with it, and mentions again that this has nothing to do with him in the very beginning. Yet Sensei rejects that again.</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>','Ortzj7': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Adult&#x27s Responsibility</p><p>The Black Suit cannot understand Sensei&#x27s choice. He asks, questions Sensei, while Sensei just says, "For the sufferings of those children, no one&#x27s willing to take the responsibility." The Black Suit is confused, saying that Sensei has neither any kinship nor consanguinity with them, but only an outsider who happened to meet them - and none of the responsibilities should be shouldered by Sensei. Sensei then says, "That&#x27s what an adult should do."</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>','xIu6wz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Incorrect Thought</p><p>The Black Suit now understands and begins to correct Sensei&#x27s ideas. "The so-called adults, are the ones who are able to transform the society to one that fits well in their own ideal dream, the ones who make rules, define what&#x27s normal or not, who&#x27s ordinary or not. The ones who use authority, knowledge and power to govern those without - and that&#x27s what I call an adult." The Black Suit stresses that it isn&#x27t unrelated to Sensei, as Sensei could have become the ruler of the Kivotos, yet Sensei doesn&#x27t. The Black Suit can&#x27t get Sensei&#x27s intent.</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>','7zHfht': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everyone Of The Foreclosure Task Force</p><p>Sensei says that even speaking out would not make him understood. The Black Suit declares that the negotiation has broken and tells Sensei the location of Hoshino and the content of the experiment at last. The Black Suit ends with "Then you&#x27d be just rescuing your students," contemptuously, and wishes Sensei good luck.</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>','aVdqCq': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Keep On Watch</p><p>Before leaving, the Black Suit says they&#x27ll be watching on him.</p><hr><p>Character:<a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/70.html> <span>OST 70. Black Suit</span></a></p></div>', });
     </script>
 
 
@@ -1067,45 +1415,51 @@ Story Volume 1 Chapter 2 Episode 16: Battle Between Adults
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_27"><a href="/en/track/ost/27.html" onmouseover="showTooltip(this, 'aIyDZg')">【5】
-    OST
- 27. Fade Out</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_70"><a href="/en/track/ost/70.html" onmouseover="showTooltip(this, 'duOmgG')">【2】
-    OST
- 70. Black Suit</a> by KARUT</li>
+            <li id="track-OST_27">
+    <a href="/en/track/ost/27.html#7c9c757e-aee4-4fdd-999c-82de4ce65d28" onmouseover="showTooltip(this)" data-tooltip="B0TDRV">
+        <span>【5】OST&nbsp;27.&nbsp;Fade Out</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_70">
+    <a href="/en/track/ost/70.html#7c9c757e-aee4-4fdd-999c-82de4ce65d28" onmouseover="showTooltip(this)" data-tooltip="Yi993N">
+        <span>【2】OST&nbsp;70.&nbsp;Black Suit</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_35"><a href="/en/track/ost/35.html" onmouseover="showTooltip(this, 'ylHt5f')">【1】
-    OST
- 35. Morose Dreamer</a> by Mitsukiyo</li>
+            <li id="track-OST_35">
+    <a href="/en/track/ost/35.html#7c9c757e-aee4-4fdd-999c-82de4ce65d28" onmouseover="showTooltip(this)" data-tooltip="xFpj3L">
+        <span>【1】OST&nbsp;35.&nbsp;Morose Dreamer</span>
+    </a>
+    
+</li>
 
             
                 
@@ -1116,7 +1470,7 @@ Story Volume 1 Chapter 2 Episode 16: Battle Between Adults
     
         
     <script>
-        add_tooltip_data({ 'aIyDZg': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/12.html> Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2 </a></li><li><a href=/en/main/story/main/1/1/17.html> Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm </a></li><li><a href=/en/main/story/main/1/2/10.html> Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2 </a></li><li><a href=/en/main/story/main/1/2/12.html> Main Story Volume 1 Chapter 2 Episode 12: Secrets </a></li><li><a href=/en/main/story/main/1/2/14.html> Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1 </a></li></ol></div>','duOmgG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 70. Black Suit</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/15.html> Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2 </a></li><li><a href=/en/main/story/main/1/2/16.html> Main Story Volume 1 Chapter 2 Episode 16: Battle Between Adults </a></li></ol></div>','ylHt5f': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 35. Morose Dreamer</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/13.html> Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks </a></li></ol></div>', });
+        add_tooltip_data({ 'B0TDRV': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] PMC&#x27s Confusion</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/17.html>Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] The Black Suit</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] A Secret Meeting</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/12.html>Main Story Volume 1 Chapter 2 Episode 12: Secrets</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] A Deal</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Hoshino</i></a></span><span>)</span></li></ol></div>','Yi993N': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 70. Black Suit</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] With Black Suit</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/16.html>Main Story Volume 1 Chapter 2 Episode 16: Battle Between Adults</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] The People Outside Kivotos</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Sensei&#x27s Criticism</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] The Truth About The World</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Adult&#x27s Card</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Adult&#x27s Responsibility</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] An Incorrect Thought</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Everyone Of The Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Keep On Watch</i></a></span><span>)</span></li></ol></div>','xFpj3L': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 35. Morose Dreamer</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/13.html>Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] Signing</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -1133,13 +1487,23 @@ Story Volume 1 Chapter 2 Episode 16: Battle Between Adults
     
         
             <li>
+
             
-                <span>
-                    <a href="/en/character/student/hoshino/">
-                        <img src="/static/images/student/icon/10005.webp" class="icon-stu"/>Hoshino
-                    </a>
-                </span>
+    
+        
+        
+        <span>
+            <a href="/en/character/student/hoshino/"  target="_blank">
+                <img src="/static/images/student/icon/10005.webp" class="icon-stu">
+                <span>Hoshino</span>
+            </a>
+        </span>
+        
             
+        
+    
+
+
             </li>
         
     
@@ -1147,28 +1511,70 @@ Story Volume 1 Chapter 2 Episode 16: Battle Between Adults
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        
+                        <p class="navi-p"><a href="/en/character/npc/arona">&lt;-- Previous page: Arona</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        
+                        <p class="navi-p"><a href="/en/character/npc/mai">--&gt; Next page: Mai</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:18:45 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:18:45
 -->
 </body>
 </html>

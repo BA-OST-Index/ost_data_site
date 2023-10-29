@@ -7,10 +7,10 @@
 
     <title>Background/BG_Wilderness.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_White.jpg.html">&lt;-- Previous page: BG_White.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_White.jpg.html">&lt;-- Previous page: BG_White.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_Wilderness_Erode.jpg.html">--&gt; Next page: BG_Wilderness_Erode.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_Wilderness_Erode.jpg.html">--&gt; Next page: BG_Wilderness_Erode.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_Wilderness.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_Wilderness.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_Wilderness.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_Wilderness.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_Wilderness.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_Wilderness.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_1_2_7">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/7.html" onmouseover="showTooltip(this, 'M6PjrZ')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/7.html"  onmouseover="showTooltip(this)" data-tooltip="BAWwnk">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;Into the Abydos Desert Part 2</a>
+    
+
         
 
         
@@ -234,25 +224,44 @@ Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
-            
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/7.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'fY_exd')"><i>[1] In Front of the Oasis</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/7.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="lQbPs3"><i>[1]&nbsp;In Front of the Oasis</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -266,16 +275,13 @@ Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2
         <li id="story-MAIN_1_2_8">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/8.html" onmouseover="showTooltip(this, 'A9vsba')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 8: Into the Abydos Desert Part 3
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/8.html"  onmouseover="showTooltip(this)" data-tooltip="YUZKTU">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Into the Abydos Desert Part 3</a>
+    
+
         
 
         
@@ -285,30 +291,55 @@ Story Volume 1 Chapter 2 Episode 8: Into the Abydos Desert Part 3
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
+                
+                
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/8.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'6Vo6kg')"><i>[1] An Unusual Facility</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/8.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="SlnOUW"><i>[1]&nbsp;An Unusual Facility</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -322,16 +353,13 @@ Story Volume 1 Chapter 2 Episode 8: Into the Abydos Desert Part 3
         <li id="story-MAIN_1_2_10">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/10.html" onmouseover="showTooltip(this, 'agZOwY')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/10.html"  onmouseover="showTooltip(this)" data-tooltip="W5PiUL">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;Kaiser PMC Part 2</a>
+    
+
         
 
         
@@ -341,43 +369,73 @@ Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/10.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'hR1pfL')"><i>[1] Not Near Ending</i></a>,&nbsp;<a href="/en/main/story/main/1/2/10.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'kDUbNm')"><i>[3] Discussing the Debt</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/10.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="G4N4C8"><i>[1]&nbsp;Not Near Ending</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/10.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="QLYrpB"><i>[3]&nbsp;Discussing the Debt</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -391,16 +449,13 @@ Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
         <li id="story-MAIN_1_2_17">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/17.html" onmouseover="showTooltip(this, 'Met31t')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/17.html"  onmouseover="showTooltip(this)" data-tooltip="fi2lQD">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;That Which One Must Protect</a>
+    
+
         
 
         
@@ -410,55 +465,110 @@ Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
                 
-            
-                
+
                 
             
                 
                 
                     
+                    
+                    
+                
+
                 
             
                 
                 
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/17.html#story-part-8" class="text-primary" onmouseover="showTooltip(this,'e7lSoN')"><i>[8] The Prefect Team Goes To War!</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="BnXNid"><i>[8]&nbsp;The Prefect Team Goes To War!</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -472,16 +582,13 @@ Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect
         <li id="story-MAIN_1_2_18">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/18.html" onmouseover="showTooltip(this, 'yzc9it')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/18.html"  onmouseover="showTooltip(this)" data-tooltip="oMzb3E">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>
+    
+
         
 
         
@@ -491,30 +598,55 @@ Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
                 
                 
                     
+                    
+                        
+                    
+                    
                 
-            
-                
+
                 
             
                 
                 
                     
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/18.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'0F_Xmh')"><i>[3] PMC Director</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/18.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="nX_YDt"><i>[3]&nbsp;PMC Director</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -528,16 +660,13 @@ Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
         <li id="story-MAIN_1_2_20">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/20.html" onmouseover="showTooltip(this, 'aXvjHo')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 20: Epilogue
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/20.html"  onmouseover="showTooltip(this)" data-tooltip="vb1iJk">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Epilogue</a>
+    
+
         
 
         
@@ -547,64 +676,119 @@ Story Volume 1 Chapter 2 Episode 20: Epilogue
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/20.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'jA4MDI')"><i>[4] Abydos' Land</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/20.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="c5vAn8"><i>[4]&nbsp;Abydos' Land</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'M6PjrZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Into the Abydos Desert Part 2</p><ul><li>Arriving at the desert, Hoshino sees the remains of Abydos and reminisces about what once was.</li></ul></div>','fY_exd': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">In Front of the Oasis</p><p>Hoshino mentioned that there was an oasis and they could even ride a boat. And the festival back then, was the one that even other schools would be attending.</p><hr><p>Character:  <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span></p><hr><p>Track:  <a href=/en/track/ost/16.html>OST 16. MX Adventure</a></p></div>','A9vsba': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Into the Abydos Desert Part 3</p><ul><li>The Foreclosure Task Force finds that a giant facility has been built in the desert and an unknown force shows up to defend it.</li></ul></div>','6Vo6kg': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Unusual Facility</p><p>Ayane suddenly had a visual of some facilities ahead. As her sight was blocked by the sand, everyone went there immediately.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span></p><hr><p>No tracks to display!</p></div>','agZOwY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC Part 2</p><ul><li>A supposed Kaiser board member appears before the Foreclosure Task Force and introduces themselves as the creditor of Abydos.</li></ul></div>','hR1pfL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Not Near Ending</p><p>The PMC was too strong for everyone to escape. The director of PMC suddenly visited at this time, and Hoshino recognized him and remembered something.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/20.html>OST 20. Tech N Tech</a>   <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','kDUbNm': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Discussing the Debt</p><p>The PMC director proposed to add the losses caused by everyone to the amount owed. Hoshino recognized him, and the latter said hello to Hoshino. Then he "accidentally" leaked his hiring of the Problem Solver 68 and the Helmet Group. Afterwards, he said he wanted to have a good talk with Abydos about the debt.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','Met31t': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">That Which One Must Protect</p><ul><li>[USERNAME] Sensei goes to the Gehenna Academy and Trinity General School to enlist their help. Meanwhile, Problem Solver 68 are treated to ramen at Master Shiba Seki&#x27s newly opened stall and make up their minds to help the Foreclosure Task Force.</li><li>At [USERNAME] Sensei&#x27s behest, Hina and the Prefect Team come to the Foreclosure Task Force&#x27s defense against the PMC forces.</li></ul></div>','e7lSoN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Prefect Team Goes To War!</p><p>As a reward of the participation, Hina made an exception and changed the punishment of writing self-criticism patters to this operation. Hina demanded that no enemies should even have a slightest scratch on Sensei.</p><hr><p>Character:  <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp>Hina </a> </span>   <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp>Iori </a> </span>   <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp>Chinatsu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a></p></div>','yzc9it': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 1</p><ul><li>The Foreclosure Task Force is fighting on multiple fronts when Hifumi arrives with reinforcements from Trinity in tow. Using the unexpected arrival as a distraction, the Foreclosure Task Force breaks through the enemy lines.</li><li>When the Foreclosure Task Force arrives at Abydos High&#x27s old main building, a Kaiser board member bars their way. However, Aru and Problem Solver 68 arrive in the nick of time.</li></ul></div>','0F_Xmh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC Director</p><p>Everyone came to the middle of the desert and recognized the traces of the former Abydos High School. The director introduced the situation here and mentioned about the "Laboratory" that the Black Suit once mentioned. Yet the director said they must pass him first, and at this moment all of the Problem Solver 68 came and aid. The Foreclosure Task Force entrusted the combat to Problem Solver 68 and looked for Hoshino themselves.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span></p><hr><p>Track:  <a href=/en/track/ost/41.html>OST 41. Interface</a>   <a href=/en/track/ost/49.html>OST 49. Mechanical JUNGLE (High-Tech Full On Mix)</a></p></div>','aXvjHo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Epilogue</p><ul><li>After the fact, Sensei receives a letter from Ayane. Though the Foreclosure Task Force wasn&#x27t able to pay off its debt in full, she thanks [USERNAME] Sensei for preserving the group&#x27s usual way of life.</li></ul></div>','jA4MDI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Abydos&#x27 Land</p><p>It didn&#x27t change the fact the most lands in Abydos were still owned by Kaiser Corporation, though.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span></p><hr><p>Track:  <a href=/en/track/ost/45.html>OST 45. Signal of Abydos</a></p></div>', });
+        add_tooltip_data({ 'BAWwnk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Into the Abydos Desert Part 2</p><ul><li>Arriving at the desert, Hoshino sees the remains of Abydos and reminisces about what once was.</li></ul></div>','lQbPs3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">In Front of the Oasis</p><p>Hoshino mentions that there was an oasis and they could even ride a boat. And the festival back then, was the one that even other schools would be attending.</p><hr><p>Character:<span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/16.html> <span>OST 16. MX Adventure</span></a></p></div>','YUZKTU': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Into the Abydos Desert Part 3</p><ul><li>The Foreclosure Task Force finds that a giant facility has been built in the desert and an unknown force shows up to defend it.</li></ul></div>','SlnOUW': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Unusual Facility</p><p>Ayane suddenly has a visual of some facilities ahead. As her sight is blocked by the sand, everyone goes there immediately.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span></p><hr><p>No tracks to display!</p></div>','W5PiUL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC Part 2</p><ul><li>A supposed Kaiser board member appears before the Foreclosure Task Force and introduces themselves as the creditor of Abydos.</li></ul></div>','G4N4C8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Not Near Ending</p><p>The PMC is too strong for everyone to escape. The director of PMC suddenly visits at this time, and Hoshino recognizes him and remembers something.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/20.html> <span>OST 20. Tech N Tech</span></a> <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','QLYrpB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Discussing the Debt</p><p>The PMC director proposes to add the losses caused by everyone to the amount owed. Hoshino recognizes him, and the latter says hello to Hoshino. Then he "accidentally" leaks his hiring of the Problem Solver 68 and the Helmet Group. Afterwards, he says he wants to have a good talk with Abydos about the debt.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','fi2lQD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">That Which One Must Protect</p><ul><li>[USERNAME] Sensei goes to the Gehenna Academy and Trinity General School to enlist their help. Meanwhile, Problem Solver 68 are treated to ramen at Master Shiba Seki&#x27s newly opened stall and make up their minds to help the Foreclosure Task Force.</li><li>At [USERNAME] Sensei&#x27s behest, Hina and the Prefect Team come to the Foreclosure Task Force&#x27s defense against the PMC forces.</li></ul></div>','BnXNid': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Prefect Team Goes To War!</p><p>As a reward of the participation, Hina made an exception and changed the punishment of writing self-criticism patters to this operation. Hina demands that no enemies should even have a slightest scratch on Sensei.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp> <span>Hina</span></a> </span> | </span><span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp> <span>Iori</span></a> </span> | </span><span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp> <span>Chinatsu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/18.html> <span>OST 18. Mechanical JUNGLE</span></a></p></div>','oMzb3E': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 1</p><ul><li>The Foreclosure Task Force is fighting on multiple fronts when Hifumi arrives with reinforcements from Trinity in tow. Using the unexpected arrival as a distraction, the Foreclosure Task Force breaks through the enemy lines.</li><li>When the Foreclosure Task Force arrives at Abydos High&#x27s old main building, a Kaiser board member bars their way. However, Aru and Problem Solver 68 arrive in the nick of time.</li></ul></div>','nX_YDt': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC Director</p><p>Everyone comes to the middle of the desert and recognizes the traces of the former Abydos High School. The director introduces the situation here and mentions about the "Laboratory" that the Black Suit once mentioned. Yet the director says they must pass him first, and at this moment all of the Problem Solver 68 come out and aid. The Foreclosure Task Force entrust the combat to Problem Solver 68 and then look for Hoshino themselves.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/41.html> <span>OST 41. Interface</span></a> <a href=/en/track/ost/49.html> <span>OST 49. Mechanical JUNGLE (High-Tech Full On Mix)</span></a></p></div>','vb1iJk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Epilogue</p><ul><li>After the fact, Sensei receives a letter from Ayane. Though the Foreclosure Task Force wasn&#x27t able to pay off its debt in full, she thanks [USERNAME] Sensei for preserving the group&#x27s usual way of life.</li></ul></div>','c5vAn8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Abydos&#x27 Land</p><p>It doesn&#x27t change the fact the most lands in Abydos are still owned by Kaiser Corporation, though.</p><hr><p>Character:<span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/45.html> <span>OST 45. Signal of Abydos</span></a></p></div>', });
     </script>
 
 
@@ -619,105 +803,119 @@ Story Volume 1 Chapter 2 Episode 20: Epilogue
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_16"><a href="/en/track/ost/16.html" onmouseover="showTooltip(this, 'mpEDA5')">【1】
-    OST
- 16. MX Adventure</a> by Mitsukiyo</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_18"><a href="/en/track/ost/18.html" onmouseover="showTooltip(this, 'KZQl2Y')">【1】
-    OST
- 18. Mechanical JUNGLE</a> by KARUT</li>
+            <li id="track-OST_16">
+    <a href="/en/track/ost/16.html#f13a8cde-f446-42d5-8e37-84505dcc6e73" onmouseover="showTooltip(this)" data-tooltip="KNNiob">
+        <span>【1】OST&nbsp;16.&nbsp;MX Adventure</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_20"><a href="/en/track/ost/20.html" onmouseover="showTooltip(this, 'qzWtme')">【1】
-    OST
- 20. Tech N Tech</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_27"><a href="/en/track/ost/27.html" onmouseover="showTooltip(this, 'yuEUoB')">【1】
-    OST
- 27. Fade Out</a> by KARUT</li>
+            <li id="track-OST_18">
+    <a href="/en/track/ost/18.html#f13a8cde-f446-42d5-8e37-84505dcc6e73" onmouseover="showTooltip(this)" data-tooltip="l5BGfr">
+        <span>【1】OST&nbsp;18.&nbsp;Mechanical JUNGLE</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_41"><a href="/en/track/ost/41.html" onmouseover="showTooltip(this, '74ijyU')">【1】
-    OST
- 41. Interface</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_45"><a href="/en/track/ost/45.html" onmouseover="showTooltip(this, 'aIpmnt')">【1】
-    OST
- 45. Signal of Abydos</a> by Nor</li>
+            <li id="track-OST_20">
+    <a href="/en/track/ost/20.html#f13a8cde-f446-42d5-8e37-84505dcc6e73" onmouseover="showTooltip(this)" data-tooltip="RujS6T">
+        <span>【1】OST&nbsp;20.&nbsp;Tech N Tech</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_27">
+    <a href="/en/track/ost/27.html#f13a8cde-f446-42d5-8e37-84505dcc6e73" onmouseover="showTooltip(this)" data-tooltip="OwJt9z">
+        <span>【1】OST&nbsp;27.&nbsp;Fade Out</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_49"><a href="/en/track/ost/49.html" onmouseover="showTooltip(this, 'v6gJWS')">【1】
-    OST
- 49. Mechanical JUNGLE (High-Tech Full On Mix)</a> by Nor</li>
+            <li id="track-OST_41">
+    <a href="/en/track/ost/41.html#f13a8cde-f446-42d5-8e37-84505dcc6e73" onmouseover="showTooltip(this)" data-tooltip="yXikLo">
+        <span>【1】OST&nbsp;41.&nbsp;Interface</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_45">
+    <a href="/en/track/ost/45.html#f13a8cde-f446-42d5-8e37-84505dcc6e73" onmouseover="showTooltip(this)" data-tooltip="of8q6B">
+        <span>【1】OST&nbsp;45.&nbsp;Signal of Abydos</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_49">
+    <a href="/en/track/ost/49.html#f13a8cde-f446-42d5-8e37-84505dcc6e73" onmouseover="showTooltip(this)" data-tooltip="phtia4">
+        <span>【1】OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix)</span>
+    </a>
+    
+</li>
 
             
                 
@@ -728,34 +926,74 @@ Story Volume 1 Chapter 2 Episode 20: Epilogue
     
         
     <script>
-        add_tooltip_data({ 'mpEDA5': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 16. MX Adventure</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/7.html> Main Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2 </a></li></ol></div>','KZQl2Y': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/17.html> Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect </a></li></ol></div>','qzWtme': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 20. Tech N Tech</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/10.html> Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2 </a></li></ol></div>','yuEUoB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/10.html> Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2 </a></li></ol></div>','74ijyU': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html> Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1 </a></li></ol></div>','aIpmnt': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 45. Signal of Abydos</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/20.html> Main Story Volume 1 Chapter 2 Episode 20: Epilogue </a></li></ol></div>','v6gJWS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 49. Mechanical JUNGLE (High-Tech Full On Mix)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html> Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1 </a></li></ol></div>', });
+        add_tooltip_data({ 'KNNiob': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 16. MX Adventure</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/7.html>Main Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] In Front of the Oasis</i></a></span><span>)</span></li></ol></div>','l5BGfr': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] The Prefect Team Goes To War!</i></a></span><span>)</span></li></ol></div>','RujS6T': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 20. Tech N Tech</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Not Near Ending</i></a></span><span>)</span></li></ol></div>','OwJt9z': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Not Near Ending</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Discussing the Debt</i></a></span><span>)</span></li></ol></div>','yXikLo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>','of8q6B': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 45. Signal of Abydos</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/20.html>Main Story Volume 1 Chapter 2 Episode 20: Epilogue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/20.html#story-part-1-seg-1><i>[1] Abydos&#x27 Land</i></a></span><span>)</span></li></ol></div>','phtia4': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 49. Mechanical JUNGLE (High-Tech Full On Mix)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_White.jpg.html">&lt;-- Previous page: BG_White.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_Wilderness_Erode.jpg.html">--&gt; Next page: BG_Wilderness_Erode.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:07 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:07
 -->
 </body>
 </html>

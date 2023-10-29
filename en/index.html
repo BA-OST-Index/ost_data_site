@@ -7,10 +7,10 @@
 
     <title>Welcome - BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,113 +84,150 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
 
-    
-        <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
+        
     <hr />
+            </div>
 
-            
-    <h1>Welcome Sensei!</h1>
-    <p>This is BA OST Index, a project created by <a href="https://github.com/sctop">sctop</a> in an attempt to track relationships between each track and the stories, battles, as well as the backgrounds, characters and UIs!</p>
-    <br />
-    <h2>Supported Data</h2>
-    <p>Currently the website has nearly-full support for text-only data. The related images are expected to update afterwards.</p>
-    <ul>
-        <li><a href="/en/background/">Background</a></li>
-        <li><a href="/en/character/">Character</a></li>
-        <li><a href="/en/event/">Event</a></li>
-        <li><a href="/en/main/">Main Mission/Story</a></li>
-        <li><a href="/en/tag/">Tag (not in use)</a></li>
-        <li><a href="/en/track/">Tracks</a></li>
-        <li><a href="/en/ui/">UI</a></li>
-        <li><a href="/en/video/">Videos</a></li>
-    </ul>
-    <p>You can also navigate the website through the navigation section on the left.</p>
+            <div id="git-wiki-content">
+                
+    <h1>Welcome, Sensei!</h1>
+    <div id="homepage-flex">
+        <div id="homepage-left">
+            <div>
+                <img src="/static/images/site/logo.png" style="height: 2em;">
+                <b><span style="font-size: 1.5em; color: black;">Music×Story×Student</span></b>
+            </div>
+            <p style="text-indent: 2em;">BA OST Index is a small database project dedicated to trace the usages of the tracks and automatically establish track-story-background-character relations for the mobile game Blue Archive. With automatically generated index time, you can jump, compare and search across different entries and get to know more about the tracks in the game.</p>
+            <hr style="margin-bottom: 1em;"/>
+            <h4 style="margin-top: 0;">Quick links:</h4>
+            <ul class="homepage-list">
+                <li>Main Story (<a href="/en/main/story/main/">Main</a>、<a href="/en/main/story/side/">Club</a>、<a href="/en/main/story/short/">Short</a>、<a href="/en/main/story/other/">Other</a>)</li>
+                <li>Main Battle (<a href="/en/main/battle/main/">Main</a>、<a href="/en/main/battle/total_assault/">Total Assault</a>、<a href="/en/main/battle/">Other</a>)</li>
+                <li>Tracks (<a href="/en/track/ost/">OST</a>、<a href="/en/track/short/">Short Animation</a>、<a href="/en/track/other/">Other</a>)</li>
+                <li>Characters (<a href="/en/character/npc/">NPC</a>、<a href="/en/character/student">Student</a>)</li>
+                <li><a href="/en/background/">Background Image</a></li>
+                <li><a href="/en/video/">Video</a></li>
+                <li><a href="/en/tag/">Tag</a></li>
+                <li><a href="/en/ui/">UI (User Interface)</a></li>
+            </ul>
+        </div>
+        <div id="homepage-right">
+            <h4 style="margin-top: 2px;">Main Features</h4>
+            <p>BA OST Index is open for <b>every BA player</b>. However, if you happen to be a story digger or a content creator, the data and features provided by this site could be much more helpful than other sites. Our main features are:</p>
+            <ol class="homepage-list">
+                <li>Tooltips: In main pages*, when you hover your mouse over a link of another data entry, you will see a tooltip showing more relevant info.</li>
+                <li>Story Parts Highlight: Different story parts are highlighted with different text color.</li>
+                <li>Quick Story Viewer: In each individual page for every story, you can directly jump to the related videos or <a href="https://blue-archive.io">blue-archive.io</a> (a fan-made story viewer project).</li>
+                <li>Jumping Highlight: When jumping between the main pages*, the data entry which you just jumped from will be highlighted.</li>
+            </ol>
+            <p><small>*Main pages: Pages for track, story, background and character.</small></p>
+        </div>
+    </div>
+    <div style="width: 100%; border: #727272 solid 1px; margin-top: 8px; padding: 5px; margin-right: 3em;">
+        <h4 style="margin-top: 0">Other Links</h4>
+        <ul class="homepage-list">
+            <li>About Project: <a href="https://github.com/BA-OST-Index">Organization Page</a>, <a href="https://github.com/BA-OST-Index/ost_data">Unprocessed JSON data</a>, <a href="https://github.com/BA-OST-Index/ost_data_parser">Data parser</a>, <a href="https://github.com/BA-OST-Index/ost_site_generator">Page generator</a>, <a href="https://github.com/BA-OST-Index/ost_site">Site code</a></li>
+            <li>Data Sites*：<a href="https://schale.gg/">SchaleDB</a>, <a href="https://bluearchive.wiki/">Blue Archive Wiki</a>, <a href="https://bluearchive.fandom.com/">Blue Archive Fandom Wiki</a></li>
+            <li>Partner: <a href="https://blue-archive.io">bluearchive.io</a></li>
+        </ul>
+        <p><small>*For quick navigation and reference only. Unless noted, BA OST Index is not affiliated in any way with the websites listed.</small></p>
+    </div>
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:10 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:10
 -->
 </body>
 </html>

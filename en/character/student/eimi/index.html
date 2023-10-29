@@ -7,10 +7,10 @@
 
     <title>Student/Eimi- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,77 +84,67 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
+        
 
-    
+        
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     <h1>Student/Eimi</h1>
     
+
 <table id="infobox">
     <tr>
         <td colspan="2" class="infobox-title">Izumimoto Eimi</td>
@@ -247,16 +237,13 @@
         <li id="story-MAIN_2_2_16">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/16.html" onmouseover="showTooltip(this, '09ZuOv')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 16: Checkmate
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/16.html"  onmouseover="showTooltip(this)" data-tooltip="0Nt3s8">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>
+    
+
         
 
         
@@ -266,78 +253,115 @@ Story Volume 2 Chapter 2 Episode 16: Checkmate
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
                     
-                
                     
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/16.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'rDrFqy')"><i>[3] Out Of The Calculation</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="9CgsY6"><i>[3]&nbsp;Out Of The Calculation</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -351,16 +375,13 @@ Story Volume 2 Chapter 2 Episode 16: Checkmate
         <li id="story-MAIN_2_2_23">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/23.html" onmouseover="showTooltip(this, 'pcCrZv')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/23.html"  onmouseover="showTooltip(this)" data-tooltip="0FKeXO">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>
+    
+
         
 
         
@@ -370,93 +391,118 @@ Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/23.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'mpEMip')"><i>[3] The Way To Wake Up</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="qN_1SP"><i>[3]&nbsp;The Way To Wake Up</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ '09ZuOv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Checkmate</p><ul><li>Rio&#x27s victory is sealed in front of Himari, but Himari succeeds in escaping with Eimi&#x27s help. Meanwhile, cut off from Veritas&#x27s support, the Game Development Department find themselves with their backs against the wall until they are dramatically rescued by Chihiro, the vice president of Veritas.</li></ul></div>','rDrFqy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Out Of The Calculation</p><p>Rio was in great shock, wondering who could possibly be out of her calculation It turned out to be Eimi from Himari&#x27s club. Though only to share the pudding with Himari and it had no effect for the others, Himari said that she still trusted her younger members.</p><hr><p>Character:  <a href=/en/character/npc/rio/>Rio</a>   <span> <a href=/en/character/student/himari/> <img class=icon-stu src=/static/images/student/icon/20020.webp>Himari </a> </span>   <span> <a href=/en/character/student/eimi/> <img class=icon-stu src=/static/images/student/icon/10001.webp>Eimi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/68.html>OST 68. Virtual Storm (Hard Arrange)</a></p></div>','pcCrZv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 2</p><ul><li>The Game Development Department successfully restrain Key with Yuuka and Noa&#x27s assistance. As the Game Development Department and Veritas fend off the enemies that are crawling out of the woodwork, Himari helps Momoi, Midori, Yuzu, and Sensei enter Aris&#x27 headspace to try to wake her.</li></ul></div>','mpEMip': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Way To Wake Up</p><p>Himari made it clear that under current situation, it is possible that Key would eventually take over Aris&#x27 personality. Therefore, the best solution now should be waking Aris up. When asked how, Himari purposed that the GDD and Sensei shall dive into the machine&#x27s consciousness and databases, and bring Aris back at there. Rio pointed out the potential dangers in it, but no one was backing away. Under the protection of almost all effectives from Millennium, Himari started looking for a break through.</p><hr><p>Character:  <span> <a href=/en/character/student/himari/> <img class=icon-stu src=/static/images/student/icon/20020.webp>Himari </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp>Sumire </a> </span>  and more.</p><hr><p>Track:  <a href=/en/track/ost/40.html>OST 40. Neo City Dive</a></p></div>', });
+        add_tooltip_data({ '0Nt3s8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Checkmate</p><ul><li>Rio&#x27s victory is sealed in front of Himari, but Himari succeeds in escaping with Eimi&#x27s help. Meanwhile, cut off from Veritas&#x27s support, the Game Development Department find themselves with their backs against the wall until they are dramatically rescued by Chihiro, the vice president of Veritas.</li></ul></div>','9CgsY6': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Out Of The Calculation</p><p>Rio was in great shock, wondering who could possibly be out of her calculation It turned out to be Eimi from Himari&#x27s club. Though only to share the pudding with Himari and it had no effect for the others, Himari said that she still trusted her younger members.</p><hr><p>Character:<span> <a href=/en/character/npc/rio/> <span>Rio</span></a>  | </span><span> <span> <a href=/en/character/student/himari/> <img class=icon-stu src=/static/images/student/icon/20020.webp> <span>Himari</span></a> </span> | </span><span> <a href=/en/character/student/eimi/> <img class=icon-stu src=/static/images/student/icon/10001.webp> <span>Eimi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/68.html> <span>OST 68. Virtual Storm (Hard Arrange)</span></a></p></div>','0FKeXO': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 2</p><ul><li>The Game Development Department successfully restrain Key with Yuuka and Noa&#x27s assistance. As the Game Development Department and Veritas fend off the enemies that are crawling out of the woodwork, Himari helps Momoi, Midori, Yuzu, and Sensei enter Aris&#x27 headspace to try to wake her.</li></ul></div>','qN_1SP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Way To Wake Up</p><p>Himari made it clear that under current situation, it is possible that Key would eventually take over Aris&#x27 personality. Therefore, the best solution now should be waking Aris up. When asked how, Himari purposed that the GDD and Sensei shall dive into the machine&#x27s consciousness and databases, and bring Aris back at there. Rio pointed out the potential dangers in it, but no one was backing away. Under the protection of almost all effectives from Millennium, Himari started looking for a break through.</p><hr><p>Character:<span> <span> <a href=/en/character/student/himari/> <img class=icon-stu src=/static/images/student/icon/20020.webp> <span>Himari</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp> <span>Sumire</span></a> </span><span> and more.</span></p><hr><p>Track: <a href=/en/track/ost/40.html> <span>OST 40. Neo City Dive</span></a></p></div>', });
     </script>
 
 
@@ -471,30 +517,34 @@ Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_40"><a href="/en/track/ost/40.html" onmouseover="showTooltip(this, 'Y6gCoX')">【1】
-    OST
- 40. Neo City Dive</a> by KARUT</li>
+            <li id="track-OST_40">
+    <a href="/en/track/ost/40.html#Eimi" onmouseover="showTooltip(this)" data-tooltip="KKjekf">
+        <span>【1】OST&nbsp;40.&nbsp;Neo City Dive</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_68"><a href="/en/track/ost/68.html" onmouseover="showTooltip(this, 'iz8WRW')">【1】
-    OST
- 68. Virtual Storm (Hard Arrange)</a> by Mitsukiyo</li>
+            <li id="track-OST_68">
+    <a href="/en/track/ost/68.html#Eimi" onmouseover="showTooltip(this)" data-tooltip="vhB5qk">
+        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span>
+    </a>
+    
+</li>
 
             
                 
@@ -505,7 +555,7 @@ Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
     
         
     <script>
-        add_tooltip_data({ 'Y6gCoX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 40. Neo City Dive</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/23.html> Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2 </a></li></ol></div>','iz8WRW': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 68. Virtual Storm (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/16.html> Main Story Volume 2 Chapter 2 Episode 16: Checkmate </a></li></ol></div>', });
+        add_tooltip_data({ 'KKjekf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 40. Neo City Dive</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/23.html>Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','vhB5qk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 68. Virtual Storm (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/16.html>Main Story Volume 2 Chapter 2 Episode 16: Checkmate</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] Out Of The Calculation</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -545,28 +595,51 @@ Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:18:30 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:18:30
 -->
 </body>
 </html>

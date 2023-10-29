@@ -7,10 +7,10 @@
 
     <title>Background/BG_CS_Abydos_02.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CS_Abydos_01_Letter.jpg.html">&lt;-- Previous page: BG_CS_Abydos_01_Letter.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_CS_Abydos_01_Letter.jpg.html">&lt;-- Previous page: BG_CS_Abydos_01_Letter.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CS_Abydos_03.jpg.html">--&gt; Next page: BG_CS_Abydos_03.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_CS_Abydos_03.jpg.html">--&gt; Next page: BG_CS_Abydos_03.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_CS_Abydos_02.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_CS_Abydos_02.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_CS_Abydos_02.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_CS_Abydos_02.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_CS_Abydos_02.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_CS_Abydos_02.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_1_1_2">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/2.html" onmouseover="showTooltip(this, 'XAarb1')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 2: First Day at Abydos
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/2.html"  onmouseover="showTooltip(this)" data-tooltip="4novWd">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;2:&nbsp;First Day at Abydos</a>
+    
+
         
 
         
@@ -234,59 +224,108 @@ Story Volume 1 Chapter 1 Episode 2: First Day at Abydos
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
-                            
-                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
+                    
                         
-            
-                
-                
+                    
                     
                 
-            
-                
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
                     
                 
-            
-                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
                 
-            
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/2.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'5nCyVd')"><i>[2] Shiroko</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/2.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="bq41Kv"><i>[2]&nbsp;Shiroko</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'XAarb1': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">First Day at Abydos</p><ul><li>Shiroko rescues Sensei and eventually the two arrive at Abydos&#x27 Foreclosure Task Force club room. Soon after, the school is attacked by the Kata-Kata Helmet Gang, and Sensei teams up with the students to fight back.</li></ul></div>','5nCyVd': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Shiroko</p><p>[Animation of Shiroko meeting Sensei]</p><hr><p>Character:  <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/9.html>OST 9. Midsummer Cat</a></p></div>', });
+        add_tooltip_data({ '4novWd': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">First Day at Abydos</p><ul><li>Shiroko rescues Sensei and eventually the two arrive at Abydos&#x27 Foreclosure Task Force club room. Soon after, the school is attacked by the Kata-Kata Helmet Gang, and Sensei teams up with the students to fight back.</li></ul></div>','bq41Kv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Shiroko</p><p>[Animation of Shiroko meeting Sensei]</p><hr><p>Character:<span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/9.html> <span>OST 9. Midsummer Cat</span></a></p></div>', });
     </script>
 
 
@@ -301,15 +340,17 @@ Story Volume 1 Chapter 1 Episode 2: First Day at Abydos
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_9"><a href="/en/track/ost/9.html" onmouseover="showTooltip(this, 'fxAlH3')">【1】
-    OST
- 9. Midsummer Cat</a> by Mitsukiyo</li>
+            <li id="track-OST_9">
+    <a href="/en/track/ost/9.html#7c937022-b37e-47b4-82f5-784a7d7176c3" onmouseover="showTooltip(this)" data-tooltip="zFaLJj">
+        <span>【1】OST&nbsp;9.&nbsp;Midsummer Cat</span>
+    </a>
+    
+</li>
 
             
                 
@@ -320,34 +361,74 @@ Story Volume 1 Chapter 1 Episode 2: First Day at Abydos
     
         
     <script>
-        add_tooltip_data({ 'fxAlH3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 9. Midsummer Cat</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/2.html> Main Story Volume 1 Chapter 1 Episode 2: First Day at Abydos </a></li></ol></div>', });
+        add_tooltip_data({ 'zFaLJj': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 9. Midsummer Cat</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/2.html>Main Story Volume 1 Chapter 1 Episode 2: First Day at Abydos</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Shiroko</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CS_Abydos_01_Letter.jpg.html">&lt;-- Previous page: BG_CS_Abydos_01_Letter.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CS_Abydos_03.jpg.html">--&gt; Next page: BG_CS_Abydos_03.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:03 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:03
 -->
 </body>
 </html>

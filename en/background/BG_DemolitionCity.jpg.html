@@ -7,10 +7,10 @@
 
     <title>Background/BG_DemolitionCity.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DecagrammatonLabortory_Night.jpg.html">&lt;-- Previous page: BG_DecagrammatonLabortory_Night.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_DecagrammatonLabortory_Night.jpg.html">&lt;-- Previous page: BG_DecagrammatonLabortory_Night.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DemolitionCity_Night.jpg.html">--&gt; Next page: BG_DemolitionCity_Night.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_DemolitionCity_Night.jpg.html">--&gt; Next page: BG_DemolitionCity_Night.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_DemolitionCity.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_DemolitionCity.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_DemolitionCity.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_DemolitionCity.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_DemolitionCity.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_DemolitionCity.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_1_1_18">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/18.html" onmouseover="showTooltip(this, 'RXnje2')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 18: We're Not Their Friends!
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/18.html"  onmouseover="showTooltip(this)" data-tooltip="D9l00E">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;18:&nbsp;We're Not Their Friends!</a>
+    
+
         
 
         
@@ -234,29 +224,48 @@ Story Volume 1 Chapter 1 Episode 18: We're Not Their Friends!
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/18.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'dxmS00')"><i>[2] Explosion Accident</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/18.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Nvq5wT"><i>[2]&nbsp;Explosion Accident</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -270,16 +279,13 @@ Story Volume 1 Chapter 1 Episode 18: We're Not Their Friends!
         <li id="story-MAIN_1_1_19">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/19.html" onmouseover="showTooltip(this, 'GD_DYi')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 19: You'll Pay for This!
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/19.html"  onmouseover="showTooltip(this)" data-tooltip="3Y55dL">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;19:&nbsp;You'll Pay for This!</a>
+    
+
         
 
         
@@ -289,41 +295,71 @@ Story Volume 1 Chapter 1 Episode 19: You'll Pay for This!
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
+                    
+                    
+                    
                 
             
                 
                 
                     
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/19.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'thCuBB')"><i>[1] The Real Villain</i></a>,&nbsp;<a href="/en/main/story/main/1/1/19.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'iJ3iJz')"><i>[3] Unknown Gunfire</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/19.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="axuWY7"><i>[1]&nbsp;The Real Villain</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/19.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="pGFksi"><i>[3]&nbsp;Unknown Gunfire</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -337,16 +373,13 @@ Story Volume 1 Chapter 1 Episode 19: You'll Pay for This!
         <li id="story-MAIN_1_1_20">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/20.html" onmouseover="showTooltip(this, 'CgT9df')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/20.html"  onmouseover="showTooltip(this)" data-tooltip="_TIgBx">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Prefect Team Goes to War!</a>
+    
+
         
 
         
@@ -356,57 +389,98 @@ Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!
                 
                 
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
+                    
+                    
+                    
                 
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
                             
+                    
                         
 
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/20.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'CNewIv')"><i>[1] Interference</i></a>,&nbsp;<a href="/en/main/story/main/1/1/20.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'iIQbWE')"><i>[2] Sensei</i></a>,&nbsp;<a href="/en/main/story/main/1/1/20.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'VrZXsD')"><i>[4] Chairman Ako</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/20.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="9bqx1x"><i>[1]&nbsp;Interference</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/20.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="qre6Gv"><i>[2]&nbsp;Sensei</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/20.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="by_LHk"><i>[4]&nbsp;Chairman Ako</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -420,16 +494,13 @@ Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!
         <li id="story-MAIN_1_2_1">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/1.html" onmouseover="showTooltip(this, '0Edrvw')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/1.html"  onmouseover="showTooltip(this)" data-tooltip="tl9GxJ">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;1:&nbsp;An Unexpected Alliance</a>
+    
+
         
 
         
@@ -439,137 +510,233 @@ Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance
                 
                 
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
                             
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
-                            
-                        
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
                             
+                    
                         
 
-                        
-                        
+                
+                    
+                    
+                    
+                
             
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/1.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'OuIt0d')"><i>[1] Encounter Haruka</i></a>,&nbsp;<a href="/en/main/story/main/1/2/1.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'2M2n6a')"><i>[2] An Apology</i></a>,&nbsp;<a href="/en/main/story/main/1/2/1.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'FfXqZI')"><i>[3] Problem Solver's Motivation</i></a>,&nbsp;<a href="/en/main/story/main/1/2/1.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'jQwXcJ')"><i>[4] The Revenge of Problem Solver</i></a>,&nbsp;<a href="/en/main/story/main/1/2/1.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'0_UB9S')"><i>[5] The True Intent</i></a>,&nbsp;<a href="/en/main/story/main/1/2/1.html#story-part-6" class="text-primary" onmouseover="showTooltip(this,'EBPWnH')"><i>[6] Cooperation</i></a>,&nbsp;<a href="/en/main/story/main/1/2/1.html#story-part-8" class="text-primary" onmouseover="showTooltip(this,'ib65u9')"><i>[8] A Lasting Battle</i></a>,&nbsp;<a href="/en/main/story/main/1/2/1.html#story-part-9" class="text-primary" onmouseover="showTooltip(this,'AXNQkc')"><i>[9] Hina, Arrived!</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="L7XrjZ"><i>[1]&nbsp;Encounter Haruka</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/1.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="8rVIoQ"><i>[2]&nbsp;An Apology</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="n6FtaI"><i>[3]&nbsp;Problem Solver's Motivation</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/1.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="yudq7M"><i>[4]&nbsp;The Revenge of Problem Solver</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/1.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="O3g31S"><i>[5]&nbsp;The True Intent</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/1.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="1XIyeY"><i>[6]&nbsp;Cooperation</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/1.html#story-part-8-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="9ruzZ0"><i>[8]&nbsp;A Lasting Battle</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="yhkarz"><i>[9]&nbsp;Hina, Arrived!</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -583,16 +750,13 @@ Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance
         <li id="story-MAIN_1_2_2">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/2.html" onmouseover="showTooltip(this, 'Tmup3n')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/2.html"  onmouseover="showTooltip(this)" data-tooltip="plEbcI">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;2:&nbsp;The Gehenna Head Prefect</a>
+    
+
         
 
         
@@ -602,86 +766,143 @@ Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/2.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'H_wVBH')"><i>[1] Hard to Explain</i></a>,&nbsp;<a href="/en/main/story/main/1/2/2.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'ZiP7vu')"><i>[2] Negotiation With Hina</i></a>,&nbsp;<a href="/en/main/story/main/1/2/2.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'0BlWtY')"><i>[3] An Apology From Hina</i></a>,&nbsp;<a href="/en/main/story/main/1/2/2.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'sgUU3L')"><i>[4] Battle Ended</i></a>,&nbsp;<a href="/en/main/story/main/1/2/2.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'sADd96')"><i>[5] Hina's Intel</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Ap8LMv"><i>[1]&nbsp;Hard to Explain</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/2.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="m2fswQ"><i>[2]&nbsp;Negotiation With Hina</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/2.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="YAEjyA"><i>[3]&nbsp;An Apology From Hina</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/2.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="aMhEeu"><i>[4]&nbsp;Battle Ended</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/2.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="XJ5KcC"><i>[5]&nbsp;Hina's Intel</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -695,16 +916,13 @@ Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect
         <li id="story-MAIN_1_2_5">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/5.html" onmouseover="showTooltip(this, 'pWzw3e')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/5.html"  onmouseover="showTooltip(this)" data-tooltip="n_vNfw">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Everyone Has a Story Part 2</a>
+    
+
         
 
         
@@ -714,46 +932,83 @@ Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
                     
                 
-            
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/5.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'uZ8cHs')"><i>[4] A Clear Situation</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/5.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Ldl2DZ"><i>[4]&nbsp;A Clear Situation</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -767,16 +1022,13 @@ Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2
         <li id="story-MAIN_1_2_6">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/6.html" onmouseover="showTooltip(this, 'wn6dJH')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/6.html"  onmouseover="showTooltip(this)" data-tooltip="P6xqiV">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;Into the Abydos Desert Part 1</a>
+    
+
         
 
         
@@ -786,27 +1038,46 @@ Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
-            
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/6.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'vo0GPh')"><i>[1] Arrived At The Desert</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/6.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="i9tFe3"><i>[1]&nbsp;Arrived At The Desert</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -820,16 +1091,13 @@ Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1
         <li id="story-MAIN_1_2_13">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/13.html" onmouseover="showTooltip(this, 'qgV8Qf')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/13.html"  onmouseover="showTooltip(this)" data-tooltip="JXWJAc">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;What Slipped Through the Cracks</a>
+    
+
         
 
         
@@ -839,62 +1107,123 @@ Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
+                
+                
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/13.html#story-part-7" class="text-primary" onmouseover="showTooltip(this,'GUc7hw')"><i>[7] How Could She!</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/13.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="JQS07g"><i>[7]&nbsp;How Could She!</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -908,16 +1237,13 @@ Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
         <li id="story-MAIN_1_2_14">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/14.html" onmouseover="showTooltip(this, 'uF6_rC')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/14.html"  onmouseover="showTooltip(this)" data-tooltip="kCQUIW">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Abydos Siege Part 1</a>
+    
+
         
 
         
@@ -927,67 +1253,120 @@ Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
                         
-                            
-                        
+                    
+                    
+                
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
             
+                
+                
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/14.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'a4tMJc')"><i>[1] Kaiser Director</i></a>,&nbsp;<a href="/en/main/story/main/1/2/14.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'nNy3BN')"><i>[4] Despair</i></a>,&nbsp;<a href="/en/main/story/main/1/2/14.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'1fx2RH')"><i>[5] Problem Solver 68</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/14.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Mpv0Wb"><i>[1]&nbsp;Kaiser Director</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/14.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="1svxAE"><i>[4]&nbsp;Despair</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/14.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="uZp4IY"><i>[5]&nbsp;Problem Solver 68</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -1001,16 +1380,13 @@ Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
         <li id="story-MAIN_1_2_15">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/15.html" onmouseover="showTooltip(this, 'bSgXX1')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/15.html"  onmouseover="showTooltip(this)" data-tooltip="aXRWmP">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;15:&nbsp;The Abydos Siege Part 2</a>
+    
+
         
 
         
@@ -1020,55 +1396,91 @@ Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
+                    
+                    
+                    
                 
             
                 
                 
                     
-                        
-                            
-                        
+                    
+                    
+                
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
             
                 
                 
                     
+                    
+                        
+                            
+                    
+                        
+
                 
+                    
+                    
                     
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/15.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'D40O7_')"><i>[1] Betraying PMC</i></a>,&nbsp;<a href="/en/main/story/main/1/2/15.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'hIbto5')"><i>[3] Retreat</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/15.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="6gGiVa"><i>[1]&nbsp;Betraying PMC</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/15.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="MHDNsf"><i>[3]&nbsp;Retreat</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'RXnje2': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">We&#x27re Not Their Friends!</p><ul><li>Upon entering Shiba Seki, Master Shiba&#x27s warm welcome sends Aru into a screaming fit, unable to bear her guilty conscience any longer. Before anyone can stop her, Haruka plants a bomb and blows the shop to smithereens.</li></ul></div>','dxmS00': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Explosion Accident</p><p>The explosion attracted the Foreclosure Task Force&#x27s attention. They couldn&#x27t comprehend the reason behind it.</p><hr><p>Character:  <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/5.html>OST 5. Colorful Mess</a></p></div>','GD_DYi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">You&#x27ll Pay for This!</p><ul><li>Unaware of Aru&#x27s true feelings, the Foreclosure Task Force blame Aru for the heinous atrocity she accidentally caused. Eventually, Aru ends up confronting the team, pretending to be the villain they believe she is.</li><li>During the climax of the battle between Problem Solver and Foreclosure Task Force, the combatants are suddenly shelled from afar. Ayane announces that the cannons were fired by Gehenna Academy&#x27s Prefect Team.</li></ul></div>','thCuBB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Real Villain</p><p>Haruka blew up the restaurant at the confusing speech delivered by Aru, which even made Mutsuki started blaming Aru. Upon arrival, the Foreclosure Task Force was even more furious when they discovered the evil doer. They started the battle immediately.</p><hr><p>Character:  <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span></p><hr><p>Track:  <a href=/en/track/ost/7.html>OST 7. Unwelcome School</a>   <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a></p></div>','iJ3iJz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Unknown Gunfire</p><p>After defeating the Problem Solver, everyone discovered that unknown gunfire was firing towards them. Ayane then informed that it was the Prefect Team of Gehenna.</p><hr><p>Character:  <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a>   <a href=/en/track/ost/20.html>OST 20. Tech N Tech</a></p></div>','CgT9df': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Prefect Team Goes to War!</p><ul><li>Gehenna&#x27s Prefect Team declares their intent to arrest the members of Problem Solver 68. The Foreclosure Task Force prepares for battle, rebutting that Gehenna Academy has no authority to make such an arrest on Abydos territory.</li><li>Despite being outnumbered, the Foreclosure Task Force is victorious with Sensei&#x27s guidance. After the battle, the senior administrator of Gehenna&#x27s Prefect Team, Ako, steps in to mediate. Meanwhile, Haruka hatches a conspiracy.</li></ul></div>','CNewIv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Interference</p><p>The Prefect Team took down the Problem Solver 68 successfully, yet it arose the dissatisfaction of Abydos. As the other party was operating in Abydos without proper permission, such actions could be seen as ignoring authority. Everyone decided to engage.</p><hr><p>Character:  <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp>Iori </a> </span>   <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp>Chinatsu </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/20.html>OST 20. Tech N Tech</a>   <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a></p></div>','iIQbWE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Sensei</p><p>The Prefect Team found out that the Abydos were in combat position and started to prepare to engage. But Chinatsu suddenly noticed Sensei and demanded a stop; yet it was too late.</p><hr><p>Character:  <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp>Iori </a> </span>   <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp>Chinatsu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a></p></div>','VrZXsD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Chairman Ako</p><p>Ako suddenly connected to the communication, temporarily stopping the actions of Iori. Haruka started her revenge plan at the same time.</p><hr><p>Character:  <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp>Iori </a> </span>   <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp>Chinatsu </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a></p></div>','0Edrvw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Unexpected Alliance</p><ul><li>Talks with Ako are unfruitful, leaving the situation as hostile as ever. The Foreclosure Task Force decides to team up with Problem Solver to take on the Prefect Team and their sizable forces.</li><li>The hard-fought battle was seemingly over until yet more members of the Prefect Team appeared. Just then, the head prefect, Hina, arrives and questions Ako about the entire series of events thus far.</li></ul></div>','OuIt0d': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Encounter Haruka</p><p>Sensei suddenly made an eye contact with Haruka. Haruka squeezed a smile and then left in a hurry. Sensei also pretended not paying any attention.</p><hr><p>Character:  <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span></p><hr><p>No tracks to display!</p></div>','2M2n6a': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Apology</p><p>Ako first apologized for the attack launched by Prefect Team and hoped to transfer the Problem Solver 68 to them for further investigation, which was naturally rejected. Ayane argued with factual facts, yet Ako refused to take a step back. She said "It&#x27s probably because you have Schale&#x27s Sensei at your side."</p><hr><p>Character:  <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp>Iori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a></p></div>','FfXqZI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Problem Solver&#x27s Motivation</p><p>Sensei expressed their opinions on Problem Solver 68, thinking that they weren&#x27t intentional. Most of the Foreclosure Task Force agreed, but said it was still impossible to transfer for the identity of their backgrounds remained unknown.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a></p></div>','jQwXcJ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Revenge of Problem Solver</p><p>The negotiations ended badly and Ako decided to attack again. Yet the Prefect Team was suddenly assaulted by Haruka. Meanwhile, Kayoko began to gradually expose Ako&#x27s deception: the way that leading much troops to trouble in another district was definitely not Hina&#x27s doings, but in fact Ako&#x27s; the target was actually Schale, and it would make sense to lead extra troops.</p><hr><p>Character:  <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp>Iori </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span></p><hr><p>Track:  <a href=/en/track/ost/29.html>OST 29. Alert</a></p></div>','0_UB9S': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The True Intent</p><p>Being exposed, Ako launched another attack without further ado, and declared everyone her own plan: as the Eden Treaty going to be signed, the Prefect Team worried that such organization would interfere the signing (the intel itself came from Trinity&#x27s Hifumi telling it to the Tea Party, which then was gotten on hand by Gehenna). As planned, they would first put Sensei under house arrest and then deal with Problem Solver 68.</p><hr><p>Character:  <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp>Hifumi </a> </span>   <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp>Chinatsu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/41.html>OST 41. Interface</a></p></div>','EBPWnH': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Cooperation</p><p>Kayoko hoped Aru could leave as soon as possible, but Aru not only said that she would fight till the end, but also Abydos requested for cooperation as well. Seeing the situation, Ako gave an official command for commercing the battle.</p><hr><p>Character:  <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span></p><hr><p>Track:  <a href=/en/track/ost/7.html>OST 7. Unwelcome School</a></p></div>','ib65u9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Lasting Battle</p><p>Though defeated and many were retreating, but Ako didn&#x27t give up and launched attack again. Kayoko sensed that it was not the permission that Ako had, and something was absolutely wrong.</p><hr><p>Character:  <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span></p><hr><p>Track:  <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a></p></div>','AXNQkc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hina, Arrived!</p><p>Ako was well aware of the risks but decided to proceed anyways. At this moment Hina connected onto the comm. Ako originally wanted to take "on patrol" as an excuse, but Hina had already understood most of it and came out in person.</p><hr><p>Character:  <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp>Hina </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp>Iori </a> </span>   <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp>Chinatsu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','Tmup3n': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Gehenna Head Prefect</p><ul><li>Having heard Ako&#x27s story, Hina promptly apologizes for the Prefect Team overstepping their bounds. While commanding her forces to pull out, Hina subtly informs Sensei that the Kaiser Corporation is up to something in the Abydos Desert.</li></ul></div>','H_wVBH': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hard to Explain</p><p>Ako tried to explain that she was fighting against Problem Solver 68, but the latter had been long gone. Hina got even angrier but then expressed her understanding, yet she still pointed out that such political issues should be left to the Pandemonium Society. Hina said Ako would be punished with confinement.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp>Hina </a> </span>   <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span></p><hr><p>Track:  <a href=/en/track/ost/65.html>OST 65. Accelerator</a></p></div>','ZiP7vu': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Negotiation With Hina</p><p>Hina said the conflict was indeed their wrong doings, but it was also true that they had interfered with Gehenna&#x27s official duties. The Abydos remained hostile, though. At this moment Ayane mentioned Hoshino, and Hoshino appeared just on time. Hina exchanged a few words with Hoshino and expressed her surprise at Hoshino&#x27s dramatic character change. Hina mentioned "that incident" and suddenly realized something.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp>Hina </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span></p><hr><p>Track:  <a href=/en/track/ost/65.html>OST 65. Accelerator</a></p></div>','0BlWtY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Apology From Hina</p><p>Hina announced that the Prefect Team would be leaving tight now, and asked the Foreclosure Task Force to forgive them, stating that they would not invade anymore. The troops left quickly.</p><hr><p>Character:  <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp>Iori </a> </span>   <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp>Chinatsu </a> </span>   <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp>Hina </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/32.html>OST 32. GGF</a></p></div>','sgUU3L': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Battle Ended</p><p>Being late on site, Hoshino was confused about what happened. Everyone decided to discuss it tomorrow in classroom and returned early. Shiroko noticed that Hina seemed had said something to Sensei, and Sensei said that they would know it by tomorrow.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a></p></div>','sADd96': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hina&#x27s Intel</p><p>Hina told Sensei to not leave and mentioned about Kaiser Cooperation. She mentioned that Kaiser seemed to be doing something in Abydos&#x27 Deserts, and hoped that Sensei could go and investigate it.</p><hr><p>Character:  <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp>Hina </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a>   <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','pWzw3e': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everyone Has a Story Part 2</p><ul><li>Hoshino recounts history to the Foreclosure Task Force. It&#x27s likely the now-defunct Abydos Student Council tried to repay its debts until the land was eventually repossessed by the Kaiser Corporation. Sensei suggests following Hina&#x27s hint and to go to the Abydos Desert.</li></ul></div>','uZ8cHs': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Clear Situation</p><p>With current clues on hand, Ayane finally confirmed that Kaiser&#x27s goal was exactly the land of Abydos. The exact reason remained unknown. Sensei told everyone the things he heard from Hina, and everyone decided to go to the desert immediately.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp>Hina </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span></p><hr><p>Track:  <a href=/en/track/ost/32.html>OST 32. GGF</a></p></div>','wn6dJH': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Into the Abydos Desert Part 1</p><ul><li>The Foreclosure Task Force cautiously heads toward the Abydos Desert.</li></ul></div>','vo0GPh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Arrived At The Desert</p><p>Everyone arrived at the edge of the desert. Since the train was unable to go any further, everyone started walking. Serika wonder why the head of the Prefect Team would be the one who told Sensei, and Ayane reviewed the situation back then.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/41.html>OST 41. Interface</a></p></div>','qgV8Qf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What Slipped Through the Cracks</p><ul><li>In her letter, Hoshino reveals that she joined Kaiser PMC in exchange for Abydos High School&#x27s debt being forgiven. Now, without Hoshino, the remaining members of the Foreclosure Task Force scramble when PMC forces close in on Abydos High School.</li></ul></div>','GUc7hw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">How Could She!</p><p>Finishing reading, everyone was angry at Hoshino&#x27s irresponsibility. At this moment, they heard explosions coming outside.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','uF6_rC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 1</p><ul><li>After joining up with Kaiser PMC, Hoshino defects when she learns that Abydos High School is under attack, but is then arrested by Black Suit. When all hope seems lost, Problem Solver 68 returns to Abydos to lend their aid to the Foreclosure Task Force.</li></ul></div>','a4tMJc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser Director</p><p>Kaiser Director arrived and everyone was immediately triggered. Though claiming that they would be reported to the General Student Council, the director said it was useless and the time just proved that no one could be helping them. The director even pointed out that, due to Hoshino&#x27s dropout, Abydos High School was no longer existed. Everyone was shocked, but still argued with the existence of "The Foreclosure Task Force" - however, accroding to Ayane, as it was established after the dissolution of the Student Union, the Task Force was in fact a club that hadn&#x27t recognized officially. As a result, neither could it represent the school, nor could it be proved to be existed.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','nNy3BN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Despair</p><p>The director was surprised to hear that the Abydos were really going to pay the debts, but then he questioned whether it would be meaningful or pointless. None could give an answer - when the PMC troops were under a surprise attack.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/35.html>OST 35. Morose Dreamer</a></p></div>','1fx2RH': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Problem Solver 68</p><p>Problem Solver 68 arrived upon hearing the explosions, acknowledging that the PMC &LTi>was&LT/i> really out of line. Aru slammed the Task Force for "giving up when your friends were in crisis", and repeated the motto that once the Masked Swimsuit Gang told her. In return for the help Abydos had made, Problem Solver 68 joined in the battle.</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span></p><hr><p>Track:  <a href=/en/track/ost/65.html>OST 65. Accelerator</a></p></div>','bSgXX1': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 2</p><ul><li>Despite the Kaiser director&#x27s outrage, Sensei, the Foreclosure Task Force, and Problem Solver make use of the sudden turn of events to launch a counteroffensive against the PMC forces.</li><li>The PMC forces finally retreat following an arduous battle. Later, Sensei seeks out Black Suit personally to negotiate Hoshino&#x27s return.</li></ul></div>','D40O7_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Betraying PMC</p><p>The director was both shocked and angry to see that the Problem Solver 68 betrayed them, but the latter insulted them back. Sensei confronted the director, demanding that Hoshino be returned. The director didn&#x27t step back. Everyone was forced to engage the enemies..</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/20.html>OST 20. Tech N Tech</a></p></div>','hIbto5': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Retreat</p><p>As the director injured during the combat, the director gave a command of retreating with the advice of a solider. Everyone decided to go back and come up with a plan to rescue Hoshino.</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a></p></div>', });
+        add_tooltip_data({ 'D9l00E': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">We&#x27re Not Their Friends!</p><ul><li>Upon entering Shiba Seki, Master Shiba&#x27s warm welcome sends Aru into a screaming fit, unable to bear her guilty conscience any longer. Before anyone can stop her, Haruka plants a bomb and blows the shop to smithereens.</li></ul></div>','Nvq5wT': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Explosion Accident</p><p>The explosion attracts the Foreclosure Task Force&#x27s attention. They can&#x27t comprehend the reason behind it.</p><hr><p>Character:<span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/5.html> <span>OST 5. Colorful Mess</span></a></p></div>','3Y55dL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">You&#x27ll Pay for This!</p><ul><li>Unaware of Aru&#x27s true feelings, the Foreclosure Task Force blame Aru for the heinous atrocity she accidentally caused. Eventually, Aru ends up confronting the team, pretending to be the villain they believe she is.</li><li>During the climax of the battle between Problem Solver and Foreclosure Task Force, the combatants are suddenly shelled from afar. Ayane announces that the cannons were fired by Gehenna Academy&#x27s Prefect Team.</li></ul></div>','axuWY7': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Real Villain</p><p>Haruka blows up the restaurant at the confusing speech delivered by Aru, which even makes Mutsuki start blaming Aru. Upon arrival, the Foreclosure Task Force is even more furious when they discovered the evil doer. They starts the battle immediately.</p><hr><p>Character:<span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/7.html> <span>OST 7. Unwelcome School</span></a> <a href=/en/track/ost/18.html> <span>OST 18. Mechanical JUNGLE</span></a></p></div>','pGFksi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Unknown Gunfire</p><p>After defeating the Problem Solver, everyone discovers that unknown gunfire is firing towards them. Ayane then informs that it is the Prefect Team of Gehenna.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a> <a href=/en/track/ost/20.html> <span>OST 20. Tech N Tech</span></a></p></div>','_TIgBx': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Prefect Team Goes to War!</p><ul><li>Gehenna&#x27s Prefect Team declares their intent to arrest the members of Problem Solver 68. The Foreclosure Task Force prepares for battle, rebutting that Gehenna Academy has no authority to make such an arrest on Abydos territory.</li><li>Despite being outnumbered, the Foreclosure Task Force is victorious with Sensei&#x27s guidance. After the battle, the senior administrator of Gehenna&#x27s Prefect Team, Ako, steps in to mediate. Meanwhile, Haruka hatches a conspiracy.</li></ul></div>','9bqx1x': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Interference</p><p>The Prefect Team takes down the Problem Solver 68 successfully, yet it arises the dissatisfaction of Abydos. As the other party is operating in Abydos without proper permission, such actions can be seen as ignoring authority. Everyone decides to engage.</p><hr><p>Character:<span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp> <span>Iori</span></a> </span> | </span><span> <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp> <span>Chinatsu</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/20.html> <span>OST 20. Tech N Tech</span></a> <a href=/en/track/ost/18.html> <span>OST 18. Mechanical JUNGLE</span></a></p></div>','qre6Gv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Sensei</p><p>The Prefect Team found out that the Abydos are in combat position and start to prepare to engage. But Chinatsu suddenly notices Sensei and demands a stop; yet it is too late.</p><hr><p>Character:<span> <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp> <span>Iori</span></a> </span> | </span><span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp> <span>Chinatsu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/18.html> <span>OST 18. Mechanical JUNGLE</span></a></p></div>','by_LHk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Chairman Ako</p><p>Ako suddenly connects to the communication, temporarily stopping the actions of Iori. Haruka starts her revenge plan at the same time.</p><hr><p>Character:<span> <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp> <span>Iori</span></a> </span> | </span><span> <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp> <span>Chinatsu</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a></p></div>','tl9GxJ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Unexpected Alliance</p><ul><li>Talks with Ako are unfruitful, leaving the situation as hostile as ever. The Foreclosure Task Force decides to team up with Problem Solver to take on the Prefect Team and their sizable forces.</li><li>The hard-fought battle was seemingly over until yet more members of the Prefect Team appeared. Just then, the head prefect, Hina, arrives and questions Ako about the entire series of events thus far.</li></ul></div>','L7XrjZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Encounter Haruka</p><p>Sensei suddenly makes an eye contact with Haruka. Haruka squeezes a smile and then leaves in a hurry. Sensei also pretends not paying any attention.</p><hr><p>Character:<span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span></p><hr><p>No tracks to display!</p></div>','8rVIoQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Apology</p><p>Ako first apologizes for the attack launched by Prefect Team and hopes to transfer the Problem Solver 68 to them for further investigation, which is naturally rejected. Ayane argues with factual facts, yet Ako refuses to take a step back. She says "It&#x27s probably because you have Schale&#x27s Sensei at your side."</p><hr><p>Character:<span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp> <span>Iori</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a></p></div>','n6FtaI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Problem Solver&#x27s Motivation</p><p>Sensei expresses their opinions on Problem Solver 68, thinking that they aren&#x27t intentional. Most of the Foreclosure Task Force agree, but says it is still impossible to transfer for the identity of their backgrounds remained unknown.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a></p></div>','yudq7M': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Revenge of Problem Solver</p><p>The negotiations ends badly and Ako decides to attack again. Yet the Prefect Team is suddenly assaulted by Haruka. Meanwhile, Kayoko begins to gradually expose Ako&#x27s deception: the way that leading much troops to trouble in another district is definitely not Hina&#x27s doings, but in fact Ako&#x27s; the target is actually Schale, and it will make sense to lead extra troops.</p><hr><p>Character:<span> <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp> <span>Iori</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/29.html> <span>OST 29. Alert</span></a></p></div>','O3g31S': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The True Intent</p><p>Being exposed, Ako launches another attack without further ado, and declares everyone her own plan: as the Eden Treaty going to be signed, the Prefect Team worry that such organization will interfere the signing (the intel itself comes from Trinity&#x27s Hifumi telling it to the Tea Party, which then was gotten on hand by Gehenna). As planned, they will first put Sensei under house arrest and then deal with Problem Solver 68.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp> <span>Hifumi</span></a> </span> | </span><span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp> <span>Chinatsu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/41.html> <span>OST 41. Interface</span></a></p></div>','1XIyeY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Cooperation</p><p>Kayoko hoped Aru can leave as soon as possible, but Aru not only says that she will fight till the end, but also Abydos requests for cooperation as well. Seeing the situation, Ako gives an official command for commercing the battle.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/7.html> <span>OST 7. Unwelcome School</span></a></p></div>','9ruzZ0': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Lasting Battle</p><p>Though defeated and many are retreating, but Ako doesn&#x27t give up and launches attack again. Kayoko senses that it is not the permission that Ako had, and something is absolutely wrong.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/18.html> <span>OST 18. Mechanical JUNGLE</span></a></p></div>','yhkarz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hina, Arrived!</p><p>Ako is well aware of the risks but decides to proceed anyways. At this moment Hina connects onto the comm. Ako originally wants to take "on patrol" as an excuse, but Hina has already understood most of it and comes out in person.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp> <span>Hina</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp> <span>Iori</span></a> </span> | </span><span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp> <span>Chinatsu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','plEbcI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Gehenna Head Prefect</p><ul><li>Having heard Ako&#x27s story, Hina promptly apologizes for the Prefect Team overstepping their bounds. While commanding her forces to pull out, Hina subtly informs Sensei that the Kaiser Corporation is up to something in the Abydos Desert.</li></ul></div>','Ap8LMv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hard to Explain</p><p>Ako tries to explain that she is fighting against Problem Solver 68, but the latter has been long gone. Hina gets even angrier but then expresses her understanding, yet she still points out that such political issues should be left to the Pandemonium Society. Hina says Ako will be punished with confinement.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp> <span>Hina</span></a> </span> | </span><span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/65.html> <span>OST 65. Accelerator</span></a></p></div>','m2fswQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Negotiation With Hina</p><p>Hina says the conflict is indeed their wrong doings, but it&#x27s also true that they had interfered with Gehenna&#x27s official duties. The Abydos remain hostile, though. At this moment Ayane mentions Hoshino, and Hoshino appears just on time. Hina exchanges a few words with Hoshino and expresses her surprise at Hoshino&#x27s dramatic character change. Hina mentions "that incident" and suddenly realizes something.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp> <span>Hina</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/65.html> <span>OST 65. Accelerator</span></a></p></div>','YAEjyA': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Apology From Hina</p><p>Hina announces that the Prefect Team will be leaving tight now, and askes the Foreclosure Task Force to forgive them, stating that they will not invade anymore. The troops leave quickly.</p><hr><p>Character:<span> <span> <a href=/en/character/student/iori/> <img class=icon-stu src=/static/images/student/icon/10006.webp> <span>Iori</span></a> </span> | </span><span> <span> <a href=/en/character/student/chinatsu/> <img class=icon-stu src=/static/images/student/icon/26000.webp> <span>Chinatsu</span></a> </span> | </span><span> <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp> <span>Hina</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/32.html> <span>OST 32. GGF</span></a></p></div>','aMhEeu': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Battle Ended</p><p>Being late on site, Hoshino is confused about what happened. Everyone decides to discuss it tomorrow in classroom and returns early. Shiroko notices that Hina seems to have said something to Sensei, and Sensei says that they will know it by tomorrow.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a></p></div>','XJ5KcC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hina&#x27s Intel</p><p>Hina tells Sensei to not leave and mentions about Kaiser Cooperation. She mentions that Kaiser seems to be doing something in Abydos&#x27 Deserts, and hopes that Sensei could go and investigate it.</p><hr><p>Character:<span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp> <span>Hina</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a> <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','n_vNfw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everyone Has a Story Part 2</p><ul><li>Hoshino recounts history to the Foreclosure Task Force. It&#x27s likely the now-defunct Abydos Student Council tried to repay its debts until the land was eventually repossessed by the Kaiser Corporation. Sensei suggests following Hina&#x27s hint and to go to the Abydos Desert.</li></ul></div>','Ldl2DZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Clear Situation</p><p>With current clues on hand, Ayane finally confirms that Kaiser&#x27s goal is exactly the land of Abydos. The exact reason remains unknown. Sensei tells everyone the things he heard from Hina, and everyone decides to go to the desert immediately.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/hina/> <img class=icon-stu src=/static/images/student/icon/10004.webp> <span>Hina</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/32.html> <span>OST 32. GGF</span></a></p></div>','P6xqiV': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Into the Abydos Desert Part 1</p><ul><li>The Foreclosure Task Force cautiously heads toward the Abydos Desert.</li></ul></div>','i9tFe3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Arrived At The Desert</p><p>Everyone arrives at the edge of the desert. Since the train is unable to go any further, everyone starts walking. Serika wonders why the head of the Prefect Team would be the one who told Sensei, and Ayane reviews the situation back then.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/41.html> <span>OST 41. Interface</span></a></p></div>','JXWJAc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What Slipped Through the Cracks</p><ul><li>In her letter, Hoshino reveals that she joined Kaiser PMC in exchange for Abydos High School&#x27s debt being forgiven. Now, without Hoshino, the remaining members of the Foreclosure Task Force scramble when PMC forces close in on Abydos High School.</li></ul></div>','JQS07g': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">How Could She!</p><p>Finishing reading, everyone is angry at Hoshino&#x27s irresponsibility. At this moment, they hears explosions coming outside.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','kCQUIW': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 1</p><ul><li>After joining up with Kaiser PMC, Hoshino defects when she learns that Abydos High School is under attack, but is then arrested by Black Suit. When all hope seems lost, Problem Solver 68 returns to Abydos to lend their aid to the Foreclosure Task Force.</li></ul></div>','Mpv0Wb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser Director</p><p>Kaiser Director arrives and everyone is immediately triggered. Though claiming that they would be reported to the General Student Council, the director says it is useless and the time just proves that no one could be helping them. The director even points out that, due to Hoshino&#x27s dropout, Abydos High School is no longer existed. Everyone is shocked, but still argues with the existence of "The Foreclosure Task Force" - however, according to Ayane, since it is established after the dissolution of the Student Union, the Task Force is in fact a club that hasn&#x27t recognized officially. As a result, neither can it represent the school, nor can it be proved to be existed.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','1svxAE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Despair</p><p>The director is surprised to hear that the Abydos are really going to pay the debts, but then he questions whether it would be meaningful or pointless. No one could give an answer - when the PMC troops are under a surprise attack.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/35.html> <span>OST 35. Morose Dreamer</span></a></p></div>','uZp4IY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Problem Solver 68</p><p>Problem Solver 68 arrives upon hearing the explosions, acknowledging that the PMC <i>was</i> really out of line. Aru slams the Task Force for "giving up when your friends were in crisis", and repeats the motto that once the Masked Swimsuit Gang told her. In return for the help Abydos had made, Problem Solver 68 join in the battle.</p><hr><p>Character:<span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/65.html> <span>OST 65. Accelerator</span></a></p></div>','aXRWmP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 2</p><ul><li>Despite the Kaiser director&#x27s outrage, Sensei, the Foreclosure Task Force, and Problem Solver make use of the sudden turn of events to launch a counteroffensive against the PMC forces.</li><li>The PMC forces finally retreats following an arduous battle. Later, Sensei seeks out Black Suit personally to negotiate Hoshino&#x27s return.</li></ul></div>','6gGiVa': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Betraying PMC</p><p>The director is both shocked and angry to see that the Problem Solver 68 betrayed them, but the latter insults them back. Sensei confronts the director, demanding that Hoshino be returned. The director doesn&#x27t step back. Everyone is forced to engage the enemies.</p><hr><p>Character:<span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/20.html> <span>OST 20. Tech N Tech</span></a></p></div>','MHDNsf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Retreat</p><p>As the director injured during the combat, the director gives a command of retreating with the advice of a solider. Everyone decides to go back and comes up with a plan to rescue Hoshino.</p><hr><p>Character:<span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a></p></div>', });
     </script>
 
 
@@ -1083,165 +1495,187 @@ Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_13"><a href="/en/track/ost/13.html" onmouseover="showTooltip(this, 'ONCXBh')">【5】
-    OST
- 13. Barrier</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_27"><a href="/en/track/ost/27.html" onmouseover="showTooltip(this, 'ITPxXx')">【4】
-    OST
- 27. Fade Out</a> by KARUT</li>
+            <li id="track-OST_13">
+    <a href="/en/track/ost/13.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="42vLfy">
+        <span>【5】OST&nbsp;13.&nbsp;Barrier</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_18"><a href="/en/track/ost/18.html" onmouseover="showTooltip(this, '6yjzEF')">【3】
-    OST
- 18. Mechanical JUNGLE</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_20"><a href="/en/track/ost/20.html" onmouseover="showTooltip(this, 'F4Niom')">【3】
-    OST
- 20. Tech N Tech</a> by KARUT</li>
+            <li id="track-OST_27">
+    <a href="/en/track/ost/27.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="Ryr_pa">
+        <span>【4】OST&nbsp;27.&nbsp;Fade Out</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_7"><a href="/en/track/ost/7.html" onmouseover="showTooltip(this, 'GKfnoG')">【2】
-    OST
- 7. Unwelcome School</a> by Mitsukiyo</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_32"><a href="/en/track/ost/32.html" onmouseover="showTooltip(this, 'XyszJM')">【2】
-    OST
- 32. GGF</a> by Mitsukiyo</li>
+            <li id="track-OST_18">
+    <a href="/en/track/ost/18.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="j7WEr2">
+        <span>【3】OST&nbsp;18.&nbsp;Mechanical JUNGLE</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_41"><a href="/en/track/ost/41.html" onmouseover="showTooltip(this, 'oNhAVR')">【2】
-    OST
- 41. Interface</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_65"><a href="/en/track/ost/65.html" onmouseover="showTooltip(this, 'g5AF4n')">【2】
-    OST
- 65. Accelerator</a> by KARUT</li>
+            <li id="track-OST_20">
+    <a href="/en/track/ost/20.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="MOa0GG">
+        <span>【3】OST&nbsp;20.&nbsp;Tech N Tech</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_5"><a href="/en/track/ost/5.html" onmouseover="showTooltip(this, 'EA9X2F')">【1】
-    OST
- 5. Colorful Mess</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_29"><a href="/en/track/ost/29.html" onmouseover="showTooltip(this, 'kuCuIK')">【1】
-    OST
- 29. Alert</a> by KARUT</li>
+            <li id="track-OST_7">
+    <a href="/en/track/ost/7.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="5sJy3B">
+        <span>【2】OST&nbsp;7.&nbsp;Unwelcome School</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_32">
+    <a href="/en/track/ost/32.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="Rfac64">
+        <span>【2】OST&nbsp;32.&nbsp;GGF</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_35"><a href="/en/track/ost/35.html" onmouseover="showTooltip(this, 'DVK6rC')">【1】
-    OST
- 35. Morose Dreamer</a> by Mitsukiyo</li>
+            <li id="track-OST_41">
+    <a href="/en/track/ost/41.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="xadEqj">
+        <span>【2】OST&nbsp;41.&nbsp;Interface</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_65">
+    <a href="/en/track/ost/65.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="okkj50">
+        <span>【2】OST&nbsp;65.&nbsp;Accelerator</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_5">
+    <a href="/en/track/ost/5.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="i06tZE">
+        <span>【1】OST&nbsp;5.&nbsp;Colorful Mess</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_29">
+    <a href="/en/track/ost/29.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="LG2D1B">
+        <span>【1】OST&nbsp;29.&nbsp;Alert</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_35">
+    <a href="/en/track/ost/35.html#38c26480-2408-44d2-983c-d2fa76ff9468" onmouseover="showTooltip(this)" data-tooltip="jC65k0">
+        <span>【1】OST&nbsp;35.&nbsp;Morose Dreamer</span>
+    </a>
+    
+</li>
 
             
                 
@@ -1252,34 +1686,74 @@ Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
     
         
     <script>
-        add_tooltip_data({ 'ONCXBh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 13. Barrier</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/19.html> Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This! </a></li><li><a href=/en/main/story/main/1/1/20.html> Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War! </a></li><li><a href=/en/main/story/main/1/2/1.html> Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance </a></li><li><a href=/en/main/story/main/1/2/2.html> Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect </a></li><li><a href=/en/main/story/main/1/2/15.html> Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2 </a></li></ol></div>','ITPxXx': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/1.html> Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance </a></li><li><a href=/en/main/story/main/1/2/2.html> Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect </a></li><li><a href=/en/main/story/main/1/2/13.html> Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks </a></li><li><a href=/en/main/story/main/1/2/14.html> Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1 </a></li></ol></div>','6yjzEF': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/19.html> Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This! </a></li><li><a href=/en/main/story/main/1/1/20.html> Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War! </a></li><li><a href=/en/main/story/main/1/2/1.html> Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance </a></li></ol></div>','F4Niom': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 20. Tech N Tech</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/19.html> Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This! </a></li><li><a href=/en/main/story/main/1/1/20.html> Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War! </a></li><li><a href=/en/main/story/main/1/2/15.html> Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2 </a></li></ol></div>','GKfnoG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 7. Unwelcome School</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/19.html> Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This! </a></li><li><a href=/en/main/story/main/1/2/1.html> Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance </a></li></ol></div>','XyszJM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 32. GGF</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/2.html> Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect </a></li><li><a href=/en/main/story/main/1/2/5.html> Main Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2 </a></li></ol></div>','oNhAVR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/1.html> Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance </a></li><li><a href=/en/main/story/main/1/2/6.html> Main Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1 </a></li></ol></div>','g5AF4n': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 65. Accelerator</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/2.html> Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect </a></li><li><a href=/en/main/story/main/1/2/14.html> Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1 </a></li></ol></div>','EA9X2F': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 5. Colorful Mess</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/18.html> Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends! </a></li></ol></div>','kuCuIK': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 29. Alert</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/1.html> Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance </a></li></ol></div>','DVK6rC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 35. Morose Dreamer</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/14.html> Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1 </a></li></ol></div>', });
+        add_tooltip_data({ '42vLfy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 13. Barrier</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Unknown Gunfire</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Chairman Ako</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] An Apology</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Motivation</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/2.html>Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Battle Ended</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Hina&#x27s Intel</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Retreat</i></a></span><span>)</span></li></ol></div>','Ryr_pa': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Hina, Arrived!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/2.html>Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Hina&#x27s Intel</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/13.html>Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] How Could She!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>)</span></li></ol></div>','j7WEr2': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Interference</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Sensei</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] A Lasting Battle</i></a></span><span>)</span></li></ol></div>','MOa0GG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 20. Tech N Tech</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Unknown Gunfire</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Interference</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>)</span></li></ol></div>','5sJy3B': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 7. Unwelcome School</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Cooperation</i></a></span><span>)</span></li></ol></div>','Rfac64': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 32. GGF</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/2.html>Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] An Apology From Hina</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/5.html>Main Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] A Clear Situation</i></a></span><span>)</span></li></ol></div>','xadEqj': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The True Intent</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/6.html>Main Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Arrived At The Desert</i></a></span><span>)</span></li></ol></div>','okkj50': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 65. Accelerator</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/2.html>Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Hard to Explain</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Negotiation With Hina</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Problem Solver 68</i></a></span><span>)</span></li></ol></div>','i06tZE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 5. Colorful Mess</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/18.html>Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] Explosion Accident</i></a></span><span>)</span></li></ol></div>','LG2D1B': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 29. Alert</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The Revenge of Problem Solver</i></a></span><span>)</span></li></ol></div>','jC65k0': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 35. Morose Dreamer</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Despair</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DecagrammatonLabortory_Night.jpg.html">&lt;-- Previous page: BG_DecagrammatonLabortory_Night.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DemolitionCity_Night.jpg.html">--&gt; Next page: BG_DemolitionCity_Night.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:08 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:08
 -->
 </body>
 </html>

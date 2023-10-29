@@ -7,10 +7,10 @@
 
     <title>Background/BG_ClassCorridor.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CityTown.jpg.html">&lt;-- Previous page: BG_CityTown.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_CityTown.jpg.html">&lt;-- Previous page: BG_CityTown.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_ClassCorridor2.jpg.html">--&gt; Next page: BG_ClassCorridor2.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_ClassCorridor2.jpg.html">--&gt; Next page: BG_ClassCorridor2.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_ClassCorridor.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_ClassCorridor.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_ClassCorridor.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_ClassCorridor.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_ClassCorridor.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_ClassCorridor.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_1_1_4">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/4.html" onmouseover="showTooltip(this, 'jI9nk3')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 4: The Task Force's Predicament
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/4.html"  onmouseover="showTooltip(this)" data-tooltip="LpxdNC">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force's Predicament</a>
+    
+
         
 
         
@@ -234,36 +224,61 @@ Story Volume 1 Chapter 1 Episode 4: The Task Force's Predicament
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/4.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'T4nY9E')"><i>[3] Serika Leaving</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/4.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="SlHDEi"><i>[3]&nbsp;Serika Leaving</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -277,16 +292,13 @@ Story Volume 1 Chapter 1 Episode 4: The Task Force's Predicament
         <li id="story-MAIN_1_2_4">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/4.html" onmouseover="showTooltip(this, 'nZsqtQ')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/4.html"  onmouseover="showTooltip(this)" data-tooltip="BzDwY9">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;4:&nbsp;Everyone Has a Story Part 1</a>
+    
+
         
 
         
@@ -296,37 +308,68 @@ Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
-            
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/4.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'qxJ5H9')"><i>[3] An Argument</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="XTdh6Y"><i>[3]&nbsp;An Argument</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -340,16 +383,13 @@ Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1
         <li id="story-MAIN_1_2_5">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/5.html" onmouseover="showTooltip(this, 'JIOmV4')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/5.html"  onmouseover="showTooltip(this)" data-tooltip="STFFuS">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Everyone Has a Story Part 2</a>
+    
+
         
 
         
@@ -359,51 +399,88 @@ Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/5.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'eji3rh')"><i>[5] Hoshino's Secret</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/5.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="M9Kx2p"><i>[5]&nbsp;Hoshino's Secret</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'jI9nk3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Task Force&#x27s Predicament</p><ul><li>The students explain to Sensei that their school&#x27s over 900 million yen in debt and how difficult it is for them to even keep up with interest payments. When Sensei offers to help, Serika goes off on a tirade about how grown-ups can&#x27t be trusted.</li></ul></div>','T4nY9E': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Serika Leaving</p><p>Serika left the school and Nonomi followed.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/9.html>OST 9. Midsummer Cat</a></p></div>','nZsqtQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everyone Has a Story Part 1</p><ul><li>Back at the club room, everyone goes over what had happened. Ayane and Serika do some digging into administrative documents and tell the group that the majority of the Abydos district&#x27s land has been transfered to the Kaiser Corporation.</li></ul></div>','qxJ5H9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Argument</p><p>Shiroko seemed to be questioning Hoshino seriously, but Hoshino pretended to know nothing. Nonomi and Sensei broke into the room, yet none of them mentioned anything - only "something with Hoshino". Nonomi said there&#x27s nothing should be hid between the Task Force, and Hoshino was forced to admit that it was only "Shiroko scolding her for sleeping too much". Despite that, Nonomi sensed dishonest in it.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/44.html>OST 44. Walkthrough</a></p></div>','JIOmV4': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everyone Has a Story Part 2</p><ul><li>Hoshino recounts history to the Foreclosure Task Force. It&#x27s likely the now-defunct Abydos Student Council tried to repay its debts until the land was eventually repossessed by the Kaiser Corporation. Sensei suggests following Hina&#x27s hint and to go to the Abydos Desert.</li></ul></div>','eji3rh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hoshino&#x27s Secret</p><p>Before leaving, Shiroko stopped Sensei. In a classroom, Shiroko showed Sensei the thing she found in Hoshino&#x27s bag: a resignation application, with the name Takanashi Hoshino. Sensei asked why Shiroko would do so, and Shiroko said it was because she thought that recently, Hoshino seemed to be behaving particularly strange, and there must be something hidden.</p><hr><p>Character:  <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/55.html>OST 55. Moment</a></p></div>', });
+        add_tooltip_data({ 'LpxdNC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Task Force&#x27s Predicament</p><ul><li>The students explain to Sensei that their school&#x27s over 900 million yen in debt and how difficult it is for them to even keep up with interest payments. When Sensei offers to help, Serika goes off on a tirade about how grown-ups can&#x27t be trusted.</li></ul></div>','SlHDEi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Serika Leaving</p><p>Serika leaves the school and Nonomi follows.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/9.html> <span>OST 9. Midsummer Cat</span></a></p></div>','BzDwY9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everyone Has a Story Part 1</p><ul><li>Back at the club room, everyone goes over what had happened. Ayane and Serika do some digging into administrative documents and tell the group that the majority of the Abydos district&#x27s land has been transfered to the Kaiser Corporation.</li></ul></div>','XTdh6Y': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Argument</p><p>Shiroko seems to be questioning Hoshino seriously, but Hoshino pretends to know nothing. Nonomi and Sensei break into the room, yet none of them mentions anything - only "something with Hoshino". Nonomi says there&#x27s nothing should be hid between the Task Force, and Hoshino is forced to admit that it was only "Shiroko scolding her for sleeping too much". Despite that, Nonomi senses dishonest in it.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/44.html> <span>OST 44. Walkthrough</span></a></p></div>','STFFuS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everyone Has a Story Part 2</p><ul><li>Hoshino recounts history to the Foreclosure Task Force. It&#x27s likely the now-defunct Abydos Student Council tried to repay its debts until the land was eventually repossessed by the Kaiser Corporation. Sensei suggests following Hina&#x27s hint and to go to the Abydos Desert.</li></ul></div>','M9Kx2p': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hoshino&#x27s Secret</p><p>Before leaving, Shiroko stops Sensei. In a classroom, Shiroko shows Sensei the thing she found in Hoshino&#x27s bag: a resignation application, with the name "Takanashi Hoshino". Sensei asks why Shiroko would do so, and Shiroko says it was because she thought that recently, Hoshino seems to be behaving particularly strange, and there must be something hidden.</p><hr><p>Character:<span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/55.html> <span>OST 55. Moment</span></a></p></div>', });
     </script>
 
 
@@ -418,45 +495,51 @@ Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_9"><a href="/en/track/ost/9.html" onmouseover="showTooltip(this, 'nHzKP5')">【1】
-    OST
- 9. Midsummer Cat</a> by Mitsukiyo</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_44"><a href="/en/track/ost/44.html" onmouseover="showTooltip(this, 'CHqQ_6')">【1】
-    OST
- 44. Walkthrough</a> by Nor</li>
+            <li id="track-OST_9">
+    <a href="/en/track/ost/9.html#bc785215-ff90-466c-8e76-11b324772146" onmouseover="showTooltip(this)" data-tooltip="NXhmum">
+        <span>【1】OST&nbsp;9.&nbsp;Midsummer Cat</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_44">
+    <a href="/en/track/ost/44.html#bc785215-ff90-466c-8e76-11b324772146" onmouseover="showTooltip(this)" data-tooltip="WezdLR">
+        <span>【1】OST&nbsp;44.&nbsp;Walkthrough</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_55"><a href="/en/track/ost/55.html" onmouseover="showTooltip(this, 'PNxOMY')">【1】
-    OST
- 55. Moment</a> by Nor</li>
+            <li id="track-OST_55">
+    <a href="/en/track/ost/55.html#bc785215-ff90-466c-8e76-11b324772146" onmouseover="showTooltip(this)" data-tooltip="2mGmHd">
+        <span>【1】OST&nbsp;55.&nbsp;Moment</span>
+    </a>
+    
+</li>
 
             
                 
@@ -467,34 +550,74 @@ Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2
     
         
     <script>
-        add_tooltip_data({ 'nHzKP5': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 9. Midsummer Cat</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/4.html> Main Story Volume 1 Chapter 1 Episode 4: The Task Force&#x27s Predicament </a></li></ol></div>','CHqQ_6': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 44. Walkthrough</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/4.html> Main Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1 </a></li></ol></div>','PNxOMY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 55. Moment</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/5.html> Main Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2 </a></li></ol></div>', });
+        add_tooltip_data({ 'NXhmum': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 9. Midsummer Cat</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/4.html>Main Story Volume 1 Chapter 1 Episode 4: The Task Force&#x27s Predicament</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] Serika Leaving</i></a></span><span>)</span></li></ol></div>','WezdLR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 44. Walkthrough</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/4.html>Main Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] An Argument</i></a></span><span>)</span></li></ol></div>','2mGmHd': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 55. Moment</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/5.html>Main Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Hoshino&#x27s Secret</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CityTown.jpg.html">&lt;-- Previous page: BG_CityTown.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_ClassCorridor2.jpg.html">--&gt; Next page: BG_ClassCorridor2.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:07 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:07
 -->
 </body>
 </html>

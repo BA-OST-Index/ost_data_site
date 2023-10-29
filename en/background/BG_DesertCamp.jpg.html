@@ -7,10 +7,10 @@
 
     <title>Background/BG_DesertCamp.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DemolitionCity_Night.jpg.html">&lt;-- Previous page: BG_DemolitionCity_Night.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_DemolitionCity_Night.jpg.html">&lt;-- Previous page: BG_DemolitionCity_Night.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DesertCamp2.jpg.html">--&gt; Next page: BG_DesertCamp2.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_DesertCamp2.jpg.html">--&gt; Next page: BG_DesertCamp2.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_DesertCamp.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_DesertCamp.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_DesertCamp.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_DesertCamp.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_DesertCamp.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_DesertCamp.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_1_2_9">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/9.html" onmouseover="showTooltip(this, 'B8y3Rz')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/9.html"  onmouseover="showTooltip(this)" data-tooltip="sl6s7a">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;Kaiser PMC Part 1</a>
+    
+
         
 
         
@@ -234,43 +224,73 @@ Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
-            
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/9.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'CdopMb')"><i>[1] An Unknown Building</i></a>,&nbsp;<a href="/en/main/story/main/1/2/9.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'tJi5mn')"><i>[2] Kaiser PMC</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/9.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="pGA5jF"><i>[1]&nbsp;An Unknown Building</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/9.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="_XAKaR"><i>[2]&nbsp;Kaiser PMC</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -284,16 +304,13 @@ Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1
         <li id="story-MAIN_1_2_11">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/11.html" onmouseover="showTooltip(this, 'ud0r3C')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 11: A Losing Battle
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/11.html"  onmouseover="showTooltip(this)" data-tooltip="PgacxQ">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>
+    
+
         
 
         
@@ -303,50 +320,86 @@ Story Volume 1 Chapter 2 Episode 11: A Losing Battle
                 
                 
                     
+                    
+                        
+                    
+                        
+                    
+                    
                 
+
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
                     
                 
             
                 
                 
                     
-                
-            
-                
-                
                     
                         
                             
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
-                            
-                        
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/11.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'w4Oqzs')"><i>[3] Kaiser Director</i></a>,&nbsp;<a href="/en/main/story/main/1/2/11.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'1oFsQh')"><i>[4] A Debt Can't Be Filled</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/11.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="vk_nCA"><i>[3]&nbsp;Kaiser Director</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/11.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="c6nKX7"><i>[4]&nbsp;A Debt Can't Be Filled</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -360,16 +413,13 @@ Story Volume 1 Chapter 2 Episode 11: A Losing Battle
         <li id="story-MAIN_1_2_18">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/18.html" onmouseover="showTooltip(this, 'iFahy1')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/18.html"  onmouseover="showTooltip(this)" data-tooltip="owhKrL">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>
+    
+
         
 
         
@@ -379,37 +429,62 @@ Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
+                    
+                    
+                    
                 
             
                 
                 
                     
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/18.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'ZI56PW')"><i>[1] Trinity's Reinforcement</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="RYDwEn"><i>[1]&nbsp;Trinity's Reinforcement</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'B8y3Rz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC Part 1</p><ul><li>The forces are Kaiser PMC and they surround the Foreclosure Task Force.</li></ul></div>','CdopMb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Unknown Building</p><p>None is known about neither the identity nor the intents of these people. Ayane suddenly found out the there were signs of "Kaiser PMC (Private Military Company)" and everyone was shocked.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span></p><hr><p>Track:  <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a></p></div>','tJi5mn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC</p><p>Ayane pointed out such military corporations, like PMC, are not the same as those gangsters like the Helmet Group. Nonomi suddenly remembered that there were some corporations hiring dropouts and bad students as mercenaries. It was at this time when everyone found that much troops were coming to them.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/41.html>OST 41. Interface</a>   <a href=/en/track/ost/30.html>OST 30. Crossfire</a></p></div>','ud0r3C': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Losing Battle</p><ul><li>The Kaiser board member reveals their ambitions to find a massive treasure buried somewhere in Abydos. Then, using the Foreclosure Task Force&#x27s debt as leverage, the creditor forces them to back down. Hoshino calls for a retreat to the chagrin of the other task force members.</li></ul></div>','w4Oqzs': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser Director</p><p>Kaiser Director introduced himself to everyone, which was immediately got under fire. But the director didn&#x27t care, and said that given the current situation, it was true that the Foreclosure Task Force had invaded their own private lands. He aslo said that the troops were all for looking for treasures beneath Abydos, not for invading Abydos High School. None was convinced, and director demonstrated just how easy it would be for him to "actually sabotage Abydos".</p><hr><p>Character:  <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','1oFsQh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Debt Can&#x27t Be Filled</p><p>Kaiser Director made a call and said that Abydos High School&#x27s credit was at all-time low, and the interest rate would be raised 30 times higher. At the club room, Ayane answered the call and was greatly shocked. Kaiser Director also said that they would first need to pay a deposit in advance to prove their repayment ability. But that could never be achieved - and so, the director advised them to give up or drop out the school, or simply transfer to another one. No one was willing to step a step back. Hoshino said that it was useless to argue here and suggested to leave first.</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','iFahy1': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 1</p><ul><li>The Foreclosure Task Force is fighting on multiple fronts when Hifumi arrives with reinforcements from Trinity in tow. Using the unexpected arrival as a distraction, the Foreclosure Task Force breaks through the enemy lines.</li><li>When the Foreclosure Task Force arrives at Abydos High&#x27s old main building, a Kaiser board member bars their way. However, Aru and Problem Solver 68 arrive in the nick of time.</li></ul></div>','ZI56PW': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Trinity&#x27s Reinforcement</p><p>The Foreclosure Task Force was in front of the building&#x27s gate but was assaulted by the enemies. Hifumi, at this point, connected onto the comm and explained the situation to everyone; and in particular she stressed these howitzer had nothing to do with Trinity. After the comm, the Foreclosure Task Force began to break through the lines.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp>Hifumi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/60.html>OST 60. SAKURA PUNCH (Hard Arrange)</a></p></div>', });
+        add_tooltip_data({ 'sl6s7a': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC Part 1</p><ul><li>The forces are Kaiser PMC and they surround the Foreclosure Task Force.</li></ul></div>','pGA5jF': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Unknown Building</p><p>None is known about neither the identity nor the intents of these people. Ayane suddenly finds out the there are signs of "Kaiser PMC (Private Military Company)" and everyone is shocked.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/18.html> <span>OST 18. Mechanical JUNGLE</span></a></p></div>','_XAKaR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC</p><p>Ayane points out such military corporations, like PMC, are not the same as those gangsters like the Helmet Group. Nonomi suddenly remembers that there are some corporations hiring dropouts and bad students as mercenaries. It is at this time when everyone finds that more troops are coming to them.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/41.html> <span>OST 41. Interface</span></a> <a href=/en/track/ost/30.html> <span>OST 30. Crossfire</span></a></p></div>','PgacxQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Losing Battle</p><ul><li>The Kaiser board member reveals their ambitions to find a massive treasure buried somewhere in Abydos. Then, using the Foreclosure Task Force&#x27s debt as leverage, the creditor forces them to back down. Hoshino calls for a retreat to the chagrin of the other task force members.</li></ul></div>','vk_nCA': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser Director</p><p>Kaiser Director introduces himself to everyone, which is immediately got under fire. But the director doesn&#x27t care, and says that given the current situation, it is true that the Foreclosure Task Force has invaded their own private lands. He also says that the troops are all for searching treasures beneath Abydos, not for invading Abydos High School. Nobody is convinced, and director demonstrates just how easy it would be for him to "actually sabotage Abydos".</p><hr><p>Character:<span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','c6nKX7': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Debt Can&#x27t Be Filled</p><p>Kaiser Director makes a call and says that Abydos High School&#x27s credit is at all-time low, and the interest rate will be raised 30 times higher. At the club room, Ayane answers the call and is greatly shocked. Kaiser Director also says that they would first need to pay a deposit in advance to prove their repayment ability. But that could never be achieved - and so, the director advises them to give up or drop out the school, or simply transfer to another one. No one is willing to step a step back. Hoshino says that it&#x27s useless to argue here and suggests to leave first.</p><hr><p>Character:<span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','owhKrL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 1</p><ul><li>The Foreclosure Task Force is fighting on multiple fronts when Hifumi arrives with reinforcements from Trinity in tow. Using the unexpected arrival as a distraction, the Foreclosure Task Force breaks through the enemy lines.</li><li>When the Foreclosure Task Force arrives at Abydos High&#x27s old main building, a Kaiser board member bars their way. However, Aru and Problem Solver 68 arrive in the nick of time.</li></ul></div>','RYDwEn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Trinity&#x27s Reinforcement</p><p>The Foreclosure Task Force is in front of the building&#x27s gate but found enemies are under fire. Hifumi, at this point, connects onto the comm and explained the situation to everyone; and in particular she stresses these howitzer have nothing to do with Trinity. After the comm, the Foreclosure Task Force begins to break through the lines.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp> <span>Hifumi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/60.html> <span>OST 60. SAKURA PUNCH (Hard Arrange)</span></a></p></div>', });
     </script>
 
 
@@ -424,75 +499,85 @@ Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_18"><a href="/en/track/ost/18.html" onmouseover="showTooltip(this, 'ukjY7v')">【1】
-    OST
- 18. Mechanical JUNGLE</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_27"><a href="/en/track/ost/27.html" onmouseover="showTooltip(this, '4EjRsf')">【1】
-    OST
- 27. Fade Out</a> by KARUT</li>
+            <li id="track-OST_18">
+    <a href="/en/track/ost/18.html#f445c8d7-5585-485f-a5c8-d2894ded9038" onmouseover="showTooltip(this)" data-tooltip="0eKBxj">
+        <span>【1】OST&nbsp;18.&nbsp;Mechanical JUNGLE</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_30"><a href="/en/track/ost/30.html" onmouseover="showTooltip(this, 'psQg98')">【1】
-    OST
- 30. Crossfire</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_41"><a href="/en/track/ost/41.html" onmouseover="showTooltip(this, 'aETHnY')">【1】
-    OST
- 41. Interface</a> by KARUT</li>
+            <li id="track-OST_27">
+    <a href="/en/track/ost/27.html#f445c8d7-5585-485f-a5c8-d2894ded9038" onmouseover="showTooltip(this)" data-tooltip="C0Umi2">
+        <span>【1】OST&nbsp;27.&nbsp;Fade Out</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_30">
+    <a href="/en/track/ost/30.html#f445c8d7-5585-485f-a5c8-d2894ded9038" onmouseover="showTooltip(this)" data-tooltip="jSnH5Z">
+        <span>【1】OST&nbsp;30.&nbsp;Crossfire</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_60"><a href="/en/track/ost/60.html" onmouseover="showTooltip(this, 'nupK2j')">【1】
-    OST
- 60. SAKURA PUNCH (Hard Arrange)</a> by Nor</li>
+            <li id="track-OST_41">
+    <a href="/en/track/ost/41.html#f445c8d7-5585-485f-a5c8-d2894ded9038" onmouseover="showTooltip(this)" data-tooltip="DZcq8C">
+        <span>【1】OST&nbsp;41.&nbsp;Interface</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_60">
+    <a href="/en/track/ost/60.html#f445c8d7-5585-485f-a5c8-d2894ded9038" onmouseover="showTooltip(this)" data-tooltip="adNNHL">
+        <span>【1】OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span>
+    </a>
+    
+</li>
 
             
                 
@@ -503,34 +588,74 @@ Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
     
         
     <script>
-        add_tooltip_data({ 'ukjY7v': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/9.html> Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1 </a></li></ol></div>','4EjRsf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/11.html> Main Story Volume 1 Chapter 2 Episode 11: A Losing Battle </a></li></ol></div>','psQg98': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 30. Crossfire</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/9.html> Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1 </a></li></ol></div>','aETHnY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/9.html> Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1 </a></li></ol></div>','nupK2j': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 60. SAKURA PUNCH (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html> Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1 </a></li></ol></div>', });
+        add_tooltip_data({ '0eKBxj': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/9.html>Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] An Unknown Building</i></a></span><span>)</span></li></ol></div>','C0Umi2': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/11.html>Main Story Volume 1 Chapter 2 Episode 11: A Losing Battle</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] A Debt Can&#x27t Be Filled</i></a></span><span>)</span></li></ol></div>','jSnH5Z': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 30. Crossfire</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/9.html>Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Kaiser PMC</i></a></span><span>)</span></li></ol></div>','DZcq8C': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/9.html>Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Kaiser PMC</i></a></span><span>)</span></li></ol></div>','adNNHL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 60. SAKURA PUNCH (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DemolitionCity_Night.jpg.html">&lt;-- Previous page: BG_DemolitionCity_Night.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DesertCamp2.jpg.html">--&gt; Next page: BG_DesertCamp2.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:08 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:08
 -->
 </body>
 </html>

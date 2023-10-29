@@ -15,7 +15,7 @@ img {
 /* -------------------------------------------------- */
 /* CSS adjusted for the site at last ---------------- */
 /* (overwrites some wikipedialize.css) -------------- */
-#git-wiki-content p, #git-wiki-content li {
+#git-wiki-content p, #git-wiki-content li, #interpage-navi p {
     margin: 8px 0 !important;
 }
 
@@ -50,6 +50,7 @@ img {
     color: black;
     float: right;
     margin-left: 20px;
+    position: relative;
 }
 
 @media screen and (max-width: 992px){
@@ -127,7 +128,7 @@ img {
 .gallery {
     background-color: #f8f9fa;
     color: black;
-    width: 50%;
+    width: initial;
 }
 
 .gallery-img {
@@ -263,3 +264,120 @@ img {
     }
 }
 /* -------------------------------------------------- */
+
+#interpage-navi-bottom {
+    margin-top: 2em;
+}
+
+#homepage-left {
+    width: 60%;
+    flex: 6 60% none;
+    margin-right: 8px;
+}
+#homepage-right {
+    width: 40%;
+    flex: 4 40% none;
+}
+
+#homepage-left, #homepage-right {
+    border: #727272 solid 1px;
+    padding: 0.4em;
+}
+
+#homepage-flex {
+    display: flex;
+}
+
+@media print, screen and (max-width: 992px) {
+    #homepage-flex {
+        display: block;
+        padding-right: 8px;
+    }
+
+    #homepage-left, #homepage-right {
+        margin-bottom: 8px;
+        display: block;
+        width: 100%;
+    }
+}
+
+.homepage-list {
+    margin-bottom: 1em;
+}
+
+/*--------------------------------------------*/
+body {
+    padding: 0;
+}
+
+body > .wrapper {
+    padding: 50px;
+}
+
+#main-wrapper, #main-wrapper > .git-wiki-page {
+    padding-bottom: 0;
+}
+
+#bottom-wrapper {padding-top: 0;}
+
+#bottom-wrapper > footer {padding-top: 20px; margin-top: 0;}
+
+.git-wiki-page {margin-bottom: 0;}
+
+#interpage-navi-bottom {
+    position: sticky;
+    bottom: 0;
+    padding: 1em 0;
+    margin-top: 0;
+}
+
+#interpage-navi-bottom p {
+    margin: 8px 0 !important;
+}
+
+#interpage-navi-bottom > div {
+    display: flex;
+    padding-left: 370px;
+}
+
+#interpage-navi-bottom-left {
+    flex: calc(100% - 32em);
+}
+
+#interpage-navi-bottom-right {
+    flex: 32em;
+}
+
+#interpage-navi-bottom-left, #interpage-navi-bottom-right {
+    background-color: white;
+}
+
+@media print, screen and (max-width: 992px) {
+    #interpage-navi-bottom-left {
+        width: 100%;
+    }
+    #interpage-navi-bottom-right {
+        flex: none;
+        display: none;
+    }
+    #interpage-navi-bottom > div {
+        padding-left: 370px;
+        display: block;
+    }
+}
+
+@media print, screen and (max-width: 960px) {
+    body > .wrapper {
+        padding: 20px;
+    }
+    #interpage-navi-bottom > div {
+        padding-left: 20px;
+        display: block;
+    }
+}
+
+/* ------------ z-index ----------- */
+#main-wrapper {z-index: 5}
+#interpage-navi-bottom-right {z-index: 6}
+#infobox {z-index: 7}
+#interpage-navi-bottom-left {z-index: 8}

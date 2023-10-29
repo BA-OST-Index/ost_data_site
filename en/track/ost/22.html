@@ -7,10 +7,10 @@
 
     <title>Track/Daily Routine 24/7- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -51,8 +51,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -86,92 +86,82 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/track/ost/21.html">&lt;-- Previous page: Midnight Trip</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/track/ost/21.html">&lt;-- Previous page: Midnight Trip</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/track/ost/23.html">--&gt; Next page: Party Time</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/track/ost/23.html">--&gt; Next page: Party Time</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
+    
     
 
     <h1>Track/22. Daily Routine 24/7</h1>
@@ -208,16 +198,14 @@
     </tr>
     <tr>
         <td class="infobox-col-title">Track Type</td>
-        <td class="infobox-col-value">
-    OST
-</td>
+        <td class="infobox-col-value">OST</td>
     </tr>
     
     <tr><td colspan="2" class="infobox-subtitle">Version Information</td></tr>
     
         <tr>
             <td class="infobox-col-title">Original</td>
-            <td class="infobox-col-value"><a href="https://www.youtube.com/watch?v=fTW7D5u0HfE" target="_blank"><img src="/static/images/social/YouTube.png" class="social-logo">YouTube</a> ()<br/><a href="https://www.bilibili.com/video/BV1Jh411d7kd/?p=22" target="_blank"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili</a> ()<br/></td>
+            <td class="infobox-col-value"><a href="https://www.youtube.com/watch?v=fTW7D5u0HfE" target="_blank"><img src="/static/images/social/YouTube.png" class="social-logo">YouTube</a><br/><a href="https://www.bilibili.com/video/BV1Jh411d7kd/?p=22" target="_blank"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili</a><br/></td>
         </tr>
     
     <tr><td colspan="2" class="infobox-subtitle">Special Usage Information</td></tr>
@@ -241,11 +229,15 @@
         <td class="infobox-col-title">Event</td>
         <td class="infobox-col-value">No</td>
     </tr>
+    <tr><td colspan="2" class="infobox-subtitle">Related Tracks</td></tr>
+    <tr>
+        <td class="infobox-col-title">Other Tracks</td>
+        <td class="infobox-col-value">No related tracks!</td>
+    </tr>
 </table>
-    <p><b>Daily Routine 24/7</b> is the No. 22 track in the 
-    OST
-.</p>
+    <p><b>Daily Routine 24/7</b> is the No. 22 track in the OST.</p>
     <p>【暂无】</p>
+
     <h2>Name Translation</h2>
     <h3>Original Names</h3>
     <ul>
@@ -259,6 +251,17 @@
             <li>Nothing to show!</li>
         
     </ul>
+
+    <h2>Track in Album</h2>
+    <p>This track has been included in the following albums.</p>
+    <ul>
+        
+            <li>
+    <span><a href="/en/album/.html" >Blue Archive Original Soundtrack (Vol.1 ~Longing for the memorable days~)&nbsp;(38 discs)&nbsp;[2022-03-24]</a></span>
+</li>
+        
+    </ul>
+
     <h2>Play Music Here</h2>
     <p>Tips: In order to avoid potential copyright infringement, we're using <b>third-party embedded web players</b> to provide services. You can also manually visit them by clicking the links in the infobox.</p>
     <p>By clicking the links below, you agree to the Terms of Services of the corresponding platforms/service providers.</p>
@@ -280,8 +283,13 @@
         
     
 
+
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
+    <h3>Related Tracks</h3>
+    <ul>
+        <li>No tracks!</li>
+    </ul>
     <h3>Backgrounds</h3>
     
     
@@ -296,7 +304,82 @@
                     
                 
 
-                <td class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c"><img src="/static/images/background/BG_GameDevRoom.jpg"><p class="gallery-caption"><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_22" onmouseover="showTooltip(this, '1OUDYs')">BG_GameDevRoom.jpg</a></p></td>
+                <td class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
+    <div id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
+        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="CfqxUs">
+        <p class="gallery-caption">
+            <a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="CfqxUs" target="_blank">BG_GameDevRoom.jpg</a>
+        </p>
+    </div>
+</td>
+
+                
+                    
+                
+            
+                
+                    
+                
+
+                <td class="gallery-img" id="b6e55fd1-1897-470b-8b67-d0ddff83ecd8">
+    <div id="b6e55fd1-1897-470b-8b67-d0ddff83ecd8">
+        <img src="/static/images/background/BG_View_Sky_Sunset.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="lMBEj_">
+        <p class="gallery-caption">
+            <a href="/en/background/BG_View_Sky_Sunset.jpg.html#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="lMBEj_" target="_blank">BG_View_Sky_Sunset.jpg</a>
+        </p>
+    </div>
+</td>
+
+                
+                    
+                
+            
+                
+                    
+                
+
+                <td class="gallery-img" id="0624e57c-210c-40cf-974d-c68f3257fc79">
+    <div id="0624e57c-210c-40cf-974d-c68f3257fc79">
+        <img src="/static/images/background/BG_Campus_Sunset.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="xAV0iz">
+        <p class="gallery-caption">
+            <a href="/en/background/BG_Campus_Sunset.jpg.html#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="xAV0iz" target="_blank">BG_Campus_Sunset.jpg</a>
+        </p>
+    </div>
+</td>
+
+                
+                    
+                
+            
+                
+                    
+                
+
+                <td class="gallery-img" id="f5c6fe16-2bb5-4d19-b9bc-d3617fbc29ba">
+    <div id="f5c6fe16-2bb5-4d19-b9bc-d3617fbc29ba">
+        <img src="/static/images/background/BG_CS_Millenium_14.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="d2rCid">
+        <p class="gallery-caption">
+            <a href="/en/background/BG_CS_Millenium_14.jpg.html#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="d2rCid" target="_blank">BG_CS_Millenium_14.jpg</a>
+        </p>
+    </div>
+</td>
+
+                
+                    
+                
+            
+                
+                    
+                
+
+                <td class="gallery-img" id="d5f19186-e706-4086-ab27-cce5ebbbb7c6">
+    <div id="d5f19186-e706-4086-ab27-cce5ebbbb7c6">
+        <img src="/static/images/background/BG_CS_Millenium_18.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FNCbdL">
+        <p class="gallery-caption">
+            <a href="/en/background/BG_CS_Millenium_18.jpg.html#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="FNCbdL" target="_blank">BG_CS_Millenium_18.jpg</a>
+        </p>
+    </div>
+</td>
 
                 
                     
@@ -308,7 +391,7 @@
     
         
     <script>
-        add_tooltip_data({ '1OUDYs': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/18.html> Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE </a></li><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li></ol></div>', });
+        add_tooltip_data({ 'CfqxUs': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button class="btn btn-info"type=button><a href=/static/images/background/BG_GameDevRoom.jpg target=_blank>View Full Image</a></button><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/18.html>Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Fun Game</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/2.html>Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>)</span></li></ol></div>','lMBEj_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_View_Sky_Sunset.jpg</p><p>BG_View_Sky_Sunset.jpg Description</p><button class="btn btn-info"type=button><a href=/static/images/background/BG_View_Sky_Sunset.jpg target=_blank>View Full Image</a></button><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/5.html>Main Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] Sunset</i></a></span><span>)</span></li></ol></div>','xAV0iz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_Campus_Sunset.jpg</p><p>BG_Campus_Sunset.jpg Description</p><button class="btn btn-info"type=button><a href=/static/images/background/BG_Campus_Sunset.jpg target=_blank>View Full Image</a></button><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/5.html>Main Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] Sunset</i></a></span><span>)</span></li></ol></div>','d2rCid': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_14.jpg</p><p>BG_CS_Millenium_14.jpg Description</p><button class="btn btn-info"type=button><a href=/static/images/background/BG_CS_Millenium_14.jpg target=_blank>View Full Image</a></button><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/5.html>Main Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] Sunset</i></a></span><span>)</span></li></ol></div>','FNCbdL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_18.jpg</p><p>BG_CS_Millenium_18.jpg Description</p><button class="btn btn-info"type=button><a href=/static/images/background/BG_CS_Millenium_18.jpg target=_blank>View Full Image</a></button><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/5.html>Main Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] Sunset</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -331,16 +414,13 @@
         <li id="story-MAIN_2_1_18">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/1/18.html" onmouseover="showTooltip(this, 'UIJJfc')">
-                
-        Main
-Story Volume 2 Chapter 1 Episode 18: G.BIBLE
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/1/18.html"  onmouseover="showTooltip(this)" data-tooltip="MrvoSi">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;18:&nbsp;G.BIBLE</a>
+    
+
         
 
         
@@ -350,39 +430,70 @@ Story Volume 2 Chapter 1 Episode 18: G.BIBLE
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/1/18.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'BynPNu')"><i>[2] A Fun Game</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/18.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="U8Gg9D"><i>[2]&nbsp;A Fun Game</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -396,16 +507,13 @@ Story Volume 2 Chapter 1 Episode 18: G.BIBLE
         <li id="story-MAIN_2_2_2">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/2.html" onmouseover="showTooltip(this, 'fiNfqC')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/2.html"  onmouseover="showTooltip(this)" data-tooltip="CgYunX">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;2:&nbsp;A Day at the Game Dev Department</a>
+    
+
         
 
         
@@ -415,49 +523,92 @@ Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/2.html#story-part-6" class="text-primary" onmouseover="showTooltip(this,'fX7Dnk')"><i>[6] The Meeting</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/2.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="tUZvAf"><i>[6]&nbsp;The Meeting</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -471,16 +622,13 @@ Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department
         <li id="story-MAIN_2_2_5">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/5.html" onmouseover="showTooltip(this, 'n_vACI')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/5.html"  onmouseover="showTooltip(this)" data-tooltip="lGd4R9">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>
+    
+
         
 
         
@@ -490,65 +638,114 @@ Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/5.html#story-part-7" class="text-primary" onmouseover="showTooltip(this,'6kn2UH')"><i>[7] Sunset</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/5.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="ESdRfM"><i>[7]&nbsp;Sunset</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'UIJJfc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">G.BIBLE</p><ul><li>As it turns out, G.BIBLE only contains a simple maxim: "Love video games." Their sky-high expectations dashed, the Game Development Department, with the help of Aris, begin development on Tales Saga Chronicle 2.</li></ul></div>','BynPNu': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Fun Game</p><p>Everyone was disappointed. Aris expressed her like for TSC and wanted to make TSC2 with others. Yuzu voiced her approval, rarely.</p><hr><p>Character:  <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/22.html>OST 22. Daily Routine 24/7</a></p></div>','fiNfqC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Day at the Game Dev Department</p><ul><li>Sensei pays the Game Development Department a visit for the first time in a while. The members are fielding ideas for the development of their next project, but get distracted watching Aris playing a video game. Aris struggles mid-game upon encountering a cheating player, but gains a dramatic victory thanks to Yuzu&#x27s exhilarating performance. However, they fail to make any progress on plans for their next project, and decide to try again tomorrow.</li></ul></div>','fX7Dnk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Meeting</p><p>After the game session, Midori mentioned the meeting, and the result was... quite predictable.</p><hr><p>Character:  <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/22.html>OST 22. Daily Routine 24/7</a>   <a href=/en/track/ost/64.html>OST 64. Pixel Time</a></p></div>','n_vACI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Guided by Aris 2</p><ul><li>Aris meets with Millennium students who cheer her on, and discusses the Sword of Light with members of the Engineering Department. She enjoys every moment of it. Afterwards, Aris runs into Neru and they visit an arcade to enjoy some video games together. Though they were once enemies against each other, Aris is now proud to declare Neru as her party member.</li></ul></div>','6kn2UH': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Sunset</p><p>Sensei was surprised to see that Aris wasn&#x27t afraid of Neru. Sensei was glad to get to know Aris&#x27 daily life. Though didn&#x27t complete Yuzu&#x27s assignment, Aris still felt happy. And she said that a hero will not give up easily.</p><hr><p>Character:  <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span></p><hr><p>Track:  <a href=/en/track/ost/22.html>OST 22. Daily Routine 24/7</a>   <a href=/en/track/ost/64.html>OST 64. Pixel Time</a>   <a href=/en/track/ost/21.html>OST 21. Midnight Trip</a></p></div>', });
+        add_tooltip_data({ 'MrvoSi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">G.BIBLE</p><ul><li>As it turns out, G.BIBLE only contains a simple maxim: "Love video games." Their sky-high expectations dashed, the Game Development Department, with the help of Aris, begin development on Tales Saga Chronicle 2.</li></ul></div>','U8Gg9D': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Fun Game</p><p>Everyone was disappointed. Aris expressed her like for TSC and wanted to make TSC2 with others. Yuzu voiced her approval, rarely.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/22.html> <span>OST 22. Daily Routine 24/7</span></a></p></div>','CgYunX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Day at the Game Dev Department</p><ul><li>Sensei pays the Game Development Department a visit for the first time in a while. The members are fielding ideas for the development of their next project, but get distracted watching Aris playing a video game. Aris struggles mid-game upon encountering a cheating player, but gains a dramatic victory thanks to Yuzu&#x27s exhilarating performance. However, they fail to make any progress on plans for their next project, and decide to try again tomorrow.</li></ul></div>','tUZvAf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Meeting</p><p>After the game session, Midori mentioned the meeting, and the result was... quite predictable.</p><hr><p>Character:<span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/22.html> <span>OST 22. Daily Routine 24/7</span></a> <a href=/en/track/ost/64.html> <span>OST 64. Pixel Time</span></a></p></div>','lGd4R9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Guided by Aris 2</p><ul><li>Aris meets with Millennium students who cheer her on, and discusses the Sword of Light with members of the Engineering Department. She enjoys every moment of it. Afterwards, Aris runs into Neru and they visit an arcade to enjoy some video games together. Though they were once enemies against each other, Aris is now proud to declare Neru as her party member.</li></ul></div>','ESdRfM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Sunset</p><p>Sensei was surprised to see that Aris wasn&#x27t afraid of Neru. Sensei was glad to get to know Aris&#x27 daily life. Though didn&#x27t complete Yuzu&#x27s assignment, Aris still felt happy. And she said that a hero will not give up easily.</p><hr><p>Character:<span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/22.html> <span>OST 22. Daily Routine 24/7</span></a> <a href=/en/track/ost/64.html> <span>OST 64. Pixel Time</span></a> <a href=/en/track/ost/21.html> <span>OST 21. Midnight Trip</span></a></p></div>', });
     </script>
 
 
@@ -590,16 +787,25 @@ Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2
             
 
             <li id="Aris"><span>【3】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/aris/#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="QVMwN4" >
+                <img src="/static/images/student/icon/10015.webp" class="icon-stu">
+                <span>Aris</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/aris/#track-OST_22" onmouseover="showTooltip(this, 'KFr0bw')">
-                    <img src="/static/images/student/icon/10015.webp" class="icon-stu"/>Aris
-                </a>
-                &nbsp;<span>[Game Development Department]</span>
+                <span>&nbsp;[Game Development Department]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -607,16 +813,25 @@ Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2
             
 
             <li id="Midori"><span>【2】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/midori/#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="qGDGTQ" >
+                <img src="/static/images/student/icon/10016.webp" class="icon-stu">
+                <span>Midori</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/midori/#track-OST_22" onmouseover="showTooltip(this, 'xVTK3D')">
-                    <img src="/static/images/student/icon/10016.webp" class="icon-stu"/>Midori
-                </a>
-                &nbsp;<span>[Game Development Department]</span>
+                <span>&nbsp;[Game Development Department]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -624,16 +839,25 @@ Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2
             
 
             <li id="Momoi"><span>【2】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/momoi/#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="7aeGA4" >
+                <img src="/static/images/student/icon/13011.webp" class="icon-stu">
+                <span>Momoi</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/momoi/#track-OST_22" onmouseover="showTooltip(this, 'aUOneG')">
-                    <img src="/static/images/student/icon/13011.webp" class="icon-stu"/>Momoi
-                </a>
-                &nbsp;<span>[Game Development Department]</span>
+                <span>&nbsp;[Game Development Department]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -641,48 +865,97 @@ Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2
             
 
             <li id="Yuzu"><span>【2】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/yuzu/#track-OST_22" onmouseover="showTooltip(this)" data-tooltip="A5GxLx" >
+                <img src="/static/images/student/icon/10018.webp" class="icon-stu">
+                <span>Yuzu</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/yuzu/#track-OST_22" onmouseover="showTooltip(this, 'IQAyRt')">
-                    <img src="/static/images/student/icon/10018.webp" class="icon-stu"/>Yuzu
-                </a>
-                &nbsp;<span>[Game Development Department]</span>
+                <span>&nbsp;[Game Development Department]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
     </ul>
 
     
     <script>
-        add_tooltip_data({ 'KFr0bw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/18.html> Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE </a></li><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li><li><a href=/en/main/story/main/2/2/5.html> Main Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2 </a></li></ol></div>','xVTK3D': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/18.html> Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE </a></li><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li></ol></div>','aUOneG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/18.html> Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE </a></li><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li></ol></div>','IQAyRt': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/18.html> Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE </a></li><li><a href=/en/main/story/main/2/2/2.html> Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department </a></li></ol></div>', });
+        add_tooltip_data({ 'QVMwN4': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/4.html>Main Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] Meeting Aris</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] The Club Room</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/5.html>Main Story Volume 2 Chapter 1 Episode 5: I, Aris...</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Discussion</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Learning How To Speak</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Game Start</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Ending</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/6.html>Main Story Volume 2 Chapter 1 Episode 6: How to Learn a Language</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/6.html#story-part-1-seg-1><i>[1] Aris, a Student of Millennium!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/6.html#story-part-1-seg-1><i>[1] Take a Look Around Millennium</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/7.html>Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Heading To The Engineering Department!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Visiting Engineering Department</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Aris&#x27 Abilities</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/8.html>Main Story Volume 2 Chapter 1 Episode 8: Eligibility Screening </a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/8.html#story-part-1-seg-1><i>[1] Worries and Concerns</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/8.html#story-part-1-seg-1><i>[1] The Arrival of Yuuka</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/9.html>Main Story Volume 2 Chapter 1 Episode 9: Yuuka&#x27s Questions</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] Are You Being Kidnapped</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] Questioning Starts</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] </i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/10.html>Main Story Volume 2 Chapter 1 Episode 10: Back To the Ruins</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/10.html#story-part-1-seg-1><i>[1] Outside the Factory</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/10.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/11.html>Main Story Volume 2 Chapter 1 Episode 11: Right There, In That Place</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Inside the Factory</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] The Computer</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Overview of G.Bible</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] The Mirror</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] A Problem</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] It&#x27s Decided!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Engineering Department As Well</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/13.html>Main Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Aris Got Defeated</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] The Strategy Meeting</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/15.html>Main Story Volume 2 Chapter 1 Episode 15: A Spreading Danger</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] A Backup Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] Sword of Light</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/16.html>Main Story Volume 2 Chapter 1 Episode 16: Just One Step Forward!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] An Emergency</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] Success</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/17.html>Main Story Volume 2 Chapter 1 Episode 17: Just Getting Warmed Up</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/17.html#story-part-1-seg-1><i>[1] Inevitable Closure</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/18.html>Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] The True Essence of Making Games</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Fun Game</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Determined Mind</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/19.html>Main Story Volume 2 Chapter 1 Episode 19: Double O</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] Finishing The Project</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] A Face-to-face Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] A 1v1 Fight</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/20.html>Main Story Volume 2 Chapter 1 Episode 20: The Millennium Prize</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Trivialization</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Persisting Haze</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] A Plot Twist</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Crisis Lifted</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/2.html>Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] "UZGreen Mode"</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] A Weird Game</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] Yuzu, the UZQueen</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/3.html>Main Story Volume 2 Chapter 2 Episode 3: Aris Goes on an Adventure! </a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] To Decide</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] Adventure Starts</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/4.html>Main Story Volume 2 Chapter 2 Episode 4: Guided by Aris 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/4.html#story-part-1-seg-1><i>[1] School Athletic Track</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/4.html#story-part-1-seg-1><i>[1] Outskirts of Millennium</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/4.html#story-part-1-seg-1><i>[1] A Temporary Retreat</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/5.html>Main Story Volume 2 Chapter 2 Episode 5: Guided by Aris 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] The Star of Millennium</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] The Engineering Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] Neru&#x27s Challenge</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] Teaching Combos</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] Akane&#x27s "Parental Control"</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/5.html#story-part-1-seg-1><i>[1] Sunset</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] The Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] A Strange Robot</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] An Abnormality</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/8.html>Main Story Volume 2 Chapter 2 Episode 8: Daily Life Destroyed</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/8.html#story-part-1-seg-1><i>[1] Aris&#x27 Monologue</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/9.html>Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] The Harsh Truth</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] Aris, "The Demon Lord"</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] An Argument</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] Betrayal</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/10.html>Main Story Volume 2 Chapter 2 Episode 10: The Harsh Truth 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] The Retrival & Questioning</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] The Last Resistance</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] The Monologue of Aris</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/22.html>Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] The Last Step</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/24.html>Main Story Volume 2 Chapter 2 Episode 24: What You Want to Be</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Deep In The Consciousness</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Every Scene</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] The Game We Made Together</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Aris&#x27 True Words</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] A Heroine&#x27s Choice</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] The Longing Return of Aris</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/25.html>Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] The Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','qGDGTQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/1.html>Main Story Volume 2 Chapter 1 Episode 1: The Adventure Begins</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/1.html#story-part-1-seg-1><i>[1] Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/1.html#story-part-1-seg-1><i>[1] Game Development Department</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/2.html>Main Story Volume 2 Chapter 1 Episode 2: Seminar Treasurer Yuuka</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/2.html#story-part-1-seg-1><i>[1] The Demon Lord Yuuka</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/2.html#story-part-1-seg-1><i>[1] Not something "JUNK"!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/2.html#story-part-1-seg-1><i>[1] G.Bible</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/3.html>Main Story Volume 2 Chapter 1 Episode 3: To The Ruins</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/3.html#story-part-1-seg-1><i>[1] At The Ruins</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/3.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/4.html>Main Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] In The Factory</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] In The Pit</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] Meeting Aris</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] The Club Room</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/5.html>Main Story Volume 2 Chapter 1 Episode 5: I, Aris...</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Discussion</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Learning How To Speak</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Game Start</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Ending</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/6.html>Main Story Volume 2 Chapter 1 Episode 6: How to Learn a Language</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/6.html#story-part-1-seg-1><i>[1] Aris, a Student of Millennium!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/6.html#story-part-1-seg-1><i>[1] Take a Look Around Millennium</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/7.html>Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Heading To The Engineering Department!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Visiting Engineering Department</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/8.html>Main Story Volume 2 Chapter 1 Episode 8: Eligibility Screening </a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/8.html#story-part-1-seg-1><i>[1] Worries and Concerns</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/8.html#story-part-1-seg-1><i>[1] The Arrival of Yuuka</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/9.html>Main Story Volume 2 Chapter 1 Episode 9: Yuuka&#x27s Questions</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] Are You Being Kidnapped</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] Questioning Starts</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] The Danger Remained</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] For the Club</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] </i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/10.html>Main Story Volume 2 Chapter 1 Episode 10: Back To the Ruins</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/10.html#story-part-1-seg-1><i>[1] Outside the Factory</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/10.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/11.html>Main Story Volume 2 Chapter 1 Episode 11: Right There, In That Place</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Inside the Factory</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] The Computer</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Overview of G.Bible</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] The Mirror</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] A Problem</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Intel About C&C</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] It&#x27s Decided!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Engineering Department As Well</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Already Started</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/13.html>Main Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Stage One Completed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Let The Battle Begin!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] The Strategy Meeting</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Let&#x27s Go To The Top Floor!</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/14.html>Main Story Volume 2 Chapter 1 Episode 14: Maids vs. Meisters</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/14.html#story-part-1-seg-1><i>[1] The Sniper</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/14.html#story-part-1-seg-1><i>[1] Ambush</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/15.html>Main Story Volume 2 Chapter 1 Episode 15: A Spreading Danger</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] A Worsening Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] A Backup Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] Sword of Light</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/16.html>Main Story Volume 2 Chapter 1 Episode 16: Just One Step Forward!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] An Emergency</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] Success</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/17.html>Main Story Volume 2 Chapter 1 Episode 17: Just Getting Warmed Up</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/17.html#story-part-1-seg-1><i>[1] Inevitable Closure</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/18.html>Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] The True Essence of Making Games</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Fun Game</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] The Aftermath of TSC</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Determined Mind</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/19.html>Main Story Volume 2 Chapter 1 Episode 19: Double O</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] Finishing The Project</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] A Face-to-face Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] A 1v1 Fight</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/20.html>Main Story Volume 2 Chapter 1 Episode 20: The Millennium Prize</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Trivialization</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Persisting Haze</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] A Plot Twist</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Crisis Lifted</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/2.html>Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] An Invitation From The GDD</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] Ideas</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] "UZGreen Mode"</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] A Weird Game</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] Yuzu, the UZQueen</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/3.html>Main Story Volume 2 Chapter 2 Episode 3: Aris Goes on an Adventure! </a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] To Decide</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] A Strange Robot</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] An Abnormality</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/7.html>Main Story Volume 2 Chapter 2 Episode 7: A Strange Machine 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/7.html#story-part-1-seg-1><i>[1] After the Attack</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/7.html#story-part-1-seg-1><i>[1] Assistance from C&C</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/8.html>Main Story Volume 2 Chapter 2 Episode 8: Daily Life Destroyed</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/8.html#story-part-1-seg-1><i>[1] Outside the Club Room</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/8.html#story-part-1-seg-1><i>[1] The President Rio</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/9.html>Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] The Harsh Truth</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] Aris, "The Demon Lord"</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] An Argument</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] Betrayal</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/10.html>Main Story Volume 2 Chapter 2 Episode 10: The Harsh Truth 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] Toki&#x27s Repression</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] The Retrival & Questioning</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] The Last Resistance</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] Gone For Aris</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/11.html>Main Story Volume 2 Chapter 2 Episode 11: Be That as It May!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/11.html#story-part-1-seg-1><i>[1] Recalling Events</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/11.html#story-part-1-seg-1><i>[1] Momoi&#x27s Back</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/12.html>Main Story Volume 2 Chapter 2 Episode 12: Strategy Meeting</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] The Seminar</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] Infiltration Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] A Two-Team Plan</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/13.html>Main Story Volume 2 Chapter 2 Episode 13: Big Sister</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/13.html#story-part-1-seg-1><i>[1] Arriving Eridu</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/13.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/14.html>Main Story Volume 2 Chapter 2 Episode 14: The Fortress City of Eridu</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/14.html#story-part-1-seg-1><i>[1] As Planned</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/15.html>Main Story Volume 2 Chapter 2 Episode 15: A Trap</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] The Trolley Problem</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] The Combat with Avant Guard</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] All Within the Plan</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/16.html>Main Story Volume 2 Chapter 2 Episode 16: Checkmate</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] A Deadlock</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/17.html>Main Story Volume 2 Chapter 2 Episode 17: Turning the Tides</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/17.html#story-part-1-seg-1><i>[1] Timely Help</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/17.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/17.html#story-part-1-seg-1><i>[1] The Coup de Grace</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/18.html>Main Story Volume 2 Chapter 2 Episode 18: An Insurmountable Wall</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/18.html#story-part-1-seg-1><i>[1] Heading To The Central Tower</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/18.html#story-part-1-seg-1><i>[1] At the Central Tower</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/18.html#story-part-1-seg-1><i>[1] The Plan Changed</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/19.html>Main Story Volume 2 Chapter 2 Episode 19: Cheater!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/19.html#story-part-1-seg-1><i>[1] Ineffective Attack</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/19.html#story-part-1-seg-1><i>[1] How About Falling Down The Sky</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/20.html>Main Story Volume 2 Chapter 2 Episode 20: Gamers and Friends</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/20.html#story-part-1-seg-1><i>[1] A Sense of Loss</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/20.html#story-part-1-seg-1><i>[1] Still Got A Chance</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/20.html#story-part-1-seg-1><i>[1] Cheaters & Tricks</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/21.html>Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/21.html#story-part-1-seg-1><i>[1] The Real Fight</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/22.html>Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Battle Completed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] The Last Step</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Key</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/23.html>Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] Precise Timing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] The Way To Wake Up</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/24.html>Main Story Volume 2 Chapter 2 Episode 24: What You Want to Be</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Deep In The Consciousness</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Every Scene</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Aris&#x27 Explanation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] The Game We Made Together</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Aris&#x27 True Words</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] A Heroine&#x27s Choice</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] The Longing Return of Aris</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/25.html>Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] The Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','7aeGA4': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/1.html>Main Story Volume 2 Chapter 1 Episode 1: The Adventure Begins</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/1.html#story-part-1-seg-1><i>[1] Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/1.html#story-part-1-seg-1><i>[1] Game Development Department</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/2.html>Main Story Volume 2 Chapter 1 Episode 2: Seminar Treasurer Yuuka</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/2.html#story-part-1-seg-1><i>[1] The Demon Lord Yuuka</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/2.html#story-part-1-seg-1><i>[1] Not something "JUNK"!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/2.html#story-part-1-seg-1><i>[1] G.Bible</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/3.html>Main Story Volume 2 Chapter 1 Episode 3: To The Ruins</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/3.html#story-part-1-seg-1><i>[1] At The Ruins</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/3.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/4.html>Main Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] In The Factory</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] In The Pit</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] Meeting Aris</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] The Club Room</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/5.html>Main Story Volume 2 Chapter 1 Episode 5: I, Aris...</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Discussion</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Game Start</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Ending</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/6.html>Main Story Volume 2 Chapter 1 Episode 6: How to Learn a Language</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/6.html#story-part-1-seg-1><i>[1] Aris, a Student of Millennium!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/6.html#story-part-1-seg-1><i>[1] Take a Look Around Millennium</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/7.html>Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Heading To The Engineering Department!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Visiting Engineering Department</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/8.html>Main Story Volume 2 Chapter 1 Episode 8: Eligibility Screening </a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/8.html#story-part-1-seg-1><i>[1] Worries and Concerns</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/8.html#story-part-1-seg-1><i>[1] The Arrival of Yuuka</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/9.html>Main Story Volume 2 Chapter 1 Episode 9: Yuuka&#x27s Questions</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] Are You Being Kidnapped</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] Questioning Starts</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] The Danger Remained</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] For the Club</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] </i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/10.html>Main Story Volume 2 Chapter 1 Episode 10: Back To the Ruins</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/10.html#story-part-1-seg-1><i>[1] Outside the Factory</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/10.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/11.html>Main Story Volume 2 Chapter 1 Episode 11: Right There, In That Place</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Inside the Factory</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] The Computer</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Overview of G.Bible</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] The Mirror</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] A Problem</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] It&#x27s Decided!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Engineering Department As Well</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Already Started</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/13.html>Main Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Stage One Completed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Let The Battle Begin!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] The Strategy Meeting</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Let&#x27s Go To The Top Floor!</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/14.html>Main Story Volume 2 Chapter 1 Episode 14: Maids vs. Meisters</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/14.html#story-part-1-seg-1><i>[1] The Sniper</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/14.html#story-part-1-seg-1><i>[1] Ambush</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/15.html>Main Story Volume 2 Chapter 1 Episode 15: A Spreading Danger</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] A Worsening Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] A Backup Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] Sword of Light</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/16.html>Main Story Volume 2 Chapter 1 Episode 16: Just One Step Forward!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] An Emergency</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] Success</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/17.html>Main Story Volume 2 Chapter 1 Episode 17: Just Getting Warmed Up</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/17.html#story-part-1-seg-1><i>[1] Inevitable Closure</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/18.html>Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] The True Essence of Making Games</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Fun Game</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] The Aftermath of TSC</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Determined Mind</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/19.html>Main Story Volume 2 Chapter 1 Episode 19: Double O</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] Finishing The Project</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] A Face-to-face Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] A 1v1 Fight</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/20.html>Main Story Volume 2 Chapter 1 Episode 20: The Millennium Prize</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Trivialization</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Persisting Haze</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] A Plot Twist</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Crisis Lifted</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/2.html>Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] An Invitation From The GDD</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] Ideas</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] "UZGreen Mode"</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] A Weird Game</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] Yuzu, the UZQueen</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/3.html>Main Story Volume 2 Chapter 2 Episode 3: Aris Goes on an Adventure! </a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] To Decide</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] The Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] A Strange Robot</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] An Abnormality</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/11.html>Main Story Volume 2 Chapter 2 Episode 11: Be That as It May!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/11.html#story-part-1-seg-1><i>[1] Recalling Events</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/11.html#story-part-1-seg-1><i>[1] Momoi&#x27s Back</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/12.html>Main Story Volume 2 Chapter 2 Episode 12: Strategy Meeting</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] The Seminar</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] Infiltration Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] A Two-Team Plan</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/13.html>Main Story Volume 2 Chapter 2 Episode 13: Big Sister</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/13.html#story-part-1-seg-1><i>[1] Arriving Eridu</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/13.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/14.html>Main Story Volume 2 Chapter 2 Episode 14: The Fortress City of Eridu</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/14.html#story-part-1-seg-1><i>[1] As Planned</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/15.html>Main Story Volume 2 Chapter 2 Episode 15: A Trap</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] The Trolley Problem</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] The Combat with Avant Guard</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] All Within the Plan</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/16.html>Main Story Volume 2 Chapter 2 Episode 16: Checkmate</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] A Deadlock</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/17.html>Main Story Volume 2 Chapter 2 Episode 17: Turning the Tides</a> <span>(appeared at </span><span><a class=text-danger href=/en/main/story/main/2/2/17.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/17.html#story-part-1-seg-1><i>[1] The Coup de Grace</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/18.html>Main Story Volume 2 Chapter 2 Episode 18: An Insurmountable Wall</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/18.html#story-part-1-seg-1><i>[1] Heading To The Central Tower</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/18.html#story-part-1-seg-1><i>[1] At the Central Tower</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/19.html>Main Story Volume 2 Chapter 2 Episode 19: Cheater!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/19.html#story-part-1-seg-1><i>[1] Ineffective Attack</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/19.html#story-part-1-seg-1><i>[1] How About Falling Down The Sky</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/19.html#story-part-1-seg-1><i>[1] Retreat In Advance</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/20.html>Main Story Volume 2 Chapter 2 Episode 20: Gamers and Friends</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/20.html#story-part-1-seg-1><i>[1] A Sense of Loss</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/20.html#story-part-1-seg-1><i>[1] Still Got A Chance</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/20.html#story-part-1-seg-1><i>[1] Cheaters & Tricks</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/21.html>Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/21.html#story-part-1-seg-1><i>[1] The Strategy Meeting</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/22.html>Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Battle Completed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] The Last Step</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Key</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/23.html>Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] Precise Timing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] The Way To Wake Up</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/24.html>Main Story Volume 2 Chapter 2 Episode 24: What You Want to Be</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Deep In The Consciousness</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Every Scene</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] The Game We Made Together</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Aris&#x27 True Words</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] A Heroine&#x27s Choice</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] The Longing Return of Aris</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/25.html>Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] The Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','A5GxLx': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/5.html>Main Story Volume 2 Chapter 1 Episode 5: I, Aris...</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/5.html#story-part-1-seg-1><i>[1] Ending</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/6.html>Main Story Volume 2 Chapter 1 Episode 6: How to Learn a Language</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/6.html#story-part-1-seg-1><i>[1] Aris, a Student of Millennium!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/6.html#story-part-1-seg-1><i>[1] Take a Look Around Millennium</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/9.html>Main Story Volume 2 Chapter 1 Episode 9: Yuuka&#x27s Questions</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/9.html#story-part-1-seg-1><i>[1] </i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/10.html>Main Story Volume 2 Chapter 1 Episode 10: Back To the Ruins</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/10.html#story-part-1-seg-1><i>[1] Outside the Factory</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/10.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/11.html>Main Story Volume 2 Chapter 1 Episode 11: Right There, In That Place</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Inside the Factory</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] The Computer</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Overview of G.Bible</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] The Mirror</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] A Problem</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/13.html>Main Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] Stage One Completed</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/15.html>Main Story Volume 2 Chapter 1 Episode 15: A Spreading Danger</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] A Backup Plan</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/16.html>Main Story Volume 2 Chapter 1 Episode 16: Just One Step Forward!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] An Emergency</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] Success</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/16.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/17.html>Main Story Volume 2 Chapter 1 Episode 17: Just Getting Warmed Up</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/17.html#story-part-1-seg-1><i>[1] Inevitable Closure</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/18.html>Main Story Volume 2 Chapter 1 Episode 18: G.BIBLE</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] The True Essence of Making Games</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Fun Game</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] The Aftermath of TSC</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/18.html#story-part-1-seg-1><i>[1] A Determined Mind</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/19.html>Main Story Volume 2 Chapter 1 Episode 19: Double O</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] Finishing The Project</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/19.html#story-part-1-seg-1><i>[1] A Face-to-face Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/20.html>Main Story Volume 2 Chapter 1 Episode 20: The Millennium Prize</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Trivialization</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Persisting Haze</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] A Plot Twist</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/20.html#story-part-1-seg-1><i>[1] Crisis Lifted</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/2.html>Main Story Volume 2 Chapter 2 Episode 2: A Day at the Game Dev Department</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] "UZGreen Mode"</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] A Weird Game</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] Yuzu, the UZQueen</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/2.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/3.html>Main Story Volume 2 Chapter 2 Episode 3: Aris Goes on an Adventure! </a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] The Meeting</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/3.html#story-part-1-seg-1><i>[1] To Decide</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] The Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] A Strange Robot</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] An Abnormality</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/7.html>Main Story Volume 2 Chapter 2 Episode 7: A Strange Machine 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/7.html#story-part-1-seg-1><i>[1] After the Attack</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/7.html#story-part-1-seg-1><i>[1] Assistance from C&C</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/8.html>Main Story Volume 2 Chapter 2 Episode 8: Daily Life Destroyed</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/8.html#story-part-1-seg-1><i>[1] Outside the Club Room</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/8.html#story-part-1-seg-1><i>[1] The President Rio</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/9.html>Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] The Harsh Truth</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] Aris, "The Demon Lord"</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] An Argument</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] Betrayal</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/10.html>Main Story Volume 2 Chapter 2 Episode 10: The Harsh Truth 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] Toki&#x27s Repression</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] The Retrival & Questioning</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] The Last Resistance</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/10.html#story-part-1-seg-1><i>[1] Gone For Aris</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/11.html>Main Story Volume 2 Chapter 2 Episode 11: Be That as It May!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/11.html#story-part-1-seg-1><i>[1] Recalling Events</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/11.html#story-part-1-seg-1><i>[1] Momoi&#x27s Back</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/12.html>Main Story Volume 2 Chapter 2 Episode 12: Strategy Meeting</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] The Seminar</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] A Two-Team Plan</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/13.html>Main Story Volume 2 Chapter 2 Episode 13: Big Sister</a> <span>(appeared at </span><span><a class=text-danger href=/en/main/story/main/2/2/13.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/14.html>Main Story Volume 2 Chapter 2 Episode 14: The Fortress City of Eridu</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/14.html#story-part-1-seg-1><i>[1] C&C&#x27s Resistance</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/15.html>Main Story Volume 2 Chapter 2 Episode 15: A Trap</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] The Trolley Problem</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] The Combat with Avant Guard</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/15.html#story-part-1-seg-1><i>[1] All Within the Plan</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/16.html>Main Story Volume 2 Chapter 2 Episode 16: Checkmate</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] A Deadlock</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/17.html>Main Story Volume 2 Chapter 2 Episode 17: Turning the Tides</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/17.html#story-part-1-seg-1><i>[1] Timely Help</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/17.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/17.html#story-part-1-seg-1><i>[1] The Coup de Grace</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/18.html>Main Story Volume 2 Chapter 2 Episode 18: An Insurmountable Wall</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/18.html#story-part-1-seg-1><i>[1] Heading To The Central Tower</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/18.html#story-part-1-seg-1><i>[1] At the Central Tower</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/18.html#story-part-1-seg-1><i>[1] The Plan Changed</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/19.html>Main Story Volume 2 Chapter 2 Episode 19: Cheater!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/19.html#story-part-1-seg-1><i>[1] Ineffective Attack</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/19.html#story-part-1-seg-1><i>[1] How About Falling Down The Sky</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/20.html>Main Story Volume 2 Chapter 2 Episode 20: Gamers and Friends</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/20.html#story-part-1-seg-1><i>[1] A Sense of Loss</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/20.html#story-part-1-seg-1><i>[1] Cheaters & Tricks</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/21.html>Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/21.html#story-part-1-seg-1><i>[1] The Strategy Meeting</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/21.html#story-part-1-seg-1><i>[1] The Real Fight</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/22.html>Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Battle Completed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] The Last Step</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Key</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/23.html>Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] Precise Timing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] The Way To Wake Up</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/24.html>Main Story Volume 2 Chapter 2 Episode 24: What You Want to Be</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Deep In The Consciousness</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Every Scene</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Aris&#x27 Explanation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] The Game We Made Together</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Aris&#x27 True Words</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] A Heroine&#x27s Choice</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] The Longing Return of Aris</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/25.html>Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] The Game Development Department</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/track/ost/21.html">&lt;-- Previous page: Midnight Trip</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/track/ost/23.html">--&gt; Next page: Party Time</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:20:44 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:20:44
 -->
 </body>
 </html>

@@ -7,10 +7,10 @@
 
     <title>Background/BG_Hangar2.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_Hangar.jpg.html">&lt;-- Previous page: BG_Hangar.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_Hangar.jpg.html">&lt;-- Previous page: BG_Hangar.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_HealthClub.jpg.html">--&gt; Next page: BG_HealthClub.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_HealthClub.jpg.html">--&gt; Next page: BG_HealthClub.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_Hangar2.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_Hangar2.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_Hangar2.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_Hangar2.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_Hangar2.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_Hangar2.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_2_1_7">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/1/7.html" onmouseover="showTooltip(this, 'OJdKna')">
-                
-        Main
-Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/1/7.html"  onmouseover="showTooltip(this)" data-tooltip="47Nchf">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;Much Too Big to Be Called a Gun</a>
+    
+
         
 
         
@@ -234,46 +224,82 @@ Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
+                    
+                    
+                    
                 
             
                 
                 
                     
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/1/7.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'kjRQ4p')"><i>[2] Visiting Engineering Department</i></a>,&nbsp;<a href="/en/main/story/main/2/1/7.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'sttq_M')"><i>[4] Aris' Abilities</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/7.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="VJDA4I"><i>[2]&nbsp;Visiting Engineering Department</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/7.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="TdPDig"><i>[4]&nbsp;Aris' Abilities</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -287,16 +313,13 @@ Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun
         <li id="story-MAIN_2_1_12">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/1/12.html" onmouseover="showTooltip(this, 'CWPqfE')">
-                
-        Main
-Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/1/12.html"  onmouseover="showTooltip(this)" data-tooltip="xrzJcy">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;12:&nbsp;In Search of the Mirror</a>
+    
+
         
 
         
@@ -306,71 +329,138 @@ Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/1/12.html#story-part-8" class="text-primary" onmouseover="showTooltip(this,'6spTek')"><i>[8] Engineering Department As Well</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/12.html#story-part-8-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="L2kyZT"><i>[8]&nbsp;Engineering Department As Well</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -384,16 +474,13 @@ Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror
         <li id="story-MAIN_2_2_25">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/25.html" onmouseover="showTooltip(this, 'h00X6w')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 25: Millennium Science School
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/25.html"  onmouseover="showTooltip(this)" data-tooltip="aTpHae">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>
+    
+
         
 
         
@@ -403,110 +490,153 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/25.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'UxAZPZ')"><i>[4] Everything As Always</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="zyb4Hh"><i>[4]&nbsp;Everything As Always</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'OJdKna': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Much Too Big to Be Called a Gun</p><ul><li>The Game Development Department heads to the Engineering Department to get Aris a firearm. Aris ends up picking a railgun meant to be attached to an intergalactic battleship. The Engineering Department challenges Aris to a fight to test her abilities.</li><li>Aris skillfully uses the railgun to fend off the Engineering Department members, despite never having held such a weapon before. Utaha, the president of the Engineering Department, begins to become suspicious of Aris&#x27 unusual physical prowess.</li></ul></div>','kjRQ4p': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Visiting Engineering Department</p><p>Utaha and others welcomed them, and Hibiki took the initiative to choose weapons for Aris. But Aris soon put her attention onto a railgun, which was then introduced by Kotori. She mentioned that the development was terminated due to funding issues. All of the Engineering Department thought Aris couldn&#x27t lift it up, but Aris had not only lifted it, but also shot a hole on the club room; as a last resort, the Engineering Department challenged the Game Development Department, that they could take it away if they won them.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/33.html>OST 33. Vivid Night</a>   <a href=/en/track/ost/5.html>OST 5. Colorful Mess</a></p></div>','sttq_M': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aris&#x27 Abilities</p><p>Hibiki continued adjusting for Aris, yet Utaha noticed that Aris was in fact a machine and was worried for her abilities.</p><hr><p>Character:  <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a>   <a href=/en/track/ost/28.html>OST 28. Plug and Play</a></p></div>','CWPqfE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">In Search of the Mirror</p><ul><li>In order to read the G.BIBLE, the Game Development Department needs to decrypt the password. To do so, they reach out to Veritas. Maki tells them they&#x27ll need the Mirror that was confiscated by the Student Council. To retrieve it, they&#x27ll need to get into the contraband storage guarded by the Maid Club.</li></ul></div>','6spTek': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Engineering Department As Well</p><p>Everyone arrived at the Engineering Department. Invited by Sensei, they decided to join in.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/32.html>OST 32. GGF</a></p></div>','h00X6w': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','UxAZPZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everything As Always</p><p>The Engineering Department were developing new stuff as always. Veritas were working closely with Super Phenomenon Task Force. Sumire resumed her daily exercises.</p><hr><p>Character:  <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp>Chihiro </a> </span>   <span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp>Sumire </a> </span></p><hr><p>Track:  <a href=/en/track/ost/50.html>OST 50. Hue</a></p></div>', });
+        add_tooltip_data({ '47Nchf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Much Too Big to Be Called a Gun</p><ul><li>The Game Development Department heads to the Engineering Department to get Aris a firearm. Aris ends up picking a railgun meant to be attached to an intergalactic battleship. The Engineering Department challenges Aris to a fight to test her abilities.</li><li>Aris skillfully uses the railgun to fend off the Engineering Department members, despite never having held such a weapon before. Utaha, the president of the Engineering Department, begins to become suspicious of Aris&#x27 unusual physical prowess.</li></ul></div>','VJDA4I': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Visiting Engineering Department</p><p>Utaha and others welcomed them, and Hibiki took the initiative to choose weapons for Aris. But Aris soon put her attention onto a railgun, which was then introduced by Kotori. She mentioned that the development was terminated due to funding issues. All of the Engineering Department thought Aris couldn&#x27t lift it up, but Aris had not only lifted it, but also shot a hole on the club room; as a last resort, the Engineering Department challenged the Game Development Department, that they could take it away if they won them.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span> | </span><span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp> <span>Kotori</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/33.html> <span>OST 33. Vivid Night</span></a> <a href=/en/track/ost/5.html> <span>OST 5. Colorful Mess</span></a></p></div>','TdPDig': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aris&#x27 Abilities</p><p>Hibiki continued adjusting for Aris, yet Utaha noticed that Aris was in fact a machine and was worried for her abilities.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a> <a href=/en/track/ost/28.html> <span>OST 28. Plug and Play</span></a></p></div>','xrzJcy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">In Search of the Mirror</p><ul><li>In order to read the G.BIBLE, the Game Development Department needs to decrypt the password. To do so, they reach out to Veritas. Maki tells them they&#x27ll need the Mirror that was confiscated by the Student Council. To retrieve it, they&#x27ll need to get into the contraband storage guarded by the Maid Club.</li></ul></div>','L2kyZT': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Engineering Department As Well</p><p>Everyone arrived at the Engineering Department. Invited by Sensei, they decided to join in.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span> | </span><span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp> <span>Kotori</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/32.html> <span>OST 32. GGF</span></a></p></div>','aTpHae': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','zyb4Hh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everything As Always</p><p>The Engineering Department were developing new stuff as always. Veritas were working closely with Super Phenomenon Task Force. Sumire resumed her daily exercises.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp> <span>Kotori</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp> <span>Chihiro</span></a> </span> | </span><span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp> <span>Sumire</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/50.html> <span>OST 50. Hue</span></a></p></div>', });
     </script>
 
 
@@ -521,90 +651,102 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_5"><a href="/en/track/ost/5.html" onmouseover="showTooltip(this, '3otnuC')">【1】
-    OST
- 5. Colorful Mess</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_13"><a href="/en/track/ost/13.html" onmouseover="showTooltip(this, 'nOMoPj')">【1】
-    OST
- 13. Barrier</a> by KARUT</li>
+            <li id="track-OST_5">
+    <a href="/en/track/ost/5.html#6ffe4af8-dfd6-4dd9-86b8-db0ced9ce61e" onmouseover="showTooltip(this)" data-tooltip="q3zCEb">
+        <span>【1】OST&nbsp;5.&nbsp;Colorful Mess</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_28"><a href="/en/track/ost/28.html" onmouseover="showTooltip(this, '15qnV1')">【1】
-    OST
- 28. Plug and Play</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_32"><a href="/en/track/ost/32.html" onmouseover="showTooltip(this, 'b759yJ')">【1】
-    OST
- 32. GGF</a> by Mitsukiyo</li>
+            <li id="track-OST_13">
+    <a href="/en/track/ost/13.html#6ffe4af8-dfd6-4dd9-86b8-db0ced9ce61e" onmouseover="showTooltip(this)" data-tooltip="ruNUJs">
+        <span>【1】OST&nbsp;13.&nbsp;Barrier</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_33"><a href="/en/track/ost/33.html" onmouseover="showTooltip(this, 'emT6Rt')">【1】
-    OST
- 33. Vivid Night</a> by Nor</li>
+            <li id="track-OST_28">
+    <a href="/en/track/ost/28.html#6ffe4af8-dfd6-4dd9-86b8-db0ced9ce61e" onmouseover="showTooltip(this)" data-tooltip="UsB9tR">
+        <span>【1】OST&nbsp;28.&nbsp;Plug and Play</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_32">
+    <a href="/en/track/ost/32.html#6ffe4af8-dfd6-4dd9-86b8-db0ced9ce61e" onmouseover="showTooltip(this)" data-tooltip="RNUvIG">
+        <span>【1】OST&nbsp;32.&nbsp;GGF</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_50"><a href="/en/track/ost/50.html" onmouseover="showTooltip(this, 'tqkalX')">【1】
-    OST
- 50. Hue</a> by KARUT</li>
+            <li id="track-OST_33">
+    <a href="/en/track/ost/33.html#6ffe4af8-dfd6-4dd9-86b8-db0ced9ce61e" onmouseover="showTooltip(this)" data-tooltip="KkOvoM">
+        <span>【1】OST&nbsp;33.&nbsp;Vivid Night</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_50">
+    <a href="/en/track/ost/50.html#6ffe4af8-dfd6-4dd9-86b8-db0ced9ce61e" onmouseover="showTooltip(this)" data-tooltip="YwwkWm">
+        <span>【1】OST&nbsp;50.&nbsp;Hue</span>
+    </a>
+    
+</li>
 
             
                 
@@ -615,34 +757,74 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
     
         
     <script>
-        add_tooltip_data({ '3otnuC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 5. Colorful Mess</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/7.html> Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun </a></li></ol></div>','nOMoPj': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 13. Barrier</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/7.html> Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun </a></li></ol></div>','15qnV1': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 28. Plug and Play</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/7.html> Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun </a></li></ol></div>','b759yJ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 32. GGF</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html> Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror </a></li></ol></div>','emT6Rt': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 33. Vivid Night</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/7.html> Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun </a></li></ol></div>','tqkalX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 50. Hue</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/25.html> Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School </a></li></ol></div>', });
+        add_tooltip_data({ 'q3zCEb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 5. Colorful Mess</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/7.html>Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Visiting Engineering Department</i></a></span><span>)</span></li></ol></div>','ruNUJs': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 13. Barrier</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/7.html>Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Aris&#x27 Abilities</i></a></span><span>)</span></li></ol></div>','UsB9tR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 28. Plug and Play</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/7.html>Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Aris&#x27 Abilities</i></a></span><span>)</span></li></ol></div>','RNUvIG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 32. GGF</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Engineering Department As Well</i></a></span><span>)</span></li></ol></div>','KkOvoM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 33. Vivid Night</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/7.html>Main Story Volume 2 Chapter 1 Episode 7: Much Too Big to Be Called a Gun</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/7.html#story-part-1-seg-1><i>[1] Visiting Engineering Department</i></a></span><span>)</span></li></ol></div>','YwwkWm': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 50. Hue</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/25.html>Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] Everything As Always</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_Hangar.jpg.html">&lt;-- Previous page: BG_Hangar.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_HealthClub.jpg.html">--&gt; Next page: BG_HealthClub.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:07 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:07
 -->
 </body>
 </html>

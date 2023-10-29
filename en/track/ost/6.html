@@ -7,10 +7,10 @@
 
     <title>Track/Funky Road- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -51,8 +51,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -86,92 +86,82 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/track/ost/5.html">&lt;-- Previous page: Colorful Mess</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/track/ost/5.html">&lt;-- Previous page: Colorful Mess</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/track/ost/7.html">--&gt; Next page: Unwelcome School</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/track/ost/7.html">--&gt; Next page: Unwelcome School</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
+    
     
 
     <h1>Track/6. Funky Road</h1>
@@ -203,21 +193,19 @@
     <tr>
         <td class="infobox-col-title">Tags</td>
         <td class="infobox-col-value">
-    <a href="/en/tag/energetic.html#track-OST_6"><span class="badge badge-success badge-tag">Energetic</span></a>&nbsp;<a href="/en/tag/naughty.html#track-OST_6"><span class="badge badge-primary badge-tag">Naughty</span></a>&nbsp;
+    <a href="/en/tag/energetic.html#track-OST_6" target="_blank"><span class="badge badge-success badge-tag">Energetic</span></a>&nbsp;<a href="/en/tag/naughty.html#track-OST_6" target="_blank"><span class="badge badge-primary badge-tag">Naughty</span></a>&nbsp;
 </td>
     </tr>
     <tr>
         <td class="infobox-col-title">Track Type</td>
-        <td class="infobox-col-value">
-    OST
-</td>
+        <td class="infobox-col-value">OST</td>
     </tr>
     
     <tr><td colspan="2" class="infobox-subtitle">Version Information</td></tr>
     
         <tr>
             <td class="infobox-col-title">Original</td>
-            <td class="infobox-col-value"><a href="https://www.youtube.com/watch?v=8h458BG1-Bo" target="_blank"><img src="/static/images/social/YouTube.png" class="social-logo">YouTube</a> ()<br/><a href="https://www.bilibili.com/video/BV1Jh411d7kd/?p=6" target="_blank"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili</a> ()<br/></td>
+            <td class="infobox-col-value"><a href="https://www.youtube.com/watch?v=8h458BG1-Bo" target="_blank"><img src="/static/images/social/YouTube.png" class="social-logo">YouTube</a><br/><a href="https://www.bilibili.com/video/BV1Jh411d7kd/?p=6" target="_blank"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili</a><br/></td>
         </tr>
     
     <tr><td colspan="2" class="infobox-subtitle">Special Usage Information</td></tr>
@@ -241,11 +229,15 @@
         <td class="infobox-col-title">Event</td>
         <td class="infobox-col-value">No</td>
     </tr>
+    <tr><td colspan="2" class="infobox-subtitle">Related Tracks</td></tr>
+    <tr>
+        <td class="infobox-col-title">Other Tracks</td>
+        <td class="infobox-col-value">No related tracks!</td>
+    </tr>
 </table>
-    <p><b>Funky Road</b> is the No. 6 track in the 
-    OST
-.</p>
+    <p><b>Funky Road</b> is the No. 6 track in the OST.</p>
     <p>【暂无】</p>
+
     <h2>Name Translation</h2>
     <h3>Original Names</h3>
     <ul>
@@ -259,6 +251,13 @@
             <li>Nothing to show!</li>
         
     </ul>
+
+    <h2>Track in Album</h2>
+    <p>This track has been included in the following albums.</p>
+    <ul>
+        
+    </ul>
+
     <h2>Play Music Here</h2>
     <p>Tips: In order to avoid potential copyright infringement, we're using <b>third-party embedded web players</b> to provide services. You can also manually visit them by clicking the links in the infobox.</p>
     <p>By clicking the links below, you agree to the Terms of Services of the corresponding platforms/service providers.</p>
@@ -280,8 +279,13 @@
         
     
 
+
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
+    <h3>Related Tracks</h3>
+    <ul>
+        <li>No tracks!</li>
+    </ul>
     <h3>Backgrounds</h3>
     
     
@@ -296,7 +300,14 @@
                     
                 
 
-                <td class="gallery-img" id="9d722592-7903-405e-8d1b-53c908862e37"><img src="/static/images/background/BG_Bank.jpg"><p class="gallery-caption"><a href="/en/background/BG_Bank.jpg.html#track-OST_6" onmouseover="showTooltip(this, '8EU48c')">BG_Bank.jpg</a></p></td>
+                <td class="gallery-img" id="9d722592-7903-405e-8d1b-53c908862e37">
+    <div id="9d722592-7903-405e-8d1b-53c908862e37">
+        <img src="/static/images/background/BG_Bank.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="fYZHnZ">
+        <p class="gallery-caption">
+            <a href="/en/background/BG_Bank.jpg.html#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="fYZHnZ" target="_blank">BG_Bank.jpg</a>
+        </p>
+    </div>
+</td>
 
                 
                     
@@ -306,7 +317,14 @@
                     
                 
 
-                <td class="gallery-img" id="c27f163c-2f0a-4295-93bf-2460669f8bdf"><img src="/static/images/background/BG_KohshinjoRoom.jpg"><p class="gallery-caption"><a href="/en/background/BG_KohshinjoRoom.jpg.html#track-OST_6" onmouseover="showTooltip(this, 'ROS9G9')">BG_KohshinjoRoom.jpg</a></p></td>
+                <td class="gallery-img" id="c27f163c-2f0a-4295-93bf-2460669f8bdf">
+    <div id="c27f163c-2f0a-4295-93bf-2460669f8bdf">
+        <img src="/static/images/background/BG_KohshinjoRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="J2LyCI">
+        <p class="gallery-caption">
+            <a href="/en/background/BG_KohshinjoRoom.jpg.html#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="J2LyCI" target="_blank">BG_KohshinjoRoom.jpg</a>
+        </p>
+    </div>
+</td>
 
                 
                     
@@ -318,7 +336,7 @@
     
         
     <script>
-        add_tooltip_data({ '8EU48c': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_Bank.jpg</p><p>BG_Bank.jpg Description</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li></ol></div>','ROS9G9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_KohshinjoRoom.jpg</p><p>BG_KohshinjoRoom.jpg Description</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/17.html> Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm </a></li></ol></div>', });
+        add_tooltip_data({ 'fYZHnZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_Bank.jpg</p><p>BG_Bank.jpg Description</p><button class="btn btn-info"type=button><a href=/static/images/background/BG_Bank.jpg target=_blank>View Full Image</a></button><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>)</span></li></ol></div>','J2LyCI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">BG_KohshinjoRoom.jpg</p><p>BG_KohshinjoRoom.jpg Description</p><button class="btn btn-info"type=button><a href=/static/images/background/BG_KohshinjoRoom.jpg target=_blank>View Full Image</a></button><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/17.html>Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] Battle Again</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -341,16 +359,13 @@
         <li id="story-MAIN_1_1_14">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/14.html" onmouseover="showTooltip(this, 'ItF0m3')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/14.html"  onmouseover="showTooltip(this)" data-tooltip="KmDibo">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;14:&nbsp;The Masked Swimsuit Gang! Part 2</a>
+    
+
         
 
         
@@ -359,33 +374,58 @@ Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/14.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'wDY3ER')"><i>[1] Aru Being Rejected</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/14.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="UAPfLl"><i>[1]&nbsp;Aru Being Rejected</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -399,16 +439,13 @@ Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2
         <li id="story-MAIN_1_1_17">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/17.html" onmouseover="showTooltip(this, '7seOdi')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/17.html"  onmouseover="showTooltip(this)" data-tooltip="6gFyrw">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;17:&nbsp;The Gathering Storm</a>
+    
+
         
 
         
@@ -417,47 +454,78 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/17.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'Ve1rrp')"><i>[1] Battle Again</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/17.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="yuE7Qq"><i>[1]&nbsp;Battle Again</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'ItF0m3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Masked Swimsuit Gang! Part 2</p><ul><li>Aru is waiting for a loan interview at the Stygian Bank when the masked members of the Foreclosure Task Force burst in and steal all the bank&#x27s money. The Black Market Guard gives chase, and Aru admires the students&#x27 act of pure villainy.</li></ul></div>','wDY3ER': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aru Being Rejected</p><p>After waiting hours long for the loan interview, Aru eventually was rejected for a loan due to poor records and unable to mortgage any property. When arguing with the staff, Abydos broke in.</p><hr><p>Character:  <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp>Hifumi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/6.html>OST 6. Funky Road</a>   <a href=/en/track/ost/7.html>OST 7. Unwelcome School</a></p></div>','7seOdi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Gathering Storm</p><ul><li>Aru grapples with the thought of using funds acquired by the Foreclosure Task Force to attack Abydos High School. To lift her spirits, Problem Solver takes her to get Shiba Seki ramen. Meanwhile, a man in a black suit appears before Hoshino with a clandestine proposal.</li></ul></div>','Ve1rrp': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Battle Again</p><p>Aru was worried all night about another attack against Abydos. Haruka already set the bombs in place. Mutsuki couldn&#x27t understand why Aru didn&#x27t take the money first, and Aru said it was because of the concern on being interfering too much by the customer.</p><hr><p>Character:  <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span></p><hr><p>Track:  <a href=/en/track/ost/6.html>OST 6. Funky Road</a></p></div>', });
+        add_tooltip_data({ 'KmDibo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Masked Swimsuit Gang! Part 2</p><ul><li>Aru is waiting for a loan interview at the Stygian Bank when the masked members of the Foreclosure Task Force burst in and steal all the bank&#x27s money. The Black Market Guard gives chase, and Aru admires the students&#x27 act of pure villainy.</li></ul></div>','UAPfLl': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aru Being Rejected</p><p>After waiting hours long for the loan interview, Aru eventually is rejected for a loan due to poor records and unable to mortgage any property. When arguing with the staff, Abydos breaks in.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp> <span>Hifumi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/6.html> <span>OST 6. Funky Road</span></a> <a href=/en/track/ost/7.html> <span>OST 7. Unwelcome School</span></a></p></div>','6gFyrw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Gathering Storm</p><ul><li>Aru grapples with the thought of using funds acquired by the Foreclosure Task Force to attack Abydos High School. To lift her spirits, Problem Solver takes her to get Shiba Seki ramen. Meanwhile, a man in a black suit appears before Hoshino with a clandestine proposal.</li></ul></div>','yuE7Qq': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Battle Again</p><p>Aru is worried all night about another attack against Abydos. Haruka already set the bombs in place. Mutsuki can&#x27t understand why Aru doesn&#x27t take the money first, and Aru says it is because of the concern on being interfering too much by the customer.</p><hr><p>Character:<span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/6.html> <span>OST 6. Funky Road</span></a></p></div>', });
     </script>
 
 
@@ -499,16 +567,25 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Aru"><span>【2】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/aru/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="Cen4Th" >
+                <img src="/static/images/student/icon/10000.webp" class="icon-stu">
+                <span>Aru</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/aru/#track-OST_6" onmouseover="showTooltip(this, 'sRNuDo')">
-                    <img src="/static/images/student/icon/10000.webp" class="icon-stu"/>Aru
-                </a>
-                &nbsp;<span>[Problem Solver 68]</span>
+                <span>&nbsp;[Problem Solver 68]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -516,16 +593,25 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Haruka"><span>【2】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/haruka/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="LYIagU" >
+                <img src="/static/images/student/icon/16000.webp" class="icon-stu">
+                <span>Haruka</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/haruka/#track-OST_6" onmouseover="showTooltip(this, 'yGIpMk')">
-                    <img src="/static/images/student/icon/16000.webp" class="icon-stu"/>Haruka
-                </a>
-                &nbsp;<span>[Problem Solver 68]</span>
+                <span>&nbsp;[Problem Solver 68]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -533,16 +619,25 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Kayoko"><span>【2】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/kayoko/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="iMKFJT" >
+                <img src="/static/images/student/icon/13005.webp" class="icon-stu">
+                <span>Kayoko</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/kayoko/#track-OST_6" onmouseover="showTooltip(this, 'bBKHx9')">
-                    <img src="/static/images/student/icon/13005.webp" class="icon-stu"/>Kayoko
-                </a>
-                &nbsp;<span>[Problem Solver 68]</span>
+                <span>&nbsp;[Problem Solver 68]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -550,16 +645,25 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Mutsuki"><span>【2】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/mutsuki/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="rLvDQ4" >
+                <img src="/static/images/student/icon/13006.webp" class="icon-stu">
+                <span>Mutsuki</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/mutsuki/#track-OST_6" onmouseover="showTooltip(this, 'Ufi4KX')">
-                    <img src="/static/images/student/icon/13006.webp" class="icon-stu"/>Mutsuki
-                </a>
-                &nbsp;<span>[Problem Solver 68]</span>
+                <span>&nbsp;[Problem Solver 68]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -567,16 +671,25 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Hifumi"><span>【1】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/hifumi/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="Q3NvIN" >
+                <img src="/static/images/student/icon/10003.webp" class="icon-stu">
+                <span>Hifumi</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/hifumi/#track-OST_6" onmouseover="showTooltip(this, '7h_anB')">
-                    <img src="/static/images/student/icon/10003.webp" class="icon-stu"/>Hifumi
-                </a>
-                &nbsp;<span>[Make-Up Work Club]</span>
+                <span>&nbsp;[Make-Up Work Club]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -584,16 +697,25 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Hoshino"><span>【1】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/hoshino/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="vqVvSs" >
+                <img src="/static/images/student/icon/10005.webp" class="icon-stu">
+                <span>Hoshino</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/hoshino/#track-OST_6" onmouseover="showTooltip(this, 'KVqj0Y')">
-                    <img src="/static/images/student/icon/10005.webp" class="icon-stu"/>Hoshino
-                </a>
-                &nbsp;<span>[Foreclosure Task Force]</span>
+                <span>&nbsp;[Foreclosure Task Force]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -601,16 +723,25 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Nonomi"><span>【1】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/nonomi/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="taijnC" >
+                <img src="/static/images/student/icon/13004.webp" class="icon-stu">
+                <span>Nonomi</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/nonomi/#track-OST_6" onmouseover="showTooltip(this, 'gopbZh')">
-                    <img src="/static/images/student/icon/13004.webp" class="icon-stu"/>Nonomi
-                </a>
-                &nbsp;<span>[Foreclosure Task Force]</span>
+                <span>&nbsp;[Foreclosure Task Force]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -618,16 +749,25 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Serika"><span>【1】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/serika/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="8K4rxs" >
+                <img src="/static/images/student/icon/13008.webp" class="icon-stu">
+                <span>Serika</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/serika/#track-OST_6" onmouseover="showTooltip(this, 'iX7RPT')">
-                    <img src="/static/images/student/icon/13008.webp" class="icon-stu"/>Serika
-                </a>
-                &nbsp;<span>[Foreclosure Task Force]</span>
+                <span>&nbsp;[Foreclosure Task Force]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
             
             
@@ -635,48 +775,97 @@ Story Volume 1 Chapter 1 Episode 17: The Gathering Storm
             
 
             <li id="Shiroko"><span>【1】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/en/character/student/shiroko/#track-OST_6" onmouseover="showTooltip(this)" data-tooltip="_lJtuP" >
+                <img src="/static/images/student/icon/10010.webp" class="icon-stu">
+                <span>Shiroko</span>
+            </a>
+        </span>
+        
             
-                <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
-                <a href="/en/character/student/shiroko/#track-OST_6" onmouseover="showTooltip(this, 'ez7gb8')">
-                    <img src="/static/images/student/icon/10010.webp" class="icon-stu"/>Shiroko
-                </a>
-                &nbsp;<span>[Foreclosure Task Force]</span>
+                <span>&nbsp;[Foreclosure Task Force]</span>
             
-
+        
+    
+</li>
             
-            </li>
         
     </ul>
 
     
     <script>
-        add_tooltip_data({ 'sRNuDo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aru</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li><li><a href=/en/main/story/main/1/1/17.html> Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm </a></li></ol></div>','yGIpMk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Haruka</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li><li><a href=/en/main/story/main/1/1/17.html> Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm </a></li></ol></div>','bBKHx9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kayoko</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li><li><a href=/en/main/story/main/1/1/17.html> Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm </a></li></ol></div>','Ufi4KX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Mutsuki</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li><li><a href=/en/main/story/main/1/1/17.html> Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm </a></li></ol></div>','7h_anB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hifumi</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li></ol></div>','KVqj0Y': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li></ol></div>','gopbZh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Nonomi</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li></ol></div>','iX7RPT': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li></ol></div>','ez7gb8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Shiroko</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/14.html> Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2 </a></li></ol></div>', });
+        add_tooltip_data({ 'Cen4Th': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aru</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/8.html>Main Story Volume 1 Chapter 1 Episode 8: The Might of Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Hindsight</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Approaching Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] PMC&#x27s Confusion</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Aru Borrowing Money</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/17.html>Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] Battle Again</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/18.html>Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] This Raman Restaurant</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Unknown Gunfire</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Cooperation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] A Lasting Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/3.html>Main Story Volume 1 Chapter 2 Episode 3: Farewell, Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] Problem Solver On Move</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] Meeting Problem Solver</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Problem Solver 68</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Shiba Ramen</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>','LYIagU': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Haruka</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/8.html>Main Story Volume 1 Chapter 1 Episode 8: The Might of Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Hindsight</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Approaching Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] PMC&#x27s Confusion</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Aru Borrowing Money</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/17.html>Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] Battle Again</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/18.html>Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] This Raman Restaurant</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] Explosion Accident</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Chairman Ako</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Encounter Haruka</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The Revenge of Problem Solver</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Cooperation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/3.html>Main Story Volume 1 Chapter 2 Episode 3: Farewell, Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] Problem Solver On Move</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] Meeting Problem Solver</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Problem Solver 68</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Shiba Ramen</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>','iMKFJT': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kayoko</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/8.html>Main Story Volume 1 Chapter 1 Episode 8: The Might of Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Hindsight</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Approaching Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] PMC&#x27s Confusion</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Aru Borrowing Money</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/17.html>Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] Battle Again</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/18.html>Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] This Raman Restaurant</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] Explosion Accident</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Unknown Gunfire</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Interference</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The Revenge of Problem Solver</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The True Intent</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Cooperation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] A Lasting Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/3.html>Main Story Volume 1 Chapter 2 Episode 3: Farewell, Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] Problem Solver On Move</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] Meeting Problem Solver</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Problem Solver 68</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Retreat</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Shiba Ramen</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>','rLvDQ4': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Mutsuki</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/8.html>Main Story Volume 1 Chapter 1 Episode 8: The Might of Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Hindsight</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Approaching Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/10.html>Main Story Volume 1 Chapter 1 Episode 10: In Search of a Clue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] Meeting Ayane and Mutsuki</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] PMC&#x27s Confusion</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Aru Borrowing Money</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/17.html>Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] Battle Again</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/18.html>Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] This Raman Restaurant</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] Explosion Accident</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Unknown Gunfire</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Interference</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The Revenge of Problem Solver</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Cooperation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] A Lasting Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/3.html>Main Story Volume 1 Chapter 2 Episode 3: Farewell, Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] Problem Solver On Move</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] Meeting Problem Solver</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Problem Solver 68</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Retreat</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Shiba Ramen</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>','Q3NvIN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hifumi</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/11.html>Main Story Volume 1 Chapter 1 Episode 11: To the Black Market! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] First Time At The Market</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Hifumi&#x27s Reason</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Leave As Soon As Possible</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Leading The Way</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/13.html>Main Story Volume 1 Chapter 1 Episode 13: The Masked Swimsuit Gang! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] Taking a Short Break</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Black Market Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Truth Unveiled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Escape</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Bottom Line That Cannot Be Crossed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/16.html>Main Story Volume 1 Chapter 1 Episode 16: The Truth Revealed</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] Truths Surfacing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The True Intent</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Trinity General School</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol></div>','vqVvSs': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/2.html>Main Story Volume 1 Chapter 1 Episode 2: First Day at Abydos</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Arriving at Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Engaging</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Victory</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/3.html>Main Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] A Self-Introduction</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] An Complete Annihilation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] Return To School</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/4.html>Main Story Volume 1 Chapter 1 Episode 4: The Task Force&#x27s Predicament</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] Discussing About the Battle Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] The Debt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/5.html>Main Story Volume 1 Chapter 1 Episode 5: A Day in the Life of Serika</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/5.html#story-part-1-seg-1><i>[1] The Ramen Store</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/6.html>Main Story Volume 1 Chapter 1 Episode 6: Rescue Mission!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] The Missing Serika</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Serika Being Rescued</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/7.html>Main Story Volume 1 Chapter 1 Episode 7: A New Threat?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/7.html#story-part-1-seg-1><i>[1] The Hidden Story</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/8.html>Main Story Volume 1 Chapter 1 Episode 8: The Might of Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Discussion On The Debts</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Serika Being Deceived</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Hijack School Buses</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Rob a Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Pop Idols</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Choice by Sensei</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Approaching Battle</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/10.html>Main Story Volume 1 Chapter 1 Episode 10: In Search of a Clue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] The Monthly Payment</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] About The Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/11.html>Main Story Volume 1 Chapter 1 Episode 11: To the Black Market! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] First Time At The Market</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Hifumi&#x27s Reason</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Leave As Soon As Possible</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Leading The Way</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/13.html>Main Story Volume 1 Chapter 1 Episode 13: The Masked Swimsuit Gang! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] Taking a Short Break</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Black Market Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Truth Unveiled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Escape</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Bottom Line That Cannot Be Crossed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/16.html>Main Story Volume 1 Chapter 1 Episode 16: The Truth Revealed</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] Truths Surfacing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/17.html>Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] Hoshino and Her Senior</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] The Black Suit</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/2.html>Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Negotiation With Hina</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Battle Ended</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/4.html>Main Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] An Argument</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] An Emergency</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/5.html>Main Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Kaiser Group</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Student Union At The Time</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Digging Into The Reason</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] A Clear Situation</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/6.html>Main Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Arrived At The Desert</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/7.html>Main Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] In Front of the Oasis</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/8.html>Main Story Volume 1 Chapter 2 Episode 8: Into the Abydos Desert Part 3</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] An Unusual Facility</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] Under Attack</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/9.html>Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] An Unknown Building</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Kaiser PMC</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Not Near Ending</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Discussing the Debt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/11.html>Main Story Volume 1 Chapter 2 Episode 11: A Losing Battle</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] A Debt Can&#x27t Be Filled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/12.html>Main Story Volume 1 Chapter 2 Episode 12: Secrets</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] Memory</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] Reviewing the Situation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] A Talk With Hoshino</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] A Like Towards School</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] A Deal</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] PMC Hiring Professionals</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/13.html>Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] Signing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] An Endless Journey</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Hoshino</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Hoshino&#x27s Regrets</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/19.html>Main Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] Hoshino&#x27s Memory</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] The Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] Hoshino Senpai!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/20.html>Main Story Volume 1 Chapter 2 Episode 20: Epilogue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/20.html#story-part-1-seg-1><i>[1] Mining With GPU</i></a></span><span>)</span></li></ol></div>','taijnC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Nonomi</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/2.html>Main Story Volume 1 Chapter 1 Episode 2: First Day at Abydos</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Arriving at Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Engaging</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Victory</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/3.html>Main Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] A Self-Introduction</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] An Complete Annihilation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/4.html>Main Story Volume 1 Chapter 1 Episode 4: The Task Force&#x27s Predicament</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] Discussing About the Battle Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] Serika Leaving</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/5.html>Main Story Volume 1 Chapter 1 Episode 5: A Day in the Life of Serika</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/5.html#story-part-1-seg-1><i>[1] The Ramen Store</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/6.html>Main Story Volume 1 Chapter 1 Episode 6: Rescue Mission!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] The Missing Serika</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Serika Being Rescued</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/7.html>Main Story Volume 1 Chapter 1 Episode 7: A New Threat?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/7.html#story-part-1-seg-1><i>[1] The Hidden Story</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/8.html>Main Story Volume 1 Chapter 1 Episode 8: The Might of Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Discussion On The Debts</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Serika Being Deceived</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Rob a Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Pop Idols</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Choice by Sensei</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Hindsight</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Approaching Battle</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/10.html>Main Story Volume 1 Chapter 1 Episode 10: In Search of a Clue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] The Monthly Payment</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] About The Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/11.html>Main Story Volume 1 Chapter 1 Episode 11: To the Black Market! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] First Time At The Market</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Hifumi&#x27s Reason</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Leave As Soon As Possible</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Leading The Way</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/13.html>Main Story Volume 1 Chapter 1 Episode 13: The Masked Swimsuit Gang! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] Taking a Short Break</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Black Market Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Truth Unveiled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Escape</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Bottom Line That Cannot Be Crossed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/16.html>Main Story Volume 1 Chapter 1 Episode 16: The Truth Revealed</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] Truths Surfacing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/17.html>Main Story Volume 1 Chapter 1 Episode 17: The Gathering Storm</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/17.html#story-part-1-seg-1><i>[1] Hoshino and Her Senior</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/18.html>Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] Explosion Accident</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Unknown Gunfire</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Interference</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Chairman Ako</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] An Apology</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Motivation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The True Intent</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Cooperation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Hina, Arrived!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/2.html>Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Negotiation With Hina</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] An Apology From Hina</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Battle Ended</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/4.html>Main Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] Meeting Nonomi</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] Uneasy Shiroko</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] An Argument</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] An Emergency</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/5.html>Main Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Kaiser Group</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Digging Into The Reason</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] A Clear Situation</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/6.html>Main Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1</a> <span>(appeared at </span><span><a class=text-danger href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/7.html>Main Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] In Front of the Oasis</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/8.html>Main Story Volume 1 Chapter 2 Episode 8: Into the Abydos Desert Part 3</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] Under Attack</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/9.html>Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] An Unknown Building</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Kaiser PMC</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Not Near Ending</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Discussing the Debt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/11.html>Main Story Volume 1 Chapter 2 Episode 11: A Losing Battle</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] A Debt Can&#x27t Be Filled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/12.html>Main Story Volume 1 Chapter 2 Episode 12: Secrets</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] Reviewing the Situation</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/13.html>Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] How Could She!</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Despair</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Retreat</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/16.html>Main Story Volume 1 Chapter 2 Episode 16: Battle Between Adults</a> <span>(appeared at </span><span><a class=text-danger href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Back At Club Room</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Helpers</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Abydos High School</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] Trinity&#x27s Reinforcement</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/19.html>Main Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] The Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] Hoshino Senpai!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/20.html>Main Story Volume 1 Chapter 2 Episode 20: Epilogue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/20.html#story-part-1-seg-1><i>[1] Mining With GPU</i></a></span><span>)</span></li></ol></div>','8K4rxs': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/2.html>Main Story Volume 1 Chapter 1 Episode 2: First Day at Abydos</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Arriving at Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Engaging</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Victory</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/3.html>Main Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] A Self-Introduction</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] An Complete Annihilation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/4.html>Main Story Volume 1 Chapter 1 Episode 4: The Task Force&#x27s Predicament</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] Discussing About the Battle Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] Serika Leaving</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/5.html>Main Story Volume 1 Chapter 1 Episode 5: A Day in the Life of Serika</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/5.html#story-part-1-seg-1><i>[1] Bumping Into Serika</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/5.html#story-part-1-seg-1><i>[1] The Ramen Store</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/5.html#story-part-1-seg-1><i>[1] Off the Work</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/6.html>Main Story Volume 1 Chapter 1 Episode 6: Rescue Mission!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Words of Serika</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Serika Being Rescued</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/7.html>Main Story Volume 1 Chapter 1 Episode 7: A New Threat?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/7.html#story-part-1-seg-1><i>[1] The Hidden Story</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/7.html#story-part-1-seg-1><i>[1] A Thank From Serika</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/8.html>Main Story Volume 1 Chapter 1 Episode 8: The Might of Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Discussion On The Debts</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Serika Being Deceived</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Rob a Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Pop Idols</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Choice by Sensei</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Hindsight</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Approaching Battle</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/10.html>Main Story Volume 1 Chapter 1 Episode 10: In Search of a Clue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] The Monthly Payment</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] About The Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/11.html>Main Story Volume 1 Chapter 1 Episode 11: To the Black Market! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] First Time At The Market</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Hifumi&#x27s Reason</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Leave As Soon As Possible</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Leading The Way</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/13.html>Main Story Volume 1 Chapter 1 Episode 13: The Masked Swimsuit Gang! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] Taking a Short Break</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Black Market Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Truth Unveiled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Escape</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Bottom Line That Cannot Be Crossed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/16.html>Main Story Volume 1 Chapter 1 Episode 16: The Truth Revealed</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] Truths Surfacing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/18.html>Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] Explosion Accident</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Unknown Gunfire</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Interference</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Chairman Ako</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] An Apology</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Motivation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The True Intent</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Cooperation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] A Lasting Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Hina, Arrived!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/2.html>Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Negotiation With Hina</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Battle Ended</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/3.html>Main Story Volume 1 Chapter 2 Episode 3: Farewell, Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/3.html#story-part-1-seg-1><i>[1] A Conversation With Master Shiba</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/4.html>Main Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] An Emergency</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/5.html>Main Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Kaiser Group</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Student Union At The Time</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Digging Into The Reason</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] A Clear Situation</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/6.html>Main Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Arrived At The Desert</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/7.html>Main Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] In Front of the Oasis</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/8.html>Main Story Volume 1 Chapter 2 Episode 8: Into the Abydos Desert Part 3</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] Under Attack</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/9.html>Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] An Unknown Building</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Kaiser PMC</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Not Near Ending</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Discussing the Debt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/11.html>Main Story Volume 1 Chapter 2 Episode 11: A Losing Battle</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] A Debt Can&#x27t Be Filled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/12.html>Main Story Volume 1 Chapter 2 Episode 12: Secrets</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] Reviewing the Situation</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/13.html>Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] How Could She!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] PMC&#x27s Occupation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Despair</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Retreat</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/16.html>Main Story Volume 1 Chapter 2 Episode 16: Battle Between Adults</a> <span>(appeared at </span><span><a class=text-danger href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Back At Club Room</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Helpers</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Abydos High School</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] Trinity&#x27s Reinforcement</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/19.html>Main Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] The Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] Hoshino Senpai!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/20.html>Main Story Volume 1 Chapter 2 Episode 20: Epilogue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/20.html#story-part-1-seg-1><i>[1] Shiba Ramen</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/20.html#story-part-1-seg-1><i>[1] Mining With GPU</i></a></span><span>)</span></li></ol></div>','_lJtuP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Shiroko</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/2.html>Main Story Volume 1 Chapter 1 Episode 2: First Day at Abydos</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Shiroko</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Explanation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Arriving at Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Engaging</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Victory</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/3.html>Main Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] A Self-Introduction</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] An Complete Annihilation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] Return To School</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/4.html>Main Story Volume 1 Chapter 1 Episode 4: The Task Force&#x27s Predicament</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] Discussing About the Battle Plan</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] The Debt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/5.html>Main Story Volume 1 Chapter 1 Episode 5: A Day in the Life of Serika</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/5.html#story-part-1-seg-1><i>[1] The Ramen Store</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/6.html>Main Story Volume 1 Chapter 1 Episode 6: Rescue Mission!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] The Missing Serika</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Serika Being Rescued</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/7.html>Main Story Volume 1 Chapter 1 Episode 7: A New Threat?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/7.html#story-part-1-seg-1><i>[1] The Hidden Story</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/8.html>Main Story Volume 1 Chapter 1 Episode 8: The Might of Problem Solver 68</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Discussion On The Debts</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Serika Being Deceived</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Hijack School Buses</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Rob a Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] Pop Idols</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Choice by Sensei</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/8.html#story-part-1-seg-1><i>[1] The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Approaching Battle</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/10.html>Main Story Volume 1 Chapter 1 Episode 10: In Search of a Clue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] The Monthly Payment</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/10.html#story-part-1-seg-1><i>[1] About The Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/11.html>Main Story Volume 1 Chapter 1 Episode 11: To the Black Market! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] First Time At The Market</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Hifumi&#x27s Reason</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/11.html#story-part-1-seg-1><i>[1] Leave As Soon As Possible</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] Leading The Way</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/13.html>Main Story Volume 1 Chapter 1 Episode 13: The Masked Swimsuit Gang! Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] Taking a Short Break</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Black Market Bank</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/13.html#story-part-1-seg-1><i>[1] The Truth Unveiled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/14.html>Main Story Volume 1 Chapter 1 Episode 14: The Masked Swimsuit Gang! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Aru Being Rejected</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] The Masked Swimsuit Gang</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/14.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Escape</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Bottom Line That Cannot Be Crossed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/16.html>Main Story Volume 1 Chapter 1 Episode 16: The Truth Revealed</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] Truths Surfacing</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/16.html#story-part-1-seg-1><i>[1] An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/18.html>Main Story Volume 1 Chapter 1 Episode 18: We&#x27re Not Their Friends!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/18.html#story-part-1-seg-1><i>[1] Explosion Accident</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/19.html>Main Story Volume 1 Chapter 1 Episode 19: You&#x27ll Pay for This!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] The Real Villain</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/19.html#story-part-1-seg-1><i>[1] Unknown Gunfire</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/20.html>Main Story Volume 1 Chapter 1 Episode 20: The Prefect Team Goes to War!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Interference</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/20.html#story-part-1-seg-1><i>[1] Chairman Ako</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/1.html>Main Story Volume 1 Chapter 2 Episode 1: An Unexpected Alliance</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] An Apology</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Problem Solver&#x27s Motivation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] The True Intent</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Cooperation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/1.html#story-part-1-seg-1><i>[1] Hina, Arrived!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/2.html>Main Story Volume 1 Chapter 2 Episode 2: The Gehenna Head Prefect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Negotiation With Hina</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/2.html#story-part-1-seg-1><i>[1] Battle Ended</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/4.html>Main Story Volume 1 Chapter 2 Episode 4: Everyone Has a Story Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] Uneasy Shiroko</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] An Argument</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/4.html#story-part-1-seg-1><i>[1] An Emergency</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/5.html>Main Story Volume 1 Chapter 2 Episode 5: Everyone Has a Story Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Kaiser Group</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Student Union At The Time</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Digging Into The Reason</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] A Clear Situation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/5.html#story-part-1-seg-1><i>[1] Hoshino&#x27s Secret</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/6.html>Main Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Arrived At The Desert</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/7.html>Main Story Volume 1 Chapter 2 Episode 7: Into the Abydos Desert Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] In Front of the Oasis</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/7.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/8.html>Main Story Volume 1 Chapter 2 Episode 8: Into the Abydos Desert Part 3</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] Under Attack</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/8.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/9.html>Main Story Volume 1 Chapter 2 Episode 9: Kaiser PMC Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] An Unknown Building</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Kaiser PMC</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/9.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Not Near Ending</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Discussing the Debt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/11.html>Main Story Volume 1 Chapter 2 Episode 11: A Losing Battle</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] A Debt Can&#x27t Be Filled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/12.html>Main Story Volume 1 Chapter 2 Episode 12: Secrets</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] Reviewing the Situation</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/12.html#story-part-1-seg-1><i>[1] A Talk With Hoshino</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/13.html>Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] How Could She!</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] PMC&#x27s Occupation</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Despair</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Retreat</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/16.html>Main Story Volume 1 Chapter 2 Episode 16: Battle Between Adults</a> <span>(appeared at </span><span><a class=text-danger href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Back At Club Room</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/16.html#story-part-1-seg-1><i>[1] Helpers</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Abydos High School</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] Trinity&#x27s Reinforcement</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/19.html>Main Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>, </span><span><a class=text-danger href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] Battle</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] The Foreclosure Task Force</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] Hoshino Senpai!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/20.html>Main Story Volume 1 Chapter 2 Episode 20: Epilogue</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/20.html#story-part-1-seg-1><i>[1] Mining With GPU</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/track/ost/5.html">&lt;-- Previous page: Colorful Mess</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/track/ost/7.html">--&gt; Next page: Unwelcome School</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:20:22 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:20:22
 -->
 </body>
 </html>

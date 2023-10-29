@@ -7,10 +7,10 @@
 
     <title>Student/Noa- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,77 +84,67 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
+        
 
-    
+        
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     <h1>Student/Noa</h1>
     
+
 <table id="infobox">
     <tr>
         <td colspan="2" class="infobox-title">Ushio Noa</td>
@@ -247,16 +237,13 @@
         <li id="story-MAIN_2_2_12">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/12.html" onmouseover="showTooltip(this, 'z_B33F')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 12: Strategy Meeting
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/12.html"  onmouseover="showTooltip(this)" data-tooltip="WH7UgT">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>
+    
+
         
 
         
@@ -266,82 +253,118 @@ Story Volume 2 Chapter 2 Episode 12: Strategy Meeting
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
-
+                    
                         
                             
+                    
                         
 
-                        
-                        
-            
-                
                 
                     
-                
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
                     
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/12.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'b_cHZZ')"><i>[1] The Seminar</i></a>,&nbsp;<a href="/en/main/story/main/2/2/12.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'E0Px3d')"><i>[2] Embezzled Money</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/12.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="qsNmiD"><i>[1]&nbsp;The Seminar</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="tOxFDh"><i>[2]&nbsp;Embezzled Money</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -355,16 +378,13 @@ Story Volume 2 Chapter 2 Episode 12: Strategy Meeting
         <li id="story-MAIN_2_2_22">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/22.html" onmouseover="showTooltip(this, '9yvZMy')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/22.html"  onmouseover="showTooltip(this)" data-tooltip="Msj5ur">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>
+    
+
         
 
         
@@ -374,62 +394,87 @@ Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/22.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'AXgPwk')"><i>[3] Key</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="DWVUHd"><i>[3]&nbsp;Key</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -443,16 +488,13 @@ Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1
         <li id="story-MAIN_2_2_23">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/23.html" onmouseover="showTooltip(this, 'IThlz_')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/23.html"  onmouseover="showTooltip(this)" data-tooltip="ba9jFX">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>
+    
+
         
 
         
@@ -462,59 +504,89 @@ Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
                 
                 
                     
-                
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
+                    
                     
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
+                
+            
+                
                 
                     
-                
                     
-                
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/23.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'XrAUrb')"><i>[1] Precise Timing</i></a>,&nbsp;<a href="/en/main/story/main/2/2/23.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'3rbeNT')"><i>[3] The Way To Wake Up</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/23.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="tAlbo6"><i>[1]&nbsp;Precise Timing</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Qz7tYS"><i>[3]&nbsp;The Way To Wake Up</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -528,16 +600,13 @@ Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
         <li id="story-MAIN_2_2_25">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/25.html" onmouseover="showTooltip(this, 'v0cVv0')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 25: Millennium Science School
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/25.html"  onmouseover="showTooltip(this)" data-tooltip="_vcUQ6">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>
+    
+
         
 
         
@@ -547,90 +616,133 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
-                            
+                    
                         
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
+                    
                         
-            
-                
-                
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
-                    
-                
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/25.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'F2V2cy')"><i>[2] Rio's Resignation</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/25.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="_DPNnc"><i>[2]&nbsp;Rio's Resignation</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'z_B33F': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Strategy Meeting</p><ul><li>The Game Development Department and others search for Aris&#x27 whereabouts. With the help of Noa and Yuuka, they learn that Aris is headed to Eridu, a fortified city that Rio built. Before infiltrating Eridu, Neru proposes a plan.</li></ul></div>','b_cHZZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Seminar</p><p>The all contacted Yuuka. Yuuka was surprised to hear that Aris had been taken away. Sensei asked help from Seminar and hoped to locate Aris.</p><hr><p>Character:  <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','E0Px3d': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Embezzled Money</p><p>As Sensei expected, Yuuka and Noa found financial records that were intentionally hid and deleted. Yuuka was even surprised by this. After recovering and tracking, Yuuka found a fortress city named "Eridu", which was said to be built by the President. Yuuka sent the location and apologized for not being able to help due to their stance.</p><hr><p>Character:  <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span>   <span> <a href=/en/character/student/akane/> <img class=icon-stu src=/static/images/student/icon/13000.webp>Akane </a> </span></p><hr><p>Track:  <a href=/en/track/ost/68.html>OST 68. Virtual Storm (Hard Arrange)</a></p></div>','9yvZMy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 1</p><ul><li>The Game Development Department arrives at Rio&#x27s location and are about to rescue Aris when an unknown being, Key, appears and takes control of Eridu. The results are catastrophic. Rio belatedly tries to sacrifice herself in an attempt to rectify the situation when Noa and Yuuka arrive.</li></ul></div>','AXgPwk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Key</p><p>What everyone embraced was not Aris, but rather another being, which was called Key. Aris&#x27 personality was isolated in the deep databases by Key, and it was Key acting right now. Key disconnected the comm and hacked Eridu, trying to make the city for her use; the army of Divi: Sion started gathering within the city. Rio apologized for her doings, and requested Sensei to leave before Key ever finished it, trying to stop it on her own. At that urgent moment, Yuuka intervened just in time and disconnected the power of Key, forcing it to stop.</p><hr><p>Character:  <a href=/en/character/npc/ariskey/>Key</a>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp>Chihiro </a> </span>   <a href=/en/character/npc/rio/>Rio</a>   <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span></p><hr><p>Track:  <a href=/en/track/ost/122.html>OST 122. [UNNAMED]</a>   <a href=/en/track/ost/65.html>OST 65. Accelerator</a></p></div>','IThlz_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 2</p><ul><li>The Game Development Department successfully restrain Key with Yuuka and Noa&#x27s assistance. As the Game Development Department and Veritas fend off the enemies that are crawling out of the woodwork, Himari helps Momoi, Midori, Yuzu, and Sensei enter Aris&#x27 headspace to try to wake her.</li></ul></div>','XrAUrb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Precise Timing</p><p>Noa explained that Yuuka didn&#x27t feel well after the conversation and decided to intervene and help. Yuuka lectured Rio, saying that she would be held accountable severely. The Engineering Department was ready at then, bringing the modified Avant Guard to join in the battle. Key restarted system and began to re-secure resources, gathering troops to the central tower; but they were interfered by Avant Guard and the Engineering Department.</p><hr><p>Character:  <a href=/en/character/npc/ariskey/>Key</a>   <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <a href=/en/character/npc/rio/>Rio</a>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span>   <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span></p><hr><p>Track:  <a href=/en/track/ost/76.html>OST 76. Crossfire (Hard Arrange)</a></p></div>','3rbeNT': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Way To Wake Up</p><p>Himari made it clear that under current situation, it is possible that Key would eventually take over Aris&#x27 personality. Therefore, the best solution now should be waking Aris up. When asked how, Himari purposed that the GDD and Sensei shall dive into the machine&#x27s consciousness and databases, and bring Aris back at there. Rio pointed out the potential dangers in it, but no one was backing away. Under the protection of almost all effectives from Millennium, Himari started looking for a break through.</p><hr><p>Character:  <span> <a href=/en/character/student/himari/> <img class=icon-stu src=/static/images/student/icon/20020.webp>Himari </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp>Sumire </a> </span>  and more.</p><hr><p>Track:  <a href=/en/track/ost/40.html>OST 40. Neo City Dive</a></p></div>','v0cVv0': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','F2V2cy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Rio&#x27s Resignation</p><p>Rio decided to step down as the president after this incident. Though in great shock, Yuuka could only find a note left by the President, with "I&#x27m sorry" on it.</p><hr><p>Character:  <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span></p><hr><p>Track:  <a href=/en/track/ost/31.html>OST 31. Hello to Halo</a></p></div>', });
+        add_tooltip_data({ 'WH7UgT': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Strategy Meeting</p><ul><li>The Game Development Department and others search for Aris&#x27 whereabouts. With the help of Noa and Yuuka, they learn that Aris is headed to Eridu, a fortified city that Rio built. Before infiltrating Eridu, Neru proposes a plan.</li></ul></div>','qsNmiD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Seminar</p><p>The all contacted Yuuka. Yuuka was surprised to hear that Aris had been taken away. Sensei asked help from Seminar and hoped to locate Aris.</p><hr><p>Character:<span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','tOxFDh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Embezzled Money</p><p>As Sensei expected, Yuuka and Noa found financial records that were intentionally hid and deleted. Yuuka was even surprised by this. After recovering and tracking, Yuuka found a fortress city named "Eridu", which was said to be built by the President. Yuuka sent the location and apologized for not being able to help due to their stance.</p><hr><p>Character:<span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span> | </span><span> <a href=/en/character/student/akane/> <img class=icon-stu src=/static/images/student/icon/13000.webp> <span>Akane</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/68.html> <span>OST 68. Virtual Storm (Hard Arrange)</span></a></p></div>','Msj5ur': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 1</p><ul><li>The Game Development Department arrives at Rio&#x27s location and are about to rescue Aris when an unknown being, Key, appears and takes control of Eridu. The results are catastrophic. Rio belatedly tries to sacrifice herself in an attempt to rectify the situation when Noa and Yuuka arrive.</li></ul></div>','DWVUHd': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Key</p><p>What everyone embraced was not Aris, but rather another being, which was called Key. Aris&#x27 personality was isolated in the deep databases by Key, and it was Key acting right now. Key disconnected the comm and hacked Eridu, trying to make the city for her use; the army of Divi: Sion started gathering within the city. Rio apologized for her doings, and requested Sensei to leave before Key ever finished it, trying to stop it on her own. At that urgent moment, Yuuka intervened just in time and disconnected the power of Key, forcing it to stop.</p><hr><p>Character:<span> <a href=/en/character/npc/ariskey/> <span>Key</span></a>  | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp> <span>Chihiro</span></a> </span> | </span><span> <a href=/en/character/npc/rio/> <span>Rio</span></a>  | </span><span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/122.html> <span>OST 122. [UNNAMED]</span></a> <a href=/en/track/ost/65.html> <span>OST 65. Accelerator</span></a></p></div>','ba9jFX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 2</p><ul><li>The Game Development Department successfully restrain Key with Yuuka and Noa&#x27s assistance. As the Game Development Department and Veritas fend off the enemies that are crawling out of the woodwork, Himari helps Momoi, Midori, Yuzu, and Sensei enter Aris&#x27 headspace to try to wake her.</li></ul></div>','tAlbo6': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Precise Timing</p><p>Noa explained that Yuuka didn&#x27t feel well after the conversation and decided to intervene and help. Yuuka lectured Rio, saying that she would be held accountable severely. The Engineering Department was ready at then, bringing the modified Avant Guard to join in the battle. Key restarted system and began to re-secure resources, gathering troops to the central tower; but they were interfered by Avant Guard and the Engineering Department.</p><hr><p>Character:<span> <a href=/en/character/npc/ariskey/> <span>Key</span></a>  | </span><span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <a href=/en/character/npc/rio/> <span>Rio</span></a>  | </span><span> <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp> <span>Kotori</span></a> </span> | </span><span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/76.html> <span>OST 76. Crossfire (Hard Arrange)</span></a></p></div>','Qz7tYS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Way To Wake Up</p><p>Himari made it clear that under current situation, it is possible that Key would eventually take over Aris&#x27 personality. Therefore, the best solution now should be waking Aris up. When asked how, Himari purposed that the GDD and Sensei shall dive into the machine&#x27s consciousness and databases, and bring Aris back at there. Rio pointed out the potential dangers in it, but no one was backing away. Under the protection of almost all effectives from Millennium, Himari started looking for a break through.</p><hr><p>Character:<span> <span> <a href=/en/character/student/himari/> <img class=icon-stu src=/static/images/student/icon/20020.webp> <span>Himari</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp> <span>Sumire</span></a> </span><span> and more.</span></p><hr><p>Track: <a href=/en/track/ost/40.html> <span>OST 40. Neo City Dive</span></a></p></div>','_vcUQ6': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','_DPNnc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Rio&#x27s Resignation</p><p>Rio decided to step down as the president after this incident. Though in great shock, Yuuka could only find a note left by the President, with "I&#x27m sorry" on it.</p><hr><p>Character:<span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/31.html> <span>OST 31. Hello to Halo</span></a></p></div>', });
     </script>
 
 
@@ -645,105 +757,119 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_27"><a href="/en/track/ost/27.html" onmouseover="showTooltip(this, 'zeKY2W')">【1】
-    OST
- 27. Fade Out</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_31"><a href="/en/track/ost/31.html" onmouseover="showTooltip(this, 'IwH5Ky')">【1】
-    OST
- 31. Hello to Halo</a> by Nor</li>
+            <li id="track-OST_27">
+    <a href="/en/track/ost/27.html#Noa" onmouseover="showTooltip(this)" data-tooltip="n8FpbZ">
+        <span>【1】OST&nbsp;27.&nbsp;Fade Out</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_40"><a href="/en/track/ost/40.html" onmouseover="showTooltip(this, '6uslTD')">【1】
-    OST
- 40. Neo City Dive</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_65"><a href="/en/track/ost/65.html" onmouseover="showTooltip(this, 'NF46fy')">【1】
-    OST
- 65. Accelerator</a> by KARUT</li>
+            <li id="track-OST_31">
+    <a href="/en/track/ost/31.html#Noa" onmouseover="showTooltip(this)" data-tooltip="4kRj_T">
+        <span>【1】OST&nbsp;31.&nbsp;Hello to Halo</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_68"><a href="/en/track/ost/68.html" onmouseover="showTooltip(this, '62MXOC')">【1】
-    OST
- 68. Virtual Storm (Hard Arrange)</a> by Mitsukiyo</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_76"><a href="/en/track/ost/76.html" onmouseover="showTooltip(this, 'edwrj_')">【1】
-    OST
- 76. Crossfire (Hard Arrange)</a> by Mitsukiyo</li>
+            <li id="track-OST_40">
+    <a href="/en/track/ost/40.html#Noa" onmouseover="showTooltip(this)" data-tooltip="eo8x2X">
+        <span>【1】OST&nbsp;40.&nbsp;Neo City Dive</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_65">
+    <a href="/en/track/ost/65.html#Noa" onmouseover="showTooltip(this)" data-tooltip="4Pw3JM">
+        <span>【1】OST&nbsp;65.&nbsp;Accelerator</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_122"><a href="/en/track/ost/122.html" onmouseover="showTooltip(this, 'FxLF3V')">【1】
-    OST
- 122. [UNNAMED]</a> by Unknown</li>
+            <li id="track-OST_68">
+    <a href="/en/track/ost/68.html#Noa" onmouseover="showTooltip(this)" data-tooltip="cyqgj5">
+        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_76">
+    <a href="/en/track/ost/76.html#Noa" onmouseover="showTooltip(this)" data-tooltip="DWKIxb">
+        <span>【1】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange)</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_122">
+    <a href="/en/track/ost/122.html#Noa" onmouseover="showTooltip(this)" data-tooltip="hNwIRr">
+        <span>【1】OST&nbsp;122.&nbsp;[UNNAMED]</span>
+    </a>
+    
+</li>
 
             
                 
@@ -754,7 +880,7 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
     
         
     <script>
-        add_tooltip_data({ 'zeKY2W': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/12.html> Main Story Volume 2 Chapter 2 Episode 12: Strategy Meeting </a></li></ol></div>','IwH5Ky': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 31. Hello to Halo</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/25.html> Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School </a></li></ol></div>','6uslTD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 40. Neo City Dive</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/23.html> Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2 </a></li></ol></div>','NF46fy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 65. Accelerator</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/22.html> Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1 </a></li></ol></div>','62MXOC': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 68. Virtual Storm (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/12.html> Main Story Volume 2 Chapter 2 Episode 12: Strategy Meeting </a></li></ol></div>','edwrj_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 76. Crossfire (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/23.html> Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2 </a></li></ol></div>','FxLF3V': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 122. [UNNAMED]</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/22.html> Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1 </a></li></ol></div>', });
+        add_tooltip_data({ 'n8FpbZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/12.html>Main Story Volume 2 Chapter 2 Episode 12: Strategy Meeting</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] The Seminar</i></a></span><span>)</span></li></ol></div>','4kRj_T': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 31. Hello to Halo</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/25.html>Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] Rio&#x27s Resignation</i></a></span><span>)</span></li></ol></div>','eo8x2X': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 40. Neo City Dive</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/23.html>Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','4Pw3JM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 65. Accelerator</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/22.html>Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Key</i></a></span><span>)</span></li></ol></div>','cyqgj5': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 68. Virtual Storm (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/12.html>Main Story Volume 2 Chapter 2 Episode 12: Strategy Meeting</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/12.html#story-part-1-seg-1><i>[1] Embezzled Money</i></a></span><span>)</span></li></ol></div>','DWKIxb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 76. Crossfire (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/23.html>Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] Precise Timing</i></a></span><span>)</span></li></ol></div>','hNwIRr': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 122. [UNNAMED]</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/22.html>Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Key</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -794,28 +920,51 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:18:35 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:18:35
 -->
 </body>
 </html>

@@ -7,10 +7,10 @@
 
     <title>Background/BG_CityOffice.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CityDowntown_Night.jpg.html">&lt;-- Previous page: BG_CityDowntown_Night.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_CityDowntown_Night.jpg.html">&lt;-- Previous page: BG_CityDowntown_Night.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CityOffice_Night.jpg.html">--&gt; Next page: BG_CityOffice_Night.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_CityOffice_Night.jpg.html">--&gt; Next page: BG_CityOffice_Night.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_CityOffice.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_CityOffice.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_CityOffice.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_CityOffice.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_CityOffice.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_CityOffice.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_1_1_2">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/2.html" onmouseover="showTooltip(this, 'Be0ZWr')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 2: First Day at Abydos
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/2.html"  onmouseover="showTooltip(this)" data-tooltip="Vo9TTM">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;2:&nbsp;First Day at Abydos</a>
+    
+
         
 
         
@@ -234,52 +224,101 @@ Story Volume 1 Chapter 1 Episode 2: First Day at Abydos
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
                     
                 
+
+                
             
                 
                 
+                    
+                    
+                    
+                
+
+                
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/2.html#story-part-7" class="text-primary" onmouseover="showTooltip(this,'M6aJCW')"><i>[7] Victory</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/2.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="dvwcKI"><i>[7]&nbsp;Victory</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -293,16 +332,13 @@ Story Volume 1 Chapter 1 Episode 2: First Day at Abydos
         <li id="story-MAIN_1_1_3">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/3.html" onmouseover="showTooltip(this, 'TuUtcu')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/3.html"  onmouseover="showTooltip(this)" data-tooltip="RIwbEQ">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;3:&nbsp;Being an Adult is Amazing!</a>
+    
+
         
 
         
@@ -312,48 +348,84 @@ Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
+                    
+                    
+                    
                 
             
                 
                 
                     
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/3.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'T8DlKn')"><i>[2] An Complete Annihilation</i></a>,&nbsp;<a href="/en/main/story/main/1/1/3.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'BaiO8G')"><i>[4] Return To School</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/3.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="3JwuOB"><i>[2]&nbsp;An Complete Annihilation</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/3.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="NMaTDI"><i>[4]&nbsp;Return To School</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -367,16 +439,13 @@ Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!
         <li id="story-MAIN_1_1_4">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/4.html" onmouseover="showTooltip(this, '5z5FlB')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 4: The Task Force's Predicament
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/4.html"  onmouseover="showTooltip(this)" data-tooltip="TjPM16">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force's Predicament</a>
+    
+
         
 
         
@@ -386,36 +455,61 @@ Story Volume 1 Chapter 1 Episode 4: The Task Force's Predicament
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
-            
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/4.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'R8Sqks')"><i>[2] The Debt</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/4.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="zBAqbq"><i>[2]&nbsp;The Debt</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -429,16 +523,13 @@ Story Volume 1 Chapter 1 Episode 4: The Task Force's Predicament
         <li id="story-MAIN_1_1_9">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/9.html" onmouseover="showTooltip(this, '_8PJvj')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/9.html"  onmouseover="showTooltip(this)" data-tooltip="ju0ZoM">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>
+    
+
         
 
         
@@ -447,38 +538,69 @@ Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
+                    
                     
                 
             
                 
                 
+                    
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
                 
                 
                     
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/9.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'7pVoLr')"><i>[1] The Hindsight</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/9.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="AisDBN"><i>[1]&nbsp;The Hindsight</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -492,16 +614,13 @@ Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud
         <li id="story-MAIN_1_1_15">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/15.html" onmouseover="showTooltip(this, 'WbnKQq')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/15.html"  onmouseover="showTooltip(this)" data-tooltip="GPT90o">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;15:&nbsp;Riding off Into the Sunset!</a>
+    
+
         
 
         
@@ -511,61 +630,102 @@ Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/15.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'szbtpZ')"><i>[2] The Bottom Line That Cannot Be Crossed</i></a>,&nbsp;<a href="/en/main/story/main/1/1/15.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'Rvcxel')"><i>[3] Aru's Admiration</i></a>,&nbsp;<a href="/en/main/story/main/1/1/15.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'TcgrZa')"><i>[4] The Problem Solver Taking Money Away</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/15.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Y_CiTO"><i>[2]&nbsp;The Bottom Line That Cannot Be Crossed</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/15.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="iWg_pQ"><i>[3]&nbsp;Aru's Admiration</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/15.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="CFvO0x"><i>[4]&nbsp;The Problem Solver Taking Money Away</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -579,16 +739,13 @@ Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!
         <li id="story-MAIN_2_2_4">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/4.html" onmouseover="showTooltip(this, 'iPWzlc')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 4: Guided by Aris 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/4.html"  onmouseover="showTooltip(this)" data-tooltip="yNzMN2">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;4:&nbsp;Guided by Aris 1</a>
+    
+
         
 
         
@@ -598,47 +755,77 @@ Story Volume 2 Chapter 2 Episode 4: Guided by Aris 1
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
+
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
                     
                 
             
                 
                 
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/4.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'AOhqFx')"><i>[2] Outskirts of Millennium</i></a>,&nbsp;<a href="/en/main/story/main/2/2/4.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'dLZrgF')"><i>[3] A Temporary Retreat</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/4.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="iHU9Q8"><i>[2]&nbsp;Outskirts of Millennium</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/4.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="enLIqo"><i>[3]&nbsp;A Temporary Retreat</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -652,16 +839,13 @@ Story Volume 2 Chapter 2 Episode 4: Guided by Aris 1
         <li id="story-MAIN_2_2_25">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/25.html" onmouseover="showTooltip(this, 'W8Jcyd')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 25: Millennium Science School
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/25.html"  onmouseover="showTooltip(this)" data-tooltip="bR9eXl">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>
+    
+
         
 
         
@@ -671,55 +855,98 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/25.html#story-part-6" class="text-primary" onmouseover="showTooltip(this,'36OqgZ')"><i>[6] Watashitachi No Quest (Our Quest)</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="t9mqzp"><i>[6]&nbsp;Watashitachi No Quest (Our Quest)</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -737,16 +964,13 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
         <li id="story-OTHER_1_1_1">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/other/1/1/1.html" onmouseover="showTooltip(this, 'hXuZ2r')">
-                
-        Other
-Story Volume 1 Chapter 1 Episode 1: Prologue 1-1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/other/1/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="9bnAVR">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>
+    
+
         
 
         
@@ -756,55 +980,80 @@ Story Volume 1 Chapter 1 Episode 1: Prologue 1-1
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
                     
-                
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/other/1/1/1.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'9QbmgZ')"><i>[1] Entering System</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="76oWga"><i>[1]&nbsp;Entering System</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'Be0ZWr': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">First Day at Abydos</p><ul><li>Shiroko rescues Sensei and eventually the two arrive at Abydos&#x27 Foreclosure Task Force club room. Soon after, the school is attacked by the Kata-Kata Helmet Gang, and Sensei teams up with the students to fight back.</li></ul></div>','M6aJCW': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Victory</p><p>Everyone engaged, and under the commands of Sensei&#x27s, they won.</p><hr><p>Character:  <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span></p><hr><p>Track:  <a href=/en/track/ost/11.html>OST 11. Connected Sky</a></p></div>','TuUtcu': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Being an Adult is Amazing!</p><ul><li>After defeating the Helmet Gang, the Foreclosure Task Force introduce themselves to Sensei at Abydos High School. Having solved some supply issues with Sensei&#x27s help, the students want to use their momentum to crush the Helmet Gang&#x27s outpost.</li></ul></div>','T8DlKn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Complete Annihilation</p><p>Hoshino proposed to engage their outpost and Sensei agreed. Everyone set off right away.</p><hr><p>Character:  <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span></p><hr><p>Track:  <a href=/en/track/ost/10.html>OST 10. Romantic Smile</a>   <a href=/en/track/ost/5.html>OST 5. Colorful Mess</a></p></div>','BaiO8G': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Return To School</p><p>After the victory, everyone returned to school.</p><hr><p>Character:  <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span></p><hr><p>Track:  <a href=/en/track/ost/11.html>OST 11. Connected Sky</a></p></div>','5z5FlB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Task Force&#x27s Predicament</p><ul><li>The students explain to Sensei that their school&#x27s over 900 million yen in debt and how difficult it is for them to even keep up with interest payments. When Sensei offers to help, Serika goes off on a tirade about how grown-ups can&#x27t be trusted.</li></ul></div>','R8Sqks': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Debt</p><p>From what the Hoshino and Ayane said, Sensei acknowledged the debt worth 962.36 million yen. Sensei also knew that sandstorms kept occurring in recent years, and no efforts were achieved despite the large amount of funds that the school put into it. As no banks were willing to lend them money, they were forced to turn to loan sharks. The deserialization only went worse and worse, together with the skyrocketing debt; as a result, many students had left the school.</p><hr><p>Character:  <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span></p><hr><p>Track:  <a href=/en/track/ost/9.html>OST 9. Midsummer Cat</a></p></div>','_8PJvj': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Unrelenting Blood Feud</p><ul><li>Aru grapples with her feelings after realizing that the ones who treated her to a bowl of ramen were actually Abydos students. She resolves anew to attack Abydos High School with her hired guns.</li><li>Thanks to the work of the Foreclosure Task Force, Aru and Problem Solver are forced to withdraw.</li></ul></div>','7pVoLr': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Hindsight</p><p>It was not until the departure with the Abydos did Aru realize their identity with the help from other members. Though conflicted in heart, Aru was determined to launch the attack at last.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/11.html>OST 11. Connected Sky</a></p></div>','WbnKQq': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Riding off Into the Sunset!</p><ul><li>After outrunning the Black Market Guard, the group begins to question their resolve. Hoshino persuades them to take only the documents they need. Later, Problem Solver discovers the piles of money that were left behind.</li></ul></div>','szbtpZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Bottom Line That Cannot Be Crossed</p><p>When confirming the situation, everyone was surprised to find out that the 100 million money was with them all the time. Serika and Nonomi wanted to use them to pay the debt, but was opposed by Hoshino greatly. Hoshino said that the bottom lines could not be crossed. At last everyone agreed to take away the documents only.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp>Hifumi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span></p><hr><p>Track:  <a href=/en/track/ost/16.html>OST 16. MX Adventure</a></p></div>','Rvcxel': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aru&#x27s Admiration</p><p>Aru caught up suddenly and everyone returned to the "Masked Swimsuit Gang". Aru expressed the admiration towards them and said she wanted to be a villain just like them.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp>Hifumi </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span></p><hr><p>Track:  <a href=/en/track/ost/8.html>OST 8. Shady Girls</a>   <a href=/en/track/ost/16.html>OST 16. MX Adventure</a></p></div>','TcgrZa': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Problem Solver Taking Money Away</p><p>Then the Problem Solver took away the money, and Aru was told about the reality at the very end.</p><hr><p>Character:  <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp>Hifumi </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span></p><hr><p>Track:  <a href=/en/track/ost/7.html>OST 7. Unwelcome School</a></p></div>','iPWzlc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Guided by Aris 1</p><ul><li>While wandering around campus, Aris runs into Sumire, who is out on a jog. The two of them bond over being both comrades in arms as well as sports. As Aris continues her adventure, she runs into Asuna and Karin in their school uniforms off campus, and she invites them to join her party. That moment, Aris learns that Neru is looking for her and quickly takes off to another location.</li></ul></div>','AOhqFx': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Outskirts of Millennium</p><p>Aris believed that the further the location, the more events would occur. And indeed they met C&C members Asuna and Karin, who were just on special missions. They exchanged a few and at last Karin mentioned that Neru was looking for Aris.</p><hr><p>Character:  <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/asuna/> <img class=icon-stu src=/static/images/student/icon/16001.webp>Asuna </a> </span>   <span> <a href=/en/character/student/karin/> <img class=icon-stu src=/static/images/student/icon/20001.webp>Karin </a> </span></p><hr><p>Track:  <a href=/en/track/ost/11.html>OST 11. Connected Sky</a></p></div>','dLZrgF': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Temporary Retreat</p><p>C&C spotted two Gehenna students and said they were going to transfer to Gehenna and wanted to know some details. Hearing that Neru was looking for her, Aris decided to retreat back to Millennium.</p><hr><p>Character:  <span> <a href=/en/character/student/asuna/> <img class=icon-stu src=/static/images/student/icon/16001.webp>Asuna </a> </span>   <span> <a href=/en/character/student/karin/> <img class=icon-stu src=/static/images/student/icon/20001.webp>Karin </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span></p><hr><p>Track:  <a href=/en/track/ost/11.html>OST 11. Connected Sky</a></p></div>','W8Jcyd': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','36OqgZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Watashitachi No Quest (Our Quest)</p><p>[An MV is playing in this part. The BGM was the ending song for the short animation "beautiful day dreamer" about the Game Development Department. Considering that most images in the videos are actually a part of the in-game backgrounds, therefore we&#x27ll be listing as much as backgrounds as we can.]</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span></p><hr><p>Track:  <a href=/en/track/short/1.html>Short Animation 1. Watashitachi No Quest (Our Quest)</a></p></div>','hXuZ2r': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Prologue 1-1</p><ul><li>Sensei wakes from a bizarre dream and learns from Nanagami Rin that the General Student Council president is missing. The Academy City, Kivotos, is in chaos. Sensei heads to Schale to try to resolve the situation.</li></ul></div>','9QbmgZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Entering System</p><p>The welcome screen of the system. Multiple stories were flashing by.</p><hr><p>No characters to display!</p><hr><p>Track:  <a href=/en/track/ost/34.html>OST 34. Aoharu</a></p></div>', });
+        add_tooltip_data({ 'Vo9TTM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">First Day at Abydos</p><ul><li>Shiroko rescues Sensei and eventually the two arrive at Abydos&#x27 Foreclosure Task Force club room. Soon after, the school is attacked by the Kata-Kata Helmet Gang, and Sensei teams up with the students to fight back.</li></ul></div>','dvwcKI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Victory</p><p>Everyone engaged, and under the commands of Sensei&#x27s, they win.</p><hr><p>Character:<span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/11.html> <span>OST 11. Connected Sky</span></a></p></div>','RIwbEQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Being an Adult is Amazing!</p><ul><li>After defeating the Helmet Gang, the Foreclosure Task Force introduce themselves to Sensei at Abydos High School. Having solved some supply issues with Sensei&#x27s help, the students want to use their momentum to crush the Helmet Gang&#x27s outpost.</li></ul></div>','3JwuOB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Complete Annihilation</p><p>Hoshino proposes to engage their outpost and Sensei agree. Everyone sets off right away.</p><hr><p>Character:<span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/10.html> <span>OST 10. Romantic Smile</span></a> <a href=/en/track/ost/5.html> <span>OST 5. Colorful Mess</span></a></p></div>','NMaTDI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Return To School</p><p>After the victory, everyone returns to school.</p><hr><p>Character:<span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/11.html> <span>OST 11. Connected Sky</span></a></p></div>','TjPM16': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Task Force&#x27s Predicament</p><ul><li>The students explain to Sensei that their school&#x27s over 900 million yen in debt and how difficult it is for them to even keep up with interest payments. When Sensei offers to help, Serika goes off on a tirade about how grown-ups can&#x27t be trusted.</li></ul></div>','zBAqbq': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Debt</p><p>From what the Hoshino and Ayane says, Sensei acknowledges the debt worth 962.36 million yen. Sensei also knows that sandstorms keep occurring in recent years, and no efforts are achieved despite the large amount of funds that the school has put into it. As no banks are willing to lend them money, they are forced to turn to loan sharks. The deserialization only goes worse and worse, together with the skyrocketing debt; as a result, many students has left the school.</p><hr><p>Character:<span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/9.html> <span>OST 9. Midsummer Cat</span></a></p></div>','ju0ZoM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Unrelenting Blood Feud</p><ul><li>Aru grapples with her feelings after realizing that the ones who treated her to a bowl of ramen were actually Abydos students. She resolves anew to attack Abydos High School with her hired guns.</li><li>Thanks to the work of the Foreclosure Task Force, Aru and Problem Solver are forced to withdraw.</li></ul></div>','AisDBN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Hindsight</p><p>It is not until the departure with the Abydos does Aru realize their identity with the help from other members. Though conflicted in heart, Aru is determined to launch the attack at last.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/11.html> <span>OST 11. Connected Sky</span></a></p></div>','GPT90o': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Riding off Into the Sunset!</p><ul><li>After outrunning the Black Market Guard, the group begins to question their resolve. Hoshino persuades them to take only the documents they need. Later, Problem Solver discovers the piles of money that were left behind.</li></ul></div>','Y_CiTO': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Bottom Line That Cannot Be Crossed</p><p>When confirming the situation, everyone is surprised to find out that the 100 million money was with them all the time. Serika and Nonomi wants to use them to pay the debt, but is opposed by Hoshino greatly. Hoshino says that the bottom lines could not be crossed. At last everyone agrees to take away the documents only.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp> <span>Hifumi</span></a> </span> | </span><span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/16.html> <span>OST 16. MX Adventure</span></a></p></div>','iWg_pQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aru&#x27s Admiration</p><p>Aru catches up suddenly and everyone returns to the "Masked Swimsuit Gang". Aru expresses the admiration towards them and says she wants to be a villain just like them.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp> <span>Hifumi</span></a> </span> | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/8.html> <span>OST 8. Shady Girls</span></a> <a href=/en/track/ost/16.html> <span>OST 16. MX Adventure</span></a></p></div>','CFvO0x': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Problem Solver Taking Money Away</p><p>Then the Problem Solver takes away the money, and Aru is told about the reality at the very end.</p><hr><p>Character:<span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/hifumi/> <img class=icon-stu src=/static/images/student/icon/10003.webp> <span>Hifumi</span></a> </span> | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/7.html> <span>OST 7. Unwelcome School</span></a></p></div>','yNzMN2': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Guided by Aris 1</p><ul><li>While wandering around campus, Aris runs into Sumire, who is out on a jog. The two of them bond over being both comrades in arms as well as sports. As Aris continues her adventure, she runs into Asuna and Karin in their school uniforms off campus, and she invites them to join her party. That moment, Aris learns that Neru is looking for her and quickly takes off to another location.</li></ul></div>','iHU9Q8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Outskirts of Millennium</p><p>Aris believed that the further the location, the more events would occur. And indeed they met C&C members Asuna and Karin, who were just on special missions. They exchanged a few and at last Karin mentioned that Neru was looking for Aris.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/asuna/> <img class=icon-stu src=/static/images/student/icon/16001.webp> <span>Asuna</span></a> </span> | </span><span> <a href=/en/character/student/karin/> <img class=icon-stu src=/static/images/student/icon/20001.webp> <span>Karin</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/11.html> <span>OST 11. Connected Sky</span></a></p></div>','enLIqo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Temporary Retreat</p><p>C&C spotted two Gehenna students and said they were going to transfer to Gehenna and wanted to know some details. Hearing that Neru was looking for her, Aris decided to retreat back to Millennium.</p><hr><p>Character:<span> <span> <a href=/en/character/student/asuna/> <img class=icon-stu src=/static/images/student/icon/16001.webp> <span>Asuna</span></a> </span> | </span><span> <span> <a href=/en/character/student/karin/> <img class=icon-stu src=/static/images/student/icon/20001.webp> <span>Karin</span></a> </span> | </span><span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/11.html> <span>OST 11. Connected Sky</span></a></p></div>','bR9eXl': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','t9mqzp': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Watashitachi No Quest (Our Quest)</p><p>[An MV is playing in this part. The BGM was the ending song for the short animation "beautiful day dreamer" about the Game Development Department. Considering that most images in the videos are actually a part of the in-game backgrounds, therefore we&#x27ll be listing as much as backgrounds as we can.]</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span></p><hr><p>Track: <a href=/en/track/short/1.html> <span>Short Animation 1. Watashitachi No Quest (Our Quest)</span></a></p></div>','9bnAVR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Prologue 1-1</p><ul><li>Sensei wakes from a bizarre dream and learns from Nanagami Rin that the General Student Council president is missing. The Academy City, Kivotos, is in chaos. Sensei heads to Schale to try to resolve the situation.</li></ul></div>','76oWga': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Entering System</p><p>The welcome screen of the system. Multiple stories were flashing by.</p><hr><p><span>No characters to display!</span></p><hr><p>Track: <a href=/en/track/ost/34.html> <span>OST 34. Aoharu</span></a></p></div>', });
     </script>
 
 
@@ -819,105 +1068,153 @@ Story Volume 1 Chapter 1 Episode 1: Prologue 1-1
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_11"><a href="/en/track/ost/11.html" onmouseover="showTooltip(this, 'lcGHkS')">【4】
-    OST
- 11. Connected Sky</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_7"><a href="/en/track/ost/7.html" onmouseover="showTooltip(this, 'y0nTGq')">【1】
-    OST
- 7. Unwelcome School</a> by Mitsukiyo</li>
+            <li id="track-OST_11">
+    <a href="/en/track/ost/11.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="U6gdKD">
+        <span>【4】OST&nbsp;11.&nbsp;Connected Sky</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_8"><a href="/en/track/ost/8.html" onmouseover="showTooltip(this, '1jPAN0')">【1】
-    OST
- 8. Shady Girls</a> by Mitsukiyo</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_9"><a href="/en/track/ost/9.html" onmouseover="showTooltip(this, 'EY2nsA')">【1】
-    OST
- 9. Midsummer Cat</a> by Mitsukiyo</li>
+            <li id="track-OST_5">
+    <a href="/en/track/ost/5.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="n_zpwO">
+        <span>【1】OST&nbsp;5.&nbsp;Colorful Mess</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_16"><a href="/en/track/ost/16.html" onmouseover="showTooltip(this, 'jM6kqE')">【1】
-    OST
- 16. MX Adventure</a> by Mitsukiyo</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-short_1"><a href="/en/track/short/1.html" onmouseover="showTooltip(this, 'YW15KN')">【1】
-    Short Animation
- 1. Watashitachi No Quest (Our Quest)</a> by Unknown</li>
+            <li id="track-OST_7">
+    <a href="/en/track/ost/7.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="fa2hwi">
+        <span>【1】OST&nbsp;7.&nbsp;Unwelcome School</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_8">
+    <a href="/en/track/ost/8.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="PzggE5">
+        <span>【1】OST&nbsp;8.&nbsp;Shady Girls</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_34"><a href="/en/track/ost/34.html" onmouseover="showTooltip(this, '1WYsyP')">【0】
-    OST
- 34. Aoharu</a> by Nor</li>
+            <li id="track-OST_9">
+    <a href="/en/track/ost/9.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="Z4CqsR">
+        <span>【1】OST&nbsp;9.&nbsp;Midsummer Cat</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_10">
+    <a href="/en/track/ost/10.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="hfTLgH">
+        <span>【1】OST&nbsp;10.&nbsp;Romantic Smile</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_16">
+    <a href="/en/track/ost/16.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="Mxyzzi">
+        <span>【1】OST&nbsp;16.&nbsp;MX Adventure</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_34">
+    <a href="/en/track/ost/34.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="qaSBLq">
+        <span>【1】OST&nbsp;34.&nbsp;Aoharu</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-short_1">
+    <a href="/en/track/short/1.html#04e4f041-399e-4f46-b3b3-f10ed53c4966" onmouseover="showTooltip(this)" data-tooltip="mGdWkG">
+        <span>【1】Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span>
+    </a>
+    
+</li>
 
             
                 
@@ -928,34 +1225,74 @@ Story Volume 1 Chapter 1 Episode 1: Prologue 1-1
     
         
     <script>
-        add_tooltip_data({ 'lcGHkS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 11. Connected Sky</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/2.html> Main Story Volume 1 Chapter 1 Episode 2: First Day at Abydos </a></li><li><a href=/en/main/story/main/1/1/3.html> Main Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing! </a></li><li><a href=/en/main/story/main/1/1/9.html> Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud </a></li><li><a href=/en/main/story/main/2/2/4.html> Main Story Volume 2 Chapter 2 Episode 4: Guided by Aris 1 </a></li></ol></div>','y0nTGq': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 7. Unwelcome School</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/15.html> Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset! </a></li></ol></div>','1jPAN0': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 8. Shady Girls</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/15.html> Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset! </a></li></ol></div>','EY2nsA': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 9. Midsummer Cat</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/4.html> Main Story Volume 1 Chapter 1 Episode 4: The Task Force&#x27s Predicament </a></li></ol></div>','jM6kqE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 16. MX Adventure</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/15.html> Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset! </a></li></ol></div>','YW15KN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Short Animation 1. Watashitachi No Quest (Our Quest)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/25.html> Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School </a></li></ol></div>','1WYsyP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 34. Aoharu</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/other/1/1/1.html> Other Story Volume 1 Chapter 1 Episode 1: Prologue 1-1 </a></li></ol></div>', });
+        add_tooltip_data({ 'U6gdKD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 11. Connected Sky</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/2.html>Main Story Volume 1 Chapter 1 Episode 2: First Day at Abydos</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/2.html#story-part-1-seg-1><i>[1] Victory</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/3.html>Main Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] Return To School</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/9.html>Main Story Volume 1 Chapter 1 Episode 9: Unrelenting Blood Feud</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/9.html#story-part-1-seg-1><i>[1] The Hindsight</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/2/4.html>Main Story Volume 2 Chapter 2 Episode 4: Guided by Aris 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/4.html#story-part-1-seg-1><i>[1] Outskirts of Millennium</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/4.html#story-part-1-seg-1><i>[1] A Temporary Retreat</i></a></span><span>)</span></li></ol></div>','n_zpwO': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 5. Colorful Mess</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/3.html>Main Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] An Complete Annihilation</i></a></span><span>)</span></li></ol></div>','fa2hwi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 7. Unwelcome School</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Problem Solver Taking Money Away</i></a></span><span>)</span></li></ol></div>','PzggE5': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 8. Shady Girls</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>)</span></li></ol></div>','Z4CqsR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 9. Midsummer Cat</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/4.html>Main Story Volume 1 Chapter 1 Episode 4: The Task Force&#x27s Predicament</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/4.html#story-part-1-seg-1><i>[1] The Debt</i></a></span><span>)</span></li></ol></div>','hfTLgH': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 10. Romantic Smile</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/3.html>Main Story Volume 1 Chapter 1 Episode 3: Being an Adult is Amazing!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/3.html#story-part-1-seg-1><i>[1] An Complete Annihilation</i></a></span><span>)</span></li></ol></div>','Mxyzzi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 16. MX Adventure</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/15.html>Main Story Volume 1 Chapter 1 Episode 15: Riding off Into the Sunset!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] The Bottom Line That Cannot Be Crossed</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/1/15.html#story-part-1-seg-1><i>[1] Aru&#x27s Admiration</i></a></span><span>)</span></li></ol></div>','qaSBLq': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 34. Aoharu</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/other/1/1/1.html>Other Story Volume 1 Chapter 1 Episode 1: Prologue 1-1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/other/1/1/1.html#story-part-1-seg-1><i>[1] Entering System</i></a></span><span>)</span></li></ol></div>','mGdWkG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Short Animation 1. Watashitachi No Quest (Our Quest)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/25.html>Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CityDowntown_Night.jpg.html">&lt;-- Previous page: BG_CityDowntown_Night.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CityOffice_Night.jpg.html">--&gt; Next page: BG_CityOffice_Night.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:04 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:04
 -->
 </body>
 </html>

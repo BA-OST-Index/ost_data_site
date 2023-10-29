@@ -7,10 +7,10 @@
 
     <title>Background/BG_ComputerCenter.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CommitteeRoom_Night_Blur.jpg.html">&lt;-- Previous page: BG_CommitteeRoom_Night_Blur.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_CommitteeRoom_Night_Blur.jpg.html">&lt;-- Previous page: BG_CommitteeRoom_Night_Blur.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_ComputerCenter_Blur.jpg.html">--&gt; Next page: BG_ComputerCenter_Blur.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_ComputerCenter_Blur.jpg.html">--&gt; Next page: BG_ComputerCenter_Blur.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_ComputerCenter.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_ComputerCenter.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_ComputerCenter.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_ComputerCenter.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_ComputerCenter.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_2_1_12">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/1/12.html" onmouseover="showTooltip(this, 'nYO7kN')">
-                
-        Main
-Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/1/12.html"  onmouseover="showTooltip(this)" data-tooltip="7o0TCb">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;12:&nbsp;In Search of the Mirror</a>
+    
+
         
 
         
@@ -234,111 +224,198 @@ Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror
                 
                 
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
                         
-                            
-                        
+                    
+                    
+                
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/1/12.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'mCgZgv')"><i>[1] Overview of G.Bible</i></a>,&nbsp;<a href="/en/main/story/main/2/1/12.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'0_Ojt_')"><i>[2] The Mirror</i></a>,&nbsp;<a href="/en/main/story/main/2/1/12.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'6uAPji')"><i>[4] A Problem</i></a>,&nbsp;<a href="/en/main/story/main/2/1/12.html#story-part-7" class="text-primary" onmouseover="showTooltip(this,'lsl5bi')"><i>[7] It's Decided!</i></a>,&nbsp;<a href="/en/main/story/main/2/1/12.html#story-part-9" class="text-primary" onmouseover="showTooltip(this,'OnR7RK')"><i>[9] Already Started</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/12.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="OHYwx3"><i>[1]&nbsp;Overview of G.Bible</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/12.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Gz9j1U"><i>[2]&nbsp;The Mirror</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/12.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="T9IpPy"><i>[4]&nbsp;A Problem</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/12.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="ZWJOSB"><i>[7]&nbsp;It's Decided!</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/12.html#story-part-9-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="s6InAN"><i>[9]&nbsp;Already Started</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -352,16 +429,13 @@ Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror
         <li id="story-MAIN_2_1_13">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/1/13.html" onmouseover="showTooltip(this, 'Z13ZQf')">
-                
-        Main
-Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/1/13.html"  onmouseover="showTooltip(this)" data-tooltip="exVOUm">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>
+    
+
         
 
         
@@ -371,64 +445,125 @@ Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
-                            
+                    
                         
+                    
+                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
                         
-                        
-            
-                
-                
+                    
                     
                 
-            
+
                 
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                
-            
-                
-                
-                    
-                
-            
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/1/13.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'8wMEfW')"><i>[5] The Strategy Meeting</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/13.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="eXfn_G"><i>[5]&nbsp;The Strategy Meeting</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -442,16 +577,13 @@ Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids
         <li id="story-MAIN_2_1_15">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/1/15.html" onmouseover="showTooltip(this, '_qOVlY')">
-                
-        Main
-Story Volume 2 Chapter 1 Episode 15: A Spreading Danger
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/1/15.html"  onmouseover="showTooltip(this)" data-tooltip="fvs0Qf">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;15:&nbsp;A Spreading Danger</a>
+    
+
         
 
         
@@ -461,41 +593,72 @@ Story Volume 2 Chapter 1 Episode 15: A Spreading Danger
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
+                    
                     
                 
             
                 
                 
+                    
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
+                
+                
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/1/15.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'y1wySv')"><i>[2] A Backup Plan</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/15.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="XQ6VNo"><i>[2]&nbsp;A Backup Plan</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -509,16 +672,13 @@ Story Volume 2 Chapter 1 Episode 15: A Spreading Danger
         <li id="story-MAIN_2_2_6">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/6.html" onmouseover="showTooltip(this, 'CobC6b')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/6.html"  onmouseover="showTooltip(this)" data-tooltip="Fyr5Fb">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>
+    
+
         
 
         
@@ -528,64 +688,111 @@ Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
-                            
-                        
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
             
+                
+                
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/6.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'A0A1o9')"><i>[2] The Game Development Department</i></a>,&nbsp;<a href="/en/main/story/main/2/2/6.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'g563bQ')"><i>[3] A Strange Robot</i></a>,&nbsp;<a href="/en/main/story/main/2/2/6.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'71fgOy')"><i>[4] An Abnormality</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/6.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="LhisDU"><i>[2]&nbsp;The Game Development Department</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="IwuBDP"><i>[3]&nbsp;A Strange Robot</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="fDst2J"><i>[4]&nbsp;An Abnormality</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -599,16 +806,13 @@ Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1
         <li id="story-MAIN_2_2_16">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/16.html" onmouseover="showTooltip(this, 'uWe5nL')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 16: Checkmate
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/16.html"  onmouseover="showTooltip(this)" data-tooltip="6IXsDK">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>
+    
+
         
 
         
@@ -618,55 +822,97 @@ Story Volume 2 Chapter 2 Episode 16: Checkmate
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/16.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'8oXeEe')"><i>[4] Communication Back Up</i></a>,&nbsp;<a href="/en/main/story/main/2/2/16.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'uOpwgD')"><i>[5] A Surprise From Chihiro</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="C1KKX9"><i>[4]&nbsp;Communication Back Up</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="NeDtyT"><i>[5]&nbsp;A Surprise From Chihiro</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -680,16 +926,13 @@ Story Volume 2 Chapter 2 Episode 16: Checkmate
         <li id="story-MAIN_2_2_21">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/21.html" onmouseover="showTooltip(this, 'VBbjEL')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 21: What's in a Name?
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/21.html"  onmouseover="showTooltip(this)" data-tooltip="eevsoi">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;21:&nbsp;What's in a Name?</a>
+    
+
         
 
         
@@ -699,60 +942,97 @@ Story Volume 2 Chapter 2 Episode 21: What's in a Name?
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/21.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'G1786B')"><i>[5] The Real Fight</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/21.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="bjDvzz"><i>[5]&nbsp;The Real Fight</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -766,16 +1046,13 @@ Story Volume 2 Chapter 2 Episode 21: What's in a Name?
         <li id="story-MAIN_2_2_23">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/23.html" onmouseover="showTooltip(this, 'udL3sN')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/23.html"  onmouseover="showTooltip(this)" data-tooltip="gt2Xo6">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>
+    
+
         
 
         
@@ -785,36 +1062,61 @@ Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/23.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'twYutb')"><i>[3] The Way To Wake Up</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="sq8ysL"><i>[3]&nbsp;The Way To Wake Up</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -828,16 +1130,13 @@ Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2
         <li id="story-MAIN_2_2_25">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/25.html" onmouseover="showTooltip(this, 'EeAhAF')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 25: Millennium Science School
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/25.html"  onmouseover="showTooltip(this)" data-tooltip="0p7ltR">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>
+    
+
         
 
         
@@ -847,112 +1146,155 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/25.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'LXi296')"><i>[4] Everything As Always</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="yjnCH1"><i>[4]&nbsp;Everything As Always</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'nYO7kN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">In Search of the Mirror</p><ul><li>In order to read the G.BIBLE, the Game Development Department needs to decrypt the password. To do so, they reach out to Veritas. Maki tells them they&#x27ll need the Mirror that was confiscated by the Student Council. To retrieve it, they&#x27ll need to get into the contraband storage guarded by the Maid Club.</li></ul></div>','mCgZgv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Overview of G.Bible</p><p>Hare from Veritas brought a bad news to everyone: Momoi&#x27s game saves could not be recovered. Momoi cried out after hearing this. Maki, by analyzing the file&#x27s metadata, confirmed its genuity, but was unable to crack the password.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a>   <a href=/en/track/ost/10.html>OST 10. Romantic Smile</a></p></div>','0_Ojt_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Mirror</p><p>For Maki&#x27s reference, she thought that it is possible if they were just extracting the encrypted files rather than cracking the password. Yet a tool specifically designed to do so, called "Mirror", was confiscated by the Seminar recently. As a tool created by the president, Veritas intended to retrieve it back, which made an unexpected collision with the GDD. As a result, they purposed to raid Millennium&#x27s Seminar.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span></p><hr><p>Track:  <a href=/en/track/ost/10.html>OST 10. Romantic Smile</a></p></div>','6uAPji': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Problem</p><p>Maki explained the current situation to GDD: the Mirror was stored at the Contraband Room of Seminar&#x27s, where C&C is the one who guards it. Momoi immediately decided to retreat, but Kotama said that she knew some intel about C&C.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a>   <a href=/en/track/ost/7.html>OST 7. Unwelcome School</a></p></div>','lsl5bi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">It&#x27s Decided!</p><p>Momoi still held her concern on whether participating or not, but Midori had already decided it: the GDD is an important place for everyone to gather and laugh, and she wanted to protect all of this. Having played more than 40 RPG games, Aris concluded that it&#x27s nothing more important than friends alongside in an adventure. Hare appreciated that and wanted Sensei to ask the Engineering Department to join them as well.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span></p><hr><p>Track:  <a href=/en/track/ost/32.html>OST 32. GGF</a></p></div>','OnR7RK': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Already Started</p><p>Momoi asked when would the plan start, and was replied with "We&#x27ve already started." by Hare.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span></p><hr><p>Track:  <a href=/en/track/ost/28.html>OST 28. Plug and Play</a></p></div>','Z13ZQf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Nerds vs. Maids</p><ul><li>While Aris and Veritas create a distraction, Midori, Momoi, and Sensei attempt a frontal assault on Seminar.</li><li>Veritas&#x27 hacking ends up trapping Akane in a sealed room.</li></ul></div>','8wMEfW': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Strategy Meeting</p><p>During the meeting held two hours ago, Hare mentioned that the only way to access the Contraband Room would be the lifts. Yet both the lifts and the doors on the top floor should only be verified by fingerprints, and failed to verify that would also trigger multiple mechanisms. In order to break through the security system, Hibiki proposed to disable the system with EMP for a while, and by that means the Veritas would be able to hack in.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span></p><hr><p>Track:  <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a></p></div>','_qOVlY': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Spreading Danger</p><ul><li>Having taken too long, Akane and Karin escape their bonds, an event spelling disaster for the Game Development Department&#x27s mission. Just then, Aris came to the rescue and succeeded in infiltrating the Student Council&#x27s contraband storage room.</li></ul></div>','y1wySv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Backup Plan</p><p>Everyone agreed that the plan itself tolerates zero failure, so a backup plan is required. After the power failure, Aris sensed that the time was ripe. She escaped the self-reflection room and headed to the Contraband Room.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a></p></div>','CobC6b': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Strange Machine 1</p><ul><li>One day, Veritas reaches out to Sensei about the discovery of a suspicious machine. On the way to their club room, Sensei joins up with the Game Development Department to investigate the machine, but none of them are able to get to the bottom of its true nature... As if suddenly drawn by an inexplicable force, Aris touches the machine and activates it.</li></ul></div>','A0A1o9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Game Development Department</p><p>Before the club room, Sensei found the Game Development Department was invited too. The four said they were coming to seek some inspirations, though Yuzu was pretty uncomfortable to get outside. At the club room, Hare showed everyone a strange-looking robot.</p><hr><p>Character:  <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span></p><hr><p>Track:  <a href=/en/track/ost/33.html>OST 33. Vivid Night</a></p></div>','g563bQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Strange Robot</p><p>The Veritas explained that the robots were from the outskirts of the Millennium, with a number totaling more than 20. Momoi was grealy surprised at the sight of it. Veritas tried to start it but failed every time - when Aris began reacting to the robot.</p><hr><p>Character:  <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span></p><hr><p>Track:  <a href=/en/track/ost/129.html>OST 129. Let me think about it</a></p></div>','71fgOy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Abnormality</p><p>The robot, alongside Momoi&#x27s game console carrying G.Bible, started operating after interacting with Aris. All panicking, Aris suddenly announced that the "AL-1S" completed the booting, and began attacking everyone.</p><hr><p>Character:  <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <a href=/en/character/npc/ariskey/>Key</a></p><hr><p>Track:  <a href=/en/track/ost/122.html>OST 122. [UNNAMED]</a>   <a href=/en/track/ost/16.html>OST 16. MX Adventure</a>   <a href=/en/track/ost/25.html>OST 25. Future Bossa</a></p></div>','uWe5nL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Checkmate</p><ul><li>Rio&#x27s victory is sealed in front of Himari, but Himari succeeds in escaping with Eimi&#x27s help. Meanwhile, cut off from Veritas&#x27s support, the Game Development Department find themselves with their backs against the wall until they are dramatically rescued by Chihiro, the vice president of Veritas.</li></ul></div>','8oXeEe': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Communication Back Up</p><p>As the Veritas were frustrated by the fact that the communication was cut off unexpectedly and unable to connect, everyone found a screen monitor was displaying something.</p><hr><p>Character:  <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span></p><hr><p>Track:  <a href=/en/track/ost/68.html>OST 68. Virtual Storm (Hard Arrange)</a></p></div>','uOpwgD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Surprise From Chihiro</p><p>While engaging the Avant Guard, the GDD noticed its behaviour was looking strangely sluggish all of a sudden. Then, Chihiro from Veritas recovered the communication.</p><hr><p>Character:  <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp>Chihiro </a> </span></p><hr><p>Track:  <a href=/en/track/ost/68.html>OST 68. Virtual Storm (Hard Arrange)</a></p></div>','VBbjEL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What&#x27s in a Name?</p><ul><li>Thanks to everyone&#x27s collaborative efforts, the students of Millennium successfully back Toki into a corner, and victory is secured due to "Double O" Neru&#x27s performance.</li></ul></div>','G1786B': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Real Fight</p><p>Neru got up from the ground, while Veritas had successfully hacked the freight elevator. They forced Toki into the elevator - a thing that Momoi had talked before. It was only then that Rio realized their plan - to use the elevator to ineffective the system - but was too late. With the acceleration speed of 10x the gravity, Toki was no way winning. Rio was impressed by "OO".</p><hr><p>Character:  <a href=/en/character/npc/rio/>Rio</a>   <span> <a href=/en/character/student/neru/> <img class=icon-stu src=/static/images/student/icon/10008.webp>Neru </a> </span>   <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp>Chihiro </a> </span>   <span> <a href=/en/character/student/toki/> <img class=icon-stu src=/static/images/student/icon/10062.webp>Toki </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/75.html>OST 75. Alert (Hard Arrange)</a></p></div>','udL3sN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 2</p><ul><li>The Game Development Department successfully restrain Key with Yuuka and Noa&#x27s assistance. As the Game Development Department and Veritas fend off the enemies that are crawling out of the woodwork, Himari helps Momoi, Midori, Yuzu, and Sensei enter Aris&#x27 headspace to try to wake her.</li></ul></div>','twYutb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Way To Wake Up</p><p>Himari made it clear that under current situation, it is possible that Key would eventually take over Aris&#x27 personality. Therefore, the best solution now should be waking Aris up. When asked how, Himari purposed that the GDD and Sensei shall dive into the machine&#x27s consciousness and databases, and bring Aris back at there. Rio pointed out the potential dangers in it, but no one was backing away. Under the protection of almost all effectives from Millennium, Himari started looking for a break through.</p><hr><p>Character:  <span> <a href=/en/character/student/himari/> <img class=icon-stu src=/static/images/student/icon/20020.webp>Himari </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp>Sumire </a> </span>  and more.</p><hr><p>Track:  <a href=/en/track/ost/40.html>OST 40. Neo City Dive</a></p></div>','EeAhAF': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','LXi296': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everything As Always</p><p>The Engineering Department were developing new stuff as always. Veritas were working closely with Super Phenomenon Task Force. Sumire resumed her daily exercises.</p><hr><p>Character:  <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp>Chihiro </a> </span>   <span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp>Sumire </a> </span></p><hr><p>Track:  <a href=/en/track/ost/50.html>OST 50. Hue</a></p></div>', });
+        add_tooltip_data({ '7o0TCb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">In Search of the Mirror</p><ul><li>In order to read the G.BIBLE, the Game Development Department needs to decrypt the password. To do so, they reach out to Veritas. Maki tells them they&#x27ll need the Mirror that was confiscated by the Student Council. To retrieve it, they&#x27ll need to get into the contraband storage guarded by the Maid Club.</li></ul></div>','OHYwx3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Overview of G.Bible</p><p>Hare from Veritas brought a bad news to everyone: Momoi&#x27s game saves could not be recovered. Momoi cried out after hearing this. Maki, by analyzing the file&#x27s metadata, confirmed its genuity, but was unable to crack the password.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a> <a href=/en/track/ost/10.html> <span>OST 10. Romantic Smile</span></a></p></div>','Gz9j1U': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Mirror</p><p>For Maki&#x27s reference, she thought that it is possible if they were just extracting the encrypted files rather than cracking the password. Yet a tool specifically designed to do so, called "Mirror", was confiscated by the Seminar recently. As a tool created by the president, Veritas intended to retrieve it back, which made an unexpected collision with the GDD. As a result, they purposed to raid Millennium&#x27s Seminar.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/10.html> <span>OST 10. Romantic Smile</span></a></p></div>','T9IpPy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Problem</p><p>Maki explained the current situation to GDD: the Mirror was stored at the Contraband Room of Seminar&#x27s, where C&C is the one who guards it. Momoi immediately decided to retreat, but Kotama said that she knew some intel about C&C.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a> <a href=/en/track/ost/7.html> <span>OST 7. Unwelcome School</span></a></p></div>','ZWJOSB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">It&#x27s Decided!</p><p>Momoi still held her concern on whether participating or not, but Midori had already decided it: the GDD is an important place for everyone to gather and laugh, and she wanted to protect all of this. Having played more than 40 RPG games, Aris concluded that it&#x27s nothing more important than friends alongside in an adventure. Hare appreciated that and wanted Sensei to ask the Engineering Department to join them as well.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span> | </span><span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/32.html> <span>OST 32. GGF</span></a></p></div>','s6InAN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Already Started</p><p>Momoi asked when would the plan start, and was replied with "We&#x27ve already started." by Hare.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/28.html> <span>OST 28. Plug and Play</span></a></p></div>','exVOUm': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Nerds vs. Maids</p><ul><li>While Aris and Veritas create a distraction, Midori, Momoi, and Sensei attempt a frontal assault on Seminar.</li><li>Veritas&#x27 hacking ends up trapping Akane in a sealed room.</li></ul></div>','eXfn_G': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Strategy Meeting</p><p>During the meeting held two hours ago, Hare mentioned that the only way to access the Contraband Room would be the lifts. Yet both the lifts and the doors on the top floor should only be verified by fingerprints, and failed to verify that would also trigger multiple mechanisms. In order to break through the security system, Hibiki proposed to disable the system with EMP for a while, and by that means the Veritas would be able to hack in.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span> | </span><span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/18.html> <span>OST 18. Mechanical JUNGLE</span></a></p></div>','fvs0Qf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Spreading Danger</p><ul><li>Having taken too long, Akane and Karin escape their bonds, an event spelling disaster for the Game Development Department&#x27s mission. Just then, Aris came to the rescue and succeeded in infiltrating the Student Council&#x27s contraband storage room.</li></ul></div>','XQ6VNo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Backup Plan</p><p>Everyone agreed that the plan itself tolerates zero failure, so a backup plan is required. After the power failure, Aris sensed that the time was ripe. She escaped the self-reflection room and headed to the Contraband Room.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a></p></div>','Fyr5Fb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Strange Machine 1</p><ul><li>One day, Veritas reaches out to Sensei about the discovery of a suspicious machine. On the way to their club room, Sensei joins up with the Game Development Department to investigate the machine, but none of them are able to get to the bottom of its true nature... As if suddenly drawn by an inexplicable force, Aris touches the machine and activates it.</li></ul></div>','LhisDU': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Game Development Department</p><p>Before the club room, Sensei found the Game Development Department was invited too. The four said they were coming to seek some inspirations, though Yuzu was pretty uncomfortable to get outside. At the club room, Hare showed everyone a strange-looking robot.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/33.html> <span>OST 33. Vivid Night</span></a></p></div>','IwuBDP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Strange Robot</p><p>The Veritas explained that the robots were from the outskirts of the Millennium, with a number totaling more than 20. Momoi was grealy surprised at the sight of it. Veritas tried to start it but failed every time - when Aris began reacting to the robot.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/129.html> <span>OST 129. Let me think about it</span></a></p></div>','fDst2J': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">An Abnormality</p><p>The robot, alongside Momoi&#x27s game console carrying G.Bible, started operating after interacting with Aris. All panicking, Aris suddenly announced that the "AL-1S" completed the booting, and began attacking everyone.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><a href=/en/character/npc/ariskey/> <span>Key</span></a></p><hr><p>Track: <a href=/en/track/ost/122.html> <span>OST 122. [UNNAMED]</span></a> <a href=/en/track/ost/16.html> <span>OST 16. MX Adventure</span></a> <a href=/en/track/ost/25.html> <span>OST 25. Future Bossa</span></a></p></div>','6IXsDK': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Checkmate</p><ul><li>Rio&#x27s victory is sealed in front of Himari, but Himari succeeds in escaping with Eimi&#x27s help. Meanwhile, cut off from Veritas&#x27s support, the Game Development Department find themselves with their backs against the wall until they are dramatically rescued by Chihiro, the vice president of Veritas.</li></ul></div>','C1KKX9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Communication Back Up</p><p>As the Veritas were frustrated by the fact that the communication was cut off unexpectedly and unable to connect, everyone found a screen monitor was displaying something.</p><hr><p>Character:<span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/68.html> <span>OST 68. Virtual Storm (Hard Arrange)</span></a></p></div>','NeDtyT': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Surprise From Chihiro</p><p>While engaging the Avant Guard, the GDD noticed its behaviour was looking strangely sluggish all of a sudden. Then, Chihiro from Veritas recovered the communication.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp> <span>Kotori</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp> <span>Chihiro</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/68.html> <span>OST 68. Virtual Storm (Hard Arrange)</span></a></p></div>','eevsoi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What&#x27s in a Name?</p><ul><li>Thanks to everyone&#x27s collaborative efforts, the students of Millennium successfully back Toki into a corner, and victory is secured due to "Double O" Neru&#x27s performance.</li></ul></div>','bjDvzz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Real Fight</p><p>Neru got up from the ground, while Veritas had successfully hacked the freight elevator. They forced Toki into the elevator - a thing that Momoi had talked before. It was only then that Rio realized their plan - to use the elevator to ineffective the system - but was too late. With the acceleration speed of 10x the gravity, Toki was no way winning. Rio was impressed by "OO".</p><hr><p>Character:<span> <a href=/en/character/npc/rio/> <span>Rio</span></a>  | </span><span> <span> <a href=/en/character/student/neru/> <img class=icon-stu src=/static/images/student/icon/10008.webp> <span>Neru</span></a> </span> | </span><span> <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp> <span>Chihiro</span></a> </span> | </span><span> <span> <a href=/en/character/student/toki/> <img class=icon-stu src=/static/images/student/icon/10062.webp> <span>Toki</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/75.html> <span>OST 75. Alert (Hard Arrange)</span></a></p></div>','gt2Xo6': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 2</p><ul><li>The Game Development Department successfully restrain Key with Yuuka and Noa&#x27s assistance. As the Game Development Department and Veritas fend off the enemies that are crawling out of the woodwork, Himari helps Momoi, Midori, Yuzu, and Sensei enter Aris&#x27 headspace to try to wake her.</li></ul></div>','sq8ysL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Way To Wake Up</p><p>Himari made it clear that under current situation, it is possible that Key would eventually take over Aris&#x27 personality. Therefore, the best solution now should be waking Aris up. When asked how, Himari purposed that the GDD and Sensei shall dive into the machine&#x27s consciousness and databases, and bring Aris back at there. Rio pointed out the potential dangers in it, but no one was backing away. Under the protection of almost all effectives from Millennium, Himari started looking for a break through.</p><hr><p>Character:<span> <span> <a href=/en/character/student/himari/> <img class=icon-stu src=/static/images/student/icon/20020.webp> <span>Himari</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp> <span>Sumire</span></a> </span><span> and more.</span></p><hr><p>Track: <a href=/en/track/ost/40.html> <span>OST 40. Neo City Dive</span></a></p></div>','0p7ltR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','yjnCH1': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Everything As Always</p><p>The Engineering Department were developing new stuff as always. Veritas were working closely with Super Phenomenon Task Force. Sumire resumed her daily exercises.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp> <span>Kotori</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp> <span>Chihiro</span></a> </span> | </span><span> <a href=/en/character/student/sumire/> <img class=icon-stu src=/static/images/student/icon/10012.webp> <span>Sumire</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/50.html> <span>OST 50. Hue</span></a></p></div>', });
     </script>
 
 
@@ -967,225 +1309,255 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_13"><a href="/en/track/ost/13.html" onmouseover="showTooltip(this, 'yV8O48')">【2】
-    OST
- 13. Barrier</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_7"><a href="/en/track/ost/7.html" onmouseover="showTooltip(this, 'AbURvl')">【1】
-    OST
- 7. Unwelcome School</a> by Mitsukiyo</li>
+            <li id="track-OST_13">
+    <a href="/en/track/ost/13.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="_K2zTp">
+        <span>【2】OST&nbsp;13.&nbsp;Barrier</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_10"><a href="/en/track/ost/10.html" onmouseover="showTooltip(this, 'ai5ewr')">【1】
-    OST
- 10. Romantic Smile</a> by Mitsukiyo</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_16"><a href="/en/track/ost/16.html" onmouseover="showTooltip(this, 'mSD4jB')">【1】
-    OST
- 16. MX Adventure</a> by Mitsukiyo</li>
+            <li id="track-OST_7">
+    <a href="/en/track/ost/7.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="BihQNy">
+        <span>【1】OST&nbsp;7.&nbsp;Unwelcome School</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_18"><a href="/en/track/ost/18.html" onmouseover="showTooltip(this, '7SDcUj')">【1】
-    OST
- 18. Mechanical JUNGLE</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_25"><a href="/en/track/ost/25.html" onmouseover="showTooltip(this, 'LLF7jk')">【1】
-    OST
- 25. Future Bossa</a> by Mitsukiyo</li>
+            <li id="track-OST_10">
+    <a href="/en/track/ost/10.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="bYHwjd">
+        <span>【1】OST&nbsp;10.&nbsp;Romantic Smile</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_28"><a href="/en/track/ost/28.html" onmouseover="showTooltip(this, 'YyEM8R')">【1】
-    OST
- 28. Plug and Play</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_32"><a href="/en/track/ost/32.html" onmouseover="showTooltip(this, '1G3URS')">【1】
-    OST
- 32. GGF</a> by Mitsukiyo</li>
+            <li id="track-OST_16">
+    <a href="/en/track/ost/16.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="FHa7zN">
+        <span>【1】OST&nbsp;16.&nbsp;MX Adventure</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_33"><a href="/en/track/ost/33.html" onmouseover="showTooltip(this, 's4Ksa2')">【1】
-    OST
- 33. Vivid Night</a> by Nor</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_40"><a href="/en/track/ost/40.html" onmouseover="showTooltip(this, 'IXVWYe')">【1】
-    OST
- 40. Neo City Dive</a> by KARUT</li>
+            <li id="track-OST_18">
+    <a href="/en/track/ost/18.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="9dVYeI">
+        <span>【1】OST&nbsp;18.&nbsp;Mechanical JUNGLE</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_50"><a href="/en/track/ost/50.html" onmouseover="showTooltip(this, 'f93Wc9')">【1】
-    OST
- 50. Hue</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_68"><a href="/en/track/ost/68.html" onmouseover="showTooltip(this, 'wjoT21')">【1】
-    OST
- 68. Virtual Storm (Hard Arrange)</a> by Mitsukiyo</li>
+            <li id="track-OST_25">
+    <a href="/en/track/ost/25.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="zLbW2k">
+        <span>【1】OST&nbsp;25.&nbsp;Future Bossa</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_75"><a href="/en/track/ost/75.html" onmouseover="showTooltip(this, 'nEurTm')">【1】
-    OST
- 75. Alert (Hard Arrange)</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_122"><a href="/en/track/ost/122.html" onmouseover="showTooltip(this, 'cXxPPS')">【1】
-    OST
- 122. [UNNAMED]</a> by Unknown</li>
+            <li id="track-OST_28">
+    <a href="/en/track/ost/28.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="Hrz5_u">
+        <span>【1】OST&nbsp;28.&nbsp;Plug and Play</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_32">
+    <a href="/en/track/ost/32.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="PXhtaS">
+        <span>【1】OST&nbsp;32.&nbsp;GGF</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_129"><a href="/en/track/ost/129.html" onmouseover="showTooltip(this, '6J8yjP')">【1】
-    OST
- 129. Let me think about it</a> by Nor</li>
+            <li id="track-OST_33">
+    <a href="/en/track/ost/33.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="CDcwQp">
+        <span>【1】OST&nbsp;33.&nbsp;Vivid Night</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_40">
+    <a href="/en/track/ost/40.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="gr3S3c">
+        <span>【1】OST&nbsp;40.&nbsp;Neo City Dive</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_50">
+    <a href="/en/track/ost/50.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="CvN0xZ">
+        <span>【1】OST&nbsp;50.&nbsp;Hue</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_68">
+    <a href="/en/track/ost/68.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="jEJknQ">
+        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_75">
+    <a href="/en/track/ost/75.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="GOpR0W">
+        <span>【1】OST&nbsp;75.&nbsp;Alert (Hard Arrange)</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_122">
+    <a href="/en/track/ost/122.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="1LTnLx">
+        <span>【1】OST&nbsp;122.&nbsp;[UNNAMED]</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_129">
+    <a href="/en/track/ost/129.html#39174134-e8c0-4c39-bee8-4f2ad2ff05d9" onmouseover="showTooltip(this)" data-tooltip="kt1LNu">
+        <span>【1】OST&nbsp;129.&nbsp;Let me think about it</span>
+    </a>
+    
+</li>
 
             
                 
@@ -1196,34 +1568,74 @@ Story Volume 2 Chapter 2 Episode 25: Millennium Science School
     
         
     <script>
-        add_tooltip_data({ 'yV8O48': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 13. Barrier</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html> Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror </a></li><li><a href=/en/main/story/main/2/1/15.html> Main Story Volume 2 Chapter 1 Episode 15: A Spreading Danger </a></li></ol></div>','AbURvl': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 7. Unwelcome School</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html> Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror </a></li></ol></div>','ai5ewr': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 10. Romantic Smile</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html> Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror </a></li></ol></div>','mSD4jB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 16. MX Adventure</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html> Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1 </a></li></ol></div>','7SDcUj': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/13.html> Main Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids </a></li></ol></div>','LLF7jk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 25. Future Bossa</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html> Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1 </a></li></ol></div>','YyEM8R': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 28. Plug and Play</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html> Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror </a></li></ol></div>','1G3URS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 32. GGF</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html> Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror </a></li></ol></div>','s4Ksa2': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 33. Vivid Night</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html> Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1 </a></li></ol></div>','IXVWYe': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 40. Neo City Dive</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/23.html> Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2 </a></li></ol></div>','f93Wc9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 50. Hue</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/25.html> Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School </a></li></ol></div>','wjoT21': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 68. Virtual Storm (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/16.html> Main Story Volume 2 Chapter 2 Episode 16: Checkmate </a></li></ol></div>','nEurTm': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 75. Alert (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/21.html> Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name? </a></li></ol></div>','cXxPPS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 122. [UNNAMED]</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html> Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1 </a></li></ol></div>','6J8yjP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 129. Let me think about it</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html> Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1 </a></li></ol></div>', });
+        add_tooltip_data({ '_K2zTp': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 13. Barrier</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Overview of G.Bible</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] A Problem</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/15.html>Main Story Volume 2 Chapter 1 Episode 15: A Spreading Danger</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/15.html#story-part-1-seg-1><i>[1] A Backup Plan</i></a></span><span>)</span></li></ol></div>','BihQNy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 7. Unwelcome School</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] A Problem</i></a></span><span>)</span></li></ol></div>','bYHwjd': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 10. Romantic Smile</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Overview of G.Bible</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] The Mirror</i></a></span><span>)</span></li></ol></div>','FHa7zN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 16. MX Adventure</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] An Abnormality</i></a></span><span>)</span></li></ol></div>','9dVYeI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/13.html>Main Story Volume 2 Chapter 1 Episode 13: Nerds vs. Maids</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/13.html#story-part-1-seg-1><i>[1] The Strategy Meeting</i></a></span><span>)</span></li></ol></div>','zLbW2k': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 25. Future Bossa</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] An Abnormality</i></a></span><span>)</span></li></ol></div>','Hrz5_u': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 28. Plug and Play</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] Already Started</i></a></span><span>)</span></li></ol></div>','PXhtaS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 32. GGF</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/12.html>Main Story Volume 2 Chapter 1 Episode 12: In Search of the Mirror</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/12.html#story-part-1-seg-1><i>[1] It&#x27s Decided!</i></a></span><span>)</span></li></ol></div>','CDcwQp': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 33. Vivid Night</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] The Game Development Department</i></a></span><span>)</span></li></ol></div>','gr3S3c': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 40. Neo City Dive</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/23.html>Main Story Volume 2 Chapter 2 Episode 23: Pavane for a Princess 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/23.html#story-part-1-seg-1><i>[1] The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','CvN0xZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 50. Hue</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/25.html>Main Story Volume 2 Chapter 2 Episode 25: Millennium Science School</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/25.html#story-part-1-seg-1><i>[1] Everything As Always</i></a></span><span>)</span></li></ol></div>','jEJknQ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 68. Virtual Storm (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/16.html>Main Story Volume 2 Chapter 2 Episode 16: Checkmate</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] Communication Back Up</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/2/2/16.html#story-part-1-seg-1><i>[1] A Surprise From Chihiro</i></a></span><span>)</span></li></ol></div>','GOpR0W': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 75. Alert (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/21.html>Main Story Volume 2 Chapter 2 Episode 21: What&#x27s in a Name?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/21.html#story-part-1-seg-1><i>[1] The Real Fight</i></a></span><span>)</span></li></ol></div>','1LTnLx': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 122. [UNNAMED]</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] An Abnormality</i></a></span><span>)</span></li></ol></div>','kt1LNu': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 129. Let me think about it</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/6.html>Main Story Volume 2 Chapter 2 Episode 6: A Strange Machine 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/6.html#story-part-1-seg-1><i>[1] A Strange Robot</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_CommitteeRoom_Night_Blur.jpg.html">&lt;-- Previous page: BG_CommitteeRoom_Night_Blur.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_ComputerCenter_Blur.jpg.html">--&gt; Next page: BG_ComputerCenter_Blur.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:03 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:03
 -->
 </body>
 </html>

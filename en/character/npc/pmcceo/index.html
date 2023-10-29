@@ -7,10 +7,10 @@
 
     <title>NPC/PMC CEO- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,94 +84,83 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
             
-            
+                
                 
                     
-                    <p class="navi-p"><a href="/en/character/npc/momoka">&lt;-- Previous page: Momoka</a></p>
+                        
+                        <p class="navi-p"><a href="/en/character/npc/momoka">&lt;-- Previous page: Momoka</a></p>
+                    
                 
             
-        
-        
             
-            
+                
                 
                     
-                    <p class="navi-p"><a href="/en/character/npc/rin">--&gt; Next page: Rin</a></p>
+                        
+                        <p class="navi-p"><a href="/en/character/npc/rin">--&gt; Next page: Rin</a></p>
+                    
                 
             
         
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
 
     <h1>NPC/PMC CEO</h1>
@@ -229,16 +218,13 @@
         <li id="story-MAIN_1_1_7">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/7.html" onmouseover="showTooltip(this, 'C3QLWc')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 7: A New Threat?
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/7.html"  onmouseover="showTooltip(this)" data-tooltip="ZyHhme">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>
+    
+
         
 
         
@@ -248,40 +234,65 @@ Story Volume 1 Chapter 1 Episode 7: A New Threat?
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
-            
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/7.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'tGmoFS')"><i>[2] PMC and Problem Solver</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/7.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="x7p7Mo"><i>[2]&nbsp;PMC and Problem Solver</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -295,16 +306,13 @@ Story Volume 1 Chapter 1 Episode 7: A New Threat?
         <li id="story-MAIN_1_1_12">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/12.html" onmouseover="showTooltip(this, 'DJGbpc')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/12.html"  onmouseover="showTooltip(this)" data-tooltip="FM2cdn">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;12:&nbsp;To the Black Market! Part 2</a>
+    
+
         
 
         
@@ -314,56 +322,81 @@ Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
                     
-                
-                    
-                
                     
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/12.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'m63sGX')"><i>[2] PMC's Confusion</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/12.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="ZDxfC8"><i>[2]&nbsp;PMC's Confusion</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -377,16 +410,13 @@ Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2
         <li id="story-MAIN_1_2_10">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/10.html" onmouseover="showTooltip(this, 'cpYHE_')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/10.html"  onmouseover="showTooltip(this)" data-tooltip="sd9u8V">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;Kaiser PMC Part 2</a>
+    
+
         
 
         
@@ -396,66 +426,101 @@ Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/10.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'fJnda3')"><i>[1] Not Near Ending</i></a>,&nbsp;<a href="/en/main/story/main/1/2/10.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'NpIdpf')"><i>[2] A Secret Meeting</i></a>,&nbsp;<a href="/en/main/story/main/1/2/10.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'Hz7rg9')"><i>[3] Discussing the Debt</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/10.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="4FEd7A"><i>[1]&nbsp;Not Near Ending</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/10.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="1b73VW"><i>[2]&nbsp;A Secret Meeting</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/10.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="GLS4gI"><i>[3]&nbsp;Discussing the Debt</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -469,16 +534,13 @@ Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2
         <li id="story-MAIN_1_2_11">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/11.html" onmouseover="showTooltip(this, '_lSKU0')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 11: A Losing Battle
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/11.html"  onmouseover="showTooltip(this)" data-tooltip="jMubVF">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>
+    
+
         
 
         
@@ -488,54 +550,90 @@ Story Volume 1 Chapter 2 Episode 11: A Losing Battle
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/11.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'0CTaj_')"><i>[3] Kaiser Director</i></a>,&nbsp;<a href="/en/main/story/main/1/2/11.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'ptDQrO')"><i>[4] A Debt Can't Be Filled</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/11.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="nuMlOE"><i>[3]&nbsp;Kaiser Director</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/11.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="PwKNvM"><i>[4]&nbsp;A Debt Can't Be Filled</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -549,16 +647,13 @@ Story Volume 1 Chapter 2 Episode 11: A Losing Battle
         <li id="story-MAIN_1_2_13">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/13.html" onmouseover="showTooltip(this, 'VnwLnM')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/13.html"  onmouseover="showTooltip(this)" data-tooltip="wq715x">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;What Slipped Through the Cracks</a>
+    
+
         
 
         
@@ -567,73 +662,134 @@ Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
             
                 
                 
-            
-                
-                
+                    
+                    
                     
                 
-                    
-                
-            
-                
-                
-            
-                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
+                    
+                    
+                
+
+                
             
                 
                 
                     
-                
+                    
                     
                 
+
+                
+            
+                
+                
+                    
+                    
+                        
+                    
                     
                 
+
+                
+            
+                
+                
+                    
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
                     
-                
                     
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/13.html#story-part-7" class="text-primary" onmouseover="showTooltip(this,'Z496mU')"><i>[7] How Could She!</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/13.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="VpMvGv"><i>[7]&nbsp;How Could She!</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -647,16 +803,13 @@ Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks
         <li id="story-MAIN_1_2_14">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/14.html" onmouseover="showTooltip(this, 'DEfg9C')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/14.html"  onmouseover="showTooltip(this)" data-tooltip="27mbjD">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Abydos Siege Part 1</a>
+    
+
         
 
         
@@ -666,89 +819,142 @@ Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
                 
                 
                     
-                
-                    
-                
-                    
-                
-                    
-                
                     
                         
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
-                
+                        
                     
-                
-            
-                
-                
+                        
                     
-                
-            
-                
-                
-                    
-                
-                    
-                
+                        
                     
                         
                             
+                    
                         
 
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
                         
                             
+                    
                         
 
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
                     
-                
-                    
-                
                     
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/14.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'G6re3y')"><i>[1] Kaiser Director</i></a>,&nbsp;<a href="/en/main/story/main/1/2/14.html#story-part-4" class="text-primary" onmouseover="showTooltip(this,'QBcmPw')"><i>[4] Despair</i></a>,&nbsp;<a href="/en/main/story/main/1/2/14.html#story-part-5" class="text-primary" onmouseover="showTooltip(this,'sqvXmb')"><i>[5] Problem Solver 68</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/14.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="DD0Qxn"><i>[1]&nbsp;Kaiser Director</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/14.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="BdRB8f"><i>[4]&nbsp;Despair</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/14.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="BAF4kf"><i>[5]&nbsp;Problem Solver 68</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -762,16 +968,13 @@ Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1
         <li id="story-MAIN_1_2_15">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/15.html" onmouseover="showTooltip(this, '3OHVd1')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/15.html"  onmouseover="showTooltip(this)" data-tooltip="80cAQl">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;15:&nbsp;The Abydos Siege Part 2</a>
+    
+
         
 
         
@@ -781,56 +984,92 @@ Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
                 
                 
                     
-                        
-                            
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/15.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'rZj201')"><i>[1] Betraying PMC</i></a>,&nbsp;<a href="/en/main/story/main/1/2/15.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'HT5Wvy')"><i>[3] Retreat</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/15.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="N7eOCw"><i>[1]&nbsp;Betraying PMC</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/15.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="kVf0hX"><i>[3]&nbsp;Retreat</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -844,16 +1083,13 @@ Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2
         <li id="story-MAIN_1_2_17">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/17.html" onmouseover="showTooltip(this, 'pz1Suw')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/17.html"  onmouseover="showTooltip(this)" data-tooltip="5odZQW">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;That Which One Must Protect</a>
+    
+
         
 
         
@@ -863,87 +1099,142 @@ Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
                 
                     
-                
                     
-                
-                    
-                
                     
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/17.html#story-part-7" class="text-primary" onmouseover="showTooltip(this,'Ei8aCj')"><i>[7] Inside the HQ</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/17.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="R23bdE"><i>[7]&nbsp;Inside the HQ</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -957,16 +1248,13 @@ Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect
         <li id="story-MAIN_1_2_18">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/18.html" onmouseover="showTooltip(this, 'FptXnn')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/18.html"  onmouseover="showTooltip(this)" data-tooltip="8ux8u6">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>
+    
+
         
 
         
@@ -976,54 +1264,79 @@ Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/18.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'GIDNZe')"><i>[3] PMC Director</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/18.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="D3gkrG"><i>[3]&nbsp;PMC Director</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -1037,16 +1350,13 @@ Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1
         <li id="story-MAIN_1_2_19">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/19.html" onmouseover="showTooltip(this, 'GM8YUD')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/19.html"  onmouseover="showTooltip(this)" data-tooltip="lyARwn">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;19:&nbsp;Never Letting Go Part 2</a>
+    
+
         
 
         
@@ -1056,82 +1366,125 @@ Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
-                            
+                    
                         
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
+                    
                         
-            
-                
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
+                    
                     
                 
-                    
+
                 
-                    
-                
-                    
-                
-            
-                
-                
-            
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/19.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'qkh_w4')"><i>[1] PMC Director</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/19.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="FIomdn"><i>[1]&nbsp;PMC Director</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'C3QLWc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A New Threat?</p><ul><li>Sensei and the task force manage to rescue Serika from the Helmet Gang. Ayane finds signs of contraband among the tank&#x27s wreckage. Meanwhile, the Kaiser PMC that controlled the Helmet Gang decides to enlist the help of Problem Solver 68.</li></ul></div>','tGmoFS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC and Problem Solver</p><p>Due to the ineffectiveness of the Helmet Gang, PMC decided to hire the professionals Problem Solver 68 to finish the task. The latter cleaned some of the Gang&#x27s members.</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','DJGbpc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">To the Black Market! Part 2</p><ul><li>Hifumi agrees to guide The Foreclosure Task Force around the market in return for helping her earlier. Meanwhile, the boss of Problem Solver 68, Aru, struggles to get a loan so she can pay off her earlier mistake.</li></ul></div>','m63sGX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC&#x27s Confusion</p><p>The failed mission carried out by Problem Solver 68 shocked the PMC, who insisted that the data must be wrong. Yet Black Suit thought the data was nothing wrong and decided to investigate the reasons.</p><hr><p>Character:  <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <a href=/en/character/npc/blacksuit/>The Black Suit</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','cpYHE_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC Part 2</p><ul><li>A supposed Kaiser board member appears before the Foreclosure Task Force and introduces themselves as the creditor of Abydos.</li></ul></div>','fJnda3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Not Near Ending</p><p>The PMC was too strong for everyone to escape. The director of PMC suddenly visited at this time, and Hoshino recognized him and remembered something.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/20.html>OST 20. Tech N Tech</a>   <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','NpIdpf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Secret Meeting</p><p>Hoshino remembered that, in that previous meeting, the Black Suit mentioned about that "deal" in front of herself and the PMC director.</p><hr><p>Character:  <a href=/en/character/npc/blacksuit/>The Black Suit</a>   <a href=/en/character/npc/pmcceo/>PMC CEO</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','Hz7rg9': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Discussing the Debt</p><p>The PMC director proposed to add the losses caused by everyone to the amount owed. Hoshino recognized him, and the latter said hello to Hoshino. Then he "accidentally" leaked his hiring of the Problem Solver 68 and the Helmet Group. Afterwards, he said he wanted to have a good talk with Abydos about the debt.</p><hr><p>Character:  <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','_lSKU0': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Losing Battle</p><ul><li>The Kaiser board member reveals their ambitions to find a massive treasure buried somewhere in Abydos. Then, using the Foreclosure Task Force&#x27s debt as leverage, the creditor forces them to back down. Hoshino calls for a retreat to the chagrin of the other task force members.</li></ul></div>','0CTaj_': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser Director</p><p>Kaiser Director introduced himself to everyone, which was immediately got under fire. But the director didn&#x27t care, and said that given the current situation, it was true that the Foreclosure Task Force had invaded their own private lands. He aslo said that the troops were all for looking for treasures beneath Abydos, not for invading Abydos High School. None was convinced, and director demonstrated just how easy it would be for him to "actually sabotage Abydos".</p><hr><p>Character:  <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','ptDQrO': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Debt Can&#x27t Be Filled</p><p>Kaiser Director made a call and said that Abydos High School&#x27s credit was at all-time low, and the interest rate would be raised 30 times higher. At the club room, Ayane answered the call and was greatly shocked. Kaiser Director also said that they would first need to pay a deposit in advance to prove their repayment ability. But that could never be achieved - and so, the director advised them to give up or drop out the school, or simply transfer to another one. No one was willing to step a step back. Hoshino said that it was useless to argue here and suggested to leave first.</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','VnwLnM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What Slipped Through the Cracks</p><ul><li>In her letter, Hoshino reveals that she joined Kaiser PMC in exchange for Abydos High School&#x27s debt being forgiven. Now, without Hoshino, the remaining members of the Foreclosure Task Force scramble when PMC forces close in on Abydos High School.</li></ul></div>','Z496mU': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">How Could She!</p><p>Finishing reading, everyone was angry at Hoshino&#x27s irresponsibility. At this moment, they heard explosions coming outside.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','DEfg9C': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 1</p><ul><li>After joining up with Kaiser PMC, Hoshino defects when she learns that Abydos High School is under attack, but is then arrested by Black Suit. When all hope seems lost, Problem Solver 68 returns to Abydos to lend their aid to the Foreclosure Task Force.</li></ul></div>','G6re3y': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser Director</p><p>Kaiser Director arrived and everyone was immediately triggered. Though claiming that they would be reported to the General Student Council, the director said it was useless and the time just proved that no one could be helping them. The director even pointed out that, due to Hoshino&#x27s dropout, Abydos High School was no longer existed. Everyone was shocked, but still argued with the existence of "The Foreclosure Task Force" - however, accroding to Ayane, as it was established after the dissolution of the Student Union, the Task Force was in fact a club that hadn&#x27t recognized officially. As a result, neither could it represent the school, nor could it be proved to be existed.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','QBcmPw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Despair</p><p>The director was surprised to hear that the Abydos were really going to pay the debts, but then he questioned whether it would be meaningful or pointless. None could give an answer - when the PMC troops were under a surprise attack.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/35.html>OST 35. Morose Dreamer</a></p></div>','sqvXmb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Problem Solver 68</p><p>Problem Solver 68 arrived upon hearing the explosions, acknowledging that the PMC &LTi>was&LT/i> really out of line. Aru slammed the Task Force for "giving up when your friends were in crisis", and repeated the motto that once the Masked Swimsuit Gang told her. In return for the help Abydos had made, Problem Solver 68 joined in the battle.</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span></p><hr><p>Track:  <a href=/en/track/ost/65.html>OST 65. Accelerator</a></p></div>','3OHVd1': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 2</p><ul><li>Despite the Kaiser director&#x27s outrage, Sensei, the Foreclosure Task Force, and Problem Solver make use of the sudden turn of events to launch a counteroffensive against the PMC forces.</li><li>The PMC forces finally retreat following an arduous battle. Later, Sensei seeks out Black Suit personally to negotiate Hoshino&#x27s return.</li></ul></div>','rZj201': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Betraying PMC</p><p>The director was both shocked and angry to see that the Problem Solver 68 betrayed them, but the latter insulted them back. Sensei confronted the director, demanding that Hoshino be returned. The director didn&#x27t step back. Everyone was forced to engage the enemies..</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/20.html>OST 20. Tech N Tech</a></p></div>','HT5Wvy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Retreat</p><p>As the director injured during the combat, the director gave a command of retreating with the advice of a solider. Everyone decided to go back and come up with a plan to rescue Hoshino.</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/13.html>OST 13. Barrier</a></p></div>','pz1Suw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">That Which One Must Protect</p><ul><li>[USERNAME] Sensei goes to the Gehenna Academy and Trinity General School to enlist their help. Meanwhile, Problem Solver 68 are treated to ramen at Master Shiba Seki&#x27s newly opened stall and make up their minds to help the Foreclosure Task Force.</li><li>At [USERNAME] Sensei&#x27s behest, Hina and the Prefect Team come to the Foreclosure Task Force&#x27s defense against the PMC forces.</li></ul></div>','Ei8aCj': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Inside the HQ</p><p>The PMC HQ discovered enemies from all directions, yet the three coming from north seemed to be extraordinary.</p><hr><p>Character:  <a href=/en/character/npc/pmcceo/>PMC CEO</a></p><hr><p>Track:  <a href=/en/track/ost/18.html>OST 18. Mechanical JUNGLE</a></p></div>','FptXnn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 1</p><ul><li>The Foreclosure Task Force is fighting on multiple fronts when Hifumi arrives with reinforcements from Trinity in tow. Using the unexpected arrival as a distraction, the Foreclosure Task Force breaks through the enemy lines.</li><li>When the Foreclosure Task Force arrives at Abydos High&#x27s old main building, a Kaiser board member bars their way. However, Aru and Problem Solver 68 arrive in the nick of time.</li></ul></div>','GIDNZe': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC Director</p><p>Everyone came to the middle of the desert and recognized the traces of the former Abydos High School. The director introduced the situation here and mentioned about the "Laboratory" that the Black Suit once mentioned. Yet the director said they must pass him first, and at this moment all of the Problem Solver 68 came and aid. The Foreclosure Task Force entrusted the combat to Problem Solver 68 and looked for Hoshino themselves.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp>Mutsuki </a> </span>   <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp>Kayoko </a> </span>   <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp>Haruka </a> </span>   <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp>Aru </a> </span></p><hr><p>Track:  <a href=/en/track/ost/41.html>OST 41. Interface</a>   <a href=/en/track/ost/49.html>OST 49. Mechanical JUNGLE (High-Tech Full On Mix)</a></p></div>','GM8YUD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 2</p><ul><li>The Foreclosure Task Force pushes toward the bunker where Hoshino is being held captive.</li><li>After a long hard-fought battle, the Foreclosure Task Force finally brings Hoshino back to safety.</li></ul></div>','qkh_w4': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC Director</p><p>Just when everyone thought they had got rid of PMC, the director suddenly stood in front of them. The director expressed great regret and displeasure at the failure of the plan. Everyone began engaging again.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span>   <a href=/en/character/npc/pmcceo/>PMC CEO</a>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span></p><hr><p>Track:  <a href=/en/track/ost/65.html>OST 65. Accelerator</a></p></div>', });
+        add_tooltip_data({ 'ZyHhme': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A New Threat?</p><ul><li>Sensei and the task force manage to rescue Serika from the Helmet Gang. Ayane finds signs of contraband among the tank&#x27s wreckage. Meanwhile, the Kaiser PMC that controlled the Helmet Gang decides to enlist the help of Problem Solver 68.</li></ul></div>','x7p7Mo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC and Problem Solver</p><p>Due to the ineffectiveness of the Helmet Gang, PMC decides to hire the professionals Problem Solver 68 to finish the task.</p><hr><p>Character:<a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','FM2cdn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">To the Black Market! Part 2</p><ul><li>Hifumi agrees to guide The Foreclosure Task Force around the market in return for helping her earlier. Meanwhile, the boss of Problem Solver 68, Aru, struggles to get a loan so she can pay off her earlier mistake.</li></ul></div>','ZDxfC8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC&#x27s Confusion</p><p>The failed mission carried out by Problem Solver 68 shocks the PMC, who insists that the data must be wrong. Yet Black Suit thinks the data is nothing wrong and decides to investigate the reason.</p><hr><p>Character:<span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','sd9u8V': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser PMC Part 2</p><ul><li>A supposed Kaiser board member appears before the Foreclosure Task Force and introduces themselves as the creditor of Abydos.</li></ul></div>','4FEd7A': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Not Near Ending</p><p>The PMC is too strong for everyone to escape. The director of PMC suddenly visits at this time, and Hoshino recognizes him and remembers something.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/20.html> <span>OST 20. Tech N Tech</span></a> <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','1b73VW': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Secret Meeting</p><p>Hoshino remembers that, in that previous meeting, the Black Suit mentioned about that "deal" in front of herself and the PMC director.</p><hr><p>Character:<span> <a href=/en/character/npc/blacksuit/> <span>The Black Suit</span></a>  | </span><a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','GLS4gI': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Discussing the Debt</p><p>The PMC director proposes to add the losses caused by everyone to the amount owed. Hoshino recognizes him, and the latter says hello to Hoshino. Then he "accidentally" leaks his hiring of the Problem Solver 68 and the Helmet Group. Afterwards, he says he wants to have a good talk with Abydos about the debt.</p><hr><p>Character:<span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','jMubVF': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Losing Battle</p><ul><li>The Kaiser board member reveals their ambitions to find a massive treasure buried somewhere in Abydos. Then, using the Foreclosure Task Force&#x27s debt as leverage, the creditor forces them to back down. Hoshino calls for a retreat to the chagrin of the other task force members.</li></ul></div>','nuMlOE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser Director</p><p>Kaiser Director introduces himself to everyone, which is immediately got under fire. But the director doesn&#x27t care, and says that given the current situation, it is true that the Foreclosure Task Force has invaded their own private lands. He also says that the troops are all for searching treasures beneath Abydos, not for invading Abydos High School. Nobody is convinced, and director demonstrates just how easy it would be for him to "actually sabotage Abydos".</p><hr><p>Character:<span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','PwKNvM': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">A Debt Can&#x27t Be Filled</p><p>Kaiser Director makes a call and says that Abydos High School&#x27s credit is at all-time low, and the interest rate will be raised 30 times higher. At the club room, Ayane answers the call and is greatly shocked. Kaiser Director also says that they would first need to pay a deposit in advance to prove their repayment ability. But that could never be achieved - and so, the director advises them to give up or drop out the school, or simply transfer to another one. No one is willing to step a step back. Hoshino says that it&#x27s useless to argue here and suggests to leave first.</p><hr><p>Character:<span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','wq715x': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What Slipped Through the Cracks</p><ul><li>In her letter, Hoshino reveals that she joined Kaiser PMC in exchange for Abydos High School&#x27s debt being forgiven. Now, without Hoshino, the remaining members of the Foreclosure Task Force scramble when PMC forces close in on Abydos High School.</li></ul></div>','VpMvGv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">How Could She!</p><p>Finishing reading, everyone is angry at Hoshino&#x27s irresponsibility. At this moment, they hears explosions coming outside.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','27mbjD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 1</p><ul><li>After joining up with Kaiser PMC, Hoshino defects when she learns that Abydos High School is under attack, but is then arrested by Black Suit. When all hope seems lost, Problem Solver 68 returns to Abydos to lend their aid to the Foreclosure Task Force.</li></ul></div>','DD0Qxn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Kaiser Director</p><p>Kaiser Director arrives and everyone is immediately triggered. Though claiming that they would be reported to the General Student Council, the director says it is useless and the time just proves that no one could be helping them. The director even points out that, due to Hoshino&#x27s dropout, Abydos High School is no longer existed. Everyone is shocked, but still argues with the existence of "The Foreclosure Task Force" - however, according to Ayane, since it is established after the dissolution of the Student Union, the Task Force is in fact a club that hasn&#x27t recognized officially. As a result, neither can it represent the school, nor can it be proved to be existed.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','BdRB8f': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Despair</p><p>The director is surprised to hear that the Abydos are really going to pay the debts, but then he questions whether it would be meaningful or pointless. No one could give an answer - when the PMC troops are under a surprise attack.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/35.html> <span>OST 35. Morose Dreamer</span></a></p></div>','BAF4kf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Problem Solver 68</p><p>Problem Solver 68 arrives upon hearing the explosions, acknowledging that the PMC <i>was</i> really out of line. Aru slams the Task Force for "giving up when your friends were in crisis", and repeats the motto that once the Masked Swimsuit Gang told her. In return for the help Abydos had made, Problem Solver 68 join in the battle.</p><hr><p>Character:<span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/65.html> <span>OST 65. Accelerator</span></a></p></div>','80cAQl': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Abydos Siege Part 2</p><ul><li>Despite the Kaiser director&#x27s outrage, Sensei, the Foreclosure Task Force, and Problem Solver make use of the sudden turn of events to launch a counteroffensive against the PMC forces.</li><li>The PMC forces finally retreats following an arduous battle. Later, Sensei seeks out Black Suit personally to negotiate Hoshino&#x27s return.</li></ul></div>','N7eOCw': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Betraying PMC</p><p>The director is both shocked and angry to see that the Problem Solver 68 betrayed them, but the latter insults them back. Sensei confronts the director, demanding that Hoshino be returned. The director doesn&#x27t step back. Everyone is forced to engage the enemies.</p><hr><p>Character:<span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/20.html> <span>OST 20. Tech N Tech</span></a></p></div>','kVf0hX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Retreat</p><p>As the director injured during the combat, the director gives a command of retreating with the advice of a solider. Everyone decides to go back and comes up with a plan to rescue Hoshino.</p><hr><p>Character:<span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/13.html> <span>OST 13. Barrier</span></a></p></div>','5odZQW': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">That Which One Must Protect</p><ul><li>[USERNAME] Sensei goes to the Gehenna Academy and Trinity General School to enlist their help. Meanwhile, Problem Solver 68 are treated to ramen at Master Shiba Seki&#x27s newly opened stall and make up their minds to help the Foreclosure Task Force.</li><li>At [USERNAME] Sensei&#x27s behest, Hina and the Prefect Team come to the Foreclosure Task Force&#x27s defense against the PMC forces.</li></ul></div>','R23bdE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Inside the HQ</p><p>The PMC HQ discovers enemies from all directions, yet the three coming from north seemed to be extraordinary.</p><hr><p>Character:<a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a></p><hr><p>Track: <a href=/en/track/ost/18.html> <span>OST 18. Mechanical JUNGLE</span></a></p></div>','8ux8u6': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 1</p><ul><li>The Foreclosure Task Force is fighting on multiple fronts when Hifumi arrives with reinforcements from Trinity in tow. Using the unexpected arrival as a distraction, the Foreclosure Task Force breaks through the enemy lines.</li><li>When the Foreclosure Task Force arrives at Abydos High&#x27s old main building, a Kaiser board member bars their way. However, Aru and Problem Solver 68 arrive in the nick of time.</li></ul></div>','D3gkrG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC Director</p><p>Everyone comes to the middle of the desert and recognizes the traces of the former Abydos High School. The director introduces the situation here and mentions about the "Laboratory" that the Black Suit once mentioned. Yet the director says they must pass him first, and at this moment all of the Problem Solver 68 come out and aid. The Foreclosure Task Force entrust the combat to Problem Solver 68 and then look for Hoshino themselves.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <span> <a href=/en/character/student/mutsuki/> <img class=icon-stu src=/static/images/student/icon/13006.webp> <span>Mutsuki</span></a> </span> | </span><span> <span> <a href=/en/character/student/kayoko/> <img class=icon-stu src=/static/images/student/icon/13005.webp> <span>Kayoko</span></a> </span> | </span><span> <span> <a href=/en/character/student/haruka/> <img class=icon-stu src=/static/images/student/icon/16000.webp> <span>Haruka</span></a> </span> | </span><span> <a href=/en/character/student/aru/> <img class=icon-stu src=/static/images/student/icon/10000.webp> <span>Aru</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/41.html> <span>OST 41. Interface</span></a> <a href=/en/track/ost/49.html> <span>OST 49. Mechanical JUNGLE (High-Tech Full On Mix)</span></a></p></div>','lyARwn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 2</p><ul><li>The Foreclosure Task Force pushes toward the bunker where Hoshino is being held captive.</li><li>After a long hard-fought battle, the Foreclosure Task Force finally brings Hoshino back to safety.</li></ul></div>','FIomdn': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">PMC Director</p><p>Just when everyone thinks they had got rid of PMC, the director suddenly stands in front of them. The director expresses great regret and displeasure at the failure of the plan. Everyone begins engaging again.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span> | </span><span> <a href=/en/character/npc/pmcceo/> <span>PMC CEO</span></a>  | </span><span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/65.html> <span>OST 65. Accelerator</span></a></p></div>', });
     </script>
 
 
@@ -1146,120 +1499,136 @@ Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_27"><a href="/en/track/ost/27.html" onmouseover="showTooltip(this, 'bqpUSE')">【6】
-    OST
- 27. Fade Out</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_20"><a href="/en/track/ost/20.html" onmouseover="showTooltip(this, 'rlvTKa')">【2】
-    OST
- 20. Tech N Tech</a> by KARUT</li>
+            <li id="track-OST_27">
+    <a href="/en/track/ost/27.html#1e61ad51-0e93-4433-821e-27ace65ad990" onmouseover="showTooltip(this)" data-tooltip="sHQjXx">
+        <span>【6】OST&nbsp;27.&nbsp;Fade Out</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_65"><a href="/en/track/ost/65.html" onmouseover="showTooltip(this, 'OZBj9t')">【2】
-    OST
- 65. Accelerator</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_13"><a href="/en/track/ost/13.html" onmouseover="showTooltip(this, 'aRT1Nh')">【1】
-    OST
- 13. Barrier</a> by KARUT</li>
+            <li id="track-OST_20">
+    <a href="/en/track/ost/20.html#1e61ad51-0e93-4433-821e-27ace65ad990" onmouseover="showTooltip(this)" data-tooltip="EqGWwv">
+        <span>【2】OST&nbsp;20.&nbsp;Tech N Tech</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_18"><a href="/en/track/ost/18.html" onmouseover="showTooltip(this, 'A0Mief')">【1】
-    OST
- 18. Mechanical JUNGLE</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_35"><a href="/en/track/ost/35.html" onmouseover="showTooltip(this, 'kHn6N6')">【1】
-    OST
- 35. Morose Dreamer</a> by Mitsukiyo</li>
+            <li id="track-OST_65">
+    <a href="/en/track/ost/65.html#1e61ad51-0e93-4433-821e-27ace65ad990" onmouseover="showTooltip(this)" data-tooltip="brBWhe">
+        <span>【2】OST&nbsp;65.&nbsp;Accelerator</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_41"><a href="/en/track/ost/41.html" onmouseover="showTooltip(this, 'i9FQvz')">【1】
-    OST
- 41. Interface</a> by KARUT</li>
+            <li id="track-OST_13">
+    <a href="/en/track/ost/13.html#1e61ad51-0e93-4433-821e-27ace65ad990" onmouseover="showTooltip(this)" data-tooltip="aRiDQ4">
+        <span>【1】OST&nbsp;13.&nbsp;Barrier</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_18">
+    <a href="/en/track/ost/18.html#1e61ad51-0e93-4433-821e-27ace65ad990" onmouseover="showTooltip(this)" data-tooltip="RCO_hG">
+        <span>【1】OST&nbsp;18.&nbsp;Mechanical JUNGLE</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_49"><a href="/en/track/ost/49.html" onmouseover="showTooltip(this, 'kVCmf0')">【1】
-    OST
- 49. Mechanical JUNGLE (High-Tech Full On Mix)</a> by Nor</li>
+            <li id="track-OST_35">
+    <a href="/en/track/ost/35.html#1e61ad51-0e93-4433-821e-27ace65ad990" onmouseover="showTooltip(this)" data-tooltip="zSZaJJ">
+        <span>【1】OST&nbsp;35.&nbsp;Morose Dreamer</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_41">
+    <a href="/en/track/ost/41.html#1e61ad51-0e93-4433-821e-27ace65ad990" onmouseover="showTooltip(this)" data-tooltip="tK2zGP">
+        <span>【1】OST&nbsp;41.&nbsp;Interface</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_49">
+    <a href="/en/track/ost/49.html#1e61ad51-0e93-4433-821e-27ace65ad990" onmouseover="showTooltip(this)" data-tooltip="uguMIX">
+        <span>【1】OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix)</span>
+    </a>
+    
+</li>
 
             
                 
@@ -1270,7 +1639,7 @@ Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2
     
         
     <script>
-        add_tooltip_data({ 'bqpUSE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/7.html> Main Story Volume 1 Chapter 1 Episode 7: A New Threat? </a></li><li><a href=/en/main/story/main/1/1/12.html> Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2 </a></li><li><a href=/en/main/story/main/1/2/10.html> Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2 </a></li><li><a href=/en/main/story/main/1/2/11.html> Main Story Volume 1 Chapter 2 Episode 11: A Losing Battle </a></li><li><a href=/en/main/story/main/1/2/13.html> Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks </a></li><li><a href=/en/main/story/main/1/2/14.html> Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1 </a></li></ol></div>','rlvTKa': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 20. Tech N Tech</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/10.html> Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2 </a></li><li><a href=/en/main/story/main/1/2/15.html> Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2 </a></li></ol></div>','OZBj9t': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 65. Accelerator</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/14.html> Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1 </a></li><li><a href=/en/main/story/main/1/2/19.html> Main Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2 </a></li></ol></div>','aRT1Nh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 13. Barrier</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/15.html> Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2 </a></li></ol></div>','A0Mief': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/17.html> Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect </a></li></ol></div>','kHn6N6': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 35. Morose Dreamer</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/14.html> Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1 </a></li></ol></div>','i9FQvz': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html> Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1 </a></li></ol></div>','kVCmf0': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 49. Mechanical JUNGLE (High-Tech Full On Mix)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html> Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1 </a></li></ol></div>', });
+        add_tooltip_data({ 'sHQjXx': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/7.html>Main Story Volume 1 Chapter 1 Episode 7: A New Threat?</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/7.html#story-part-1-seg-1><i>[1] PMC and Problem Solver</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/1/12.html>Main Story Volume 1 Chapter 1 Episode 12: To the Black Market! Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/12.html#story-part-1-seg-1><i>[1] PMC&#x27s Confusion</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Not Near Ending</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] A Secret Meeting</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Discussing the Debt</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/11.html>Main Story Volume 1 Chapter 2 Episode 11: A Losing Battle</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>, </span><span><a class=text-primary href=/en/main/story/main/1/2/11.html#story-part-1-seg-1><i>[1] A Debt Can&#x27t Be Filled</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/13.html>Main Story Volume 1 Chapter 2 Episode 13: What Slipped Through the Cracks</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/13.html#story-part-1-seg-1><i>[1] How Could She!</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Kaiser Director</i></a></span><span>)</span></li></ol></div>','EqGWwv': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 20. Tech N Tech</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/10.html>Main Story Volume 1 Chapter 2 Episode 10: Kaiser PMC Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/10.html#story-part-1-seg-1><i>[1] Not Near Ending</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Betraying PMC</i></a></span><span>)</span></li></ol></div>','brBWhe': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 65. Accelerator</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Problem Solver 68</i></a></span><span>)</span></li><li><a href=/en/main/story/main/1/2/19.html>Main Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/19.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>','aRiDQ4': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 13. Barrier</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/15.html>Main Story Volume 1 Chapter 2 Episode 15: The Abydos Siege Part 2</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/15.html#story-part-1-seg-1><i>[1] Retreat</i></a></span><span>)</span></li></ol></div>','RCO_hG': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 18. Mechanical JUNGLE</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/17.html>Main Story Volume 1 Chapter 2 Episode 17: That Which One Must Protect</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/17.html#story-part-1-seg-1><i>[1] Inside the HQ</i></a></span><span>)</span></li></ol></div>','zSZaJJ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 35. Morose Dreamer</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/14.html>Main Story Volume 1 Chapter 2 Episode 14: The Abydos Siege Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/14.html#story-part-1-seg-1><i>[1] Despair</i></a></span><span>)</span></li></ol></div>','tK2zGP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>','uguMIX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 49. Mechanical JUNGLE (High-Tech Full On Mix)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/18.html>Main Story Volume 1 Chapter 2 Episode 18: Never Letting Go Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/18.html#story-part-1-seg-1><i>[1] PMC Director</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -1293,28 +1662,70 @@ Story Volume 1 Chapter 2 Episode 19: Never Letting Go Part 2
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href="..">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        
+                        <p class="navi-p"><a href="/en/character/npc/momoka">&lt;-- Previous page: Momoka</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        
+                        <p class="navi-p"><a href="/en/character/npc/rin">--&gt; Next page: Rin</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:18:45 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:18:45
 -->
 </body>
 </html>

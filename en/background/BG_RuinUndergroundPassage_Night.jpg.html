@@ -7,10 +7,10 @@
 
     <title>Background/BG_RuinUndergroundPassage_Night.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_RuinUndergroundPassage.jpg.html">&lt;-- Previous page: BG_RuinUndergroundPassage.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_RuinUndergroundPassage.jpg.html">&lt;-- Previous page: BG_RuinUndergroundPassage.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_RyoKanFront.jpg.html">--&gt; Next page: BG_RyoKanFront.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_RyoKanFront.jpg.html">--&gt; Next page: BG_RyoKanFront.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_RuinUndergroundPassage_Night.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_RuinUndergroundPassage_Night.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_RuinUndergroundPassage_Night.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_2_1_4">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/1/4.html" onmouseover="showTooltip(this, '_obdrV')">
-                
-        Main
-Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/1/4.html"  onmouseover="showTooltip(this)" data-tooltip="GLrL9k">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>
+    
+
         
 
         
@@ -234,48 +224,84 @@ Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
-            
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/1/4.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'0GDy6N')"><i>[2] In The Pit</i></a>,&nbsp;<a href="/en/main/story/main/2/1/4.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'oKNQBU')"><i>[3] Meeting Aris</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/4.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="YcWBEy"><i>[2]&nbsp;In The Pit</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="U4E9WZ"><i>[3]&nbsp;Meeting Aris</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -289,16 +315,13 @@ Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl
         <li id="story-MAIN_2_1_11">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/1/11.html" onmouseover="showTooltip(this, '1TuXgr')">
-                
-        Main
-Story Volume 2 Chapter 1 Episode 11: Right There, In That Place
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/1/11.html"  onmouseover="showTooltip(this)" data-tooltip="jxfrst">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;11:&nbsp;Right There, In That Place</a>
+    
+
         
 
         
@@ -308,45 +331,75 @@ Story Volume 2 Chapter 1 Episode 11: Right There, In That Place
                 
                 
                     
-                
+                    
+                        
                     
                         
                             
-                        
-
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
-                
-                
                     
                         
-                            
-                        
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
                     
+                    
+                        
+                            
+                    
+                        
+
+                
+                    
+                    
+                    
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/1/11.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'huz5tf')"><i>[1] Inside the Factory</i></a>,&nbsp;<a href="/en/main/story/main/2/1/11.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'I8QIZ3')"><i>[2] The Computer</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/11.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="GUZp8r"><i>[1]&nbsp;Inside the Factory</i></a></span>
+    
+        
+        
+        
+        
+        
+
+        
+        <span>,&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/1/11.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="RMQwY3"><i>[2]&nbsp;The Computer</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -360,16 +413,13 @@ Story Volume 2 Chapter 1 Episode 11: Right There, In That Place
         <li id="story-MAIN_2_2_13">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/13.html" onmouseover="showTooltip(this, 'iHRIdR')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 13: Big Sister
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/13.html"  onmouseover="showTooltip(this)" data-tooltip="qaZ9uk">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>
+    
+
         
 
         
@@ -379,43 +429,74 @@ Story Volume 2 Chapter 2 Episode 13: Big Sister
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
+                    
+                    
+                    
                 
             
                 
                 
                     
+                    
+                    
+                
+
                 
             
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/13.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'8d4gHD')"><i>[2] Arriving Eridu</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="aAcTtB"><i>[2]&nbsp;Arriving Eridu</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -429,16 +510,13 @@ Story Volume 2 Chapter 2 Episode 13: Big Sister
         <li id="story-MAIN_2_2_14">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/14.html" onmouseover="showTooltip(this, 'o3OByb')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 14: The Fortress City of Eridu
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/14.html"  onmouseover="showTooltip(this)" data-tooltip="BpyPtZ">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>
+    
+
         
 
         
@@ -448,32 +526,57 @@ Story Volume 2 Chapter 2 Episode 14: The Fortress City of Eridu
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/14.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'fNxNog')"><i>[3] As Planned</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="S6mkVo"><i>[3]&nbsp;As Planned</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -487,16 +590,13 @@ Story Volume 2 Chapter 2 Episode 14: The Fortress City of Eridu
         <li id="story-MAIN_2_2_22">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/22.html" onmouseover="showTooltip(this, 'qdwQBc')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/22.html"  onmouseover="showTooltip(this)" data-tooltip="c5ykE5">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>
+    
+
         
 
         
@@ -506,38 +606,63 @@ Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
+                
+                    
+                    
+                    
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/22.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'EEy6q1')"><i>[3] Key</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="qaKMdh"><i>[3]&nbsp;Key</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -551,16 +676,13 @@ Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1
         <li id="story-MAIN_2_2_24">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/24.html" onmouseover="showTooltip(this, 'RWWdoJ')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 24: What You Want to Be
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/24.html"  onmouseover="showTooltip(this)" data-tooltip="NH20J8">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>
+    
+
         
 
         
@@ -570,103 +692,152 @@ Story Volume 2 Chapter 2 Episode 24: What You Want to Be
                 
                 
                     
-                
                     
-                
+                        
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
+                
+                    
+                    
+                    
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                        
+                    
+                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
-                            
+                    
                         
+                    
+                        
+                    
+                    
+                
 
+                
+            
+                
+                
+                    
+                    
                         
+                    
+                    
+                
+
+                
+            
+                
+                
+                    
+                    
                         
-            
-                
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
-                
-                    
-                
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-            
-                
-                
-                    
-                
-            
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
+
                 
             
                 
                 
                     
-                
                     
+                        
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                     
                 
-                    
+
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/24.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'mGGEp8')"><i>[1] Deep In The Consciousness</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="oPF3LJ"><i>[1]&nbsp;Deep In The Consciousness</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ '_obdrV': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">On That Day, We Met a Girl</p><ul><li>In the abandoned factory, the Game Development Department finds a humanoid robot by the name of Aris. For the sake of the club, Momoi brings Aris back to their club room to induct her as a new member.</li></ul></div>','0GDy6N': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">In The Pit</p><p>The three fell one by one, and thankfully Sensei was at the bottom providing some buffer. Then, Momoi noticed something.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/41.html>OST 41. Interface</a></p></div>','oKNQBU': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Meeting Aris</p><p>In one sinkhole, the three found Aris who was asleep, as well as some text like "AL-1S". Momoi took pity on her and decided to take her back to Millennium. She also gave her own clothes for Aris to wear on. Aris woke up right after the interaction with Sensei.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span></p><hr><p>Track:  <a href=/en/track/ost/67.html>OST 67. someday, sometime</a></p></div>','1TuXgr': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Right There, In That Place</p><ul><li>The Game Development Department makes it to a rundown factory. As if by instinct, Aris is drawn to the computer which contains G.BIBLE. She&#x27s able to download the data onto her gaming device...</li></ul></div>','huz5tf': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Inside the Factory</p><p>Everyone made the way to the factory. Aris suddenly remembered something and went away on her own. They followed Aris and found a computer running a system called "Divi: Sion".</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/41.html>OST 41. Interface</a></p></div>','I8QIZ3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Computer</p><p>The computer recognized Aris but was about to shut down due to low battery, with data on board going to be lost as well. To get the G.Bible saved on it, Momoi gave away her game console and her game saves. At last the data was secured, but it required a password to access. Momoi complained loudly and unintentionally attracted the robots.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/27.html>OST 27. Fade Out</a></p></div>','iHRIdR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Big Sister</p><ul><li>Himari is imprisoned by Rio, and the two are still unable to find common ground. Meanwhile, after infiltrating Eridu to rescue Aris, the Game Development Department and the Engineering Department encounter an AMAS built by Rio.</li><li>The C&C members blast their way through the AMAS as planned, but their relentless determination is stopped by none other than the C&C&#x27s fifth member, Toki.</li></ul></div>','8d4gHD': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Arriving Eridu</p><p>The Engineering Department, Game Development Department and Sensei arrived at the city&#x27s underground freight passage safely, and was surprised to witness the ability that Veritas possessed. Right at this moment a group of AMAS blocked their way and they started engaging.</p><hr><p>Character:  <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp>Utaha </a> </span>   <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span></p><hr><p>Track:  <a href=/en/track/ost/92.html>OST 92. Crucial Issue</a></p></div>','o3OByb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Fortress City of Eridu</p><ul><li>Contrary to Toki&#x27s prediction that Neru would try to rescue Aris on her own, she is faced with the whole of C&C in a ferocious battle. Meanwhile, the Game Development Department blasts their way through every AMAS one by one while making their way to the tower where Aris is located.</li></ul></div>','fNxNog': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">As Planned</p><p>The GDD knocked down incoming AWAS and came to the ground floor at last. Everyone was in high spirits and marched towards the central towner of the city.</p><hr><p>Character:  <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp>Kotori </a> </span>   <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp>Hibiki </a> </span>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp>Hare </a> </span>   <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp>Kotama </a> </span>   <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp>Maki </a> </span></p><hr><p>Track:  <a href=/en/track/ost/40.html>OST 40. Neo City Dive</a></p></div>','qdwQBc': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 1</p><ul><li>The Game Development Department arrives at Rio&#x27s location and are about to rescue Aris when an unknown being, Key, appears and takes control of Eridu. The results are catastrophic. Rio belatedly tries to sacrifice herself in an attempt to rectify the situation when Noa and Yuuka arrive.</li></ul></div>','EEy6q1': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Key</p><p>What everyone embraced was not Aris, but rather another being, which was called Key. Aris&#x27 personality was isolated in the deep databases by Key, and it was Key acting right now. Key disconnected the comm and hacked Eridu, trying to make the city for her use; the army of Divi: Sion started gathering within the city. Rio apologized for her doings, and requested Sensei to leave before Key ever finished it, trying to stop it on her own. At that urgent moment, Yuuka intervened just in time and disconnected the power of Key, forcing it to stop.</p><hr><p>Character:  <a href=/en/character/npc/ariskey/>Key</a>   <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp>Chihiro </a> </span>   <a href=/en/character/npc/rio/>Rio</a>   <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp>Yuuka </a> </span>   <span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp>Noa </a> </span></p><hr><p>Track:  <a href=/en/track/ost/122.html>OST 122. [UNNAMED]</a>   <a href=/en/track/ost/65.html>OST 65. Accelerator</a></p></div>','RWWdoJ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What You Want to Be</p><ul><li>The Game Development Department and Sensei finally find Aris. Calling herself a demon lord, Aris is hesitant to return for fear of hurting others. Encouraged by everyone&#x27s supportive words that it&#x27s up to her to decide who she wants to be, Aris finally draws the proof of a warrior: Supernova, the Sword of Light.</li></ul></div>','mGGEp8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Deep In The Consciousness</p><p>Sensei ang the GDD arrived at the Aris&#x27 deep consciousness, and there they met Aris and Key. The GDD wanted to bring back Aris, but Key appeared suddenly and reminded "princess" of what she had witnessed.</p><hr><p>Character:  <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp>Momoi </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span></p><hr><p>Track:  <a href=/en/track/ost/93.html>OST 93. Formless Dream</a></p></div>', });
+        add_tooltip_data({ 'GLrL9k': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">On That Day, We Met a Girl</p><ul><li>In the abandoned factory, the Game Development Department finds a humanoid robot by the name of Aris. For the sake of the club, Momoi brings Aris back to their club room to induct her as a new member.</li></ul></div>','YcWBEy': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">In The Pit</p><p>The three fell one by one, and thankfully Sensei was at the bottom providing some buffer. Then, Momoi noticed something.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/41.html> <span>OST 41. Interface</span></a></p></div>','U4E9WZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Meeting Aris</p><p>In one sinkhole, the three found Aris who was asleep, as well as some text like "AL-1S". Momoi took pity on her and decided to take her back to Millennium. She also gave her own clothes for Aris to wear on. Aris woke up right after the interaction with Sensei.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/67.html> <span>OST 67. someday, sometime</span></a></p></div>','jxfrst': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Right There, In That Place</p><ul><li>The Game Development Department makes it to a rundown factory. As if by instinct, Aris is drawn to the computer which contains G.BIBLE. She&#x27s able to download the data onto her gaming device...</li></ul></div>','GUZp8r': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Inside the Factory</p><p>Everyone made the way to the factory. Aris suddenly remembered something and went away on her own. They followed Aris and found a computer running a system called "Divi: Sion".</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/41.html> <span>OST 41. Interface</span></a></p></div>','RMQwY3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Computer</p><p>The computer recognized Aris but was about to shut down due to low battery, with data on board going to be lost as well. To get the G.Bible saved on it, Momoi gave away her game console and her game saves. At last the data was secured, but it required a password to access. Momoi complained loudly and unintentionally attracted the robots.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/27.html> <span>OST 27. Fade Out</span></a></p></div>','qaZ9uk': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Big Sister</p><ul><li>Himari is imprisoned by Rio, and the two are still unable to find common ground. Meanwhile, after infiltrating Eridu to rescue Aris, the Game Development Department and the Engineering Department encounter an AMAS built by Rio.</li><li>The C&C members blast their way through the AMAS as planned, but their relentless determination is stopped by none other than the C&C&#x27s fifth member, Toki.</li></ul></div>','aAcTtB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Arriving Eridu</p><p>The Engineering Department, Game Development Department and Sensei arrived at the city&#x27s underground freight passage safely, and was surprised to witness the ability that Veritas possessed. Right at this moment a group of AMAS blocked their way and they started engaging.</p><hr><p>Character:<span> <span> <a href=/en/character/student/utaha/> <img class=icon-stu src=/static/images/student/icon/23004.webp> <span>Utaha</span></a> </span> | </span><span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp> <span>Kotori</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/92.html> <span>OST 92. Crucial Issue</span></a></p></div>','BpyPtZ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Fortress City of Eridu</p><ul><li>Contrary to Toki&#x27s prediction that Neru would try to rescue Aris on her own, she is faced with the whole of C&C in a ferocious battle. Meanwhile, the Game Development Department blasts their way through every AMAS one by one while making their way to the tower where Aris is located.</li></ul></div>','S6mkVo': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">As Planned</p><p>The GDD knocked down incoming AWAS and came to the ground floor at last. Everyone was in high spirits and marched towards the central towner of the city.</p><hr><p>Character:<span> <span> <a href=/en/character/student/kotori/> <img class=icon-stu src=/static/images/student/icon/16002.webp> <span>Kotori</span></a> </span> | </span><span> <span> <a href=/en/character/student/hibiki/> <img class=icon-stu src=/static/images/student/icon/20000.webp> <span>Hibiki</span></a> </span> | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/hare/> <img class=icon-stu src=/static/images/student/icon/23003.webp> <span>Hare</span></a> </span> | </span><span> <span> <a href=/en/character/student/kotama/> <img class=icon-stu src=/static/images/student/icon/26001.webp> <span>Kotama</span></a> </span> | </span><span> <a href=/en/character/student/maki/> <img class=icon-stu src=/static/images/student/icon/10007.webp> <span>Maki</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/40.html> <span>OST 40. Neo City Dive</span></a></p></div>','c5ykE5': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 1</p><ul><li>The Game Development Department arrives at Rio&#x27s location and are about to rescue Aris when an unknown being, Key, appears and takes control of Eridu. The results are catastrophic. Rio belatedly tries to sacrifice herself in an attempt to rectify the situation when Noa and Yuuka arrive.</li></ul></div>','qaKMdh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Key</p><p>What everyone embraced was not Aris, but rather another being, which was called Key. Aris&#x27 personality was isolated in the deep databases by Key, and it was Key acting right now. Key disconnected the comm and hacked Eridu, trying to make the city for her use; the army of Divi: Sion started gathering within the city. Rio apologized for her doings, and requested Sensei to leave before Key ever finished it, trying to stop it on her own. At that urgent moment, Yuuka intervened just in time and disconnected the power of Key, forcing it to stop.</p><hr><p>Character:<span> <a href=/en/character/npc/ariskey/> <span>Key</span></a>  | </span><span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/chihiro/> <img class=icon-stu src=/static/images/student/icon/20013.webp> <span>Chihiro</span></a> </span> | </span><span> <a href=/en/character/npc/rio/> <span>Rio</span></a>  | </span><span> <span> <a href=/en/character/student/yuuka/> <img class=icon-stu src=/static/images/student/icon/13010.webp> <span>Yuuka</span></a> </span> | </span><span> <a href=/en/character/student/noa/> <img class=icon-stu src=/static/images/student/icon/10052.webp> <span>Noa</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/122.html> <span>OST 122. [UNNAMED]</span></a> <a href=/en/track/ost/65.html> <span>OST 65. Accelerator</span></a></p></div>','NH20J8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">What You Want to Be</p><ul><li>The Game Development Department and Sensei finally find Aris. Calling herself a demon lord, Aris is hesitant to return for fear of hurting others. Encouraged by everyone&#x27s supportive words that it&#x27s up to her to decide who she wants to be, Aris finally draws the proof of a warrior: Supernova, the Sword of Light.</li></ul></div>','oPF3LJ': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Deep In The Consciousness</p><p>Sensei ang the GDD arrived at the Aris&#x27 deep consciousness, and there they met Aris and Key. The GDD wanted to bring back Aris, but Key appeared suddenly and reminded "princess" of what she had witnessed.</p><hr><p>Character:<span> <span> <a href=/en/character/student/momoi/> <img class=icon-stu src=/static/images/student/icon/13011.webp> <span>Momoi</span></a> </span> | </span><span> <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span> | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/93.html> <span>OST 93. Formless Dream</span></a></p></div>', });
     </script>
 
 
@@ -681,90 +852,136 @@ Story Volume 2 Chapter 2 Episode 24: What You Want to Be
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_41"><a href="/en/track/ost/41.html" onmouseover="showTooltip(this, '5Kr1Lu')">【2】
-    OST
- 41. Interface</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_27"><a href="/en/track/ost/27.html" onmouseover="showTooltip(this, 'BUMKCL')">【1】
-    OST
- 27. Fade Out</a> by KARUT</li>
+            <li id="track-OST_41">
+    <a href="/en/track/ost/41.html#094de1f9-477e-416e-8146-9ce233539cbe" onmouseover="showTooltip(this)" data-tooltip="eVHx0U">
+        <span>【2】OST&nbsp;41.&nbsp;Interface</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_40"><a href="/en/track/ost/40.html" onmouseover="showTooltip(this, 'VwE8ev')">【1】
-    OST
- 40. Neo City Dive</a> by KARUT</li>
-
-            
-                
-            
-        
-            
-            
-
-            
-                
-            
-
-            <li id="track-OST_67"><a href="/en/track/ost/67.html" onmouseover="showTooltip(this, 'jGM_5Y')">【1】
-    OST
- 67. someday, sometime</a> by Mitsukiyo</li>
+            <li id="track-OST_27">
+    <a href="/en/track/ost/27.html#094de1f9-477e-416e-8146-9ce233539cbe" onmouseover="showTooltip(this)" data-tooltip="GRaD7V">
+        <span>【1】OST&nbsp;27.&nbsp;Fade Out</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_92"><a href="/en/track/ost/92.html" onmouseover="showTooltip(this, 'e75Z7c')">【1】
-    OST
- 92. Crucial Issue</a> by Nor</li>
+            <li id="track-OST_40">
+    <a href="/en/track/ost/40.html#094de1f9-477e-416e-8146-9ce233539cbe" onmouseover="showTooltip(this)" data-tooltip="1W6FIR">
+        <span>【1】OST&nbsp;40.&nbsp;Neo City Dive</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
+
+            
+                
+            
+
+            <li id="track-OST_65">
+    <a href="/en/track/ost/65.html#094de1f9-477e-416e-8146-9ce233539cbe" onmouseover="showTooltip(this)" data-tooltip="_Kq6JS">
+        <span>【1】OST&nbsp;65.&nbsp;Accelerator</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
             
 
             
                 
             
 
-            <li id="track-OST_93"><a href="/en/track/ost/93.html" onmouseover="showTooltip(this, 'GTyCTi')">【1】
-    OST
- 93. Formless Dream</a> by Mitsukiyo</li>
+            <li id="track-OST_67">
+    <a href="/en/track/ost/67.html#094de1f9-477e-416e-8146-9ce233539cbe" onmouseover="showTooltip(this)" data-tooltip="vjQbFp">
+        <span>【1】OST&nbsp;67.&nbsp;someday, sometime</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_92">
+    <a href="/en/track/ost/92.html#094de1f9-477e-416e-8146-9ce233539cbe" onmouseover="showTooltip(this)" data-tooltip="LZXWhE">
+        <span>【1】OST&nbsp;92.&nbsp;Crucial Issue</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_93">
+    <a href="/en/track/ost/93.html#094de1f9-477e-416e-8146-9ce233539cbe" onmouseover="showTooltip(this)" data-tooltip="NOSdsS">
+        <span>【1】OST&nbsp;93.&nbsp;Formless Dream</span>
+    </a>
+    
+</li>
+
+            
+                
+            
+        
+            
+
+            
+                
+            
+
+            <li id="track-OST_122">
+    <a href="/en/track/ost/122.html#094de1f9-477e-416e-8146-9ce233539cbe" onmouseover="showTooltip(this)" data-tooltip="PTVJMb">
+        <span>【1】OST&nbsp;122.&nbsp;[UNNAMED]</span>
+    </a>
+    
+</li>
 
             
                 
@@ -775,34 +992,74 @@ Story Volume 2 Chapter 2 Episode 24: What You Want to Be
     
         
     <script>
-        add_tooltip_data({ '5Kr1Lu': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/4.html> Main Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl </a></li><li><a href=/en/main/story/main/2/1/11.html> Main Story Volume 2 Chapter 1 Episode 11: Right There, In That Place </a></li></ol></div>','BUMKCL': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/11.html> Main Story Volume 2 Chapter 1 Episode 11: Right There, In That Place </a></li></ol></div>','VwE8ev': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 40. Neo City Dive</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/14.html> Main Story Volume 2 Chapter 2 Episode 14: The Fortress City of Eridu </a></li></ol></div>','jGM_5Y': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 67. someday, sometime</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/4.html> Main Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl </a></li></ol></div>','e75Z7c': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 92. Crucial Issue</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/13.html> Main Story Volume 2 Chapter 2 Episode 13: Big Sister </a></li></ol></div>','GTyCTi': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 93. Formless Dream</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/24.html> Main Story Volume 2 Chapter 2 Episode 24: What You Want to Be </a></li></ol></div>', });
+        add_tooltip_data({ 'eVHx0U': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/4.html>Main Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] In The Pit</i></a></span><span>)</span></li><li><a href=/en/main/story/main/2/1/11.html>Main Story Volume 2 Chapter 1 Episode 11: Right There, In That Place</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] Inside the Factory</i></a></span><span>)</span></li></ol></div>','GRaD7V': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 27. Fade Out</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/11.html>Main Story Volume 2 Chapter 1 Episode 11: Right There, In That Place</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/11.html#story-part-1-seg-1><i>[1] The Computer</i></a></span><span>)</span></li></ol></div>','1W6FIR': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 40. Neo City Dive</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/14.html>Main Story Volume 2 Chapter 2 Episode 14: The Fortress City of Eridu</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/14.html#story-part-1-seg-1><i>[1] As Planned</i></a></span><span>)</span></li></ol></div>','_Kq6JS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 65. Accelerator</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/22.html>Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Key</i></a></span><span>)</span></li></ol></div>','vjQbFp': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 67. someday, sometime</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/1/4.html>Main Story Volume 2 Chapter 1 Episode 4: On That Day, We Met a Girl</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/1/4.html#story-part-1-seg-1><i>[1] Meeting Aris</i></a></span><span>)</span></li></ol></div>','LZXWhE': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 92. Crucial Issue</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/13.html>Main Story Volume 2 Chapter 2 Episode 13: Big Sister</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/13.html#story-part-1-seg-1><i>[1] Arriving Eridu</i></a></span><span>)</span></li></ol></div>','NOSdsS': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 93. Formless Dream</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/24.html>Main Story Volume 2 Chapter 2 Episode 24: What You Want to Be</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/24.html#story-part-1-seg-1><i>[1] Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>','PTVJMb': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 122. [UNNAMED]</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/22.html>Main Story Volume 2 Chapter 2 Episode 22: Pavane for a Princess 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/22.html#story-part-1-seg-1><i>[1] Key</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_RuinUndergroundPassage.jpg.html">&lt;-- Previous page: BG_RuinUndergroundPassage.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_RyoKanFront.jpg.html">--&gt; Next page: BG_RyoKanFront.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:07 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:07
 -->
 </body>
 </html>

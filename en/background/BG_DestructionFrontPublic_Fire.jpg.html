@@ -7,10 +7,10 @@
 
     <title>Background/BG_DestructionFrontPublic_Fire.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DestructionFrontPublic.jpg.html">&lt;-- Previous page: BG_DestructionFrontPublic.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_DestructionFrontPublic.jpg.html">&lt;-- Previous page: BG_DestructionFrontPublic.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DestructionFront_Fire.jpg.html">--&gt; Next page: BG_DestructionFront_Fire.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_DestructionFront_Fire.jpg.html">--&gt; Next page: BG_DestructionFront_Fire.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_DestructionFrontPublic_Fire.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_DestructionFrontPublic_Fire.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_DestructionFrontPublic_Fire.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_DestructionFrontPublic_Fire.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_DestructionFrontPublic_Fire.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_DestructionFrontPublic_Fire.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_2_2_9">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/2/2/9.html" onmouseover="showTooltip(this, 'OHvHN3')">
-                
-        Main
-Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/2/2/9.html"  onmouseover="showTooltip(this)" data-tooltip="oKiotx">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>
+    
+
         
 
         
@@ -234,56 +224,99 @@ Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
-                
                     
-                
+                        
+                    
+                        
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
-            
                 
-                
+                    
+                    
                     
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
                     
+                    
+                        
+                    
+                    
+                
+
                 
             
                 
                 
+                    
+                    
+                        
+                    
+                    
+                
+
+                
             
+                
+                
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/2/2/9.html#story-part-2" class="text-primary" onmouseover="showTooltip(this,'T93E3J')"><i>[2] Aris, "The Demon Lord"</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/2/2/9.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="CRHoXO"><i>[2]&nbsp;Aris, "The Demon Lord"</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'OHvHN3': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','T93E3J': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aris, "The Demon Lord"</p><p>Rio apologized to everyone that it was her fault to let Aris get in touch with those robots. Despite that, Rio said this time was very fortunate, as the ones were partly broken. But she stressed that there might be no such luck in the future. Rio said that there was only one way to solve.</p><hr><p>Character:  <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp>Aris </a> </span>   <a href=/en/character/npc/rio/>Rio</a>   <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp>Midori </a> </span>   <span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp>Yuzu </a> </span></p><hr><p>Track:  <a href=/en/track/ost/73.html>OST 73. Interface (Hard Arrange)</a></p></div>', });
+        add_tooltip_data({ 'oKiotx': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','CRHoXO': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Aris, "The Demon Lord"</p><p>Rio apologized to everyone that it was her fault to let Aris get in touch with those robots. Despite that, Rio said this time was very fortunate, as the ones were partly broken. But she stressed that there might be no such luck in the future. Rio said that there was only one way to solve.</p><hr><p>Character:<span> <span> <a href=/en/character/student/aris/> <img class=icon-stu src=/static/images/student/icon/10015.webp> <span>Aris</span></a> </span> | </span><span> <a href=/en/character/npc/rio/> <span>Rio</span></a>  | </span><span> <span> <a href=/en/character/student/midori/> <img class=icon-stu src=/static/images/student/icon/10016.webp> <span>Midori</span></a> </span> | </span><span> <a href=/en/character/student/yuzu/> <img class=icon-stu src=/static/images/student/icon/10018.webp> <span>Yuzu</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/73.html> <span>OST 73. Interface (Hard Arrange)</span></a></p></div>', });
     </script>
 
 
@@ -298,15 +331,17 @@ Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_73"><a href="/en/track/ost/73.html" onmouseover="showTooltip(this, 'A9HnRp')">【1】
-    OST
- 73. Interface (Hard Arrange)</a> by Mitsukiyo</li>
+            <li id="track-OST_73">
+    <a href="/en/track/ost/73.html#2a3c84a8-f3c1-4a41-8117-73e286c67494" onmouseover="showTooltip(this)" data-tooltip="EhnJyX">
+        <span>【1】OST&nbsp;73.&nbsp;Interface (Hard Arrange)</span>
+    </a>
+    
+</li>
 
             
                 
@@ -317,34 +352,74 @@ Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1
     
         
     <script>
-        add_tooltip_data({ 'A9HnRp': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 73. Interface (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/9.html> Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1 </a></li></ol></div>', });
+        add_tooltip_data({ 'EhnJyX': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 73. Interface (Hard Arrange)</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/2/2/9.html>Main Story Volume 2 Chapter 2 Episode 9: The Harsh Truth 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/2/2/9.html#story-part-1-seg-1><i>[1] Aris, "The Demon Lord"</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DestructionFrontPublic.jpg.html">&lt;-- Previous page: BG_DestructionFrontPublic.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_DestructionFront_Fire.jpg.html">--&gt; Next page: BG_DestructionFront_Fire.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:01 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:01
 -->
 </body>
 </html>

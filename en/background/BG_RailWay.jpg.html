@@ -7,10 +7,10 @@
 
     <title>Background/BG_RailWay.jpg- BA OST Index</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/themes/light.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
+    <script src="/static/jsdelivr/popper.min.js"></script>
+    <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -49,8 +49,8 @@
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-<div class="wrapper">
-    
+    <div class="wrapper" id="main-wrapper">
+        
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -84,92 +84,81 @@
         </div>
 
         <div class="git-wiki-page-list">
-            <span class="page-list-title">Track:</span>
+            <span class="page-list-title">Quick Navigation:</span>
             <ul class="page-list">
-                <li class="page-list-item"><a href="/en/track/ost/">OST</a></li>
-                <li class="page-list-item"><a href="/en/track/short/">Short Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/animation/">Animation</a></li>
-                <li class="page-list-item"><a href="/en/track/other/">Other</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Story:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/story/main/">Main Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/short/">Short Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/side/">Side (Group) Story</a></li>
-                <li class="post-list-item"><a href="/en/main/story/other/">Other Story</a></li>
-            </ul>
-        </div>
-
-        <div class="git-wiki-page-list">
-            <span class="post-list-title">Battle:</span>
-            <ul class="post-list">
-                <li class="post-list-item"><a href="/en/main/battle/main/">Main Battle</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/bounty_hunt/">Bounty Hunt</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/school_exchange/">School Exchange</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/special_commission/">Special Commission</a></li>
-                <li class="post-list-item"><a href="/en/main/battle/total_assault/">Total Assault</a></li>
-                <li class="post-list-item">World Raid (tbc)</li>
+                <li class="page-list-item">Main Story (<a href="/en/main/story/main/">Main</a>, <a href="/en/main/story/side/">Club</a>, <a href="/en/main/story/short/">Short</a>, <a href="/en/main/story/other/">Other</a>)</li>
+                <li class="page-list-item">Main Battle (<a href="/en/main/battle/main/">Main</a>, <a href="/en/main/battle/total_assault/">Total Assault</a>, <a href="/en/main/battle/">Other</a>)</li>
+                <li class="page-list-item">Tracks (<a href="/en/track/ost/">OST</a>, <a href="/en/track/short/">Short Ani</a>, <a href="/en/track/other/">Other</a>)</li>
+                <li class="page-list-item">Characters (<a href="/en/character/npc/">NPC</a>, <a href="/en/character/student">Student</a>)</li>
             </ul>
         </div>
 
         <div class="git-wiki-page-list">
             <span class="post-list-title">About This Site</span>
             <ul class="post-list">
-                <li class="post-list-item"><a href="/en/about.html">About This Site</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/">Project BA OST Index</a></li>
-                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site">Generated Site Repository</a></li>
+                <li class="post-list-item"><a href="/en/about.html">About</a></li>
+                <li class="post-list-item"><a href="/en/counter_rule.html">How We Count Things</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <span class="post-list-title">About The Project</span>
+            <ul class="post-list">
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/" target="_blank">BA OST Index</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data" target="_blank">Unprocessed JSON Data</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_parser" target="_blank">Data Parser</a></li>
+                <li class="post-list-item"><a href="https://github.com/BA-OST-Index/ost_data_site" target="_blank">Generated Site</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-    <script>
-        function sidebar_toggle() {
-            var sidebar = document.getElementById("git-wiki-sidebar");
-            if (sidebar.style.display == "block") {
-                sidebar.style.display = "none";
-                sidebar.style.position = "inherit";
-            } else {
-                $(sidebar).attr('style', 'display: block;');
+        <script>
+            function sidebar_toggle() {
+                var sidebar = document.getElementById("git-wiki-sidebar");
+                if (sidebar.style.display === "block") {
+                    sidebar.style.display = "none";
+                    sidebar.style.position = "inherit";
+                } else {
+                    $(sidebar).attr('style', 'display: block;');
+                }
             }
-        }
-    </script>
+        </script>
 
-    <div class="git-wiki-page">
-        <div id="git-wiki-content">
-            
-    
-    
-    
+        <div class="git-wiki-page">
+            <div id="interpage-navi">
+                
+        
+        
+        
 
-    
-        <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
-    
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
 
-    
         
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_Prison.jpg.html">&lt;-- Previous page: BG_Prison.jpg</a></p>
+                    
+                
             
             
                 
-                    <p class="navi-p"><a href="/en/background/BG_Prison.jpg.html">&lt;-- Previous page: BG_Prison.jpg</a></p>
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_RailWayCrossing.jpg.html">--&gt; Next page: BG_RailWayCrossing.jpg</a></p>
+                    
                 
             
         
-        
-            
-            
-                
-                    <p class="navi-p"><a href="/en/background/BG_RailWayCrossing.jpg.html">--&gt; Next page: BG_RailWayCrossing.jpg</a></p>
-                
-            
-        
-    
     <hr />
+            </div>
 
-            
+            <div id="git-wiki-content">
+                
     
     <h1>Background/BG_RailWay.jpg</h1>
     
@@ -178,7 +167,10 @@
         <td colspan="2" class="infobox-title">BG_RailWay.jpg</td>
     </tr>
     <tr>
-        <td colspan="2" class="infobox-icon"><img width="80%" src="/static/images/background/BG_RailWay.jpg"></td>
+        <td colspan="2" class="infobox-icon">
+            <img width="90%" src="/static/images/background/BG_RailWay.jpg">
+            <button type="button" style="margin-top: 0.4em"><a href="/static/images/background/BG_RailWay.jpg" target="_blank">View Full Image</a></button>
+        </td>
     </tr>
     <tr><td colspan="2" class="infobox-subtitle">General Information</td></tr>
     <tr>
@@ -196,6 +188,7 @@
 </td>
     </tr>
 </table>
+    <p>Description: BG_RailWay.jpg Description</p>
     <h2>Usage Info</h2>
     <h3>Stories</h3>
     
@@ -215,16 +208,13 @@
         <li id="story-MAIN_1_1_6">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/1/6.html" onmouseover="showTooltip(this, 'gRGVJ8')">
-                
-        Main
-Story Volume 1 Chapter 1 Episode 6: Rescue Mission!
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/1/6.html"  onmouseover="showTooltip(this)" data-tooltip="X0kPaF">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;6:&nbsp;Rescue Mission!</a>
+    
+
         
 
         
@@ -234,35 +224,66 @@ Story Volume 1 Chapter 1 Episode 6: Rescue Mission!
                 
                 
                     
-                
+                    
+                        
+                    
+                        
+                    
                     
                 
+
+                
             
                 
                 
+                    
+                    
+                    
+                
+
+                
             
                 
                 
+                    
                     
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
-            
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/1/6.html#story-part-3" class="text-primary" onmouseover="showTooltip(this,'Sfv9cN')"><i>[3] Serika Being Rescued</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/1/6.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="e7vEbP"><i>[3]&nbsp;Serika Being Rescued</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
@@ -276,16 +297,13 @@ Story Volume 1 Chapter 1 Episode 6: Rescue Mission!
         <li id="story-MAIN_1_2_6">
         
         
-            
-                
-            
-            
-            <a href="/en/main/story/main/1/2/6.html" onmouseover="showTooltip(this, 'gd7zE7')">
-                
-        Main
-Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1
-            </a>
-        
+    
+    
+
+    
+        <a href="/en/main/story/main/1/2/6.html"  onmouseover="showTooltip(this)" data-tooltip="dmEkQh">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;Into the Abydos Desert Part 1</a>
+    
+
         
 
         
@@ -295,32 +313,51 @@ Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1
                 
                 
                     
+                    
                         
                             
+                    
                         
 
-                        
-
-                        
-                            
-                        
-
-                        
-                        
+                
+                    
+                    
+                    
+                
             
                 
                 
-            
+                    
+                    
+                    
+                
+
+                
             
 
-            <span>&nbsp;(appeared at <a href="/en/main/story/main/1/2/6.html#story-part-1" class="text-primary" onmouseover="showTooltip(this,'DIgkiB')"><i>[1] Arrived At The Desert</i></a>)</span>
+            
+    
+        
+        
+        
+        
+        
+
+        
+        <span>(appeared at&nbsp;</span>
+        
+
+        <span><a href="/en/main/story/main/1/2/6.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="HUt7T8"><i>[1]&nbsp;Arrived At The Desert</i></a></span>
+    
+    <span>)</span>
+
         
         </li>
     
     </ul>
     
     <script>
-        add_tooltip_data({ 'gRGVJ8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Rescue Mission!</p><ul><li>When Serika goes incommunicado after parting at the ramen shop, Sensei uses Schale&#x27s authority to triangulate the position of Serika&#x27s cell phone and sets out to rescue her.</li></ul></div>','Sfv9cN': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Serika Being Rescued</p><p>As Serika was sobbing in the back of the truck, the Foreclosure Committee made their way just in time, blowing up the truck to rescue her.</p><hr><p>Character:  <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp>Nonomi </a> </span></p><hr><p>Track:  <a href=/en/track/ost/11.html>OST 11. Connected Sky</a></p></div>','gd7zE7': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Into the Abydos Desert Part 1</p><ul><li>The Foreclosure Task Force cautiously heads toward the Abydos Desert.</li></ul></div>','DIgkiB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Arrived At The Desert</p><p>Everyone arrived at the edge of the desert. Since the train was unable to go any further, everyone started walking. Serika wonder why the head of the Prefect Team would be the one who told Sensei, and Ayane reviewed the situation back then.</p><hr><p>Character:  <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp>Ayane </a> </span>   <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp>Serika </a> </span>   <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp>Hoshino </a> </span>   <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp>Ako </a> </span>   <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp>Shiroko </a> </span></p><hr><p>Track:  <a href=/en/track/ost/41.html>OST 41. Interface</a></p></div>', });
+        add_tooltip_data({ 'X0kPaF': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Rescue Mission!</p><ul><li>When Serika goes incommunicado after parting at the ramen shop, Sensei uses Schale&#x27s authority to triangulate the position of Serika&#x27s cell phone and sets out to rescue her.</li></ul></div>','e7vEbP': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Serika Being Rescued</p><p>As Serika is sobbing in the back of the truck, the Foreclosure Committee makes their way just in time, blowing up the truck to rescue her.</p><hr><p>Character:<span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <a href=/en/character/student/nonomi/> <img class=icon-stu src=/static/images/student/icon/13004.webp> <span>Nonomi</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/11.html> <span>OST 11. Connected Sky</span></a></p></div>','dmEkQh': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Into the Abydos Desert Part 1</p><ul><li>The Foreclosure Task Force cautiously heads toward the Abydos Desert.</li></ul></div>','HUt7T8': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">Arrived At The Desert</p><p>Everyone arrives at the edge of the desert. Since the train is unable to go any further, everyone starts walking. Serika wonders why the head of the Prefect Team would be the one who told Sensei, and Ayane reviews the situation back then.</p><hr><p>Character:<span> <span> <a href=/en/character/student/ayane/> <img class=icon-stu src=/static/images/student/icon/23005.webp> <span>Ayane</span></a> </span> | </span><span> <span> <a href=/en/character/student/serika/> <img class=icon-stu src=/static/images/student/icon/13008.webp> <span>Serika</span></a> </span> | </span><span> <span> <a href=/en/character/student/hoshino/> <img class=icon-stu src=/static/images/student/icon/10005.webp> <span>Hoshino</span></a> </span> | </span><span> <span> <a href=/en/character/student/ako/> <img class=icon-stu src=/static/images/student/icon/20008.webp> <span>Ako</span></a> </span> | </span><span> <a href=/en/character/student/shiroko/> <img class=icon-stu src=/static/images/student/icon/10010.webp> <span>Shiroko</span></a> </span></p><hr><p>Track: <a href=/en/track/ost/41.html> <span>OST 41. Interface</span></a></p></div>', });
     </script>
 
 
@@ -335,30 +372,34 @@ Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1
     <ul>
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_11"><a href="/en/track/ost/11.html" onmouseover="showTooltip(this, 'z9Vmag')">【1】
-    OST
- 11. Connected Sky</a> by KARUT</li>
+            <li id="track-OST_11">
+    <a href="/en/track/ost/11.html#9b8574ea-5b7a-498e-9d3e-133a842285f9" onmouseover="showTooltip(this)" data-tooltip="NIs8PB">
+        <span>【1】OST&nbsp;11.&nbsp;Connected Sky</span>
+    </a>
+    
+</li>
 
             
                 
             
         
             
-            
 
             
                 
             
 
-            <li id="track-OST_41"><a href="/en/track/ost/41.html" onmouseover="showTooltip(this, 'yri6zg')">【1】
-    OST
- 41. Interface</a> by KARUT</li>
+            <li id="track-OST_41">
+    <a href="/en/track/ost/41.html#9b8574ea-5b7a-498e-9d3e-133a842285f9" onmouseover="showTooltip(this)" data-tooltip="RDtLxu">
+        <span>【1】OST&nbsp;41.&nbsp;Interface</span>
+    </a>
+    
+</li>
 
             
                 
@@ -369,34 +410,74 @@ Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1
     
         
     <script>
-        add_tooltip_data({ 'z9Vmag': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 11. Connected Sky</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/6.html> Main Story Volume 1 Chapter 1 Episode 6: Rescue Mission! </a></li></ol></div>','yri6zg': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/6.html> Main Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1 </a></li></ol></div>', });
+        add_tooltip_data({ 'NIs8PB': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 11. Connected Sky</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/1/6.html>Main Story Volume 1 Chapter 1 Episode 6: Rescue Mission!</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/1/6.html#story-part-1-seg-1><i>[1] Serika Being Rescued</i></a></span><span>)</span></li></ol></div>','RDtLxu': '<div class=tooltip-div><p class="tooltip-title tooltip-ellipsis">OST 41. Interface</p><hr><p class=tooltip-subtitle>Story:</p><ol class=tooltip-ol><li><a href=/en/main/story/main/1/2/6.html>Main Story Volume 1 Chapter 2 Episode 6: Into the Abydos Desert Part 1</a> <span>(appeared at </span><span><a class=text-primary href=/en/main/story/main/1/2/6.html#story-part-1-seg-1><i>[1] Arrived At The Desert</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
 
 
+            </div>
+        </div>
+        <script>display_zhcn_element();</script>
+    </div>
+
+    <div id="interpage-navi-bottom">
+        <div>
+            <div id="interpage-navi-bottom-left">
+                
+    
+        
+        
+        
+
+        
+            <p class="navi-p"><a href=".">&lt;-- Return to the previous directory</a></p>
+        
+
+        
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_Prison.jpg.html">&lt;-- Previous page: BG_Prison.jpg</a></p>
+                    
+                
+            
+            
+                
+                
+                    
+                        <p class="navi-p"><a href="/en/background/BG_RailWayCrossing.jpg.html">--&gt; Next page: BG_RailWayCrossing.jpg</a></p>
+                    
+                
+            
+        
+    
+
+            </div>
+            <div id="interpage-navi-bottom-right"></div>
         </div>
     </div>
 
-    
+    <div class="wrapper" id="bottom-wrapper">
+        
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-10-03 16:28:27 (UTC)</p></small>
+        <small><p>Page is generated at 2023-10-29 08:21:04 (UTC)</p></small>
     </div>
 </footer>
     <script>display_char_lang_element('en');</script>
 
-    <script>display_zhcn_element();</script>
-</div>
+    </div>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-10-03 16:28:27
+Generated time (UTC): 2023-10-29 08:21:04
 -->
 </body>
 </html>
