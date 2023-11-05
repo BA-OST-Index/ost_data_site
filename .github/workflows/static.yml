@@ -46,3 +46,11 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CF_PURGE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CF_TOKEN }}
+      - name: Invalidate CloudFront
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.AWS_CF_DISTRIBUTION }}
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
