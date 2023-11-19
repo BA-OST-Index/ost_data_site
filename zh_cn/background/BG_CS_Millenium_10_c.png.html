@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
     <script src="/static/jsdelivr/popper.min.js"></script>
     <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/popup-js.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
     <link rel="stylesheet" href="/static/css/custom.css">
     <link rel="stylesheet" href="/static/css/tooltip.css">
+    <link rel="stylesheet" href="/static/css/popup.css">
 
     <link rel="shortcut icon" type="image/png" href="/static/images/site/favicon.png">
     <style>
@@ -35,6 +37,8 @@
     <script src="/static/js/highlight_element.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
+    <script src="/static/js/time_show.js"></script>
+    <script src="/static/js/popup.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -288,7 +292,9 @@
 
             </div>
         </div>
-        <script>display_zhcn_element();</script>
+        <script>
+            display_zhcn_element();
+        </script>
     </div>
 
     <div id="interpage-navi-bottom">
@@ -342,8 +348,15 @@
         <p>此网站是 <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a> 的一个修改版本，原版本由 <a href="https://github.com/Drassil">Drassil</a> 制作。</p>
         <p>此网站托管在 GitHub Pages 上并由 CloudFlare 进行增强。</p>
-        <small><p>页面生成于2023-11-12 10:36:18 (UTC)</p></small>
+        <small>
+            <p>页面生成于<span id="page-generation-time"></span> (当地时间)</p>
+            <p>自2023年06月06日以来，BA OST Index项目已开发<b><span><span id="project-time-day"></span>天&nbsp;<span id="project-time-hour"></span>时<span id="project-time-minute"></span>分<span id="project-time-second"></span>秒</span></b></p>
+        </small>
     </div>
+    <script>
+        addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700382148.4528706)})
+    </script>
 </footer>
     <script>display_char_lang_element('zh');</script>
 
@@ -352,7 +365,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-11-12 10:36:18
+Generated time (UTC): 1700382148.452875
 -->
 </body>
 </html>

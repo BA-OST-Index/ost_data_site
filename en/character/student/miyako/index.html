@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
     <script src="/static/jsdelivr/popper.min.js"></script>
     <script src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
+    <script src="/static/jsdelivr/popup-js.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
     <link rel="stylesheet" href="/static/css/custom.css">
     <link rel="stylesheet" href="/static/css/tooltip.css">
+    <link rel="stylesheet" href="/static/css/popup.css">
 
     <link rel="shortcut icon" type="image/png" href="/static/images/site/favicon.png">
     <style>
@@ -35,6 +37,8 @@
     <script src="/static/js/highlight_element.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
+    <script src="/static/js/time_show.js"></script>
+    <script src="/static/js/popup.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -221,6 +225,7 @@
             </a>
         </span>
         
+        
             
         
     
@@ -370,6 +375,7 @@
             </a>
         </span>
         
+        
             
         
     
@@ -418,7 +424,9 @@
 
             </div>
         </div>
-        <script>display_zhcn_element();</script>
+        <script>
+            display_zhcn_element();
+        </script>
     </div>
 
     <div id="interpage-navi-bottom">
@@ -475,8 +483,15 @@
         <p>The website is a modified version of <a href="https://github.com/Drassil/git-wiki-theme">Git-Wiki
             v2.8.5</a>, originally by <a href="https://github.com/Drassil">Drassil</a>.</p>
         <p>This website is hosted on GitHub Pages and enhanced by CloudFlare.</p>
-        <small><p>Page is generated at 2023-11-12 10:27:39 (UTC)</p></small>
+        <small>
+            <p>Page is generated at <span id="page-generation-time"></span> (local time)</p>
+            <p>BA OST Index has been in development for <b><span><span id="project-time-day"></span>&nbsp;days&nbsp;<span id="project-time-hour"></span>&nbsp;hour&nbsp;<span id="project-time-minute"></span>&nbsp;minute&nbsp;<span id="project-time-second"></span>&nbsp;second</span></b> since June 6, 2023</p>
+        </small>
     </div>
+    <script>
+        addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700381659.6789951)})
+    </script>
 </footer>
     <script>display_char_lang_element('en');</script>
 
@@ -485,7 +500,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 2023-11-12 10:27:39
+Generated time (UTC): 1700381659.6790004
 -->
 </body>
 </html>
