@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=boY1b3lD5oY', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=boY1b3lD5oY', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=boY1b3lD5oY)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=51', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=51', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=51)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="39174134-e8c0-4c39-bee8-4f2ad2ff05d9">
     <div >
-        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="j6Ls6X">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="j6Ls6X" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('j6Ls6X')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="w9MSGt">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="w9MSGt" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('w9MSGt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="6ffe4af8-dfd6-4dd9-86b8-db0ced9ce61e">
     <div >
-        <img src="/static/images/background/BG_Hangar2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="_q7K1m">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Hangar2.jpg.html#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="_q7K1m" target="_blank">BG_Hangar2.jpg</a><span onclick="showPopupByTooltipId('_q7K1m')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Hangar2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="nF74gC">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Hangar2.jpg.html#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="nF74gC" target="_blank">BG_Hangar2.jpg</a><span onclick="showPopupByTooltipId('nF74gC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="ed1c38f2-426a-4dfa-9ef6-2e318b91fdab">
     <div >
-        <img src="/static/images/background/BG_SchoolGround.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="L_zpy4">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SchoolGround.jpg.html#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="L_zpy4" target="_blank">BG_SchoolGround.jpg</a><span onclick="showPopupByTooltipId('L_zpy4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_SchoolGround.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ea6Ag7">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SchoolGround.jpg.html#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="ea6Ag7" target="_blank">BG_SchoolGround.jpg</a><span onclick="showPopupByTooltipId('ea6Ag7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -425,8 +442,8 @@
 
             <div class="gallery-img" id="a3d2f9a4-350e-4284-9e2e-43c923ccd55d">
     <div >
-        <img src="/static/images/background/BG_VIPLounge.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="XLyYnp">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_VIPLounge.jpg.html#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="XLyYnp" target="_blank">BG_VIPLounge.jpg</a><span onclick="showPopupByTooltipId('XLyYnp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_VIPLounge.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Dt6rD_">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_VIPLounge.jpg.html#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="Dt6rD_" target="_blank">BG_VIPLounge.jpg</a><span onclick="showPopupByTooltipId('Dt6rD_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -439,7 +456,7 @@
     
         
     <script>
-        add_tooltip_data({ 'j6Ls6X': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol></div>','_q7K1m': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Hangar2.jpg</p><p>BG_Hangar2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Hangar2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol></div>','L_zpy4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolGround.jpg</p><p>BG_SchoolGround.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolGround.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol></div>','XLyYnp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_VIPLounge.jpg</p><p>BG_VIPLounge.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_VIPLounge.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'w9MSGt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol></div>','nF74gC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Hangar2.jpg</p><p>BG_Hangar2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Hangar2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol></div>','ea6Ag7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolGround.jpg</p><p>BG_SchoolGround.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolGround.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol></div>','Dt6rD_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_VIPLounge.jpg</p><p>BG_VIPLounge.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_VIPLounge.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -464,9 +481,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/25.html"  onmouseover="showTooltip(this)" data-tooltip="lpfyh6">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>
+        <a href="/en/main/story/main/2/2/25.html"  onmouseover="showTooltipById(this)" data-tooltip="Iv47Zw">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>
     
-    <span onclick="showPopupByTooltipId('lpfyh6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Iv47Zw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -479,7 +496,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="LEREVS"><i>&#91;3&#93;&nbsp;C&C's Celebration</i></a><span onclick="showPopupByTooltipId('LEREVS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="NM2f9d"><i>&#91;3&#93;&nbsp;C&C's Celebration</i></a><span onclick="showPopupByTooltipId('NM2f9d')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -491,7 +508,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="F0wMyC"><i>&#91;4&#93;&nbsp;Everything As Always</i></a><span onclick="showPopupByTooltipId('F0wMyC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="O_EBFo"><i>&#91;4&#93;&nbsp;Everything As Always</i></a><span onclick="showPopupByTooltipId('O_EBFo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -508,7 +525,7 @@
 
     
     <script>
-        add_tooltip_data({ 'lpfyh6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','LEREVS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">C&C&#x27s Celebration</p><p>C&C invited Sensei to the party to celebrate the recovery of the president Neru. Asuna purposed the idea of "Bunny Suit". As the president disappeared, Toki attended the party and became a member of C&C.</p><hr><p>Character:<span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/31.html"><span>OST&nbsp;31.&nbsp;Hello to Halo</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/38.html"><span>OST&nbsp;38.&nbsp;Guruguru Usagi</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/50.html"><span>OST&nbsp;50.&nbsp;Hue</span></a></p></div>','F0wMyC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Everything As Always</p><p>The Engineering Department were developing new stuff as always. Veritas were working closely with Super Phenomenon Task Force. Sumire resumed her daily exercises.</p><hr><p>Character:<span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/sumire/"><img src="/static/images/student/icon/10012.webp" class="icon-stu"><span>Sumire</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/50.html"><span>OST&nbsp;50.&nbsp;Hue</span></a></p></div>', });
+        add_tooltip_data({ 'Iv47Zw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','NM2f9d': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">C&C&#x27s Celebration</p><p>C&C invited Sensei to the party to celebrate the recovery of the president Neru. Asuna purposed the idea of "Bunny Suit". As the president disappeared, Toki attended the party and became a member of C&C.</p><hr><p>Character:<span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/31.html"><span>OST&nbsp;31.&nbsp;Hello to Halo</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/38.html"><span>OST&nbsp;38.&nbsp;Guruguru Usagi</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/50.html"><span>OST&nbsp;50.&nbsp;Hue</span></a></p></div>','O_EBFo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Everything As Always</p><p>The Engineering Department were developing new stuff as always. Veritas were working closely with Super Phenomenon Task Force. Sumire resumed her daily exercises.</p><hr><p>Character:<span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/sumire/"><img src="/static/images/student/icon/10012.webp" class="icon-stu"><span>Sumire</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/50.html"><span>OST&nbsp;50.&nbsp;Hue</span></a></p></div>', });
     </script>
 
 
@@ -556,12 +573,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/akane/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="YpE3rH" >
+            <a href="/en/character/student/akane/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="oVVRPt" >
                 <img src="/static/images/student/icon/13000.webp" class="icon-stu">
                 <span>Akane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('YpE3rH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('oVVRPt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -583,12 +600,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/asuna/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="MXzbzs" >
+            <a href="/en/character/student/asuna/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="e7oTH1" >
                 <img src="/static/images/student/icon/16001.webp" class="icon-stu">
                 <span>Asuna</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('MXzbzs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('e7oTH1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -610,12 +627,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/chihiro/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="jLpMyn" >
+            <a href="/en/character/student/chihiro/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="jUcGy1" >
                 <img src="/static/images/student/icon/20013.webp" class="icon-stu">
                 <span>Chihiro</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('jLpMyn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('jUcGy1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -637,12 +654,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hare/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="Z0l86m" >
+            <a href="/en/character/student/hare/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="9o5Wzy" >
                 <img src="/static/images/student/icon/23003.webp" class="icon-stu">
                 <span>Hare</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Z0l86m')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('9o5Wzy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -664,12 +681,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hibiki/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="xYBLDI" >
+            <a href="/en/character/student/hibiki/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="CPulLd" >
                 <img src="/static/images/student/icon/20000.webp" class="icon-stu">
                 <span>Hibiki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('xYBLDI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('CPulLd')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -691,12 +708,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/karin/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="hdydhF" >
+            <a href="/en/character/student/karin/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="vpd7aa" >
                 <img src="/static/images/student/icon/20001.webp" class="icon-stu">
                 <span>Karin</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('hdydhF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('vpd7aa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -718,12 +735,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotama/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="FEnMtu" >
+            <a href="/en/character/student/kotama/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="4TleWV" >
                 <img src="/static/images/student/icon/26001.webp" class="icon-stu">
                 <span>Kotama</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('FEnMtu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('4TleWV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -745,12 +762,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotori/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="z1IC5g" >
+            <a href="/en/character/student/kotori/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="bSsNaa" >
                 <img src="/static/images/student/icon/16002.webp" class="icon-stu">
                 <span>Kotori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('z1IC5g')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('bSsNaa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -772,12 +789,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/maki/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="EessEe" >
+            <a href="/en/character/student/maki/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="LYKOuq" >
                 <img src="/static/images/student/icon/10007.webp" class="icon-stu">
                 <span>Maki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('EessEe')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('LYKOuq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -799,12 +816,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/neru/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="ly2ZAe" >
+            <a href="/en/character/student/neru/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="nJwIGH" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span>Neru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ly2ZAe')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('nJwIGH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -826,12 +843,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/sumire/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="OgqpH7" >
+            <a href="/en/character/student/sumire/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="K8y62Y" >
                 <img src="/static/images/student/icon/10012.webp" class="icon-stu">
                 <span>Sumire</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('OgqpH7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('K8y62Y')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Athletics Training Club]</span>
@@ -853,12 +870,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/toki/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="92IqjX" >
+            <a href="/en/character/student/toki/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="QPhBk1" >
                 <img src="/static/images/student/icon/10062.webp" class="icon-stu">
                 <span>Toki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('92IqjX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('QPhBk1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -880,12 +897,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/utaha/#track-OST_50" onmouseover="showTooltip(this)" data-tooltip="UOJDI4" >
+            <a href="/en/character/student/utaha/#track-OST_50" onmouseover="showTooltipById(this)" data-tooltip="JGR9_B" >
                 <img src="/static/images/student/icon/23004.webp" class="icon-stu">
                 <span>Utaha</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('UOJDI4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('JGR9_B')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -899,22 +916,22 @@
 
     
     <script>
-        add_tooltip_data({ 'YpE3rH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','MXzbzs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','jLpMyn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','Z0l86m': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','xYBLDI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','hdydhF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','FEnMtu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','z1IC5g': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','EessEe': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','ly2ZAe': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','OgqpH7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Sumire</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','92IqjX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','UOJDI4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'oVVRPt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','e7oTH1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','jUcGy1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','9o5Wzy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','CPulLd': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','vpd7aa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','4TleWV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','bSsNaa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','LYKOuq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','nJwIGH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','K8y62Y': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Sumire</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','QPhBk1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;C&C&#x27s Celebration</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','JGR9_B': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Everything As Always</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -949,13 +966,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -969,17 +986,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988803.2558143)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139616.3275182)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988803.255823
+Generated time (UTC): 1702139616.3275268
 -->
 </body>
 </html>

@@ -36,27 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
+    <script>var tooltip_data = {};
+
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
     
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -82,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -131,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -179,11 +190,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
 
@@ -242,8 +254,8 @@
 
             <div class="gallery-img" id="2295a1ce-dd2b-4bbb-b4ad-63a7c447258a-direct">
     <div >
-        <img src="/static/images/background/BG_AronaRoom_In.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="HQ95jU">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_AronaRoom_In.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="HQ95jU" target="_blank">BG_AronaRoom_In.jpg</a><span onclick="showPopupByTooltipId('HQ95jU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_AronaRoom_In.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0gjqqg">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_AronaRoom_In.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="0gjqqg" target="_blank">BG_AronaRoom_In.jpg</a><span onclick="showPopupByTooltipId('0gjqqg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -257,8 +269,8 @@
 
             <div class="gallery-img" id="c3d2c451-e0c1-4a60-a760-889562f1e2c6-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="sgZ4NK">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="sgZ4NK" target="_blank">BG_CS_Arona.jpg</a><span onclick="showPopupByTooltipId('sgZ4NK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="PHBJ6W">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="PHBJ6W" target="_blank">BG_CS_Arona.jpg</a><span onclick="showPopupByTooltipId('PHBJ6W')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -272,8 +284,8 @@
 
             <div class="gallery-img" id="b3b9fe01-9f25-456c-bff0-08e2fa60e03e-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona2_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="KfI9vI">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_01.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="KfI9vI" target="_blank">BG_CS_Arona2_01.jpg</a><span onclick="showPopupByTooltipId('KfI9vI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona2_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Edc0uK">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_01.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="Edc0uK" target="_blank">BG_CS_Arona2_01.jpg</a><span onclick="showPopupByTooltipId('Edc0uK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -287,8 +299,8 @@
 
             <div class="gallery-img" id="1e997e5f-b12f-41d0-928f-d928c7bc61b9-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona2_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Kh6LJV">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_02.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="Kh6LJV" target="_blank">BG_CS_Arona2_02.jpg</a><span onclick="showPopupByTooltipId('Kh6LJV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona2_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="YDN5eO">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_02.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="YDN5eO" target="_blank">BG_CS_Arona2_02.jpg</a><span onclick="showPopupByTooltipId('YDN5eO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -302,8 +314,8 @@
 
             <div class="gallery-img" id="70a4d484-664d-4681-9b19-94124735f2e4-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona2_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="dOaJe7">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_03.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="dOaJe7" target="_blank">BG_CS_Arona2_03.jpg</a><span onclick="showPopupByTooltipId('dOaJe7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona2_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="vjgSK1">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_03.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="vjgSK1" target="_blank">BG_CS_Arona2_03.jpg</a><span onclick="showPopupByTooltipId('vjgSK1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -317,8 +329,8 @@
 
             <div class="gallery-img" id="893fb2b3-27fe-481e-8a5d-a0bb607873bc-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona2_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="YslFEc">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_04.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="YslFEc" target="_blank">BG_CS_Arona2_04.jpg</a><span onclick="showPopupByTooltipId('YslFEc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona2_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="R83NNt">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_04.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="R83NNt" target="_blank">BG_CS_Arona2_04.jpg</a><span onclick="showPopupByTooltipId('R83NNt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -332,8 +344,8 @@
 
             <div class="gallery-img" id="52758d0e-b0ab-4a4f-93e5-ec8e282fb191-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona3_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="inNUGD">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona3_01.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="inNUGD" target="_blank">BG_CS_Arona3_01.jpg</a><span onclick="showPopupByTooltipId('inNUGD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona3_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="uWr1S2">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona3_01.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="uWr1S2" target="_blank">BG_CS_Arona3_01.jpg</a><span onclick="showPopupByTooltipId('uWr1S2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -347,8 +359,8 @@
 
             <div class="gallery-img" id="d8ea86f1-1beb-466c-9ce0-cd29f07c2ef5-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="GxHtC6">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_01.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="GxHtC6" target="_blank">BG_CS_Arona_01.jpg</a><span onclick="showPopupByTooltipId('GxHtC6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="AOwESU">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_01.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="AOwESU" target="_blank">BG_CS_Arona_01.jpg</a><span onclick="showPopupByTooltipId('AOwESU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -362,8 +374,8 @@
 
             <div class="gallery-img" id="5e6d4705-d3ea-4d55-ac2b-428955042317-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="oWJTEz">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_02.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="oWJTEz" target="_blank">BG_CS_Arona_02.jpg</a><span onclick="showPopupByTooltipId('oWJTEz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="xNlDMQ">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_02.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="xNlDMQ" target="_blank">BG_CS_Arona_02.jpg</a><span onclick="showPopupByTooltipId('xNlDMQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -377,8 +389,8 @@
 
             <div class="gallery-img" id="b0c87024-3709-42fa-bb23-de39760f15e2-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FkCWw9">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_03.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="FkCWw9" target="_blank">BG_CS_Arona_03.jpg</a><span onclick="showPopupByTooltipId('FkCWw9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="IB8Boq">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_03.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="IB8Boq" target="_blank">BG_CS_Arona_03.jpg</a><span onclick="showPopupByTooltipId('IB8Boq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -392,8 +404,8 @@
 
             <div class="gallery-img" id="ead13346-06cc-4912-97f4-f1f99f80de92-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="V2nRvE">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_04.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="V2nRvE" target="_blank">BG_CS_Arona_04.jpg</a><span onclick="showPopupByTooltipId('V2nRvE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="mb4QaL">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_04.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="mb4QaL" target="_blank">BG_CS_Arona_04.jpg</a><span onclick="showPopupByTooltipId('mb4QaL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -407,8 +419,8 @@
 
             <div class="gallery-img" id="d3ea4499-a844-4b35-9d20-f740599ca945-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_05.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="HEF78M">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_05.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="HEF78M" target="_blank">BG_CS_Arona_05.jpg</a><span onclick="showPopupByTooltipId('HEF78M')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_05.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="lDxaDG">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_05.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="lDxaDG" target="_blank">BG_CS_Arona_05.jpg</a><span onclick="showPopupByTooltipId('lDxaDG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -421,7 +433,7 @@
     
         
     <script>
-        add_tooltip_data({ 'HQ95jU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_AronaRoom_In.jpg</p><p>BG_AronaRoom_In.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_AronaRoom_In.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#2295a1ce-dd2b-4bbb-b4ad-63a7c447258a-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','sgZ4NK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona.jpg</p><p>BG_CS_Arona.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#c3d2c451-e0c1-4a60-a760-889562f1e2c6-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','KfI9vI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_01.jpg</p><p>BG_CS_Arona2_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#b3b9fe01-9f25-456c-bff0-08e2fa60e03e-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','Kh6LJV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_02.jpg</p><p>BG_CS_Arona2_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_02.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#1e997e5f-b12f-41d0-928f-d928c7bc61b9-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','dOaJe7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_03.jpg</p><p>BG_CS_Arona2_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_03.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#70a4d484-664d-4681-9b19-94124735f2e4-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','YslFEc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_04.jpg</p><p>BG_CS_Arona2_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#893fb2b3-27fe-481e-8a5d-a0bb607873bc-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','inNUGD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona3_01.jpg</p><p>BG_CS_Arona3_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona3_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#52758d0e-b0ab-4a4f-93e5-ec8e282fb191-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','GxHtC6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_01.jpg</p><p>BG_CS_Arona_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#d8ea86f1-1beb-466c-9ce0-cd29f07c2ef5-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','oWJTEz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_02.jpg</p><p>BG_CS_Arona_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_02.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#5e6d4705-d3ea-4d55-ac2b-428955042317-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','FkCWw9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_03.jpg</p><p>BG_CS_Arona_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_03.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#b0c87024-3709-42fa-bb23-de39760f15e2-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','V2nRvE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_04.jpg</p><p>BG_CS_Arona_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#ead13346-06cc-4912-97f4-f1f99f80de92-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','HEF78M': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_05.jpg</p><p>BG_CS_Arona_05.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_05.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#d3ea4499-a844-4b35-9d20-f740599ca945-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>', });
+        add_tooltip_data({ '0gjqqg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_AronaRoom_In.jpg</p><p>BG_AronaRoom_In.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_AronaRoom_In.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#2295a1ce-dd2b-4bbb-b4ad-63a7c447258a-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','PHBJ6W': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona.jpg</p><p>BG_CS_Arona.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#c3d2c451-e0c1-4a60-a760-889562f1e2c6-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','Edc0uK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_01.jpg</p><p>BG_CS_Arona2_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#b3b9fe01-9f25-456c-bff0-08e2fa60e03e-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','YDN5eO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_02.jpg</p><p>BG_CS_Arona2_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_02.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#1e997e5f-b12f-41d0-928f-d928c7bc61b9-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','vjgSK1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_03.jpg</p><p>BG_CS_Arona2_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_03.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#70a4d484-664d-4681-9b19-94124735f2e4-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','R83NNt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_04.jpg</p><p>BG_CS_Arona2_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#893fb2b3-27fe-481e-8a5d-a0bb607873bc-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','uWr1S2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona3_01.jpg</p><p>BG_CS_Arona3_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona3_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#52758d0e-b0ab-4a4f-93e5-ec8e282fb191-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','AOwESU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_01.jpg</p><p>BG_CS_Arona_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#d8ea86f1-1beb-466c-9ce0-cd29f07c2ef5-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','xNlDMQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_02.jpg</p><p>BG_CS_Arona_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_02.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#5e6d4705-d3ea-4d55-ac2b-428955042317-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','IB8Boq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_03.jpg</p><p>BG_CS_Arona_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_03.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#b0c87024-3709-42fa-bb23-de39760f15e2-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','mb4QaL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_04.jpg</p><p>BG_CS_Arona_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#ead13346-06cc-4912-97f4-f1f99f80de92-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','lDxaDG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_05.jpg</p><p>BG_CS_Arona_05.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_05.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#d3ea4499-a844-4b35-9d20-f740599ca945-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>', });
     </script>
 
     
@@ -441,8 +453,8 @@
 
             <div class="gallery-img" id="c688a187-7d77-4f6f-8d0d-6f3a22ef7427-direct">
     <div >
-        <img src="/static/images/background/BG_MainOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="QQgAvY">
-        <p class="gallery-caption"><span>【2】</span><span><a href="/zh_cn/background/BG_MainOffice.jpg.html#Arona" onmouseover="showTooltip(this)" data-tooltip="QQgAvY" target="_blank">BG_MainOffice.jpg</a><span onclick="showPopupByTooltipId('QQgAvY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MainOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="gsttro">
+        <p class="gallery-caption"><span>【2】</span><span><a href="/zh_cn/background/BG_MainOffice.jpg.html#Arona" onmouseover="showTooltipById(this)" data-tooltip="gsttro" target="_blank">BG_MainOffice.jpg</a><span onclick="showPopupByTooltipId('gsttro')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -455,7 +467,7 @@
     
         
     <script>
-        add_tooltip_data({ 'QQgAvY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MainOffice.jpg</p><p>BG_MainOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MainOffice.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/1/1.html">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/2/1/1.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'gsttro': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MainOffice.jpg</p><p>BG_MainOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MainOffice.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/1/1.html">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/2/1/1.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -475,8 +487,8 @@
 
             <div class="gallery-img" id="2295a1ce-dd2b-4bbb-b4ad-63a7c447258a-direct">
     <div >
-        <img src="/static/images/background/BG_AronaRoom_In.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="EvD9cC">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_AronaRoom_In.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="EvD9cC" target="_blank">BG_AronaRoom_In.jpg</a><span onclick="showPopupByTooltipId('EvD9cC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_AronaRoom_In.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1y55zm">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_AronaRoom_In.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="1y55zm" target="_blank">BG_AronaRoom_In.jpg</a><span onclick="showPopupByTooltipId('1y55zm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -490,8 +502,8 @@
 
             <div class="gallery-img" id="c3d2c451-e0c1-4a60-a760-889562f1e2c6-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="TBFmXo">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="TBFmXo" target="_blank">BG_CS_Arona.jpg</a><span onclick="showPopupByTooltipId('TBFmXo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="9ajqvu">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="9ajqvu" target="_blank">BG_CS_Arona.jpg</a><span onclick="showPopupByTooltipId('9ajqvu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -505,8 +517,8 @@
 
             <div class="gallery-img" id="b3b9fe01-9f25-456c-bff0-08e2fa60e03e-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona2_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ZZwhev">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_01.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="ZZwhev" target="_blank">BG_CS_Arona2_01.jpg</a><span onclick="showPopupByTooltipId('ZZwhev')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona2_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="JAsos9">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_01.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="JAsos9" target="_blank">BG_CS_Arona2_01.jpg</a><span onclick="showPopupByTooltipId('JAsos9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -520,8 +532,8 @@
 
             <div class="gallery-img" id="1e997e5f-b12f-41d0-928f-d928c7bc61b9-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona2_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="rF1UTb">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_02.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="rF1UTb" target="_blank">BG_CS_Arona2_02.jpg</a><span onclick="showPopupByTooltipId('rF1UTb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona2_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="A99fpB">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_02.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="A99fpB" target="_blank">BG_CS_Arona2_02.jpg</a><span onclick="showPopupByTooltipId('A99fpB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -535,8 +547,8 @@
 
             <div class="gallery-img" id="70a4d484-664d-4681-9b19-94124735f2e4-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona2_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="dTdalY">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_03.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="dTdalY" target="_blank">BG_CS_Arona2_03.jpg</a><span onclick="showPopupByTooltipId('dTdalY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona2_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="a_f4M2">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_03.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="a_f4M2" target="_blank">BG_CS_Arona2_03.jpg</a><span onclick="showPopupByTooltipId('a_f4M2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -550,8 +562,8 @@
 
             <div class="gallery-img" id="893fb2b3-27fe-481e-8a5d-a0bb607873bc-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona2_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="D2swCf">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_04.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="D2swCf" target="_blank">BG_CS_Arona2_04.jpg</a><span onclick="showPopupByTooltipId('D2swCf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona2_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="wQnnol">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona2_04.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="wQnnol" target="_blank">BG_CS_Arona2_04.jpg</a><span onclick="showPopupByTooltipId('wQnnol')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -565,8 +577,8 @@
 
             <div class="gallery-img" id="52758d0e-b0ab-4a4f-93e5-ec8e282fb191-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona3_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Voku_9">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona3_01.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="Voku_9" target="_blank">BG_CS_Arona3_01.jpg</a><span onclick="showPopupByTooltipId('Voku_9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona3_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="wdR7TV">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona3_01.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="wdR7TV" target="_blank">BG_CS_Arona3_01.jpg</a><span onclick="showPopupByTooltipId('wdR7TV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -580,8 +592,8 @@
 
             <div class="gallery-img" id="d8ea86f1-1beb-466c-9ce0-cd29f07c2ef5-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="KTUnJ0">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_01.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="KTUnJ0" target="_blank">BG_CS_Arona_01.jpg</a><span onclick="showPopupByTooltipId('KTUnJ0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="kAVMu6">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_01.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="kAVMu6" target="_blank">BG_CS_Arona_01.jpg</a><span onclick="showPopupByTooltipId('kAVMu6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -595,8 +607,8 @@
 
             <div class="gallery-img" id="5e6d4705-d3ea-4d55-ac2b-428955042317-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Ut6oze">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_02.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="Ut6oze" target="_blank">BG_CS_Arona_02.jpg</a><span onclick="showPopupByTooltipId('Ut6oze')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="lMvH7R">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_02.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="lMvH7R" target="_blank">BG_CS_Arona_02.jpg</a><span onclick="showPopupByTooltipId('lMvH7R')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -610,8 +622,8 @@
 
             <div class="gallery-img" id="b0c87024-3709-42fa-bb23-de39760f15e2-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="kilmlx">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_03.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="kilmlx" target="_blank">BG_CS_Arona_03.jpg</a><span onclick="showPopupByTooltipId('kilmlx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Vbhf_Z">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_03.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="Vbhf_Z" target="_blank">BG_CS_Arona_03.jpg</a><span onclick="showPopupByTooltipId('Vbhf_Z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -625,8 +637,8 @@
 
             <div class="gallery-img" id="ead13346-06cc-4912-97f4-f1f99f80de92-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="I2byQF">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_04.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="I2byQF" target="_blank">BG_CS_Arona_04.jpg</a><span onclick="showPopupByTooltipId('I2byQF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="zyCF4u">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_04.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="zyCF4u" target="_blank">BG_CS_Arona_04.jpg</a><span onclick="showPopupByTooltipId('zyCF4u')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -640,8 +652,8 @@
 
             <div class="gallery-img" id="d3ea4499-a844-4b35-9d20-f740599ca945-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arona_05.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="6vLBfm">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_05.jpg.html#Arona-direct" onmouseover="showTooltip(this)" data-tooltip="6vLBfm" target="_blank">BG_CS_Arona_05.jpg</a><span onclick="showPopupByTooltipId('6vLBfm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arona_05.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="c6L7sP">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arona_05.jpg.html#Arona-direct" onmouseover="showTooltipById(this)" data-tooltip="c6L7sP" target="_blank">BG_CS_Arona_05.jpg</a><span onclick="showPopupByTooltipId('c6L7sP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -654,7 +666,7 @@
     
         
     <script>
-        add_tooltip_data({ 'EvD9cC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_AronaRoom_In.jpg</p><p>BG_AronaRoom_In.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_AronaRoom_In.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#2295a1ce-dd2b-4bbb-b4ad-63a7c447258a-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','TBFmXo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona.jpg</p><p>BG_CS_Arona.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#c3d2c451-e0c1-4a60-a760-889562f1e2c6-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','ZZwhev': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_01.jpg</p><p>BG_CS_Arona2_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#b3b9fe01-9f25-456c-bff0-08e2fa60e03e-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','rF1UTb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_02.jpg</p><p>BG_CS_Arona2_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_02.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#1e997e5f-b12f-41d0-928f-d928c7bc61b9-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','dTdalY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_03.jpg</p><p>BG_CS_Arona2_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_03.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#70a4d484-664d-4681-9b19-94124735f2e4-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','D2swCf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_04.jpg</p><p>BG_CS_Arona2_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#893fb2b3-27fe-481e-8a5d-a0bb607873bc-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','Voku_9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona3_01.jpg</p><p>BG_CS_Arona3_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona3_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#52758d0e-b0ab-4a4f-93e5-ec8e282fb191-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','KTUnJ0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_01.jpg</p><p>BG_CS_Arona_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#d8ea86f1-1beb-466c-9ce0-cd29f07c2ef5-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','Ut6oze': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_02.jpg</p><p>BG_CS_Arona_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_02.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#5e6d4705-d3ea-4d55-ac2b-428955042317-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','kilmlx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_03.jpg</p><p>BG_CS_Arona_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_03.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#b0c87024-3709-42fa-bb23-de39760f15e2-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','I2byQF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_04.jpg</p><p>BG_CS_Arona_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#ead13346-06cc-4912-97f4-f1f99f80de92-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','6vLBfm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_05.jpg</p><p>BG_CS_Arona_05.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_05.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#d3ea4499-a844-4b35-9d20-f740599ca945-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>', });
+        add_tooltip_data({ '1y55zm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_AronaRoom_In.jpg</p><p>BG_AronaRoom_In.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_AronaRoom_In.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#2295a1ce-dd2b-4bbb-b4ad-63a7c447258a-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','9ajqvu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona.jpg</p><p>BG_CS_Arona.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#c3d2c451-e0c1-4a60-a760-889562f1e2c6-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','JAsos9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_01.jpg</p><p>BG_CS_Arona2_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#b3b9fe01-9f25-456c-bff0-08e2fa60e03e-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','A99fpB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_02.jpg</p><p>BG_CS_Arona2_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_02.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#1e997e5f-b12f-41d0-928f-d928c7bc61b9-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','a_f4M2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_03.jpg</p><p>BG_CS_Arona2_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_03.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#70a4d484-664d-4681-9b19-94124735f2e4-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','wQnnol': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona2_04.jpg</p><p>BG_CS_Arona2_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona2_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#893fb2b3-27fe-481e-8a5d-a0bb607873bc-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','wdR7TV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona3_01.jpg</p><p>BG_CS_Arona3_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona3_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#52758d0e-b0ab-4a4f-93e5-ec8e282fb191-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','kAVMu6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_01.jpg</p><p>BG_CS_Arona_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#d8ea86f1-1beb-466c-9ce0-cd29f07c2ef5-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','lMvH7R': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_02.jpg</p><p>BG_CS_Arona_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_02.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#5e6d4705-d3ea-4d55-ac2b-428955042317-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','Vbhf_Z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_03.jpg</p><p>BG_CS_Arona_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_03.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#b0c87024-3709-42fa-bb23-de39760f15e2-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','zyCF4u': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_04.jpg</p><p>BG_CS_Arona_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#ead13346-06cc-4912-97f4-f1f99f80de92-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','c6L7sP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arona_05.jpg</p><p>BG_CS_Arona_05.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arona_05.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><a href="/zh_cn/character/npc/arona/#d3ea4499-a844-4b35-9d20-f740599ca945-direct"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>', });
     </script>
 
     
@@ -679,9 +691,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/1/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="zpL50J">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/1/1/1.html"  onmouseover="showTooltipById(this)" data-tooltip="mnllc1">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('zpL50J')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('mnllc1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -694,7 +706,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="VEZjW6"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('VEZjW6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="EiwXV2"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('EiwXV2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -706,7 +718,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="W3DYoI"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('W3DYoI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="RbuaXr"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('RbuaXr')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -727,9 +739,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/2/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="1pAVvk">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/2/1/1.html"  onmouseover="showTooltipById(this)" data-tooltip="Uw2oJN">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('1pAVvk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Uw2oJN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -742,7 +754,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="P_loBK"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('P_loBK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="hTfG9I"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('hTfG9I')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -757,7 +769,7 @@
 
     
     <script>
-        add_tooltip_data({ 'zpL50J': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">老师读了阿拜多斯高中寄来的信后，得知学生们受到暴力组织欺压的消息，于是便前往阿拜多斯自治区帮助他们，但却一下子就迷路遇难了。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师读了阿拜多斯高中寄来的信后，得知学生们受到暴力组织欺压的消息，于是便前往阿拜多斯自治区帮助他们，但却一下子就迷路遇难了。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师读了阿拜多斯高中寄来的信后，得知学生们受到暴力组织欺压的消息，于是便前往阿拜多斯自治区帮助他们，但却一下子就迷路遇难了。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','VEZjW6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">在上任几天后，阿洛娜表示许多学生都送来了求助信，而其中一篇则来自阿拜多斯高中。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在上任几天后，彩奈表示许多学生都送来了求助信，而其中一篇则来自阿拜多斯高中。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在上任几天后，阿罗娜表示许多学生都送来了求助信，而其中一篇则来自阿拜多斯高中。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<a href="/zh_cn/character/npc/arona/"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/10.html"><span>OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span></a></p></div>','W3DYoI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">阿洛娜向老师简单介绍了一下阿拜多斯当地的情况，并对“阿拜多斯学院”被攻击一事感到惊异。之后，老师立刻到阿拜多斯自治区出差。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈向老师简单介绍了一下阿拜多斯当地的情况，并对“阿拜多斯学院”被攻击一事感到惊异。之后，老师立刻到阿拜多斯自治区出差。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜向老师简单介绍了一下阿拜多斯当地的情况，并对“阿拜多斯学院”被攻击一事感到惊异。之后，老师立刻到阿拜多斯自治区出差。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<a href="/zh_cn/character/npc/arona/"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/10.html"><span>OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span></a></p></div>','1pAVvk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">老师收到一封怪信，于是便前往千年学园的游戏开发部，在该处见到开发游戏中的双胞胎学生，绿和桃。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师收到一封怪信，于是便前往千年学园的游戏开发部，在该处见到开发游戏中的双胞胎学生，绿和桃井。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师收到一封怪信，于是便前往千禧年学园的游戏开发部，在该处见到开发游戏中的双胞胎学生，绿和桃井。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','P_loBK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">老师收到了游戏开发部的信件，并从中得知了游戏开发部将要被废社的消息；阿洛娜顺便介绍了一些千年学院的概况。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师收到了游戏开发部的信件，并从中得知了游戏开发部将要被废社的消息；彩奈顺便介绍了一些千年学院的概况。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师收到了游戏开发部的信件，并从中得知了游戏开发部将要被废社的消息；阿罗娜顺便介绍了一些千禧年学院的概况。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<a href="/zh_cn/character/npc/arona/"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory (闪亮的记忆)</span></a></p></div>', });
+        add_tooltip_data({ 'mnllc1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">老师读了阿拜多斯高中寄来的信后，得知学生们受到暴力组织欺压的消息，于是便前往阿拜多斯自治区帮助他们，但却一下子就迷路遇难了。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师读了阿拜多斯高中寄来的信后，得知学生们受到暴力组织欺压的消息，于是便前往阿拜多斯自治区帮助他们，但却一下子就迷路遇难了。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师读了阿拜多斯高中寄来的信后，得知学生们受到暴力组织欺压的消息，于是便前往阿拜多斯自治区帮助他们，但却一下子就迷路遇难了。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','EiwXV2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">在上任几天后，阿洛娜表示许多学生都送来了求助信，而其中一篇则来自阿拜多斯高中。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在上任几天后，彩奈表示许多学生都送来了求助信，而其中一篇则来自阿拜多斯高中。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在上任几天后，阿罗娜表示许多学生都送来了求助信，而其中一篇则来自阿拜多斯高中。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<a href="/zh_cn/character/npc/arona/"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/10.html"><span>OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span></a></p></div>','RbuaXr': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">阿洛娜向老师简单介绍了一下阿拜多斯当地的情况，并对“阿拜多斯学院”被攻击一事感到惊异。之后，老师立刻到阿拜多斯自治区出差。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈向老师简单介绍了一下阿拜多斯当地的情况，并对“阿拜多斯学院”被攻击一事感到惊异。之后，老师立刻到阿拜多斯自治区出差。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜向老师简单介绍了一下阿拜多斯当地的情况，并对“阿拜多斯学院”被攻击一事感到惊异。之后，老师立刻到阿拜多斯自治区出差。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<a href="/zh_cn/character/npc/arona/"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/10.html"><span>OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span></a></p></div>','Uw2oJN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">老师收到一封怪信，于是便前往千年学园的游戏开发部，在该处见到开发游戏中的双胞胎学生，绿和桃。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师收到一封怪信，于是便前往千年学园的游戏开发部，在该处见到开发游戏中的双胞胎学生，绿和桃井。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师收到一封怪信，于是便前往千禧年学园的游戏开发部，在该处见到开发游戏中的双胞胎学生，绿和桃井。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','hTfG9I': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">老师收到了游戏开发部的信件，并从中得知了游戏开发部将要被废社的消息；阿洛娜顺便介绍了一些千年学院的概况。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师收到了游戏开发部的信件，并从中得知了游戏开发部将要被废社的消息；彩奈顺便介绍了一些千年学院的概况。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师收到了游戏开发部的信件，并从中得知了游戏开发部将要被废社的消息；阿罗娜顺便介绍了一些千禧年学院的概况。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<a href="/zh_cn/character/npc/arona/"><span><span class="lang-zh-cn-cn">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory (闪亮的记忆)</span></a></p></div>', });
     </script>
 
 
@@ -778,10 +790,10 @@
             
 
             <li id="track-OST_2">
-    <a href="/zh_cn/track/ost/2.html#d5d63772-daed-499e-b301-0ed10434e0fb" onmouseover="showTooltip(this)" data-tooltip="S27hca">
+    <a href="/zh_cn/track/ost/2.html#d5d63772-daed-499e-b301-0ed10434e0fb" onmouseover="showTooltipById(this)" data-tooltip="3oKCWn">
         <span>【1】OST&nbsp;2.&nbsp;Luminous Memory (闪亮的记忆)</span>
     </a>
-    <span onclick="showPopupByTooltipId('S27hca')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('3oKCWn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
     <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-primary badge-tag">梦想</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;</div>
@@ -798,10 +810,10 @@
             
 
             <li id="track-OST_10">
-    <a href="/zh_cn/track/ost/10.html#d5d63772-daed-499e-b301-0ed10434e0fb" onmouseover="showTooltip(this)" data-tooltip="XvypHl">
+    <a href="/zh_cn/track/ost/10.html#d5d63772-daed-499e-b301-0ed10434e0fb" onmouseover="showTooltipById(this)" data-tooltip="2d1V09">
         <span>【1】OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span>
     </a>
-    <span onclick="showPopupByTooltipId('XvypHl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('2d1V09')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
     <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">梦想</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
@@ -816,7 +828,7 @@
     
         
     <script>
-        add_tooltip_data({ 'S27hca': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;2.&nbsp;Luminous Memory <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/1.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','XvypHl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;10.&nbsp;Romantic Smile <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/1/1.html">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '3oKCWn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;2.&nbsp;Luminous Memory <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/1.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险的开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到信件</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','2d1V09': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;10.&nbsp;Romantic Smile <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/1/1.html">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">欢迎来到对策委员会！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">收到来信</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -857,17 +869,17 @@
     
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -904,13 +916,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -924,17 +936,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989325.2637615)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139990.109423)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989325.26377
+Generated time (UTC): 1702139990.109432
 -->
 </body>
 </html>

@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=QuhMoVQjI7U', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=QuhMoVQjI7U', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=QuhMoVQjI7U)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1KV4y1r7bp/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1KV4y1r7bp/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1KV4y1r7bp/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="e587e065-e9ab-4d2e-88d0-660da4ad794b">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="tSiu3F">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_02.jpg.html#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="tSiu3F" target="_blank">BG_CS_Millenium_02.jpg</a><span onclick="showPopupByTooltipId('tSiu3F')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="BfrxHK">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_02.jpg.html#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="BfrxHK" target="_blank">BG_CS_Millenium_02.jpg</a><span onclick="showPopupByTooltipId('BfrxHK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="6e054f4b-7778-4fc6-b6f1-4901e7abc5f1">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="sxyORq">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown.jpg.html#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="sxyORq" target="_blank">BG_EriduCityTown.jpg</a><span onclick="showPopupByTooltipId('sxyORq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="buAviA">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown.jpg.html#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="buAviA" target="_blank">BG_EriduCityTown.jpg</a><span onclick="showPopupByTooltipId('buAviA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ovcqRF">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="ovcqRF" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('ovcqRF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="2_Zlbi">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="2_Zlbi" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('2_Zlbi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -425,8 +442,8 @@
 
             <div class="gallery-img" id="55657b32-ab5d-4c67-b755-07ba3d15432b">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="8kiiuU">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="8kiiuU" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('8kiiuU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="4CkqmG">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="4CkqmG" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('4CkqmG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -440,8 +457,8 @@
 
             <div class="gallery-img" id="da76a8d2-a979-4258-b219-738727e7b181">
     <div >
-        <img src="/static/images/background/BG_RuinCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ZbM0_r">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCenter.jpg.html#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="ZbM0_r" target="_blank">BG_RuinCenter.jpg</a><span onclick="showPopupByTooltipId('ZbM0_r')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ebfnms">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCenter.jpg.html#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="ebfnms" target="_blank">BG_RuinCenter.jpg</a><span onclick="showPopupByTooltipId('ebfnms')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -455,8 +472,8 @@
 
             <div class="gallery-img" id="e70fa03e-6687-41ad-bd6e-fef38e040356">
     <div >
-        <img src="/static/images/background/BG_RuinCity.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="EZZrdq">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCity.jpg.html#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="EZZrdq" target="_blank">BG_RuinCity.jpg</a><span onclick="showPopupByTooltipId('EZZrdq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinCity.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Rjk7ek">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCity.jpg.html#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="Rjk7ek" target="_blank">BG_RuinCity.jpg</a><span onclick="showPopupByTooltipId('Rjk7ek')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -470,8 +487,8 @@
 
             <div class="gallery-img" id="2cb781ab-2579-4bfc-abeb-1c6270bba949">
     <div >
-        <img src="/static/images/background/BG_RuinUndergroundPassage.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="kRQMV9">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage.jpg.html#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="kRQMV9" target="_blank">BG_RuinUndergroundPassage.jpg</a><span onclick="showPopupByTooltipId('kRQMV9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinUndergroundPassage.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="YqXLOy">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage.jpg.html#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="YqXLOy" target="_blank">BG_RuinUndergroundPassage.jpg</a><span onclick="showPopupByTooltipId('YqXLOy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -485,8 +502,8 @@
 
             <div class="gallery-img" id="094de1f9-477e-416e-8146-9ce233539cbe">
     <div >
-        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="nTSeZi">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="nTSeZi" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('nTSeZi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="JLht2_">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="JLht2_" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('JLht2_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -499,7 +516,7 @@
     
         
     <script>
-        add_tooltip_data({ 'tSiu3F': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_02.jpg</p><p>BG_CS_Millenium_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_02.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>','sxyORq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown.jpg</p><p>BG_EriduCityTown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol></div>','ovcqRF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol></div>','8kiiuU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li></ol></div>','ZbM0_r': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter.jpg</p><p>BG_RuinCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol></div>','EZZrdq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCity.jpg</p><p>BG_RuinCity.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCity.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>','kRQMV9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage.jpg</p><p>BG_RuinUndergroundPassage.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>','nTSeZi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'BfrxHK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_02.jpg</p><p>BG_CS_Millenium_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_02.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>','buAviA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown.jpg</p><p>BG_EriduCityTown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol></div>','2_Zlbi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol></div>','4CkqmG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li></ol></div>','ebfnms': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter.jpg</p><p>BG_RuinCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol></div>','Rjk7ek': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCity.jpg</p><p>BG_RuinCity.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCity.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>','YqXLOy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage.jpg</p><p>BG_RuinUndergroundPassage.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>','JLht2_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -524,9 +541,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/9.html"  onmouseover="showTooltip(this)" data-tooltip="g0W8IP">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>
+        <a href="/en/main/story/main/2/2/9.html"  onmouseover="showTooltipById(this)" data-tooltip="7jHkXm">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>
     
-    <span onclick="showPopupByTooltipId('g0W8IP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('7jHkXm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -539,7 +556,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="LDmp92"><i>&#91;3&#93;&nbsp;An Argument</i></a><span onclick="showPopupByTooltipId('LDmp92')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="I6zuzv"><i>&#91;3&#93;&nbsp;An Argument</i></a><span onclick="showPopupByTooltipId('I6zuzv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -558,9 +575,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/24.html"  onmouseover="showTooltip(this)" data-tooltip="7fi8JQ">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>
+        <a href="/en/main/story/main/2/2/24.html"  onmouseover="showTooltipById(this)" data-tooltip="IZAs48">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>
     
-    <span onclick="showPopupByTooltipId('7fi8JQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('IZAs48')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -573,7 +590,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="HdiJ3w"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a><span onclick="showPopupByTooltipId('HdiJ3w')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="7N5gfY"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a><span onclick="showPopupByTooltipId('7N5gfY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -585,7 +602,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="yU5wCh"><i>&#91;2&#93;&nbsp;Every Scene</i></a><span onclick="showPopupByTooltipId('yU5wCh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="h5FKMl"><i>&#91;2&#93;&nbsp;Every Scene</i></a><span onclick="showPopupByTooltipId('h5FKMl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -602,7 +619,7 @@
 
     
     <script>
-        add_tooltip_data({ 'g0W8IP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','LDmp92': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">An Argument</p><p>Everyone outraged upon hearing this. The president continued explaining her solution: to destroy Aris&#x27 halo, i.e. to kill her. Such remarks even angered Sensei. Rio expressed her surprise about the fact that Aris&#x27 having a halo, despite her being a robot. No agreement made, Rio called Neru who was standing by all the time.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/93.html"><span>OST&nbsp;93.&nbsp;Formless Dream</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a></p></div>','7fi8JQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">What You Want to Be</p><ul><li>The Game Development Department and Sensei finally find Aris. Calling herself a demon lord, Aris is hesitant to return for fear of hurting others. Encouraged by everyone&#x27s supportive words that it&#x27s up to her to decide who she wants to be, Aris finally draws the proof of a warrior: Supernova, the Sword of Light.</li></ul></div>','HdiJ3w': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Deep In The Consciousness</p><p>Sensei ang the GDD arrived at the Aris&#x27 deep consciousness, and there they met Aris and Key. The GDD wanted to bring back Aris, but Key appeared suddenly and reminded "princess" of what she had witnessed.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/93.html"><span>OST&nbsp;93.&nbsp;Formless Dream</span></a></p></div>','yU5wCh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Every Scene</p><p>On screen, it showed scenes of C&C being besieged by AMAS, Neru confronting Toki, Sensei and others confronting Avant Guard but short on hands, Neru collapsing after being serverly injured - nothing but all their combat scenes. Everyone didn&#x27t understand why, but Key said that the "princess" had already knew it herself.</p><hr><p>Character:<span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/ariskey/"><span>Key</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/93.html"><span>OST&nbsp;93.&nbsp;Formless Dream</span></a></p></div>', });
+        add_tooltip_data({ '7jHkXm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','I6zuzv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">An Argument</p><p>Everyone outraged upon hearing this. The president continued explaining her solution: to destroy Aris&#x27 halo, i.e. to kill her. Such remarks even angered Sensei. Rio expressed her surprise about the fact that Aris&#x27 having a halo, despite her being a robot. No agreement made, Rio called Neru who was standing by all the time.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/93.html"><span>OST&nbsp;93.&nbsp;Formless Dream</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a></p></div>','IZAs48': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">What You Want to Be</p><ul><li>The Game Development Department and Sensei finally find Aris. Calling herself a demon lord, Aris is hesitant to return for fear of hurting others. Encouraged by everyone&#x27s supportive words that it&#x27s up to her to decide who she wants to be, Aris finally draws the proof of a warrior: Supernova, the Sword of Light.</li></ul></div>','7N5gfY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Deep In The Consciousness</p><p>Sensei ang the GDD arrived at the Aris&#x27 deep consciousness, and there they met Aris and Key. The GDD wanted to bring back Aris, but Key appeared suddenly and reminded "princess" of what she had witnessed.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/93.html"><span>OST&nbsp;93.&nbsp;Formless Dream</span></a></p></div>','h5FKMl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Every Scene</p><p>On screen, it showed scenes of C&C being besieged by AMAS, Neru confronting Toki, Sensei and others confronting Avant Guard but short on hands, Neru collapsing after being serverly injured - nothing but all their combat scenes. Everyone didn&#x27t understand why, but Key said that the "princess" had already knew it herself.</p><hr><p>Character:<span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/ariskey/"><span>Key</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/93.html"><span>OST&nbsp;93.&nbsp;Formless Dream</span></a></p></div>', });
     </script>
 
 
@@ -650,12 +667,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="KggDxx" >
+            <a href="/en/character/student/aris/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="XAx_vR" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('KggDxx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('XAx_vR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -677,12 +694,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="KDgvtR" >
+            <a href="/en/character/student/midori/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="gmQ78n" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('KDgvtR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('gmQ78n')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -704,12 +721,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="mg1YUN" >
+            <a href="/en/character/student/yuzu/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="IXm3bo" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('mg1YUN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('IXm3bo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -731,12 +748,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hibiki/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="TPBFtZ" >
+            <a href="/en/character/student/hibiki/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="QR6PE_" >
                 <img src="/static/images/student/icon/20000.webp" class="icon-stu">
                 <span>Hibiki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('TPBFtZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('QR6PE_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -753,10 +770,10 @@
 
             <li id="0a1f1737-f7ea-4c10-8aec-c4d4ce0c1e6f"><span>【1】</span>
     
-        <a href="/en/character/npc/ariskey/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="fKB45A" >
+        <a href="/en/character/npc/ariskey/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="1ootIt" >
             <span>Key</span>
         </a>
-        <span onclick="showPopupByTooltipId('fKB45A')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('1ootIt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -773,12 +790,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotori/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="llGHpy" >
+            <a href="/en/character/student/kotori/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="8Z5TmB" >
                 <img src="/static/images/student/icon/16002.webp" class="icon-stu">
                 <span>Kotori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('llGHpy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('8Z5TmB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -800,12 +817,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="Jk9qwK" >
+            <a href="/en/character/student/momoi/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="sVvgKj" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Jk9qwK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('sVvgKj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -827,12 +844,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/neru/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="FluxTq" >
+            <a href="/en/character/student/neru/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="U_PWTN" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span>Neru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('FluxTq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('U_PWTN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -849,10 +866,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【1】</span>
     
-        <a href="/en/character/npc/rio/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="VuAgTK" >
+        <a href="/en/character/npc/rio/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="vTktSi" >
             <span>Rio</span>
         </a>
-        <span onclick="showPopupByTooltipId('VuAgTK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('vTktSi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -869,12 +886,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/toki/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="J8c7CV" >
+            <a href="/en/character/student/toki/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="jlY8nv" >
                 <img src="/static/images/student/icon/10062.webp" class="icon-stu">
                 <span>Toki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('J8c7CV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('jlY8nv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -896,12 +913,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/utaha/#track-OST_93" onmouseover="showTooltip(this)" data-tooltip="FgnKHP" >
+            <a href="/en/character/student/utaha/#track-OST_93" onmouseover="showTooltipById(this)" data-tooltip="1utAGy" >
                 <img src="/static/images/student/icon/23004.webp" class="icon-stu">
                 <span>Utaha</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('FgnKHP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('1utAGy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -915,22 +932,22 @@
 
     
     <script>
-        add_tooltip_data({ 'KggDxx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','KDgvtR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','mg1YUN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','TPBFtZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','fKB45A': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p></div>','llGHpy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','Jk9qwK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','FluxTq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','VuAgTK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','J8c7CV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','FgnKHP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'XAx_vR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','gmQ78n': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','IXm3bo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','QR6PE_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','1ootIt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p></div>','8Z5TmB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','sVvgKj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Deep In The Consciousness</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','U_PWTN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','vTktSi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','jlY8nv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','1utAGy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Every Scene</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -965,13 +982,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -985,17 +1002,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988820.2433734)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139610.288491)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988820.2433813
+Generated time (UTC): 1702139610.2884996
 -->
 </body>
 </html>

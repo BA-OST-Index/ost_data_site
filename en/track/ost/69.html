@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=fyAOyaT5OxQ', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=fyAOyaT5OxQ', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=fyAOyaT5OxQ)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1qh41157eF/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1qh41157eF/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1qh41157eF/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="067df8ba-9a64-419c-a41b-ccded567db8b">
     <div >
-        <img src="/static/images/background/BG_Prison.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="YBVl7L">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Prison.jpg.html#track-OST_69" onmouseover="showTooltip(this)" data-tooltip="YBVl7L" target="_blank">BG_Prison.jpg</a><span onclick="showPopupByTooltipId('YBVl7L')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Prison.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="7BtzJM">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Prison.jpg.html#track-OST_69" onmouseover="showTooltipById(this)" data-tooltip="7BtzJM" target="_blank">BG_Prison.jpg</a><span onclick="showPopupByTooltipId('7BtzJM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -394,7 +411,7 @@
     
         
     <script>
-        add_tooltip_data({ 'YBVl7L': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Prison.jpg</p><p>BG_Prison.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Prison.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Again With Himari</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '7BtzJM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Prison.jpg</p><p>BG_Prison.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Prison.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Again With Himari</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -419,9 +436,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/16.html"  onmouseover="showTooltip(this)" data-tooltip="Xs8ceZ">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>
+        <a href="/en/main/story/main/2/2/16.html"  onmouseover="showTooltipById(this)" data-tooltip="d35Qai">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>
     
-    <span onclick="showPopupByTooltipId('Xs8ceZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('d35Qai')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -434,7 +451,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/16.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="YtVnmT"><i>&#91;2&#93;&nbsp;Again With Himari</i></a><span onclick="showPopupByTooltipId('YtVnmT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/16.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="iMcn5z"><i>&#91;2&#93;&nbsp;Again With Himari</i></a><span onclick="showPopupByTooltipId('iMcn5z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -449,7 +466,7 @@
 
     
     <script>
-        add_tooltip_data({ 'Xs8ceZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Checkmate</p><ul><li>Rio&#x27s victory is sealed in front of Himari, but Himari succeeds in escaping with Eimi&#x27s help. Meanwhile, cut off from Veritas&#x27s support, the Game Development Department find themselves with their backs against the wall until they are dramatically rescued by Chihiro, the vice president of Veritas.</li></ul></div>','YtVnmT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Again With Himari</p><p>Rio described the current situation. Himari expressed her approval of the cleverness of Rio&#x27s plan, saying that "maybe you&#x27re right", but still disagreed with Rio&#x27s original intent. Himari said her "never-looking-back" personality was both an advantage and a disadvantage. She asked Rio "whether she had ever talked to other people or not?" Rio was very confused when the prison was attacked.</p><hr><p>Character:<span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/69.html"><span>OST&nbsp;69.&nbsp;Snow Pantomime</span></a></p></div>', });
+        add_tooltip_data({ 'd35Qai': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Checkmate</p><ul><li>Rio&#x27s victory is sealed in front of Himari, but Himari succeeds in escaping with Eimi&#x27s help. Meanwhile, cut off from Veritas&#x27s support, the Game Development Department find themselves with their backs against the wall until they are dramatically rescued by Chihiro, the vice president of Veritas.</li></ul></div>','iMcn5z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Again With Himari</p><p>Rio described the current situation. Himari expressed her approval of the cleverness of Rio&#x27s plan, saying that "maybe you&#x27re right", but still disagreed with Rio&#x27s original intent. Himari said her "never-looking-back" personality was both an advantage and a disadvantage. She asked Rio "whether she had ever talked to other people or not?" Rio was very confused when the prison was attacked.</p><hr><p>Character:<span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/69.html"><span>OST&nbsp;69.&nbsp;Snow Pantomime</span></a></p></div>', });
     </script>
 
 
@@ -555,12 +572,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/himari/#track-OST_69" onmouseover="showTooltip(this)" data-tooltip="bipwrK" >
+            <a href="/en/character/student/himari/#track-OST_69" onmouseover="showTooltipById(this)" data-tooltip="J3v_12" >
                 <img src="/static/images/student/icon/20020.webp" class="icon-stu">
                 <span>Himari</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('bipwrK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('J3v_12')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Super Phenomenon Task Force]</span>
@@ -577,10 +594,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【1】</span>
     
-        <a href="/en/character/npc/rio/#track-OST_69" onmouseover="showTooltip(this)" data-tooltip="HJSmOh" >
+        <a href="/en/character/npc/rio/#track-OST_69" onmouseover="showTooltipById(this)" data-tooltip="GOUTC0" >
             <span>Rio</span>
         </a>
-        <span onclick="showPopupByTooltipId('HJSmOh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GOUTC0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -589,22 +606,22 @@
 
     
     <script>
-        add_tooltip_data({ 'bipwrK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Again With Himari</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','HJSmOh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Again With Himari</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>', });
+        add_tooltip_data({ 'J3v_12': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Again With Himari</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','GOUTC0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Again With Himari</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -639,13 +656,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -659,17 +676,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988799.9197333)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139643.8136122)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988799.919741
+Generated time (UTC): 1702139643.8136191
 -->
 </body>
 </html>

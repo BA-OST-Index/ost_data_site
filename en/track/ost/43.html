@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=-xbqe_gYt1A', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=-xbqe_gYt1A', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=-xbqe_gYt1A)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=44', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=44', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=44)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="e809455b-e0ce-435a-b50a-76de0dbca391">
     <div >
-        <img src="/static/images/background/BG_ClassCorridor_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="j6Zq12">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ClassCorridor_Night.jpg.html#track-OST_43" onmouseover="showTooltip(this)" data-tooltip="j6Zq12" target="_blank">BG_ClassCorridor_Night.jpg</a><span onclick="showPopupByTooltipId('j6Zq12')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ClassCorridor_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Q4DVzp">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ClassCorridor_Night.jpg.html#track-OST_43" onmouseover="showTooltipById(this)" data-tooltip="Q4DVzp" target="_blank">BG_ClassCorridor_Night.jpg</a><span onclick="showPopupByTooltipId('Q4DVzp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="adb2ccd9-4bf1-47de-a61b-ec8860ae13a8">
     <div >
-        <img src="/static/images/background/BG_VillaComplex.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="bJS1la">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_VillaComplex.jpg.html#track-OST_43" onmouseover="showTooltip(this)" data-tooltip="bJS1la" target="_blank">BG_VillaComplex.jpg</a><span onclick="showPopupByTooltipId('bJS1la')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_VillaComplex.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="PjsFWI">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_VillaComplex.jpg.html#track-OST_43" onmouseover="showTooltipById(this)" data-tooltip="PjsFWI" target="_blank">BG_VillaComplex.jpg</a><span onclick="showPopupByTooltipId('PjsFWI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -409,7 +426,7 @@
     
         
     <script>
-        add_tooltip_data({ 'j6Zq12': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassCorridor_Night.jpg</p><p>BG_ClassCorridor_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassCorridor_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;PMC Hiring Professionals</i></a></span><span>)</span></li></ol></div>','bJS1la': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_VillaComplex.jpg</p><p>BG_VillaComplex.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_VillaComplex.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'Q4DVzp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassCorridor_Night.jpg</p><p>BG_ClassCorridor_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassCorridor_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;PMC Hiring Professionals</i></a></span><span>)</span></li></ol></div>','PjsFWI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_VillaComplex.jpg</p><p>BG_VillaComplex.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_VillaComplex.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -434,9 +451,9 @@
     
 
     
-        <a href="/en/main/story/main/1/2/3.html"  onmouseover="showTooltip(this)" data-tooltip="9mCFV4">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>
+        <a href="/en/main/story/main/1/2/3.html"  onmouseover="showTooltipById(this)" data-tooltip="S2T1cv">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>
     
-    <span onclick="showPopupByTooltipId('9mCFV4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('S2T1cv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -449,7 +466,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="tfM01V"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a><span onclick="showPopupByTooltipId('tfM01V')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="gkXQmW"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a><span onclick="showPopupByTooltipId('gkXQmW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -468,9 +485,9 @@
     
 
     
-        <a href="/en/main/story/main/1/2/12.html"  onmouseover="showTooltip(this)" data-tooltip="UsiAk3">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>
+        <a href="/en/main/story/main/1/2/12.html"  onmouseover="showTooltipById(this)" data-tooltip="3ZJK7B">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>
     
-    <span onclick="showPopupByTooltipId('UsiAk3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('3ZJK7B')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -483,7 +500,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/2/12.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="52M1E1"><i>&#91;6&#93;&nbsp;PMC Hiring Professionals</i></a><span onclick="showPopupByTooltipId('52M1E1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/2/12.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="H9sKxq"><i>&#91;6&#93;&nbsp;PMC Hiring Professionals</i></a><span onclick="showPopupByTooltipId('H9sKxq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -498,7 +515,7 @@
 
     
     <script>
-        add_tooltip_data({ '9mCFV4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Farewell, Problem Solver 68</p><ul><li>Sensei sees Problem Solver out of Abydos. In the mean time, Ayane and Serika pay Master Shiba a visit in the hospital. He tells the girls that the ramen shop&#x27s building has been taken over by the Kaiser Corporation.</li></ul></div>','tfM01V': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Meeting Problem Solver</p><p>Sensei meets all the Problem Solver 68 on move and wishes them a happy trip. Aru says it&#x27s a pleasant experience to be a cooperation partner and promises they will come back to Abydos for him, and especially for the ramen. The truck loaded with all the stuff disappears at the cross then.</p><hr><p>Character:<span><span><a href="/en/character/student/mutsuki/"><img src="/static/images/student/icon/13006.webp" class="icon-stu"><span>Mutsuki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kayoko/"><img src="/static/images/student/icon/13005.webp" class="icon-stu"><span>Kayoko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/haruka/"><img src="/static/images/student/icon/16000.webp" class="icon-stu"><span>Haruka</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aru/"><img src="/static/images/student/icon/10000.webp" class="icon-stu"><span>Aru</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/43.html"><span>OST&nbsp;43.&nbsp;KIRISAME</span></a></p></div>','UsiAk3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Secrets</p><ul><li>After sending her enraged underclassmen home, Hoshino reveals to Sensei the secret deal she was offered by the man in the black suit. Sensei tries to console her, but the next day finds no trace of Hoshino, save for her resignation letter.</li></ul></div>','52M1E1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">PMC Hiring Professionals</p><p>Hoshino suspects that PMC (especially the Black Suit) seems to be hiring some professionals. Hoshino says that she has never seen anyone like him in Kivotos, and it appears to her that even Kaiser Director fears him as well. As for the resignation application, Hoshino says it is nothing serious and rips it apart in front of Sensei. Hoshino says she&#x27ll made it clear for everyone, but also feels that it is the only option to accept that deal. Before leaving, Sensei makes a promise to Hoshino that he will eventually come up with solutions.</p><hr><p>Character:<span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/43.html"><span>OST&nbsp;43.&nbsp;KIRISAME</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/46.html"><span>OST&nbsp;46.&nbsp;Sugar Story</span></a></p></div>', });
+        add_tooltip_data({ 'S2T1cv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Farewell, Problem Solver 68</p><ul><li>Sensei sees Problem Solver out of Abydos. In the mean time, Ayane and Serika pay Master Shiba a visit in the hospital. He tells the girls that the ramen shop&#x27s building has been taken over by the Kaiser Corporation.</li></ul></div>','gkXQmW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Meeting Problem Solver</p><p>Sensei meets all the Problem Solver 68 on move and wishes them a happy trip. Aru says it&#x27s a pleasant experience to be a cooperation partner and promises they will come back to Abydos for him, and especially for the ramen. The truck loaded with all the stuff disappears at the cross then.</p><hr><p>Character:<span><span><a href="/en/character/student/mutsuki/"><img src="/static/images/student/icon/13006.webp" class="icon-stu"><span>Mutsuki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kayoko/"><img src="/static/images/student/icon/13005.webp" class="icon-stu"><span>Kayoko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/haruka/"><img src="/static/images/student/icon/16000.webp" class="icon-stu"><span>Haruka</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aru/"><img src="/static/images/student/icon/10000.webp" class="icon-stu"><span>Aru</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/43.html"><span>OST&nbsp;43.&nbsp;KIRISAME</span></a></p></div>','3ZJK7B': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Secrets</p><ul><li>After sending her enraged underclassmen home, Hoshino reveals to Sensei the secret deal she was offered by the man in the black suit. Sensei tries to console her, but the next day finds no trace of Hoshino, save for her resignation letter.</li></ul></div>','H9sKxq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">PMC Hiring Professionals</p><p>Hoshino suspects that PMC (especially the Black Suit) seems to be hiring some professionals. Hoshino says that she has never seen anyone like him in Kivotos, and it appears to her that even Kaiser Director fears him as well. As for the resignation application, Hoshino says it is nothing serious and rips it apart in front of Sensei. Hoshino says she&#x27ll made it clear for everyone, but also feels that it is the only option to accept that deal. Before leaving, Sensei makes a promise to Hoshino that he will eventually come up with solutions.</p><hr><p>Character:<span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/43.html"><span>OST&nbsp;43.&nbsp;KIRISAME</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/46.html"><span>OST&nbsp;46.&nbsp;Sugar Story</span></a></p></div>', });
     </script>
 
 
@@ -546,12 +563,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aru/#track-OST_43" onmouseover="showTooltip(this)" data-tooltip="Jl0OdV" >
+            <a href="/en/character/student/aru/#track-OST_43" onmouseover="showTooltipById(this)" data-tooltip="iEj6lt" >
                 <img src="/static/images/student/icon/10000.webp" class="icon-stu">
                 <span>Aru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Jl0OdV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('iEj6lt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Problem Solver 68]</span>
@@ -573,12 +590,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/haruka/#track-OST_43" onmouseover="showTooltip(this)" data-tooltip="siYcvl" >
+            <a href="/en/character/student/haruka/#track-OST_43" onmouseover="showTooltipById(this)" data-tooltip="I6lD3A" >
                 <img src="/static/images/student/icon/16000.webp" class="icon-stu">
                 <span>Haruka</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('siYcvl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('I6lD3A')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Problem Solver 68]</span>
@@ -600,12 +617,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hoshino/#track-OST_43" onmouseover="showTooltip(this)" data-tooltip="eSvOgW" >
+            <a href="/en/character/student/hoshino/#track-OST_43" onmouseover="showTooltipById(this)" data-tooltip="tj20wf" >
                 <img src="/static/images/student/icon/10005.webp" class="icon-stu">
                 <span>Hoshino</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('eSvOgW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('tj20wf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -627,12 +644,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kayoko/#track-OST_43" onmouseover="showTooltip(this)" data-tooltip="HsOzaw" >
+            <a href="/en/character/student/kayoko/#track-OST_43" onmouseover="showTooltipById(this)" data-tooltip="0IBQIR" >
                 <img src="/static/images/student/icon/13005.webp" class="icon-stu">
                 <span>Kayoko</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('HsOzaw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('0IBQIR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Problem Solver 68]</span>
@@ -654,12 +671,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/mutsuki/#track-OST_43" onmouseover="showTooltip(this)" data-tooltip="APydqK" >
+            <a href="/en/character/student/mutsuki/#track-OST_43" onmouseover="showTooltipById(this)" data-tooltip="GXP8BB" >
                 <img src="/static/images/student/icon/13006.webp" class="icon-stu">
                 <span>Mutsuki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('APydqK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GXP8BB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Problem Solver 68]</span>
@@ -673,22 +690,22 @@
 
     
     <script>
-        add_tooltip_data({ 'Jl0OdV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aru_newyear/"><img src="/static/images/student/icon/10031.webp" class="icon-stu"><span>Aru (New Year)</span></a></span></p><p>Other Characters: </p></div>','siYcvl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Haruka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/haruka_newyear/"><img src="/static/images/student/icon/20025.webp" class="icon-stu"><span>Haruka (New Year)</span></a></span></p><p>Other Characters: </p></div>','eSvOgW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;PMC Hiring Professionals</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span>Hoshino (Swimsuit)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/blacksuit/"><span>The Black Suit</span></a></p></div>','HsOzaw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kayoko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kayoko_newyear/"><img src="/static/images/student/icon/10064.webp" class="icon-stu"><span>Kayoko (New Year)</span></a></span></p><p>Other Characters: </p></div>','APydqK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Mutsuki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/mutsuki_newyear/"><img src="/static/images/student/icon/10032.webp" class="icon-stu"><span>Mutsuki (New Year)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'iEj6lt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aru_newyear/"><img src="/static/images/student/icon/10031.webp" class="icon-stu"><span>Aru (New Year)</span></a></span></p><p>Other Characters: </p></div>','I6lD3A': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Haruka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/haruka_newyear/"><img src="/static/images/student/icon/20025.webp" class="icon-stu"><span>Haruka (New Year)</span></a></span></p><p>Other Characters: </p></div>','tj20wf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;PMC Hiring Professionals</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span>Hoshino (Swimsuit)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/blacksuit/"><span>The Black Suit</span></a></p></div>','0IBQIR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kayoko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kayoko_newyear/"><img src="/static/images/student/icon/10064.webp" class="icon-stu"><span>Kayoko (New Year)</span></a></span></p><p>Other Characters: </p></div>','GXP8BB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Mutsuki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Farewell, Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/3.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Meeting Problem Solver</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/mutsuki_newyear/"><img src="/static/images/student/icon/10032.webp" class="icon-stu"><span>Mutsuki (New Year)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -723,13 +740,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -743,17 +760,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988815.1426916)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139614.504764)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988815.1427002
+Generated time (UTC): 1702139614.5047727
 -->
 </body>
 </html>

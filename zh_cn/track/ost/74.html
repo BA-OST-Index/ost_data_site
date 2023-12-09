@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -84,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -133,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -179,11 +188,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -304,12 +314,12 @@
 
         <h3>原版</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=Z_b24XEC8Q8', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=Z_b24XEC8Q8', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=Z_b24XEC8Q8)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=75', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=75', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩 (https://www.bilibili.com/video/BV1Jh411d7kd/?p=75)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -376,6 +386,13 @@
         </tbody>
     </table>
 
+    <h3>回忆大厅角色</h3>
+    <p>以下角色的回忆大厅使用了本音乐。</p>
+    
+    
+
+    
+
 
     <h2>使用信息</h2>
     <p>此处显示引用了这首曲子的实例。</p>
@@ -404,8 +421,8 @@
 
             <div class="gallery-img" id="0750f49a-e409-4845-8dee-7231ac7b6a6d">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_42.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="pJaGPS">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_42.jpg.html#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="pJaGPS" target="_blank">BG_CS_Millenium_42.jpg</a><span onclick="showPopupByTooltipId('pJaGPS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_42.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="H7niAL">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_42.jpg.html#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="H7niAL" target="_blank">BG_CS_Millenium_42.jpg</a><span onclick="showPopupByTooltipId('H7niAL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -419,8 +436,8 @@
 
             <div class="gallery-img" id="859dc767-37f2-4e35-8047-cb14fc2659f0">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_43.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="gyFhCH">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_43.jpg.html#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="gyFhCH" target="_blank">BG_CS_Millenium_43.jpg</a><span onclick="showPopupByTooltipId('gyFhCH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_43.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Slaquw">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_43.jpg.html#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="Slaquw" target="_blank">BG_CS_Millenium_43.jpg</a><span onclick="showPopupByTooltipId('Slaquw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -434,8 +451,8 @@
 
             <div class="gallery-img" id="e53cfe1f-ec4c-49d5-833e-34c948d6516b">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_44.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="gjufOw">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_44.jpg.html#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="gjufOw" target="_blank">BG_CS_Millenium_44.jpg</a><span onclick="showPopupByTooltipId('gjufOw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_44.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="6aFOZv">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_44.jpg.html#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="6aFOZv" target="_blank">BG_CS_Millenium_44.jpg</a><span onclick="showPopupByTooltipId('6aFOZv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -449,8 +466,8 @@
 
             <div class="gallery-img" id="ac84141e-fedf-472c-8df2-f850f99f9fd3">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_44_2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Tb_Qj9">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_44_2.jpg.html#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="Tb_Qj9" target="_blank">BG_CS_Millenium_44_2.jpg</a><span onclick="showPopupByTooltipId('Tb_Qj9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_44_2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="dEPigp">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_44_2.jpg.html#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="dEPigp" target="_blank">BG_CS_Millenium_44_2.jpg</a><span onclick="showPopupByTooltipId('dEPigp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -464,8 +481,8 @@
 
             <div class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="S0QmqA">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_EriduCityTown_Night.jpg.html#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="S0QmqA" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('S0QmqA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="dEBEzo">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_EriduCityTown_Night.jpg.html#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="dEBEzo" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('dEBEzo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -479,8 +496,8 @@
 
             <div class="gallery-img" id="106b0257-48f2-414e-a6d6-415795a649bf">
     <div >
-        <img src="/static/images/background/BG_EriduTowerRooftop_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="s9itfb">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_EriduTowerRooftop_Night.jpg.html#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="s9itfb" target="_blank">BG_EriduTowerRooftop_Night.jpg</a><span onclick="showPopupByTooltipId('s9itfb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduTowerRooftop_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="eqKJkl">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_EriduTowerRooftop_Night.jpg.html#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="eqKJkl" target="_blank">BG_EriduTowerRooftop_Night.jpg</a><span onclick="showPopupByTooltipId('eqKJkl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -494,8 +511,8 @@
 
             <div class="gallery-img" id="904759f7-3fe3-433e-9298-a1b031820d90">
     <div >
-        <img src="/static/images/background/BG_IndoorPlaza_Night3.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="68De9g">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_IndoorPlaza_Night3.jpg.html#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="68De9g" target="_blank">BG_IndoorPlaza_Night3.jpg</a><span onclick="showPopupByTooltipId('68De9g')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_IndoorPlaza_Night3.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="CNbgVE">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_IndoorPlaza_Night3.jpg.html#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="CNbgVE" target="_blank">BG_IndoorPlaza_Night3.jpg</a><span onclick="showPopupByTooltipId('CNbgVE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -508,7 +525,7 @@
     
         
     <script>
-        add_tooltip_data({ 'pJaGPS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_42.jpg</p><p>BG_CS_Millenium_42.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_42.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','gyFhCH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_43.jpg</p><p>BG_CS_Millenium_43.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_43.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','gjufOw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_44.jpg</p><p>BG_CS_Millenium_44.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_44.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Tb_Qj9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_44_2.jpg</p><p>BG_CS_Millenium_44_2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_44_2.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','S0QmqA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','s9itfb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerRooftop_Night.jpg</p><p>BG_EriduTowerRooftop_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerRooftop_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','68De9g': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_IndoorPlaza_Night3.jpg</p><p>BG_IndoorPlaza_Night3.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_IndoorPlaza_Night3.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'H7niAL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_42.jpg</p><p>BG_CS_Millenium_42.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_42.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Slaquw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_43.jpg</p><p>BG_CS_Millenium_43.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_43.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','6aFOZv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_44.jpg</p><p>BG_CS_Millenium_44.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_44.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','dEPigp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_44_2.jpg</p><p>BG_CS_Millenium_44_2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_44_2.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','dEBEzo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','eqKJkl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerRooftop_Night.jpg</p><p>BG_EriduTowerRooftop_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerRooftop_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','CNbgVE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_IndoorPlaza_Night3.jpg</p><p>BG_IndoorPlaza_Night3.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_IndoorPlaza_Night3.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -533,9 +550,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/2/2/19.html"  onmouseover="showTooltip(this)" data-tooltip="M1KKSd">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/2/2/19.html"  onmouseover="showTooltipById(this)" data-tooltip="Run61K">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('M1KKSd')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Run61K')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -548,7 +565,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="haIkvw"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('haIkvw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="QkArqb"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('QkArqb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -560,7 +577,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="OXl3Wp"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('OXl3Wp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="wISWeC"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('wISWeC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -577,7 +594,7 @@
 
     
     <script>
-        add_tooltip_data({ 'M1KKSd': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">「Abi-Eshuh」的威力让大家都相当惊讶。在茜的建议下，老师和妮露找出了弱点，企图把战斗引导为空中战。但时似乎早已预料到这一点，活跃的表现让妮露受到重伤，一行人逼不得已只好先撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">「Abi-Eshuh」的威力让大家都相当惊讶。在朱音的建议下，老师和宁瑠找出了弱点，企图把战斗引导为空中战。但季似乎早已预料到这一点，活跃的表现让宁瑠受到重伤，一行人逼不得已只好先撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">「Abi-Eshuh」的威力让大家都相当惊讶。在茜的建议下，老师和尼禄找出了弱点，企图把战斗引导为空中战。但时似乎早已预料到这一点，活跃的表现让尼禄受到重伤，一行人逼不得已只好先撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','haIkvw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">老师突然意识到了什么，命令妮露将战场转移到房顶上。莉央表示转移到楼顶同样没有，但老师笑而不语。时向妮露开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师突然意识到了什么，命令宁瑠将战场转移到房顶上。莉音表示转移到楼顶同样没有，但老师笑而不语。季向宁瑠开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师突然意识到了什么，命令尼禄将战场转移到房顶上。莉央表示转移到楼顶同样没有，但老师笑而不语。时向尼禄开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/75.html"><span>OST&nbsp;75.&nbsp;Alert (Hard Arrange) (警报 (Hard Arrange))</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/74.html"><span>OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span></a></p></div>','OXl3Wp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">老师的意图此时终于表现出来：既然是为地面作战设计，在空中又怎么样呢？事实证明的确如此。虽然只有一瞬间的时间，但柚子已经完全注意到了其弱点所在。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师的意图此时终于表现出来：既然是为地面作战设计，在空中又怎么样呢？事实证明的确如此。虽然只有一瞬间的时间，但柚子已经完全注意到了其弱点所在。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师的意图此时终于表现出来：既然是为地面作战设计，在空中又怎么样呢？事实证明的确如此。虽然只有一瞬间的时间，但柚子已经完全注意到了其弱点所在。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/74.html"><span>OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/49.html"><span>OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (机械迷林(High-Tech Full On Mix))</span></a></p></div>', });
+        add_tooltip_data({ 'Run61K': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">「Abi-Eshuh」的威力让大家都相当惊讶。在茜的建议下，老师和妮露找出了弱点，企图把战斗引导为空中战。但时似乎早已预料到这一点，活跃的表现让妮露受到重伤，一行人逼不得已只好先撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">「Abi-Eshuh」的威力让大家都相当惊讶。在朱音的建议下，老师和宁瑠找出了弱点，企图把战斗引导为空中战。但季似乎早已预料到这一点，活跃的表现让宁瑠受到重伤，一行人逼不得已只好先撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">「Abi-Eshuh」的威力让大家都相当惊讶。在茜的建议下，老师和尼禄找出了弱点，企图把战斗引导为空中战。但时似乎早已预料到这一点，活跃的表现让尼禄受到重伤，一行人逼不得已只好先撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','QkArqb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">老师突然意识到了什么，命令妮露将战场转移到房顶上。莉央表示转移到楼顶同样没有，但老师笑而不语。时向妮露开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师突然意识到了什么，命令宁瑠将战场转移到房顶上。莉音表示转移到楼顶同样没有，但老师笑而不语。季向宁瑠开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师突然意识到了什么，命令尼禄将战场转移到房顶上。莉央表示转移到楼顶同样没有，但老师笑而不语。时向尼禄开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/75.html"><span>OST&nbsp;75.&nbsp;Alert (Hard Arrange) (警报 (Hard Arrange))</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/74.html"><span>OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span></a></p></div>','wISWeC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">老师的意图此时终于表现出来：既然是为地面作战设计，在空中又怎么样呢？事实证明的确如此。虽然只有一瞬间的时间，但柚子已经完全注意到了其弱点所在。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师的意图此时终于表现出来：既然是为地面作战设计，在空中又怎么样呢？事实证明的确如此。虽然只有一瞬间的时间，但柚子已经完全注意到了其弱点所在。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师的意图此时终于表现出来：既然是为地面作战设计，在空中又怎么样呢？事实证明的确如此。虽然只有一瞬间的时间，但柚子已经完全注意到了其弱点所在。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/74.html"><span>OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/49.html"><span>OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (机械迷林(High-Tech Full On Mix))</span></a></p></div>', });
     </script>
 
 
@@ -663,12 +680,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/midori/#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="xPxKvM" >
+            <a href="/zh_cn/character/student/midori/#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="XfGz85" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('xPxKvM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('XfGz85')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -690,12 +707,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/momoi/#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="nyNW04" >
+            <a href="/zh_cn/character/student/momoi/#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="vC__gX" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('nyNW04')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('vC__gX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -717,12 +734,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/neru/#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="w6Oy1S" >
+            <a href="/zh_cn/character/student/neru/#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="bk6ftJ" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('w6Oy1S')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('bk6ftJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -739,10 +756,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【1】</span>
     
-        <a href="/zh_cn/character/npc/rio/#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="DQXcST" >
+        <a href="/zh_cn/character/npc/rio/#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="XsHGZe" >
             <span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
         </a>
-        <span onclick="showPopupByTooltipId('DQXcST')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('XsHGZe')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -759,12 +776,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/toki/#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="tJAN3_" >
+            <a href="/zh_cn/character/student/toki/#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="vDlsGh" >
                 <img src="/static/images/student/icon/10062.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('tJAN3_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('vDlsGh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -786,12 +803,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/yuzu/#track-OST_74" onmouseover="showTooltip(this)" data-tooltip="lh86sk" >
+            <a href="/zh_cn/character/student/yuzu/#track-OST_74" onmouseover="showTooltipById(this)" data-tooltip="Lp8n6b" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('lh86sk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Lp8n6b')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -805,22 +822,22 @@
 
     
     <script>
-        add_tooltip_data({ 'xPxKvM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','nyNW04': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','w6Oy1S': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','DQXcST': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它人物： <span><span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','tJAN3_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','lh86sk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>', });
+        add_tooltip_data({ 'XfGz85': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','vC__gX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','bk6ftJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','XsHGZe': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它人物： <span><span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','vDlsGh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">登上房顶</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','Lp8n6b': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/19.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作弊玩家</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/19.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">空中又如何</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -855,13 +872,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -875,17 +892,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989125.2444541)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702140044.385955)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989125.2444625
+Generated time (UTC): 1702140044.385963
 -->
 </body>
 </html>

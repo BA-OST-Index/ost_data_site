@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=R5tigc-fGq4', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=R5tigc-fGq4', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=R5tigc-fGq4)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1rc411K7nD/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1rc411K7nD/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1rc411K7nD/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="cD7Cxg">
-        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_101" onmouseover="showTooltip(this)" data-tooltip="cD7Cxg" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('cD7Cxg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="K9Faib">
+        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_101" onmouseover="showTooltipById(this)" data-tooltip="K9Faib" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('K9Faib')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="e587e065-e9ab-4d2e-88d0-660da4ad794b">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="kGp3qo">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_02.jpg.html#track-OST_101" onmouseover="showTooltip(this)" data-tooltip="kGp3qo" target="_blank">BG_CS_Millenium_02.jpg</a><span onclick="showPopupByTooltipId('kGp3qo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="HeANFh">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_02.jpg.html#track-OST_101" onmouseover="showTooltipById(this)" data-tooltip="HeANFh" target="_blank">BG_CS_Millenium_02.jpg</a><span onclick="showPopupByTooltipId('HeANFh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -409,7 +426,7 @@
     
         
     <script>
-        add_tooltip_data({ 'cD7Cxg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol></div>','kGp3qo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_02.jpg</p><p>BG_CS_Millenium_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_02.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'K9Faib': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol></div>','HeANFh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_02.jpg</p><p>BG_CS_Millenium_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_02.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -434,9 +451,9 @@
     
 
     
-        <a href="/en/main/story/main/2/1/5.html"  onmouseover="showTooltip(this)" data-tooltip="9BiD0O">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>
+        <a href="/en/main/story/main/2/1/5.html"  onmouseover="showTooltipById(this)" data-tooltip="XfoyNJ">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>
     
-    <span onclick="showPopupByTooltipId('9BiD0O')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('XfoyNJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -449,7 +466,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="aKsLvZ"><i>&#91;3&#93;&nbsp;Game Start</i></a><span onclick="showPopupByTooltipId('aKsLvZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="cyCKfm"><i>&#91;3&#93;&nbsp;Game Start</i></a><span onclick="showPopupByTooltipId('cyCKfm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -468,9 +485,9 @@
     
 
     
-        <a href="/en/main/story/main/2/1/9.html"  onmouseover="showTooltip(this)" data-tooltip="lkR5XJ">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka's Questions</a>
+        <a href="/en/main/story/main/2/1/9.html"  onmouseover="showTooltipById(this)" data-tooltip="bXI9ht">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka's Questions</a>
     
-    <span onclick="showPopupByTooltipId('lkR5XJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('bXI9ht')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -483,7 +500,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="VU6iX4"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a><span onclick="showPopupByTooltipId('VU6iX4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="HG0eFX"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a><span onclick="showPopupByTooltipId('HG0eFX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -498,7 +515,7 @@
 
     
     <script>
-        add_tooltip_data({ '9BiD0O': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">I, Aris...</p><ul><li>Aris plays and thoroughly enjoys the Game Development Department&#x27s previous title, Tales Saga Chronicle. The club members are touched by her glowing response.</li></ul></div>','aKsLvZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Game Start</p><p>Aris started the game while Momoi and Midori explained about the game. Though faced with countless failures and crashed her system for several times, she kept going on and eventually made it.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/101.html"><span>OST&nbsp;101.&nbsp;NRG FielD</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/16.html"><span>OST&nbsp;16.&nbsp;MX Adventure</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/27.html"><span>OST&nbsp;27.&nbsp;Fade Out</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/28.html"><span>OST&nbsp;28.&nbsp;Plug and Play</span></a></p></div>','lkR5XJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka&#x27s Questions</p><ul><li>Satisfied with Aris&#x27 answers, Yuuka admits Aris as an official member of the club, but remains adamant about shutting down the Game Development Department if their next game doesn&#x27t come together. Once again, the club members head to the ruins in search of G.BIBLE.</li></ul></div>','VU6iX4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Questioning Starts</p><p>Yuuka started questioning and Momoi fixed her eyes onto Aris nervously, yet Aris still made huge mistakes.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/101.html"><span>OST&nbsp;101.&nbsp;NRG FielD</span></a></p></div>', });
+        add_tooltip_data({ 'XfoyNJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">I, Aris...</p><ul><li>Aris plays and thoroughly enjoys the Game Development Department&#x27s previous title, Tales Saga Chronicle. The club members are touched by her glowing response.</li></ul></div>','cyCKfm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Game Start</p><p>Aris started the game while Momoi and Midori explained about the game. Though faced with countless failures and crashed her system for several times, she kept going on and eventually made it.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/101.html"><span>OST&nbsp;101.&nbsp;NRG FielD</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/16.html"><span>OST&nbsp;16.&nbsp;MX Adventure</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/27.html"><span>OST&nbsp;27.&nbsp;Fade Out</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/28.html"><span>OST&nbsp;28.&nbsp;Plug and Play</span></a></p></div>','bXI9ht': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka&#x27s Questions</p><ul><li>Satisfied with Aris&#x27 answers, Yuuka admits Aris as an official member of the club, but remains adamant about shutting down the Game Development Department if their next game doesn&#x27t come together. Once again, the club members head to the ruins in search of G.BIBLE.</li></ul></div>','HG0eFX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Questioning Starts</p><p>Yuuka started questioning and Momoi fixed her eyes onto Aris nervously, yet Aris still made huge mistakes.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/101.html"><span>OST&nbsp;101.&nbsp;NRG FielD</span></a></p></div>', });
     </script>
 
 
@@ -546,12 +563,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_101" onmouseover="showTooltip(this)" data-tooltip="XU9UI9" >
+            <a href="/en/character/student/aris/#track-OST_101" onmouseover="showTooltipById(this)" data-tooltip="scH7YT" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('XU9UI9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('scH7YT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -573,12 +590,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_101" onmouseover="showTooltip(this)" data-tooltip="DU5ekN" >
+            <a href="/en/character/student/midori/#track-OST_101" onmouseover="showTooltipById(this)" data-tooltip="Jq2P2B" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('DU5ekN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Jq2P2B')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -600,12 +617,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_101" onmouseover="showTooltip(this)" data-tooltip="I96mns" >
+            <a href="/en/character/student/momoi/#track-OST_101" onmouseover="showTooltipById(this)" data-tooltip="DFUsHn" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('I96mns')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('DFUsHn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -627,12 +644,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuuka/#track-OST_101" onmouseover="showTooltip(this)" data-tooltip="fb98Ks" >
+            <a href="/en/character/student/yuuka/#track-OST_101" onmouseover="showTooltipById(this)" data-tooltip="GWEz68" >
                 <img src="/static/images/student/icon/13010.webp" class="icon-stu">
                 <span>Yuuka</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('fb98Ks')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GWEz68')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -646,22 +663,22 @@
 
     
     <script>
-        add_tooltip_data({ 'XU9UI9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','DU5ekN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','I96mns': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','fb98Ks': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'scH7YT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','Jq2P2B': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','DFUsHn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Game Start</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','GWEz68': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Yuuka&#x27s Questions</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/9.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Questioning Starts</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -696,13 +713,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -716,17 +733,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988800.7163162)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139634.7970426)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988800.716324
+Generated time (UTC): 1702139634.797051
 -->
 </body>
 </html>

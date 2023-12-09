@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=VjdZmDzbZzk', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=VjdZmDzbZzk', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=VjdZmDzbZzk)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=41', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=41', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=41)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="5RdqMo">
-        <p class="gallery-caption"><span>【3】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="5RdqMo" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('5RdqMo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="nuAOr4">
+        <p class="gallery-caption"><span>【3】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="nuAOr4" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('nuAOr4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="82a031e0-ce48-4e3c-8798-5e9f1d1fabf1">
     <div >
-        <img src="/static/images/background/BG_BigSisterRoom2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="vv9lAp">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom2.jpg.html#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="vv9lAp" target="_blank">BG_BigSisterRoom2.jpg</a><span onclick="showPopupByTooltipId('vv9lAp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_BigSisterRoom2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="sd6R_V">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom2.jpg.html#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="sd6R_V" target="_blank">BG_BigSisterRoom2.jpg</a><span onclick="showPopupByTooltipId('sd6R_V')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="39174134-e8c0-4c39-bee8-4f2ad2ff05d9">
     <div >
-        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="A6cZID">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="A6cZID" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('A6cZID')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="XV_rzz">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="XV_rzz" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('XV_rzz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -425,8 +442,8 @@
 
             <div class="gallery-img" id="af226916-d32d-4563-b07f-2a5264a7cf07">
     <div >
-        <img src="/static/images/background/BG_ComputerCenter_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1Yt3OS">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter_Off.jpg.html#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="1Yt3OS" target="_blank">BG_ComputerCenter_Off.jpg</a><span onclick="showPopupByTooltipId('1Yt3OS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ComputerCenter_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Cf8WmN">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter_Off.jpg.html#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="Cf8WmN" target="_blank">BG_ComputerCenter_Off.jpg</a><span onclick="showPopupByTooltipId('Cf8WmN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -440,8 +457,8 @@
 
             <div class="gallery-img" id="66d35fae-5396-484b-ac3e-42c94a574259">
     <div >
-        <img src="/static/images/background/BG_EriduTowerEntrance_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="uxg0yT">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduTowerEntrance_Night.jpg.html#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="uxg0yT" target="_blank">BG_EriduTowerEntrance_Night.jpg</a><span onclick="showPopupByTooltipId('uxg0yT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduTowerEntrance_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="f8b5KQ">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduTowerEntrance_Night.jpg.html#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="f8b5KQ" target="_blank">BG_EriduTowerEntrance_Night.jpg</a><span onclick="showPopupByTooltipId('f8b5KQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -455,8 +472,8 @@
 
             <div class="gallery-img" id="4b51140e-fc44-43c3-95b1-3cb5e2e342d0">
     <div >
-        <img src="/static/images/background/BG_MilleniumCenter_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="T8ef_q">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter_Night.jpg.html#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="T8ef_q" target="_blank">BG_MilleniumCenter_Night.jpg</a><span onclick="showPopupByTooltipId('T8ef_q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MilleniumCenter_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="VM9tWf">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter_Night.jpg.html#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="VM9tWf" target="_blank">BG_MilleniumCenter_Night.jpg</a><span onclick="showPopupByTooltipId('VM9tWf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -470,8 +487,8 @@
 
             <div class="gallery-img" id="094de1f9-477e-416e-8146-9ce233539cbe">
     <div >
-        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Eynmbu">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="Eynmbu" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('Eynmbu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="k8HOek">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="k8HOek" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('k8HOek')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -485,8 +502,8 @@
 
             <div class="gallery-img" id="369bc218-ee51-433e-a92d-baad7e728dff">
     <div >
-        <img src="/static/images/background/BG_White.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="c2xaa8">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_White.jpg.html#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="c2xaa8" target="_blank">BG_White.jpg</a><span onclick="showPopupByTooltipId('c2xaa8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_White.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="oQ70vJ">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_White.jpg.html#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="oQ70vJ" target="_blank">BG_White.jpg</a><span onclick="showPopupByTooltipId('oQ70vJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -499,7 +516,7 @@
     
         
     <script>
-        add_tooltip_data({ '5RdqMo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','vv9lAp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom2.jpg</p><p>BG_BigSisterRoom2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Himari&#x27s Anticipation</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','A6cZID': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','1Yt3OS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter_Off.jpg</p><p>BG_ComputerCenter_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','uxg0yT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerEntrance_Night.jpg</p><p>BG_EriduTowerEntrance_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerEntrance_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','T8ef_q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter_Night.jpg</p><p>BG_MilleniumCenter_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li></ol></div>','Eynmbu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li></ol></div>','c2xaa8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_White.jpg</p><p>BG_White.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_White.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'nuAOr4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','sd6R_V': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom2.jpg</p><p>BG_BigSisterRoom2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Himari&#x27s Anticipation</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','XV_rzz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','Cf8WmN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter_Off.jpg</p><p>BG_ComputerCenter_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','f8b5KQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerEntrance_Night.jpg</p><p>BG_EriduTowerEntrance_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerEntrance_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol></div>','VM9tWf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter_Night.jpg</p><p>BG_MilleniumCenter_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li></ol></div>','k8HOek': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li></ol></div>','oQ70vJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_White.jpg</p><p>BG_White.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_White.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -524,9 +541,9 @@
     
 
     
-        <a href="/en/main/story/main/2/1/13.html"  onmouseover="showTooltip(this)" data-tooltip="Bz6Rbl">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>
+        <a href="/en/main/story/main/2/1/13.html"  onmouseover="showTooltipById(this)" data-tooltip="CgpEg0">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>
     
-    <span onclick="showPopupByTooltipId('Bz6Rbl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('CgpEg0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -539,7 +556,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="B_S0el"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a><span onclick="showPopupByTooltipId('B_S0el')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="CE5eZC"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a><span onclick="showPopupByTooltipId('CE5eZC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -558,9 +575,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/14.html"  onmouseover="showTooltip(this)" data-tooltip="sW8tSo">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>
+        <a href="/en/main/story/main/2/2/14.html"  onmouseover="showTooltipById(this)" data-tooltip="xjyPkF">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>
     
-    <span onclick="showPopupByTooltipId('sW8tSo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('xjyPkF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -573,7 +590,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="PnBtje"><i>&#91;3&#93;&nbsp;As Planned</i></a><span onclick="showPopupByTooltipId('PnBtje')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="sp96IF"><i>&#91;3&#93;&nbsp;As Planned</i></a><span onclick="showPopupByTooltipId('sp96IF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -592,9 +609,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/17.html"  onmouseover="showTooltip(this)" data-tooltip="_yqmAO">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>
+        <a href="/en/main/story/main/2/2/17.html"  onmouseover="showTooltipById(this)" data-tooltip="FMKIow">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>
     
-    <span onclick="showPopupByTooltipId('_yqmAO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('FMKIow')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -607,7 +624,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="gC_Y3t"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a><span onclick="showPopupByTooltipId('gC_Y3t')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="25_EFj"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a><span onclick="showPopupByTooltipId('25_EFj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -626,9 +643,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/23.html"  onmouseover="showTooltip(this)" data-tooltip="y219Qn">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>
+        <a href="/en/main/story/main/2/2/23.html"  onmouseover="showTooltipById(this)" data-tooltip="WQdc2j">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>
     
-    <span onclick="showPopupByTooltipId('y219Qn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('WQdc2j')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -641,7 +658,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/23.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="RSzZP4"><i>&#91;2&#93;&nbsp;Himari's Anticipation</i></a><span onclick="showPopupByTooltipId('RSzZP4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/23.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="4hhi35"><i>&#91;2&#93;&nbsp;Himari's Anticipation</i></a><span onclick="showPopupByTooltipId('4hhi35')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -653,7 +670,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="S68pEi"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a><span onclick="showPopupByTooltipId('S68pEi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="ix_l2M"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a><span onclick="showPopupByTooltipId('ix_l2M')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -670,7 +687,7 @@
 
     
     <script>
-        add_tooltip_data({ 'Bz6Rbl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Nerds vs. Maids</p><ul><li>While Aris and Veritas create a distraction, Midori, Momoi, and Sensei attempt a frontal assault on Seminar.</li><li>Veritas&#x27 hacking ends up trapping Akane in a sealed room.</li></ul></div>','B_S0el': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Let The Battle Begin!</p><p>As the night fell over, both Veritas and Engineering Department said they were all ready.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>','sW8tSo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Fortress City of Eridu</p><ul><li>Contrary to Toki&#x27s prediction that Neru would try to rescue Aris on her own, she is faced with the whole of C&C in a ferocious battle. Meanwhile, the Game Development Department blasts their way through every AMAS one by one while making their way to the tower where Aris is located.</li></ul></div>','PnBtje': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">As Planned</p><p>The GDD knocked down incoming AWAS and came to the ground floor at last. Everyone was in high spirits and marched towards the central towner of the city.</p><hr><p>Character:<span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>','_yqmAO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Turning the Tides</p><ul><li>With Sumire&#x27s help, Chihiro secures the Mirror from the contraband storage and succeeds in taking control of Eridu&#x27s network, and the Game Development Department seizes this moment to launch a counterattack.</li><li>The Game Development Department succeed in defeating the Avant Guard with the help of the Engineering Department, but the aftermath causes the Engineering Department to retire from combat. However, they continue cheering on the Game Development Department&#x27s forward charge.</li></ul></div>','gC_Y3t': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Coup de Grace</p><p>The Engineering Department put their "loudspeaker", a device that had been making for a half year and uncountable money, into use, and the result was amazing. Yet the Engineering Department collapsed due to physical limitations. Sensei and GDD continued to move forward under the guidance of Chihiro.</p><hr><p>Character:<span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/8.html"><span>OST&nbsp;8.&nbsp;Shady Girls</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>','y219Qn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 2</p><ul><li>The Game Development Department successfully restrain Key with Yuuka and Noa&#x27s assistance. As the Game Development Department and Veritas fend off the enemies that are crawling out of the woodwork, Himari helps Momoi, Midori, Yuzu, and Sensei enter Aris&#x27 headspace to try to wake her.</li></ul></div>','RSzZP4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari&#x27s Anticipation</p><p>When Key still thought she had a chance, Himari appeared suddenly. She said that C&C and Eimi had long been blocking the entrance, and there would be no chance for Key to assemble troops in the tower. Rio was surprised that Himari hadn&#x27t escaped, and Himari said she had already anticipated such events.</p><hr><p>Character:<span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>','S68pEi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Way To Wake Up</p><p>Himari made it clear that under current situation, it is possible that Key would eventually take over Aris&#x27 personality. Therefore, the best solution now should be waking Aris up. When asked how, Himari purposed that the GDD and Sensei shall dive into the machine&#x27s consciousness and databases, and bring Aris back at there. Rio pointed out the potential dangers in it, but no one was backing away. Under the protection of almost all effectives from Millennium, Himari started looking for a break through.</p><hr><p>Character:<span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/noa/"><img src="/static/images/student/icon/10052.webp" class="icon-stu"><span>Noa</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/sumire/"><img src="/static/images/student/icon/10012.webp" class="icon-stu"><span>Sumire</span></a></span><span>&nbsp;and more.</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>', });
+        add_tooltip_data({ 'CgpEg0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Nerds vs. Maids</p><ul><li>While Aris and Veritas create a distraction, Midori, Momoi, and Sensei attempt a frontal assault on Seminar.</li><li>Veritas&#x27 hacking ends up trapping Akane in a sealed room.</li></ul></div>','CE5eZC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Let The Battle Begin!</p><p>As the night fell over, both Veritas and Engineering Department said they were all ready.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>','xjyPkF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Fortress City of Eridu</p><ul><li>Contrary to Toki&#x27s prediction that Neru would try to rescue Aris on her own, she is faced with the whole of C&C in a ferocious battle. Meanwhile, the Game Development Department blasts their way through every AMAS one by one while making their way to the tower where Aris is located.</li></ul></div>','sp96IF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">As Planned</p><p>The GDD knocked down incoming AWAS and came to the ground floor at last. Everyone was in high spirits and marched towards the central towner of the city.</p><hr><p>Character:<span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>','FMKIow': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Turning the Tides</p><ul><li>With Sumire&#x27s help, Chihiro secures the Mirror from the contraband storage and succeeds in taking control of Eridu&#x27s network, and the Game Development Department seizes this moment to launch a counterattack.</li><li>The Game Development Department succeed in defeating the Avant Guard with the help of the Engineering Department, but the aftermath causes the Engineering Department to retire from combat. However, they continue cheering on the Game Development Department&#x27s forward charge.</li></ul></div>','25_EFj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Coup de Grace</p><p>The Engineering Department put their "loudspeaker", a device that had been making for a half year and uncountable money, into use, and the result was amazing. Yet the Engineering Department collapsed due to physical limitations. Sensei and GDD continued to move forward under the guidance of Chihiro.</p><hr><p>Character:<span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/8.html"><span>OST&nbsp;8.&nbsp;Shady Girls</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>','WQdc2j': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 2</p><ul><li>The Game Development Department successfully restrain Key with Yuuka and Noa&#x27s assistance. As the Game Development Department and Veritas fend off the enemies that are crawling out of the woodwork, Himari helps Momoi, Midori, Yuzu, and Sensei enter Aris&#x27 headspace to try to wake her.</li></ul></div>','4hhi35': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari&#x27s Anticipation</p><p>When Key still thought she had a chance, Himari appeared suddenly. She said that C&C and Eimi had long been blocking the entrance, and there would be no chance for Key to assemble troops in the tower. Rio was surprised that Himari hadn&#x27t escaped, and Himari said she had already anticipated such events.</p><hr><p>Character:<span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>','ix_l2M': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Way To Wake Up</p><p>Himari made it clear that under current situation, it is possible that Key would eventually take over Aris&#x27 personality. Therefore, the best solution now should be waking Aris up. When asked how, Himari purposed that the GDD and Sensei shall dive into the machine&#x27s consciousness and databases, and bring Aris back at there. Rio pointed out the potential dangers in it, but no one was backing away. Under the protection of almost all effectives from Millennium, Himari started looking for a break through.</p><hr><p>Character:<span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/noa/"><img src="/static/images/student/icon/10052.webp" class="icon-stu"><span>Noa</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/sumire/"><img src="/static/images/student/icon/10012.webp" class="icon-stu"><span>Sumire</span></a></span><span>&nbsp;and more.</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/40.html"><span>OST&nbsp;40.&nbsp;Neo City Dive</span></a></p></div>', });
     </script>
 
 
@@ -718,12 +735,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotori/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="17sebI" >
+            <a href="/en/character/student/kotori/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="FOH9bL" >
                 <img src="/static/images/student/icon/16002.webp" class="icon-stu">
                 <span>Kotori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('17sebI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('FOH9bL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -745,12 +762,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="XcpBTU" >
+            <a href="/en/character/student/midori/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="gfMrTw" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('XcpBTU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('gfMrTw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -772,12 +789,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="abVT_v" >
+            <a href="/en/character/student/momoi/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="jzOhSU" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('abVT_v')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('jzOhSU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -799,12 +816,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hare/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="eIABvQ" >
+            <a href="/en/character/student/hare/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="7aEp3C" >
                 <img src="/static/images/student/icon/23003.webp" class="icon-stu">
                 <span>Hare</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('eIABvQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('7aEp3C')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -826,12 +843,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hibiki/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="ymFU5a" >
+            <a href="/en/character/student/hibiki/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="9eUHxb" >
                 <img src="/static/images/student/icon/20000.webp" class="icon-stu">
                 <span>Hibiki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ymFU5a')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('9eUHxb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -853,12 +870,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/maki/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="ecCWMm" >
+            <a href="/en/character/student/maki/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="ZQRsGS" >
                 <img src="/static/images/student/icon/10007.webp" class="icon-stu">
                 <span>Maki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ecCWMm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ZQRsGS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -880,12 +897,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/chihiro/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="K05G36" >
+            <a href="/en/character/student/chihiro/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="puMAdn" >
                 <img src="/static/images/student/icon/20013.webp" class="icon-stu">
                 <span>Chihiro</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('K05G36')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('puMAdn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -907,12 +924,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotama/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="wZNdGa" >
+            <a href="/en/character/student/kotama/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="OJ6VMR" >
                 <img src="/static/images/student/icon/26001.webp" class="icon-stu">
                 <span>Kotama</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('wZNdGa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('OJ6VMR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -934,12 +951,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/utaha/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="ZnM0cq" >
+            <a href="/en/character/student/utaha/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="xriO2G" >
                 <img src="/static/images/student/icon/23004.webp" class="icon-stu">
                 <span>Utaha</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ZnM0cq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('xriO2G')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -961,12 +978,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="dlRPvH" >
+            <a href="/en/character/student/yuzu/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="f3nTZl" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('dlRPvH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('f3nTZl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -988,12 +1005,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/akane/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="YitC2Y" >
+            <a href="/en/character/student/akane/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="2XNbn9" >
                 <img src="/static/images/student/icon/13000.webp" class="icon-stu">
                 <span>Akane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('YitC2Y')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('2XNbn9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1015,12 +1032,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/asuna/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="izOIDC" >
+            <a href="/en/character/student/asuna/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="nZV5Ba" >
                 <img src="/static/images/student/icon/16001.webp" class="icon-stu">
                 <span>Asuna</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('izOIDC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('nZV5Ba')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1042,12 +1059,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/eimi/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="hKAdzp" >
+            <a href="/en/character/student/eimi/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="yjuyv2" >
                 <img src="/static/images/student/icon/10001.webp" class="icon-stu">
                 <span>Eimi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('hKAdzp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('yjuyv2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Super Phenomenon Task Force]</span>
@@ -1069,12 +1086,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/himari/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="UlFLsK" >
+            <a href="/en/character/student/himari/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="E__1LB" >
                 <img src="/static/images/student/icon/20020.webp" class="icon-stu">
                 <span>Himari</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('UlFLsK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('E__1LB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Super Phenomenon Task Force]</span>
@@ -1096,12 +1113,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/karin/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="cFVEsU" >
+            <a href="/en/character/student/karin/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="mrod6c" >
                 <img src="/static/images/student/icon/20001.webp" class="icon-stu">
                 <span>Karin</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('cFVEsU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('mrod6c')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1118,10 +1135,10 @@
 
             <li id="0a1f1737-f7ea-4c10-8aec-c4d4ce0c1e6f"><span>【1】</span>
     
-        <a href="/en/character/npc/ariskey/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="alJw5z" >
+        <a href="/en/character/npc/ariskey/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="A81i32" >
             <span>Key</span>
         </a>
-        <span onclick="showPopupByTooltipId('alJw5z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('A81i32')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -1138,12 +1155,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/noa/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="HueOso" >
+            <a href="/en/character/student/noa/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="AUl0cr" >
                 <img src="/static/images/student/icon/10052.webp" class="icon-stu">
                 <span>Noa</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('HueOso')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('AUl0cr')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -1160,10 +1177,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【1】</span>
     
-        <a href="/en/character/npc/rio/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="HuVYEU" >
+        <a href="/en/character/npc/rio/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="42dbVH" >
             <span>Rio</span>
         </a>
-        <span onclick="showPopupByTooltipId('HuVYEU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('42dbVH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -1180,12 +1197,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/sumire/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="CqZvYp" >
+            <a href="/en/character/student/sumire/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="kyGLKP" >
                 <img src="/static/images/student/icon/10012.webp" class="icon-stu">
                 <span>Sumire</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('CqZvYp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('kyGLKP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Athletics Training Club]</span>
@@ -1207,12 +1224,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuuka/#track-OST_40" onmouseover="showTooltip(this)" data-tooltip="JdswYx" >
+            <a href="/en/character/student/yuuka/#track-OST_40" onmouseover="showTooltipById(this)" data-tooltip="eRiIeO" >
                 <img src="/static/images/student/icon/13010.webp" class="icon-stu">
                 <span>Yuuka</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('JdswYx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('eRiIeO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -1226,22 +1243,22 @@
 
     
     <script>
-        add_tooltip_data({ '17sebI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','XcpBTU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','abVT_v': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','eIABvQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','ymFU5a': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','ecCWMm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','K05G36': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','wZNdGa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','ZnM0cq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','dlRPvH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','YitC2Y': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','izOIDC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','hKAdzp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Eimi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','UlFLsK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Himari&#x27s Anticipation</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','cFVEsU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','alJw5z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p></div>','HueOso': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Noa</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','HuVYEU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Himari&#x27s Anticipation</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','CqZvYp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Sumire</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','JdswYx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'FOH9bL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','gfMrTw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','jzOhSU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','7aEp3C': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','9eUHxb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','ZQRsGS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;13:&nbsp;Nerds vs. Maids</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Let The Battle Begin!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','puMAdn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','OJ6VMR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/14.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;14:&nbsp;The Fortress City of Eridu</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/14.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;As Planned</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','xriO2G': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','f3nTZl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Coup de Grace</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','2XNbn9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','nZV5Ba': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','yjuyv2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Eimi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','E__1LB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Himari&#x27s Anticipation</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','mrod6c': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','A81i32': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p></div>','AUl0cr': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Noa</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','42dbVH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Himari&#x27s Anticipation</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','kyGLKP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Sumire</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','eRiIeO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/23.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;23:&nbsp;Pavane for a Princess 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/23.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;The Way To Wake Up</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -1276,13 +1293,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -1296,17 +1313,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988800.5063355)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139626.2182689)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988800.5063434
+Generated time (UTC): 1702139626.2182775
 -->
 </body>
 </html>

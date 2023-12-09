@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -292,12 +302,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=hidsgG934fg', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=hidsgG934fg', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=hidsgG934fg)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1M24y1K7e4/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1M24y1K7e4/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1M24y1K7e4/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -364,6 +374,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -392,8 +409,8 @@
 
             <div class="gallery-img" id="8b0f151a-e874-444b-9424-be3e2360fa1d">
     <div >
-        <img src="/static/images/background/BG_BigSisterRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="UOZ9UU">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom.jpg.html#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="UOZ9UU" target="_blank">BG_BigSisterRoom.jpg</a><span onclick="showPopupByTooltipId('UOZ9UU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_BigSisterRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="xDZPS8">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom.jpg.html#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="xDZPS8" target="_blank">BG_BigSisterRoom.jpg</a><span onclick="showPopupByTooltipId('xDZPS8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -407,8 +424,8 @@
 
             <div class="gallery-img" id="39174134-e8c0-4c39-bee8-4f2ad2ff05d9">
     <div >
-        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="75mvrc">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="75mvrc" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('75mvrc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="yRmpZi">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="yRmpZi" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('yRmpZi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -422,8 +439,8 @@
 
             <div class="gallery-img" id="af226916-d32d-4563-b07f-2a5264a7cf07">
     <div >
-        <img src="/static/images/background/BG_ComputerCenter_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="RFpcDg">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter_Off.jpg.html#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="RFpcDg" target="_blank">BG_ComputerCenter_Off.jpg</a><span onclick="showPopupByTooltipId('RFpcDg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ComputerCenter_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="iwjA2H">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter_Off.jpg.html#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="iwjA2H" target="_blank">BG_ComputerCenter_Off.jpg</a><span onclick="showPopupByTooltipId('iwjA2H')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -437,8 +454,8 @@
 
             <div class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="HF2h2K">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="HF2h2K" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('HF2h2K')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="4P0Twm">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="4P0Twm" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('4P0Twm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -452,8 +469,8 @@
 
             <div class="gallery-img" id="904759f7-3fe3-433e-9298-a1b031820d90">
     <div >
-        <img src="/static/images/background/BG_IndoorPlaza_Night3.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="QrOw8_">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_IndoorPlaza_Night3.jpg.html#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="QrOw8_" target="_blank">BG_IndoorPlaza_Night3.jpg</a><span onclick="showPopupByTooltipId('QrOw8_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_IndoorPlaza_Night3.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="n24dqS">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_IndoorPlaza_Night3.jpg.html#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="n24dqS" target="_blank">BG_IndoorPlaza_Night3.jpg</a><span onclick="showPopupByTooltipId('n24dqS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -467,8 +484,8 @@
 
             <div class="gallery-img" id="0598d297-9977-499a-b23d-9151da2fc774">
     <div >
-        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="K5sikh">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="K5sikh" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('K5sikh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="HiWdKG">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="HiWdKG" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('HiWdKG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -482,8 +499,8 @@
 
             <div class="gallery-img" id="345542a5-ed43-439d-9c9f-1f0bbedd9dc9">
     <div >
-        <img src="/static/images/background/BG_View_Eridu.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="lnBpKx">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Eridu.jpg.html#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="lnBpKx" target="_blank">BG_View_Eridu.jpg</a><span onclick="showPopupByTooltipId('lnBpKx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_View_Eridu.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="cUSGT2">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Eridu.jpg.html#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="cUSGT2" target="_blank">BG_View_Eridu.jpg</a><span onclick="showPopupByTooltipId('cUSGT2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -496,7 +513,7 @@
     
         
     <script>
-        add_tooltip_data({ 'UOZ9UU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom.jpg</p><p>BG_BigSisterRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol></div>','75mvrc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li></ol></div>','RFpcDg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter_Off.jpg</p><p>BG_ComputerCenter_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol></div>','HF2h2K': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol></div>','QrOw8_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_IndoorPlaza_Night3.jpg</p><p>BG_IndoorPlaza_Night3.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_IndoorPlaza_Night3.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol></div>','K5sikh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol></div>','lnBpKx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Eridu.jpg</p><p>BG_View_Eridu.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Eridu.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'xDZPS8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom.jpg</p><p>BG_BigSisterRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol></div>','yRmpZi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li></ol></div>','iwjA2H': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter_Off.jpg</p><p>BG_ComputerCenter_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol></div>','4P0Twm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol></div>','n24dqS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_IndoorPlaza_Night3.jpg</p><p>BG_IndoorPlaza_Night3.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_IndoorPlaza_Night3.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol></div>','HiWdKG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol></div>','cUSGT2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Eridu.jpg</p><p>BG_View_Eridu.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Eridu.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -521,9 +538,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/12.html"  onmouseover="showTooltip(this)" data-tooltip="DsrA_W">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>
+        <a href="/en/main/story/main/2/2/12.html"  onmouseover="showTooltipById(this)" data-tooltip="9B9Y5d">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>
     
-    <span onclick="showPopupByTooltipId('DsrA_W')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('9B9Y5d')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -536,7 +553,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="4MR6qK"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a><span onclick="showPopupByTooltipId('4MR6qK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="TAutqJ"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a><span onclick="showPopupByTooltipId('TAutqJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -548,7 +565,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="yZeD1M"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a><span onclick="showPopupByTooltipId('yZeD1M')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="UJVh5c"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a><span onclick="showPopupByTooltipId('UJVh5c')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -569,9 +586,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/16.html"  onmouseover="showTooltip(this)" data-tooltip="SHZ0Gt">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>
+        <a href="/en/main/story/main/2/2/16.html"  onmouseover="showTooltipById(this)" data-tooltip="FGzs0w">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>
     
-    <span onclick="showPopupByTooltipId('SHZ0Gt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('FGzs0w')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -584,7 +601,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Godl2u"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a><span onclick="showPopupByTooltipId('Godl2u')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="pMnWnY"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a><span onclick="showPopupByTooltipId('pMnWnY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -596,7 +613,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="qZGVV6"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a><span onclick="showPopupByTooltipId('qZGVV6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="8M20TP"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a><span onclick="showPopupByTooltipId('8M20TP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -608,7 +625,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="kjtoaq"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a><span onclick="showPopupByTooltipId('kjtoaq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="qWO13g"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a><span onclick="showPopupByTooltipId('qWO13g')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -631,9 +648,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/17.html"  onmouseover="showTooltip(this)" data-tooltip="leNBVg">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>
+        <a href="/en/main/story/main/2/2/17.html"  onmouseover="showTooltipById(this)" data-tooltip="ebSV3N">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>
     
-    <span onclick="showPopupByTooltipId('leNBVg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('ebSV3N')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -646,7 +663,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="jBD3Ll"><i>&#91;1&#93;&nbsp;Timely Help</i></a><span onclick="showPopupByTooltipId('jBD3Ll')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="2uUQs4"><i>&#91;1&#93;&nbsp;Timely Help</i></a><span onclick="showPopupByTooltipId('2uUQs4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -658,7 +675,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger" onmouseover="showTooltip(this)" data-tooltip="xtcXW9"><i>&#91;2&#93;&nbsp;Battle</i></a><span onclick="showPopupByTooltipId('xtcXW9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger" onmouseover="showTooltipById(this)" data-tooltip="0nksvK"><i>&#91;2&#93;&nbsp;Battle</i></a><span onclick="showPopupByTooltipId('0nksvK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -675,7 +692,7 @@
 
     
     <script>
-        add_tooltip_data({ 'DsrA_W': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Strategy Meeting</p><ul><li>The Game Development Department and others search for Aris&#x27 whereabouts. With the help of Noa and Yuuka, they learn that Aris is headed to Eridu, a fortified city that Rio built. Before infiltrating Eridu, Neru proposes a plan.</li></ul></div>','4MR6qK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Embezzled Money</p><p>As Sensei expected, Yuuka and Noa found financial records that were intentionally hid and deleted. Yuuka was even surprised by this. After recovering and tracking, Yuuka found a fortress city named "Eridu", which was said to be built by the President. Yuuka sent the location and apologized for not being able to help due to their stance.</p><hr><p>Character:<span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/noa/"><img src="/static/images/student/icon/10052.webp" class="icon-stu"><span>Noa</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','yZeD1M': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Infiltration Plan</p><p>The Engineering Department believed that the construction materials of the city should be sent from the Millennium, so it is only necessary to find the unmanned transport vehicles heading to the city and replace them with goods. Sensei wondered why the Engineering Department would be willing to participate in this matter, and Utaha said that the "Sword of Light" that the president took away from Aris was already exceeding his authority. In a sense, it was a declaration of war on them.</p><hr><p>Character:<span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/130.html"><span>OST&nbsp;130.&nbsp;Foolish Days</span></a></p></div>','SHZ0Gt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Checkmate</p><ul><li>Rio&#x27s victory is sealed in front of Himari, but Himari succeeds in escaping with Eimi&#x27s help. Meanwhile, cut off from Veritas&#x27s support, the Game Development Department find themselves with their backs against the wall until they are dramatically rescued by Chihiro, the vice president of Veritas.</li></ul></div>','Godl2u': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Out Of The Calculation</p><p>Rio was in great shock, wondering who could possibly be out of her calculation It turned out to be Eimi from Himari&#x27s club. Though only to share the pudding with Himari and it had no effect for the others, Himari said that she still trusted her younger members.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/eimi/"><img src="/static/images/student/icon/10001.webp" class="icon-stu"><span>Eimi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','qZGVV6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Communication Back Up</p><p>As the Veritas were frustrated by the fact that the communication was cut off unexpectedly and unable to connect, everyone found a screen monitor was displaying something.</p><hr><p>Character:<span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','kjtoaq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Surprise From Chihiro</p><p>While engaging the Avant Guard, the GDD noticed its behaviour was looking strangely sluggish all of a sudden. Then, Chihiro from Veritas recovered the communication.</p><hr><p>Character:<span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','leNBVg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Turning the Tides</p><ul><li>With Sumire&#x27s help, Chihiro secures the Mirror from the contraband storage and succeeds in taking control of Eridu&#x27s network, and the Game Development Department seizes this moment to launch a counterattack.</li><li>The Game Development Department succeed in defeating the Avant Guard with the help of the Engineering Department, but the aftermath causes the Engineering Department to retire from combat. However, they continue cheering on the Game Development Department&#x27s forward charge.</li></ul></div>','jBD3Ll': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Timely Help</p><p>Chihiro&#x27s appearance cheered everyone up greatly. Others at Veritas also connected to the comm. Hare was very curious about how Chihiro did it, and Chihiro said lightly that it was the "Mirror" that came in handy. Everyone remembered the confrontation between Yuzu and Neru at that time, and was amazed by the plan. Momoi asked about the means of retrieving it, and Sumire happened to connect to the comm. Despite the successful hacking, the firewall started making the communication unstable. Veritas promised that the communication would not be interrupted, and everyone continued to combat the Avant Guard.</p><hr><p>Character:<span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span><span>&nbsp;and more.</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/60.html"><span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','xtcXW9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Battle</p><p>Engage with the enemies.</p><hr><p>Character:<span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>', });
+        add_tooltip_data({ '9B9Y5d': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Strategy Meeting</p><ul><li>The Game Development Department and others search for Aris&#x27 whereabouts. With the help of Noa and Yuuka, they learn that Aris is headed to Eridu, a fortified city that Rio built. Before infiltrating Eridu, Neru proposes a plan.</li></ul></div>','TAutqJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Embezzled Money</p><p>As Sensei expected, Yuuka and Noa found financial records that were intentionally hid and deleted. Yuuka was even surprised by this. After recovering and tracking, Yuuka found a fortress city named "Eridu", which was said to be built by the President. Yuuka sent the location and apologized for not being able to help due to their stance.</p><hr><p>Character:<span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/noa/"><img src="/static/images/student/icon/10052.webp" class="icon-stu"><span>Noa</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','UJVh5c': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Infiltration Plan</p><p>The Engineering Department believed that the construction materials of the city should be sent from the Millennium, so it is only necessary to find the unmanned transport vehicles heading to the city and replace them with goods. Sensei wondered why the Engineering Department would be willing to participate in this matter, and Utaha said that the "Sword of Light" that the president took away from Aris was already exceeding his authority. In a sense, it was a declaration of war on them.</p><hr><p>Character:<span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/130.html"><span>OST&nbsp;130.&nbsp;Foolish Days</span></a></p></div>','FGzs0w': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Checkmate</p><ul><li>Rio&#x27s victory is sealed in front of Himari, but Himari succeeds in escaping with Eimi&#x27s help. Meanwhile, cut off from Veritas&#x27s support, the Game Development Department find themselves with their backs against the wall until they are dramatically rescued by Chihiro, the vice president of Veritas.</li></ul></div>','pMnWnY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Out Of The Calculation</p><p>Rio was in great shock, wondering who could possibly be out of her calculation It turned out to be Eimi from Himari&#x27s club. Though only to share the pudding with Himari and it had no effect for the others, Himari said that she still trusted her younger members.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/eimi/"><img src="/static/images/student/icon/10001.webp" class="icon-stu"><span>Eimi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','8M20TP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Communication Back Up</p><p>As the Veritas were frustrated by the fact that the communication was cut off unexpectedly and unable to connect, everyone found a screen monitor was displaying something.</p><hr><p>Character:<span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','qWO13g': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Surprise From Chihiro</p><p>While engaging the Avant Guard, the GDD noticed its behaviour was looking strangely sluggish all of a sudden. Then, Chihiro from Veritas recovered the communication.</p><hr><p>Character:<span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','ebSV3N': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Turning the Tides</p><ul><li>With Sumire&#x27s help, Chihiro secures the Mirror from the contraband storage and succeeds in taking control of Eridu&#x27s network, and the Game Development Department seizes this moment to launch a counterattack.</li><li>The Game Development Department succeed in defeating the Avant Guard with the help of the Engineering Department, but the aftermath causes the Engineering Department to retire from combat. However, they continue cheering on the Game Development Department&#x27s forward charge.</li></ul></div>','2uUQs4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Timely Help</p><p>Chihiro&#x27s appearance cheered everyone up greatly. Others at Veritas also connected to the comm. Hare was very curious about how Chihiro did it, and Chihiro said lightly that it was the "Mirror" that came in handy. Everyone remembered the confrontation between Yuzu and Neru at that time, and was amazed by the plan. Momoi asked about the means of retrieving it, and Sumire happened to connect to the comm. Despite the successful hacking, the firewall started making the communication unstable. Veritas promised that the communication would not be interrupted, and everyone continued to combat the Avant Guard.</p><hr><p>Character:<span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span><span>&nbsp;and more.</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/60.html"><span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>','0nksvK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Battle</p><p>Engage with the enemies.</p><hr><p>Character:<span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>', });
     </script>
 
 
@@ -761,12 +778,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hibiki/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="W8szoB" >
+            <a href="/en/character/student/hibiki/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="44eQWT" >
                 <img src="/static/images/student/icon/20000.webp" class="icon-stu">
                 <span>Hibiki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('W8szoB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('44eQWT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -788,12 +805,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotori/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="3a4zhy" >
+            <a href="/en/character/student/kotori/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="YSmyyC" >
                 <img src="/static/images/student/icon/16002.webp" class="icon-stu">
                 <span>Kotori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('3a4zhy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('YSmyyC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -815,12 +832,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="JeYMvO" >
+            <a href="/en/character/student/midori/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="tm4KuH" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('JeYMvO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('tm4KuH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -842,12 +859,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="k25KSZ" >
+            <a href="/en/character/student/momoi/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="GDcIZR" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('k25KSZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GDcIZR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -869,12 +886,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/utaha/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="vpgVWN" >
+            <a href="/en/character/student/utaha/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="I4tefL" >
                 <img src="/static/images/student/icon/23004.webp" class="icon-stu">
                 <span>Utaha</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('vpgVWN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('I4tefL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -896,12 +913,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/chihiro/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="CoISOI" >
+            <a href="/en/character/student/chihiro/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="1MZjA8" >
                 <img src="/static/images/student/icon/20013.webp" class="icon-stu">
                 <span>Chihiro</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('CoISOI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('1MZjA8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -923,12 +940,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hare/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="f2O8M7" >
+            <a href="/en/character/student/hare/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="3uHmad" >
                 <img src="/static/images/student/icon/23003.webp" class="icon-stu">
                 <span>Hare</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('f2O8M7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('3uHmad')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -950,12 +967,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotama/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="CtMcAk" >
+            <a href="/en/character/student/kotama/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="nyoaHf" >
                 <img src="/static/images/student/icon/26001.webp" class="icon-stu">
                 <span>Kotama</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('CtMcAk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('nyoaHf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -977,12 +994,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/maki/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="uJlowH" >
+            <a href="/en/character/student/maki/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="enxRZg" >
                 <img src="/static/images/student/icon/10007.webp" class="icon-stu">
                 <span>Maki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('uJlowH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('enxRZg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -1004,12 +1021,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="NdVlOC" >
+            <a href="/en/character/student/yuzu/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="Ih9IjL" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('NdVlOC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Ih9IjL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1031,12 +1048,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/akane/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="ny2wjh" >
+            <a href="/en/character/student/akane/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="749s9W" >
                 <img src="/static/images/student/icon/13000.webp" class="icon-stu">
                 <span>Akane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ny2wjh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('749s9W')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1058,12 +1075,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/eimi/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="Xg8Xd2" >
+            <a href="/en/character/student/eimi/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="s2SH8g" >
                 <img src="/static/images/student/icon/10001.webp" class="icon-stu">
                 <span>Eimi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Xg8Xd2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('s2SH8g')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Super Phenomenon Task Force]</span>
@@ -1085,12 +1102,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/himari/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="aHJ0vy" >
+            <a href="/en/character/student/himari/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="OHAdig" >
                 <img src="/static/images/student/icon/20020.webp" class="icon-stu">
                 <span>Himari</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('aHJ0vy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('OHAdig')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Super Phenomenon Task Force]</span>
@@ -1112,12 +1129,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/neru/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="dgsFXq" >
+            <a href="/en/character/student/neru/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="kfm3vh" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span>Neru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('dgsFXq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('kfm3vh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1139,12 +1156,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/noa/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="GEr5Av" >
+            <a href="/en/character/student/noa/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="ZNB277" >
                 <img src="/static/images/student/icon/10052.webp" class="icon-stu">
                 <span>Noa</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('GEr5Av')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ZNB277')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -1161,10 +1178,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【1】</span>
     
-        <a href="/en/character/npc/rio/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="TY8pIx" >
+        <a href="/en/character/npc/rio/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="ntyH9P" >
             <span>Rio</span>
         </a>
-        <span onclick="showPopupByTooltipId('TY8pIx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ntyH9P')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -1181,12 +1198,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/sumire/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="bxtttA" >
+            <a href="/en/character/student/sumire/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="YmpTdJ" >
                 <img src="/static/images/student/icon/10012.webp" class="icon-stu">
                 <span>Sumire</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('bxtttA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('YmpTdJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Athletics Training Club]</span>
@@ -1208,12 +1225,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/toki/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="zn6gkc" >
+            <a href="/en/character/student/toki/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="4JIkpW" >
                 <img src="/static/images/student/icon/10062.webp" class="icon-stu">
                 <span>Toki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('zn6gkc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('4JIkpW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1235,12 +1252,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuuka/#track-OST_68" onmouseover="showTooltip(this)" data-tooltip="BTISN0" >
+            <a href="/en/character/student/yuuka/#track-OST_68" onmouseover="showTooltipById(this)" data-tooltip="1h3L0t" >
                 <img src="/static/images/student/icon/13010.webp" class="icon-stu">
                 <span>Yuuka</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('BTISN0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('1h3L0t')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -1254,22 +1271,22 @@
 
     
     <script>
-        add_tooltip_data({ 'W8szoB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','3a4zhy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','JeYMvO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','k25KSZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','vpgVWN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','CoISOI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','f2O8M7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','CtMcAk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','uJlowH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','NdVlOC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','ny2wjh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','Xg8Xd2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Eimi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','aHJ0vy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','dgsFXq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','GEr5Av': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Noa</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','TY8pIx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','bxtttA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Sumire</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','zn6gkc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','BTISN0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ '44eQWT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','YSmyyC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','tm4KuH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','GDcIZR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','I4tefL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','1MZjA8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','3uHmad': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','nyoaHf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','enxRZg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Communication Back Up</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','Ih9IjL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;A Surprise From Chihiro</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-2-seg-1" class="text-danger"><i>&#91;2&#93;&nbsp;Battle</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','749s9W': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','s2SH8g': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Eimi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','OHAdig': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','kfm3vh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','ZNB277': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Noa</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','ntyH9P': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/16.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;16:&nbsp;Checkmate</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/16.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Out Of The Calculation</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','YmpTdJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Sumire</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','4JIkpW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','1h3L0t': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Embezzled Money</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -1304,13 +1321,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -1324,17 +1341,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988819.200774)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139614.3435342)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988819.2007818
+Generated time (UTC): 1702139614.343542
 -->
 </body>
 </html>

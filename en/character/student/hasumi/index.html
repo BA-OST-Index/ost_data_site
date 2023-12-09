@@ -36,27 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
+    <script>var tooltip_data = {};
+
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
     
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -80,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -119,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -168,11 +179,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     <h1>Student/Hasumi</h1>
     
 
@@ -290,9 +302,9 @@
     
 
     
-        <a href="/en/main/story/other/1/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="5RQ6mu">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>
+        <a href="/en/main/story/other/1/1/1.html"  onmouseover="showTooltipById(this)" data-tooltip="Y9np7U">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>
     
-    <span onclick="showPopupByTooltipId('5RQ6mu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Y9np7U')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -305,7 +317,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="DikyNs"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a><span onclick="showPopupByTooltipId('DikyNs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="4xNLzA"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a><span onclick="showPopupByTooltipId('4xNLzA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -320,7 +332,7 @@
 
     
     <script>
-        add_tooltip_data({ '5RQ6mu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Prologue 1-1</p><ul><li>Sensei wakes from a bizarre dream and learns from Nanagami Rin that the General Student Council president is missing. The Academy City, Kivotos, is in chaos. Sensei heads to Schale to try to resolve the situation.</li></ul></div>','DikyNs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Arguments In the Reception Room</p><p>In the reception room, Yuuka from Millennium, Hasumi and Suzumi from Trinity, as well as Chinatsu from Gehenna, were all demanding an excuse for all the chaos after the disappearance of the General Student Council&#x27s President. Rin confirmed the news of disappearance, and Sensei greeted everyone. Rin introduced Sensei to everyone, and asked them to escort Sensei to Schale. On the way, they were attacked and the three started to engage, with Sensei commanding in the back.</p><hr><p>Character:<span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hasumi/"><img src="/static/images/student/icon/13003.webp" class="icon-stu"><span>Hasumi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/chinatsu/"><img src="/static/images/student/icon/26000.webp" class="icon-stu"><span>Chinatsu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/suzumi/"><img src="/static/images/student/icon/16003.webp" class="icon-stu"><span>Suzumi</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/rin/"><span>Rin</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/momoka/"><span>Momoka</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/11.html"><span>OST&nbsp;11.&nbsp;Connected Sky</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/28.html"><span>OST&nbsp;28.&nbsp;Plug and Play</span></a></p></div>', });
+        add_tooltip_data({ 'Y9np7U': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Prologue 1-1</p><ul><li>Sensei wakes from a bizarre dream and learns from Nanagami Rin that the General Student Council president is missing. The Academy City, Kivotos, is in chaos. Sensei heads to Schale to try to resolve the situation.</li></ul></div>','4xNLzA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Arguments In the Reception Room</p><p>In the reception room, Yuuka from Millennium, Hasumi and Suzumi from Trinity, as well as Chinatsu from Gehenna, were all demanding an excuse for all the chaos after the disappearance of the General Student Council&#x27s President. Rin confirmed the news of disappearance, and Sensei greeted everyone. Rin introduced Sensei to everyone, and asked them to escort Sensei to Schale. On the way, they were attacked and the three started to engage, with Sensei commanding in the back.</p><hr><p>Character:<span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hasumi/"><img src="/static/images/student/icon/13003.webp" class="icon-stu"><span>Hasumi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/chinatsu/"><img src="/static/images/student/icon/26000.webp" class="icon-stu"><span>Chinatsu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/suzumi/"><img src="/static/images/student/icon/16003.webp" class="icon-stu"><span>Suzumi</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/rin/"><span>Rin</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/momoka/"><span>Momoka</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/11.html"><span>OST&nbsp;11.&nbsp;Connected Sky</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/28.html"><span>OST&nbsp;28.&nbsp;Plug and Play</span></a></p></div>', });
     </script>
 
 
@@ -341,10 +353,10 @@
             
 
             <li id="track-OST_11">
-    <a href="/en/track/ost/11.html#Hasumi" onmouseover="showTooltip(this)" data-tooltip="DGrRrn">
+    <a href="/en/track/ost/11.html#Hasumi" onmouseover="showTooltipById(this)" data-tooltip="k_xaOc">
         <span>【1】OST&nbsp;11.&nbsp;Connected Sky</span>
     </a>
-    <span onclick="showPopupByTooltipId('DGrRrn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('k_xaOc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
     <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Future</span>&nbsp;<span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;</div>
@@ -361,10 +373,10 @@
             
 
             <li id="track-OST_28">
-    <a href="/en/track/ost/28.html#Hasumi" onmouseover="showTooltip(this)" data-tooltip="I6fWq9">
+    <a href="/en/track/ost/28.html#Hasumi" onmouseover="showTooltipById(this)" data-tooltip="rCNUjo">
         <span>【1】OST&nbsp;28.&nbsp;Plug and Play</span>
     </a>
-    <span onclick="showPopupByTooltipId('I6fWq9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('rCNUjo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
     <div class="track-stats-badge stats-badge"></div>
@@ -379,7 +391,7 @@
     
         
     <script>
-        add_tooltip_data({ 'DGrRrn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;11.&nbsp;Connected Sky <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">InGame</span><span class="badge badge-info badge-tag">Story</span></span></p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol></div>','I6fWq9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;28.&nbsp;Plug and Play <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">InGame</span><span class="badge badge-info badge-tag">Story</span></span></p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'k_xaOc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;11.&nbsp;Connected Sky <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">InGame</span><span class="badge badge-info badge-tag">Story</span></span></p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol></div>','rCNUjo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;28.&nbsp;Plug and Play <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">InGame</span><span class="badge badge-info badge-tag">Story</span></span></p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -401,8 +413,8 @@
 
             <div class="gallery-img" id="03997bae-6157-47de-921c-53bbf61d9b5e-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Event_13.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="zrtGzU">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Event_13.jpg.html#Hasumi-direct" onmouseover="showTooltip(this)" data-tooltip="zrtGzU" target="_blank">BG_CS_Event_13.jpg</a><span onclick="showPopupByTooltipId('zrtGzU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Event_13.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="B9nssa">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Event_13.jpg.html#Hasumi-direct" onmouseover="showTooltipById(this)" data-tooltip="B9nssa" target="_blank">BG_CS_Event_13.jpg</a><span onclick="showPopupByTooltipId('B9nssa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -416,8 +428,8 @@
 
             <div class="gallery-img" id="6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Event_14.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="sp7j22">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Event_14.jpg.html#Hasumi-direct" onmouseover="showTooltip(this)" data-tooltip="sp7j22" target="_blank">BG_CS_Event_14.jpg</a><span onclick="showPopupByTooltipId('sp7j22')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Event_14.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="6hKm0f">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Event_14.jpg.html#Hasumi-direct" onmouseover="showTooltipById(this)" data-tooltip="6hKm0f" target="_blank">BG_CS_Event_14.jpg</a><span onclick="showPopupByTooltipId('6hKm0f')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -430,7 +442,7 @@
     
         
     <script>
-        add_tooltip_data({ 'zrtGzU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Event_13.jpg</p><p>BG_CS_Event_13.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Event_13.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">Characters in this picture:</p><p><span><span><a href="/en/character/student/hasumi/#03997bae-6157-47de-921c-53bbf61d9b5e-direct"><img src="/static/images/student/icon/13003.webp" class="icon-stu"><span>Hasumi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuuka/#03997bae-6157-47de-921c-53bbf61d9b5e-direct"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/izuna/#03997bae-6157-47de-921c-53bbf61d9b5e-direct"><img src="/static/images/student/icon/10014.webp" class="icon-stu"><span>Izuna</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hoshino/#03997bae-6157-47de-921c-53bbf61d9b5e-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span></p></div>','sp7j22': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Event_14.jpg</p><p>BG_CS_Event_14.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Event_14.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">Characters in this picture:</p><p><span><span><a href="/en/character/student/serina_christmas/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/10056.webp" class="icon-stu"><span>Serina (Christmas)</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hanae_christmas/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/20021.webp" class="icon-stu"><span>Hanae (Christmas)</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/mine/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/10058.webp" class="icon-stu"><span>Mine</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/tsurugi/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/10013.webp" class="icon-stu"><span>Tsurugi</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hasumi/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/13003.webp" class="icon-stu"><span>Hasumi</span></a></span></p></div>', });
+        add_tooltip_data({ 'B9nssa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Event_13.jpg</p><p>BG_CS_Event_13.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Event_13.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">Characters in this picture:</p><p><span><span><a href="/en/character/student/hasumi/#03997bae-6157-47de-921c-53bbf61d9b5e-direct"><img src="/static/images/student/icon/13003.webp" class="icon-stu"><span>Hasumi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuuka/#03997bae-6157-47de-921c-53bbf61d9b5e-direct"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/izuna/#03997bae-6157-47de-921c-53bbf61d9b5e-direct"><img src="/static/images/student/icon/10014.webp" class="icon-stu"><span>Izuna</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hoshino/#03997bae-6157-47de-921c-53bbf61d9b5e-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span></p></div>','6hKm0f': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Event_14.jpg</p><p>BG_CS_Event_14.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Event_14.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">Characters in this picture:</p><p><span><span><a href="/en/character/student/serina_christmas/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/10056.webp" class="icon-stu"><span>Serina (Christmas)</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hanae_christmas/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/20021.webp" class="icon-stu"><span>Hanae (Christmas)</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/mine/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/10058.webp" class="icon-stu"><span>Mine</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/tsurugi/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/10013.webp" class="icon-stu"><span>Tsurugi</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hasumi/#6c84cb09-0003-45e5-9ba4-d8e48da8661f-direct"><img src="/static/images/student/icon/13003.webp" class="icon-stu"><span>Hasumi</span></a></span></p></div>', });
     </script>
 
     
@@ -450,8 +462,8 @@
 
             <div class="gallery-img" id="09f30267-0472-43bb-8d06-e2022eb60438-direct">
     <div >
-        <img src="/static/images/background/BG_ReceptionRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="oRIIFv">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ReceptionRoom.jpg.html#Hasumi" onmouseover="showTooltip(this)" data-tooltip="oRIIFv" target="_blank">BG_ReceptionRoom.jpg</a><span onclick="showPopupByTooltipId('oRIIFv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ReceptionRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1hlo8F">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ReceptionRoom.jpg.html#Hasumi" onmouseover="showTooltipById(this)" data-tooltip="1hlo8F" target="_blank">BG_ReceptionRoom.jpg</a><span onclick="showPopupByTooltipId('1hlo8F')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -464,7 +476,7 @@
     
         
     <script>
-        add_tooltip_data({ 'oRIIFv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ReceptionRoom.jpg</p><p>BG_ReceptionRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ReceptionRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '1hlo8F': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ReceptionRoom.jpg</p><p>BG_ReceptionRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ReceptionRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -542,12 +554,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/chinatsu/#Hasumi-direct" onmouseover="showTooltip(this)" data-tooltip="RhrwxM" >
+            <a href="/en/character/student/chinatsu/#Hasumi-direct" onmouseover="showTooltipById(this)" data-tooltip="Ga79Ez" >
                 <img src="/static/images/student/icon/26000.webp" class="icon-stu">
                 <span>Chinatsu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('RhrwxM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Ga79Ez')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Prefect Team]</span>
@@ -564,10 +576,10 @@
 
             <li id="6a1b8d37-559f-40e1-a963-6392585e19ef-direct"><span>【1】</span>
     
-        <a href="/en/character/npc/momoka/#Hasumi-direct" onmouseover="showTooltip(this)" data-tooltip="np6Npc" >
+        <a href="/en/character/npc/momoka/#Hasumi-direct" onmouseover="showTooltipById(this)" data-tooltip="ZdFKbi" >
             <span>Momoka</span>
         </a>
-        <span onclick="showPopupByTooltipId('np6Npc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ZdFKbi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -579,10 +591,10 @@
 
             <li id="8a9c956f-4a3a-41f3-8343-b27d6697bb8a-direct"><span>【1】</span>
     
-        <a href="/en/character/npc/rin/#Hasumi-direct" onmouseover="showTooltip(this)" data-tooltip="Agcfj2" >
+        <a href="/en/character/npc/rin/#Hasumi-direct" onmouseover="showTooltipById(this)" data-tooltip="ddgoqA" >
             <span>Rin</span>
         </a>
-        <span onclick="showPopupByTooltipId('Agcfj2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ddgoqA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -599,12 +611,12 @@
             <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/suzumi/#Hasumi-direct" onmouseover="showTooltip(this)" data-tooltip="JLBZjv" >
+            <a href="/en/character/student/suzumi/#Hasumi-direct" onmouseover="showTooltipById(this)" data-tooltip="AFlEwp" >
                 <img src="/static/images/student/icon/16003.webp" class="icon-stu">
                 <span>Suzumi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('JLBZjv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('AFlEwp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Trinity's Vigilante Crew]</span>
@@ -626,12 +638,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuuka/#Hasumi-direct" onmouseover="showTooltip(this)" data-tooltip="3IBwwi" >
+            <a href="/en/character/student/yuuka/#Hasumi-direct" onmouseover="showTooltipById(this)" data-tooltip="S96Dn7" >
                 <img src="/static/images/student/icon/13010.webp" class="icon-stu">
                 <span>Yuuka</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('3IBwwi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('S96Dn7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -645,22 +657,22 @@
 
     
     <script>
-        add_tooltip_data({ 'RhrwxM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chinatsu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/chinatsu_hotspring/"><img src="/static/images/student/icon/10030.webp" class="icon-stu"><span>Chinatsu (Hot Spring)</span></a></span></p><p>Other Characters: </p></div>','np6Npc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','Agcfj2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','JLBZjv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Suzumi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','3IBwwi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'Ga79Ez': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chinatsu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/chinatsu_hotspring/"><img src="/static/images/student/icon/10030.webp" class="icon-stu"><span>Chinatsu (Hot Spring)</span></a></span></p><p>Other Characters: </p></div>','ZdFKbi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','ddgoqA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','AFlEwp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Suzumi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','S96Dn7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-3" class="text-primary"><i>&#91;3&#93;&nbsp;Arguments In the Reception Room</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -698,13 +710,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -718,17 +730,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988953.5376732)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139575.5346062)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988953.5376806
+Generated time (UTC): 1702139575.534615
 -->
 </body>
 </html>

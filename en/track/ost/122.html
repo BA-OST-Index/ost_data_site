@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -298,12 +308,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=d8dIyfIGLQM', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=d8dIyfIGLQM', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=d8dIyfIGLQM)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1pV4y1r79L/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1pV4y1r79L/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1pV4y1r79L/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -370,6 +380,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -392,8 +409,8 @@
 
             <div class="gallery-img" id="82a031e0-ce48-4e3c-8798-5e9f1d1fabf1">
     <div >
-        <img src="/static/images/background/BG_BigSisterRoom2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="bGxGrQ">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom2.jpg.html#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="bGxGrQ" target="_blank">BG_BigSisterRoom2.jpg</a><span onclick="showPopupByTooltipId('bGxGrQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_BigSisterRoom2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="s9a3sT">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom2.jpg.html#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="s9a3sT" target="_blank">BG_BigSisterRoom2.jpg</a><span onclick="showPopupByTooltipId('s9a3sT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -407,8 +424,8 @@
 
             <div class="gallery-img" id="39174134-e8c0-4c39-bee8-4f2ad2ff05d9">
     <div >
-        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="XiScez">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="XiScez" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('XiScez')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FfRGYA">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="FfRGYA" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('FfRGYA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -422,8 +439,8 @@
 
             <div class="gallery-img" id="e06e195a-9039-4f3b-8308-53c79ed16ee7">
     <div >
-        <img src="/static/images/background/BG_DestructionFrontPublic.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="G_E_F5">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_DestructionFrontPublic.jpg.html#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="G_E_F5" target="_blank">BG_DestructionFrontPublic.jpg</a><span onclick="showPopupByTooltipId('G_E_F5')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_DestructionFrontPublic.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="zDzXnt">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_DestructionFrontPublic.jpg.html#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="zDzXnt" target="_blank">BG_DestructionFrontPublic.jpg</a><span onclick="showPopupByTooltipId('zDzXnt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -437,8 +454,8 @@
 
             <div class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="jgWUcw">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="jgWUcw" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('jgWUcw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="AKOZss">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="AKOZss" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('AKOZss')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -452,8 +469,8 @@
 
             <div class="gallery-img" id="66d35fae-5396-484b-ac3e-42c94a574259">
     <div >
-        <img src="/static/images/background/BG_EriduTowerEntrance_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="CY3Wh6">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduTowerEntrance_Night.jpg.html#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="CY3Wh6" target="_blank">BG_EriduTowerEntrance_Night.jpg</a><span onclick="showPopupByTooltipId('CY3Wh6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduTowerEntrance_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="18N6D2">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduTowerEntrance_Night.jpg.html#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="18N6D2" target="_blank">BG_EriduTowerEntrance_Night.jpg</a><span onclick="showPopupByTooltipId('18N6D2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -467,8 +484,8 @@
 
             <div class="gallery-img" id="55657b32-ab5d-4c67-b755-07ba3d15432b">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="IiYnzq">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="IiYnzq" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('IiYnzq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="bN8zNN">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="bN8zNN" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('bN8zNN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -482,8 +499,8 @@
 
             <div class="gallery-img" id="094de1f9-477e-416e-8146-9ce233539cbe">
     <div >
-        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1EwJCi">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="1EwJCi" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('1EwJCi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="mSRBk9">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="mSRBk9" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('mSRBk9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -497,8 +514,8 @@
 
             <div class="gallery-img" id="dcad8986-0a4f-4cbd-920d-65f4428c1b4b">
     <div >
-        <img src="/static/images/background/BG_View_Eridu_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="JYvUn3">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Eridu_Night.jpg.html#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="JYvUn3" target="_blank">BG_View_Eridu_Night.jpg</a><span onclick="showPopupByTooltipId('JYvUn3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_View_Eridu_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="kJIp97">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Eridu_Night.jpg.html#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="kJIp97" target="_blank">BG_View_Eridu_Night.jpg</a><span onclick="showPopupByTooltipId('kJIp97')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -511,7 +528,7 @@
     
         
     <script>
-        add_tooltip_data({ 'bGxGrQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom2.jpg</p><p>BG_BigSisterRoom2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>','XiScez': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li></ol></div>','G_E_F5': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_DestructionFrontPublic.jpg</p><p>BG_DestructionFrontPublic.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_DestructionFrontPublic.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li></ol></div>','jgWUcw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>','CY3Wh6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerEntrance_Night.jpg</p><p>BG_EriduTowerEntrance_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerEntrance_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>','IiYnzq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li></ol></div>','1EwJCi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>','JYvUn3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Eridu_Night.jpg</p><p>BG_View_Eridu_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Eridu_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 's9a3sT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom2.jpg</p><p>BG_BigSisterRoom2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>','FfRGYA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li></ol></div>','zDzXnt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_DestructionFrontPublic.jpg</p><p>BG_DestructionFrontPublic.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_DestructionFrontPublic.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li></ol></div>','AKOZss': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>','18N6D2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerEntrance_Night.jpg</p><p>BG_EriduTowerEntrance_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerEntrance_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>','bN8zNN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li></ol></div>','mSRBk9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>','kJIp97': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Eridu_Night.jpg</p><p>BG_View_Eridu_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Eridu_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -536,9 +553,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/6.html"  onmouseover="showTooltip(this)" data-tooltip="LxCxIW">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>
+        <a href="/en/main/story/main/2/2/6.html"  onmouseover="showTooltipById(this)" data-tooltip="0OjS8X">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>
     
-    <span onclick="showPopupByTooltipId('LxCxIW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('0OjS8X')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -551,7 +568,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Oz5Ljz"><i>&#91;4&#93;&nbsp;An Abnormality</i></a><span onclick="showPopupByTooltipId('Oz5Ljz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="FFgals"><i>&#91;4&#93;&nbsp;An Abnormality</i></a><span onclick="showPopupByTooltipId('FFgals')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -570,9 +587,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/7.html"  onmouseover="showTooltip(this)" data-tooltip="xvFTnn">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>
+        <a href="/en/main/story/main/2/2/7.html"  onmouseover="showTooltipById(this)" data-tooltip="OO_Obb">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>
     
-    <span onclick="showPopupByTooltipId('xvFTnn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('OO_Obb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -585,7 +602,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="CtBb61"><i>&#91;1&#93;&nbsp;After the Attack</i></a><span onclick="showPopupByTooltipId('CtBb61')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="ArIcMs"><i>&#91;1&#93;&nbsp;After the Attack</i></a><span onclick="showPopupByTooltipId('ArIcMs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -604,9 +621,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/9.html"  onmouseover="showTooltip(this)" data-tooltip="7GSFKF">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>
+        <a href="/en/main/story/main/2/2/9.html"  onmouseover="showTooltipById(this)" data-tooltip="HyRzut">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>
     
-    <span onclick="showPopupByTooltipId('7GSFKF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('HyRzut')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -619,7 +636,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="M5trzE"><i>&#91;3&#93;&nbsp;An Argument</i></a><span onclick="showPopupByTooltipId('M5trzE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="48_s9z"><i>&#91;3&#93;&nbsp;An Argument</i></a><span onclick="showPopupByTooltipId('48_s9z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -631,7 +648,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="jAO7q8"><i>&#91;4&#93;&nbsp;Betrayal</i></a><span onclick="showPopupByTooltipId('jAO7q8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="fx0cYu"><i>&#91;4&#93;&nbsp;Betrayal</i></a><span onclick="showPopupByTooltipId('fx0cYu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -652,9 +669,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/22.html"  onmouseover="showTooltip(this)" data-tooltip="e1iHWp">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>
+        <a href="/en/main/story/main/2/2/22.html"  onmouseover="showTooltipById(this)" data-tooltip="Ao0VYh">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>
     
-    <span onclick="showPopupByTooltipId('e1iHWp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Ao0VYh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -667,7 +684,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="GNrNC2"><i>&#91;3&#93;&nbsp;Key</i></a><span onclick="showPopupByTooltipId('GNrNC2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="eKrfMu"><i>&#91;3&#93;&nbsp;Key</i></a><span onclick="showPopupByTooltipId('eKrfMu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -682,7 +699,7 @@
 
     
     <script>
-        add_tooltip_data({ 'LxCxIW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Strange Machine 1</p><ul><li>One day, Veritas reaches out to Sensei about the discovery of a suspicious machine. On the way to their club room, Sensei joins up with the Game Development Department to investigate the machine, but none of them are able to get to the bottom of its true nature... As if suddenly drawn by an inexplicable force, Aris touches the machine and activates it.</li></ul></div>','Oz5Ljz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">An Abnormality</p><p>The robot, alongside Momoi&#x27s game console carrying G.Bible, started operating after interacting with Aris. All panicking, Aris suddenly announced that the "AL-1S" completed the booting, and began attacking everyone.</p><hr><p>Character:<span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/ariskey/"><span>Key</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/16.html"><span>OST&nbsp;16.&nbsp;MX Adventure</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/25.html"><span>OST&nbsp;25.&nbsp;Future Bossa</span></a></p></div>','xvFTnn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Strange Machine 2</p><ul><li>Aris goes into a frenzy and loses consciousness, destroying the clubroom and attacking everyone in her wake. No one is able to stop Aris and the situation grows critical. At that moment, the C&C appears and knocks her out, then proceeds to defeat the suspicious machine. Everyone breathes a sigh of relief, but then Sensei receives an unexpected piece of news from Midori.</li></ul></div>','CtBb61': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">After the Attack</p><p>Unable to knock down everyone, Aris recharged the Sword of Light. Maki tried to stop, but was suppressed by Aris instead. As everyone was out of choices, a familiar voice was heard.</p><hr><p>Character:<span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a></p></div>','7GSFKF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','M5trzE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">An Argument</p><p>Everyone outraged upon hearing this. The president continued explaining her solution: to destroy Aris&#x27 halo, i.e. to kill her. Such remarks even angered Sensei. Rio expressed her surprise about the fact that Aris&#x27 having a halo, despite her being a robot. No agreement made, Rio called Neru who was standing by all the time.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/93.html"><span>OST&nbsp;93.&nbsp;Formless Dream</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a></p></div>','jAO7q8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Betrayal</p><p>Rio said that the C&C was under her direct command after all. She also stressed that no one should be harmed if no resistance occurred. Yet Neru was pretty upset at Rio&#x27s actions as well and began revolting; but Rio was too familiar with Neru, and was well prepared for that.</p><hr><p>Character:<span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/75.html"><span>OST&nbsp;75.&nbsp;Alert (Hard Arrange)</span></a></p></div>','e1iHWp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 1</p><ul><li>The Game Development Department arrives at Rio&#x27s location and are about to rescue Aris when an unknown being, Key, appears and takes control of Eridu. The results are catastrophic. Rio belatedly tries to sacrifice herself in an attempt to rectify the situation when Noa and Yuuka arrive.</li></ul></div>','GNrNC2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><p>What everyone embraced was not Aris, but rather another being, which was called Key. Aris&#x27 personality was isolated in the deep databases by Key, and it was Key acting right now. Key disconnected the comm and hacked Eridu, trying to make the city for her use; the army of Divi: Sion started gathering within the city. Rio apologized for her doings, and requested Sensei to leave before Key ever finished it, trying to stop it on her own. At that urgent moment, Yuuka intervened just in time and disconnected the power of Key, forcing it to stop.</p><hr><p>Character:<span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/noa/"><img src="/static/images/student/icon/10052.webp" class="icon-stu"><span>Noa</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/65.html"><span>OST&nbsp;65.&nbsp;Accelerator</span></a></p></div>', });
+        add_tooltip_data({ '0OjS8X': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Strange Machine 1</p><ul><li>One day, Veritas reaches out to Sensei about the discovery of a suspicious machine. On the way to their club room, Sensei joins up with the Game Development Department to investigate the machine, but none of them are able to get to the bottom of its true nature... As if suddenly drawn by an inexplicable force, Aris touches the machine and activates it.</li></ul></div>','FFgals': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">An Abnormality</p><p>The robot, alongside Momoi&#x27s game console carrying G.Bible, started operating after interacting with Aris. All panicking, Aris suddenly announced that the "AL-1S" completed the booting, and began attacking everyone.</p><hr><p>Character:<span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/ariskey/"><span>Key</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/16.html"><span>OST&nbsp;16.&nbsp;MX Adventure</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/25.html"><span>OST&nbsp;25.&nbsp;Future Bossa</span></a></p></div>','OO_Obb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Strange Machine 2</p><ul><li>Aris goes into a frenzy and loses consciousness, destroying the clubroom and attacking everyone in her wake. No one is able to stop Aris and the situation grows critical. At that moment, the C&C appears and knocks her out, then proceeds to defeat the suspicious machine. Everyone breathes a sigh of relief, but then Sensei receives an unexpected piece of news from Midori.</li></ul></div>','ArIcMs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">After the Attack</p><p>Unable to knock down everyone, Aris recharged the Sword of Light. Maki tried to stop, but was suppressed by Aris instead. As everyone was out of choices, a familiar voice was heard.</p><hr><p>Character:<span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a></p></div>','HyRzut': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','48_s9z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">An Argument</p><p>Everyone outraged upon hearing this. The president continued explaining her solution: to destroy Aris&#x27 halo, i.e. to kill her. Such remarks even angered Sensei. Rio expressed her surprise about the fact that Aris&#x27 having a halo, despite her being a robot. No agreement made, Rio called Neru who was standing by all the time.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/93.html"><span>OST&nbsp;93.&nbsp;Formless Dream</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a></p></div>','fx0cYu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Betrayal</p><p>Rio said that the C&C was under her direct command after all. She also stressed that no one should be harmed if no resistance occurred. Yet Neru was pretty upset at Rio&#x27s actions as well and began revolting; but Rio was too familiar with Neru, and was well prepared for that.</p><hr><p>Character:<span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/75.html"><span>OST&nbsp;75.&nbsp;Alert (Hard Arrange)</span></a></p></div>','Ao0VYh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Pavane for a Princess 1</p><ul><li>The Game Development Department arrives at Rio&#x27s location and are about to rescue Aris when an unknown being, Key, appears and takes control of Eridu. The results are catastrophic. Rio belatedly tries to sacrifice herself in an attempt to rectify the situation when Noa and Yuuka arrive.</li></ul></div>','eKrfMu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><p>What everyone embraced was not Aris, but rather another being, which was called Key. Aris&#x27 personality was isolated in the deep databases by Key, and it was Key acting right now. Key disconnected the comm and hacked Eridu, trying to make the city for her use; the army of Divi: Sion started gathering within the city. Rio apologized for her doings, and requested Sensei to leave before Key ever finished it, trying to stop it on her own. At that urgent moment, Yuuka intervened just in time and disconnected the power of Key, forcing it to stop.</p><hr><p>Character:<span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/noa/"><img src="/static/images/student/icon/10052.webp" class="icon-stu"><span>Noa</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/122.html"><span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93;</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/65.html"><span>OST&nbsp;65.&nbsp;Accelerator</span></a></p></div>', });
     </script>
 
 
@@ -730,12 +747,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="DPRkyW" >
+            <a href="/en/character/student/midori/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="Ry3r25" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('DPRkyW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Ry3r25')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -757,12 +774,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="guK0ur" >
+            <a href="/en/character/student/yuzu/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="RuMPht" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('guK0ur')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('RuMPht')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -779,10 +796,10 @@
 
             <li id="0a1f1737-f7ea-4c10-8aec-c4d4ce0c1e6f"><span>【3】</span>
     
-        <a href="/en/character/npc/ariskey/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="GEEOVr" >
+        <a href="/en/character/npc/ariskey/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="1TDvgl" >
             <span>Key</span>
         </a>
-        <span onclick="showPopupByTooltipId('GEEOVr')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('1TDvgl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -799,12 +816,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="gheSCM" >
+            <a href="/en/character/student/aris/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="bWswU_" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('gheSCM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('bWswU_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -826,12 +843,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hare/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="o9O7Bn" >
+            <a href="/en/character/student/hare/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="Z2uJ1C" >
                 <img src="/static/images/student/icon/23003.webp" class="icon-stu">
                 <span>Hare</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('o9O7Bn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Z2uJ1C')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -853,12 +870,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotama/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="vR5Hxs" >
+            <a href="/en/character/student/kotama/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="QLuzk4" >
                 <img src="/static/images/student/icon/26001.webp" class="icon-stu">
                 <span>Kotama</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('vR5Hxs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('QLuzk4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -880,12 +897,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/maki/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="gSvL9Z" >
+            <a href="/en/character/student/maki/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="5gaA03" >
                 <img src="/static/images/student/icon/10007.webp" class="icon-stu">
                 <span>Maki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('gSvL9Z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('5gaA03')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -907,12 +924,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="X47oYH" >
+            <a href="/en/character/student/momoi/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="VSUj0W" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('X47oYH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('VSUj0W')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -929,10 +946,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【2】</span>
     
-        <a href="/en/character/npc/rio/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="wRugSS" >
+        <a href="/en/character/npc/rio/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="vd7nu9" >
             <span>Rio</span>
         </a>
-        <span onclick="showPopupByTooltipId('wRugSS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('vd7nu9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -949,12 +966,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/chihiro/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="kd0FeU" >
+            <a href="/en/character/student/chihiro/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="8el0r8" >
                 <img src="/static/images/student/icon/20013.webp" class="icon-stu">
                 <span>Chihiro</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('kd0FeU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('8el0r8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -976,12 +993,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/neru/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="83bcZF" >
+            <a href="/en/character/student/neru/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="w8qV2t" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span>Neru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('83bcZF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('w8qV2t')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1003,12 +1020,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/noa/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="o6ArpX" >
+            <a href="/en/character/student/noa/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="t_d1hi" >
                 <img src="/static/images/student/icon/10052.webp" class="icon-stu">
                 <span>Noa</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('o6ArpX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('t_d1hi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -1030,12 +1047,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuuka/#track-OST_122" onmouseover="showTooltip(this)" data-tooltip="y0fjC0" >
+            <a href="/en/character/student/yuuka/#track-OST_122" onmouseover="showTooltipById(this)" data-tooltip="VuHKhH" >
                 <img src="/static/images/student/icon/13010.webp" class="icon-stu">
                 <span>Yuuka</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('y0fjC0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('VuHKhH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -1049,22 +1066,22 @@
 
     
     <script>
-        add_tooltip_data({ 'DPRkyW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','guK0ur': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','GEEOVr': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p></div>','gheSCM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','o9O7Bn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','vR5Hxs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','gSvL9Z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','X47oYH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','wRugSS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','kd0FeU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','83bcZF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','o6ArpX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Noa</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','y0fjC0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'Ry3r25': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','RuMPht': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','1TDvgl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p></div>','bWswU_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','Z2uJ1C': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','QLuzk4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','5gaA03': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;7:&nbsp;A Strange Machine 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;After the Attack</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','VSUj0W': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;An Abnormality</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','vd7nu9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Argument</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','8el0r8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','w8qV2t': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Betrayal</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','t_d1hi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Noa</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','VuHKhH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/22.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;22:&nbsp;Pavane for a Princess 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/22.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Key</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -1099,13 +1116,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -1119,17 +1136,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988808.8150182)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139645.2726784)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988808.815027
+Generated time (UTC): 1702139645.2726872
 -->
 </body>
 </html>

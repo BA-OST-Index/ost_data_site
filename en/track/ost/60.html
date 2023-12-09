@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -292,12 +302,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=AHyfSGEuPEU', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=AHyfSGEuPEU', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=AHyfSGEuPEU)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=81', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=81', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=81)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -364,6 +374,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -392,8 +409,8 @@
 
             <div class="gallery-img" id="af226916-d32d-4563-b07f-2a5264a7cf07">
     <div >
-        <img src="/static/images/background/BG_ComputerCenter_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ssP42N">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter_Off.jpg.html#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="ssP42N" target="_blank">BG_ComputerCenter_Off.jpg</a><span onclick="showPopupByTooltipId('ssP42N')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ComputerCenter_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="gXUCxR">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter_Off.jpg.html#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="gXUCxR" target="_blank">BG_ComputerCenter_Off.jpg</a><span onclick="showPopupByTooltipId('gXUCxR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -407,8 +424,8 @@
 
             <div class="gallery-img" id="f445c8d7-5585-485f-a5c8-d2894ded9038">
     <div >
-        <img src="/static/images/background/BG_DesertCamp.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="xR8cXp">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_DesertCamp.jpg.html#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="xR8cXp" target="_blank">BG_DesertCamp.jpg</a><span onclick="showPopupByTooltipId('xR8cXp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_DesertCamp.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="81Vz3c">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_DesertCamp.jpg.html#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="81Vz3c" target="_blank">BG_DesertCamp.jpg</a><span onclick="showPopupByTooltipId('81Vz3c')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -422,8 +439,8 @@
 
             <div class="gallery-img" id="6e054f4b-7778-4fc6-b6f1-4901e7abc5f1">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="HsF_3F">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown.jpg.html#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="HsF_3F" target="_blank">BG_EriduCityTown.jpg</a><span onclick="showPopupByTooltipId('HsF_3F')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FWhtXW">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown.jpg.html#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="FWhtXW" target="_blank">BG_EriduCityTown.jpg</a><span onclick="showPopupByTooltipId('FWhtXW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -437,8 +454,8 @@
 
             <div class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="fQ7SMo">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="fQ7SMo" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('fQ7SMo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="NiYD0d">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="NiYD0d" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('NiYD0d')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -451,7 +468,7 @@
     
         
     <script>
-        add_tooltip_data({ 'ssP42N': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter_Off.jpg</p><p>BG_ComputerCenter_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol></div>','xR8cXp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_DesertCamp.jpg</p><p>BG_DesertCamp.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_DesertCamp.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol></div>','HsF_3F': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown.jpg</p><p>BG_EriduCityTown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol></div>','fQ7SMo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'gXUCxR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter_Off.jpg</p><p>BG_ComputerCenter_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol></div>','81Vz3c': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_DesertCamp.jpg</p><p>BG_DesertCamp.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_DesertCamp.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol></div>','FWhtXW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown.jpg</p><p>BG_EriduCityTown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol></div>','NiYD0d': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -476,9 +493,9 @@
     
 
     
-        <a href="/en/main/story/main/1/2/18.html"  onmouseover="showTooltip(this)" data-tooltip="i5VnV6">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>
+        <a href="/en/main/story/main/1/2/18.html"  onmouseover="showTooltipById(this)" data-tooltip="Bbgz8R">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>
     
-    <span onclick="showPopupByTooltipId('i5VnV6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Bbgz8R')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -491,7 +508,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="YPWjMM"><i>&#91;1&#93;&nbsp;Trinity's Reinforcement</i></a><span onclick="showPopupByTooltipId('YPWjMM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="u0j6OB"><i>&#91;1&#93;&nbsp;Trinity's Reinforcement</i></a><span onclick="showPopupByTooltipId('u0j6OB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -510,9 +527,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/13.html"  onmouseover="showTooltip(this)" data-tooltip="KHAJ4I">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>
+        <a href="/en/main/story/main/2/2/13.html"  onmouseover="showTooltipById(this)" data-tooltip="qV4ByK">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>
     
-    <span onclick="showPopupByTooltipId('KHAJ4I')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('qV4ByK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -525,7 +542,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="YFqRU0"><i>&#91;4&#93;&nbsp;Toki's Appearance</i></a><span onclick="showPopupByTooltipId('YFqRU0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="XSf5fY"><i>&#91;4&#93;&nbsp;Toki's Appearance</i></a><span onclick="showPopupByTooltipId('XSf5fY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -544,9 +561,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/17.html"  onmouseover="showTooltip(this)" data-tooltip="RqnRHV">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>
+        <a href="/en/main/story/main/2/2/17.html"  onmouseover="showTooltipById(this)" data-tooltip="MBghh_">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>
     
-    <span onclick="showPopupByTooltipId('RqnRHV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('MBghh_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -559,7 +576,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="K4WDpq"><i>&#91;1&#93;&nbsp;Timely Help</i></a><span onclick="showPopupByTooltipId('K4WDpq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="MTSiVd"><i>&#91;1&#93;&nbsp;Timely Help</i></a><span onclick="showPopupByTooltipId('MTSiVd')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -574,7 +591,7 @@
 
     
     <script>
-        add_tooltip_data({ 'i5VnV6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 1</p><ul><li>The Foreclosure Task Force is fighting on multiple fronts when Hifumi arrives with reinforcements from Trinity in tow. Using the unexpected arrival as a distraction, the Foreclosure Task Force breaks through the enemy lines.</li><li>When the Foreclosure Task Force arrives at Abydos High&#x27s old main building, a Kaiser board member bars their way. However, Aru and Problem Solver 68 arrive in the nick of time.</li></ul></div>','YPWjMM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Trinity&#x27s Reinforcement</p><p>The Foreclosure Task Force is in front of the building&#x27s gate but found enemies are under fire. Hifumi, at this point, connects onto the comm and explained the situation to everyone; and in particular she stresses these howitzer have nothing to do with Trinity. After the comm, the Foreclosure Task Force begins to break through the lines.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hifumi/"><img src="/static/images/student/icon/10003.webp" class="icon-stu"><span>Hifumi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/60.html"><span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span></a></p></div>','KHAJ4I': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Big Sister</p><ul><li>Himari is imprisoned by Rio, and the two are still unable to find common ground. Meanwhile, after infiltrating Eridu to rescue Aris, the Game Development Department and the Engineering Department encounter an AMAS built by Rio.</li><li>The C&C members blast their way through the AMAS as planned, but their relentless determination is stopped by none other than the C&C&#x27s fifth member, Toki.</li></ul></div>','YFqRU0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki&#x27s Appearance</p><p>As the Game Development Department confronting enemies, C&C on the ground were making loud noises as well. It eventually attracted Toki&#x27s attention.</p><hr><p>Character:<span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/58.html"><span>OST&nbsp;58.&nbsp;SAKURA PUNCH</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/60.html"><span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span></a></p></div>','RqnRHV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Turning the Tides</p><ul><li>With Sumire&#x27s help, Chihiro secures the Mirror from the contraband storage and succeeds in taking control of Eridu&#x27s network, and the Game Development Department seizes this moment to launch a counterattack.</li><li>The Game Development Department succeed in defeating the Avant Guard with the help of the Engineering Department, but the aftermath causes the Engineering Department to retire from combat. However, they continue cheering on the Game Development Department&#x27s forward charge.</li></ul></div>','K4WDpq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Timely Help</p><p>Chihiro&#x27s appearance cheered everyone up greatly. Others at Veritas also connected to the comm. Hare was very curious about how Chihiro did it, and Chihiro said lightly that it was the "Mirror" that came in handy. Everyone remembered the confrontation between Yuzu and Neru at that time, and was amazed by the plan. Momoi asked about the means of retrieving it, and Sumire happened to connect to the comm. Despite the successful hacking, the firewall started making the communication unstable. Veritas promised that the communication would not be interrupted, and everyone continued to combat the Avant Guard.</p><hr><p>Character:<span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span><span>&nbsp;and more.</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/60.html"><span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>', });
+        add_tooltip_data({ 'Bbgz8R': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Never Letting Go Part 1</p><ul><li>The Foreclosure Task Force is fighting on multiple fronts when Hifumi arrives with reinforcements from Trinity in tow. Using the unexpected arrival as a distraction, the Foreclosure Task Force breaks through the enemy lines.</li><li>When the Foreclosure Task Force arrives at Abydos High&#x27s old main building, a Kaiser board member bars their way. However, Aru and Problem Solver 68 arrive in the nick of time.</li></ul></div>','u0j6OB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Trinity&#x27s Reinforcement</p><p>The Foreclosure Task Force is in front of the building&#x27s gate but found enemies are under fire. Hifumi, at this point, connects onto the comm and explained the situation to everyone; and in particular she stresses these howitzer have nothing to do with Trinity. After the comm, the Foreclosure Task Force begins to break through the lines.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hifumi/"><img src="/static/images/student/icon/10003.webp" class="icon-stu"><span>Hifumi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/60.html"><span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span></a></p></div>','qV4ByK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Big Sister</p><ul><li>Himari is imprisoned by Rio, and the two are still unable to find common ground. Meanwhile, after infiltrating Eridu to rescue Aris, the Game Development Department and the Engineering Department encounter an AMAS built by Rio.</li><li>The C&C members blast their way through the AMAS as planned, but their relentless determination is stopped by none other than the C&C&#x27s fifth member, Toki.</li></ul></div>','XSf5fY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki&#x27s Appearance</p><p>As the Game Development Department confronting enemies, C&C on the ground were making loud noises as well. It eventually attracted Toki&#x27s attention.</p><hr><p>Character:<span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/58.html"><span>OST&nbsp;58.&nbsp;SAKURA PUNCH</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/60.html"><span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span></a></p></div>','MBghh_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Turning the Tides</p><ul><li>With Sumire&#x27s help, Chihiro secures the Mirror from the contraband storage and succeeds in taking control of Eridu&#x27s network, and the Game Development Department seizes this moment to launch a counterattack.</li><li>The Game Development Department succeed in defeating the Avant Guard with the help of the Engineering Department, but the aftermath causes the Engineering Department to retire from combat. However, they continue cheering on the Game Development Department&#x27s forward charge.</li></ul></div>','MTSiVd': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Timely Help</p><p>Chihiro&#x27s appearance cheered everyone up greatly. Others at Veritas also connected to the comm. Hare was very curious about how Chihiro did it, and Chihiro said lightly that it was the "Mirror" that came in handy. Everyone remembered the confrontation between Yuzu and Neru at that time, and was amazed by the plan. Momoi asked about the means of retrieving it, and Sumire happened to connect to the comm. Despite the successful hacking, the firewall started making the communication unstable. Veritas promised that the communication would not be interrupted, and everyone continued to combat the Avant Guard.</p><hr><p>Character:<span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span><span>&nbsp;and more.</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/60.html"><span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange)</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a></p></div>', });
     </script>
 
 
@@ -700,12 +717,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/akane/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="bt4pqk" >
+            <a href="/en/character/student/akane/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="n3Wzdx" >
                 <img src="/static/images/student/icon/13000.webp" class="icon-stu">
                 <span>Akane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('bt4pqk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('n3Wzdx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -727,12 +744,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/asuna/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="MXbtPh" >
+            <a href="/en/character/student/asuna/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="pMr9LJ" >
                 <img src="/static/images/student/icon/16001.webp" class="icon-stu">
                 <span>Asuna</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('MXbtPh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('pMr9LJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -754,12 +771,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/ayane/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="JKlQ43" >
+            <a href="/en/character/student/ayane/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="4DXZ0h" >
                 <img src="/static/images/student/icon/23005.webp" class="icon-stu">
                 <span>Ayane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('JKlQ43')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('4DXZ0h')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -781,12 +798,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/chihiro/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="lxhHnH" >
+            <a href="/en/character/student/chihiro/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="mhDK3S" >
                 <img src="/static/images/student/icon/20013.webp" class="icon-stu">
                 <span>Chihiro</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('lxhHnH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('mhDK3S')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -808,12 +825,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hare/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="M8qWfI" >
+            <a href="/en/character/student/hare/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="OW6ftv" >
                 <img src="/static/images/student/icon/23003.webp" class="icon-stu">
                 <span>Hare</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('M8qWfI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('OW6ftv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -835,12 +852,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hibiki/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="BaESIO" >
+            <a href="/en/character/student/hibiki/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="Fy9cVE" >
                 <img src="/static/images/student/icon/20000.webp" class="icon-stu">
                 <span>Hibiki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('BaESIO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Fy9cVE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -862,12 +879,12 @@
             <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hifumi/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="BRgUTW" >
+            <a href="/en/character/student/hifumi/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="4nPQIZ" >
                 <img src="/static/images/student/icon/10003.webp" class="icon-stu">
                 <span>Hifumi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('BRgUTW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('4nPQIZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Make-Up Work Club]</span>
@@ -889,12 +906,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/karin/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="T6uS23" >
+            <a href="/en/character/student/karin/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="DM7p_I" >
                 <img src="/static/images/student/icon/20001.webp" class="icon-stu">
                 <span>Karin</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('T6uS23')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('DM7p_I')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -916,12 +933,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotama/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="7YULxd" >
+            <a href="/en/character/student/kotama/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="rdDnzt" >
                 <img src="/static/images/student/icon/26001.webp" class="icon-stu">
                 <span>Kotama</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('7YULxd')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('rdDnzt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -943,12 +960,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotori/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="eilCAt" >
+            <a href="/en/character/student/kotori/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="GgS_uu" >
                 <img src="/static/images/student/icon/16002.webp" class="icon-stu">
                 <span>Kotori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('eilCAt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GgS_uu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -970,12 +987,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/maki/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="gdzOYO" >
+            <a href="/en/character/student/maki/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="9ZRWKL" >
                 <img src="/static/images/student/icon/10007.webp" class="icon-stu">
                 <span>Maki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('gdzOYO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('9ZRWKL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -997,12 +1014,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="ynGpGx" >
+            <a href="/en/character/student/midori/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="AoPxt6" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ynGpGx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('AoPxt6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1024,12 +1041,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/neru/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="l9euqZ" >
+            <a href="/en/character/student/neru/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="7B5adh" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span>Neru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('l9euqZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('7B5adh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1051,12 +1068,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/nonomi/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="Ed7ppz" >
+            <a href="/en/character/student/nonomi/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="y0WeeH" >
                 <img src="/static/images/student/icon/13004.webp" class="icon-stu">
                 <span>Nonomi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Ed7ppz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('y0WeeH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -1078,12 +1095,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/serika/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="aAPk3D" >
+            <a href="/en/character/student/serika/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="aYRErX" >
                 <img src="/static/images/student/icon/13008.webp" class="icon-stu">
                 <span>Serika</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('aAPk3D')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('aYRErX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -1105,12 +1122,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/shiroko/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="hDDqLB" >
+            <a href="/en/character/student/shiroko/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="1MMnmx" >
                 <img src="/static/images/student/icon/10010.webp" class="icon-stu">
                 <span>Shiroko</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('hDDqLB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('1MMnmx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -1132,12 +1149,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/sumire/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="5pj_bh" >
+            <a href="/en/character/student/sumire/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="U0CXbf" >
                 <img src="/static/images/student/icon/10012.webp" class="icon-stu">
                 <span>Sumire</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('5pj_bh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('U0CXbf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Athletics Training Club]</span>
@@ -1159,12 +1176,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/toki/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="1bhpza" >
+            <a href="/en/character/student/toki/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="iYn3K0" >
                 <img src="/static/images/student/icon/10062.webp" class="icon-stu">
                 <span>Toki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('1bhpza')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('iYn3K0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1186,12 +1203,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/utaha/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="RZTX5N" >
+            <a href="/en/character/student/utaha/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="0Z69l6" >
                 <img src="/static/images/student/icon/23004.webp" class="icon-stu">
                 <span>Utaha</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('RZTX5N')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('0Z69l6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -1213,12 +1230,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_60" onmouseover="showTooltip(this)" data-tooltip="ccHM4N" >
+            <a href="/en/character/student/yuzu/#track-OST_60" onmouseover="showTooltipById(this)" data-tooltip="Rmtm3f" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ccHM4N')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Rmtm3f')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1232,22 +1249,22 @@
 
     
     <script>
-        add_tooltip_data({ 'bt4pqk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','MXbtPh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','JKlQ43': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ayane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span>Ayane (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','lxhHnH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','M8qWfI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','BaESIO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','BRgUTW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hifumi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hifumi_swimsuit/"><img src="/static/images/student/icon/20005.webp" class="icon-stu"><span>Hifumi (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','T6uS23': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','7YULxd': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','eilCAt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','gdzOYO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','ynGpGx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','l9euqZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','Ed7ppz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Nonomi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/nonomi_swimsuit/"><img src="/static/images/student/icon/10044.webp" class="icon-stu"><span>Nonomi (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','aAPk3D': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/serika_newyear/"><img src="/static/images/student/icon/20011.webp" class="icon-stu"><span>Serika (New Year)</span></a></span></p><p>Other Characters: </p></div>','hDDqLB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shiroko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><span><a href="/en/character/student/shiroko_cycling/"><img src="/static/images/student/icon/10024.webp" class="icon-stu"><span>Shiroko (Cycling)</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko_swimsuit/"><img src="/static/images/student/icon/20027.webp" class="icon-stu"><span>Shiroko (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','5pj_bh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Sumire</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','1bhpza': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','RZTX5N': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','ccHM4N': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'n3Wzdx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','pMr9LJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','4DXZ0h': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ayane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span>Ayane (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','mhDK3S': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','OW6ftv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','Fy9cVE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','4nPQIZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hifumi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hifumi_swimsuit/"><img src="/static/images/student/icon/20005.webp" class="icon-stu"><span>Hifumi (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','DM7p_I': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','rdDnzt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','GgS_uu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','9ZRWKL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','AoPxt6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','7B5adh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','y0WeeH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Nonomi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/nonomi_swimsuit/"><img src="/static/images/student/icon/10044.webp" class="icon-stu"><span>Nonomi (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','aYRErX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/serika_newyear/"><img src="/static/images/student/icon/20011.webp" class="icon-stu"><span>Serika (New Year)</span></a></span></p><p>Other Characters: </p></div>','1MMnmx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shiroko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/18.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;18:&nbsp;Never Letting Go Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/18.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Trinity&#x27s Reinforcement</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><span><a href="/en/character/student/shiroko_cycling/"><img src="/static/images/student/icon/10024.webp" class="icon-stu"><span>Shiroko (Cycling)</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko_swimsuit/"><img src="/static/images/student/icon/20027.webp" class="icon-stu"><span>Shiroko (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','U0CXbf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Sumire</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','iYn3K0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Toki&#x27s Appearance</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','0Z69l6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','Rmtm3f': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;Turning the Tides</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Timely Help</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -1282,13 +1299,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -1302,17 +1319,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988789.6380239)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139646.0242007)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988789.6380324
+Generated time (UTC): 1702139646.0242093
 -->
 </body>
 </html>

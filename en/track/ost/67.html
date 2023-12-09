@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=F4V2pbyIEjs', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=F4V2pbyIEjs', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=F4V2pbyIEjs)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=66', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=66', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=66)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="87cc8d99-2c89-48e7-8aeb-d7c4e0f958a8">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_10.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="qIZfoi">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_10.jpg.html#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="qIZfoi" target="_blank">BG_CS_Millenium_10.jpg</a><span onclick="showPopupByTooltipId('qIZfoi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_10.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Fh02QX">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_10.jpg.html#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="Fh02QX" target="_blank">BG_CS_Millenium_10.jpg</a><span onclick="showPopupByTooltipId('Fh02QX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="ecf57c36-51c6-489e-9c8f-fadb187a8e2d">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_10_c.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="7shnBu">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_10_c.jpg.html#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="7shnBu" target="_blank">BG_CS_Millenium_10_c.jpg</a><span onclick="showPopupByTooltipId('7shnBu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_10_c.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="7hNtjt">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_10_c.jpg.html#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="7hNtjt" target="_blank">BG_CS_Millenium_10_c.jpg</a><span onclick="showPopupByTooltipId('7hNtjt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="WGZHtL">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="WGZHtL" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('WGZHtL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="W9MqE1">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="W9MqE1" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('W9MqE1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -425,8 +442,8 @@
 
             <div class="gallery-img" id="904759f7-3fe3-433e-9298-a1b031820d90">
     <div >
-        <img src="/static/images/background/BG_IndoorPlaza_Night3.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="C48_lU">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_IndoorPlaza_Night3.jpg.html#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="C48_lU" target="_blank">BG_IndoorPlaza_Night3.jpg</a><span onclick="showPopupByTooltipId('C48_lU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_IndoorPlaza_Night3.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ZF6l73">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_IndoorPlaza_Night3.jpg.html#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="ZF6l73" target="_blank">BG_IndoorPlaza_Night3.jpg</a><span onclick="showPopupByTooltipId('ZF6l73')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -440,8 +457,8 @@
 
             <div class="gallery-img" id="da76a8d2-a979-4258-b219-738727e7b181">
     <div >
-        <img src="/static/images/background/BG_RuinCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ixcTYM">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCenter.jpg.html#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="ixcTYM" target="_blank">BG_RuinCenter.jpg</a><span onclick="showPopupByTooltipId('ixcTYM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="HVWt9E">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCenter.jpg.html#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="HVWt9E" target="_blank">BG_RuinCenter.jpg</a><span onclick="showPopupByTooltipId('HVWt9E')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -455,8 +472,8 @@
 
             <div class="gallery-img" id="72775c80-da0c-45ee-9319-6a3d7354ca14">
     <div >
-        <img src="/static/images/background/BG_RuinCenter_Aris.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="mowU2M">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCenter_Aris.jpg.html#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="mowU2M" target="_blank">BG_RuinCenter_Aris.jpg</a><span onclick="showPopupByTooltipId('mowU2M')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinCenter_Aris.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="05pnLX">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCenter_Aris.jpg.html#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="05pnLX" target="_blank">BG_RuinCenter_Aris.jpg</a><span onclick="showPopupByTooltipId('05pnLX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -470,8 +487,8 @@
 
             <div class="gallery-img" id="094de1f9-477e-416e-8146-9ce233539cbe">
     <div >
-        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="h4X4za">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="h4X4za" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('h4X4za')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FFt0Gr">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="FFt0Gr" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('FFt0Gr')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -484,7 +501,7 @@
     
         
     <script>
-        add_tooltip_data({ 'qIZfoi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_10.jpg</p><p>BG_CS_Millenium_10.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_10.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>','7shnBu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_10_c.jpg</p><p>BG_CS_Millenium_10_c.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_10_c.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>','WGZHtL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li></ol></div>','C48_lU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_IndoorPlaza_Night3.jpg</p><p>BG_IndoorPlaza_Night3.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_IndoorPlaza_Night3.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol></div>','ixcTYM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter.jpg</p><p>BG_RuinCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>','mowU2M': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter_Aris.jpg</p><p>BG_RuinCenter_Aris.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter_Aris.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>','h4X4za': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'Fh02QX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_10.jpg</p><p>BG_CS_Millenium_10.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_10.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>','7hNtjt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_10_c.jpg</p><p>BG_CS_Millenium_10_c.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_10_c.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>','W9MqE1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li></ol></div>','ZF6l73': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_IndoorPlaza_Night3.jpg</p><p>BG_IndoorPlaza_Night3.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_IndoorPlaza_Night3.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol></div>','HVWt9E': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter.jpg</p><p>BG_RuinCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>','05pnLX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter_Aris.jpg</p><p>BG_RuinCenter_Aris.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter_Aris.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>','FFt0Gr': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -509,9 +526,9 @@
     
 
     
-        <a href="/en/main/story/main/1/1/6.html"  onmouseover="showTooltip(this)" data-tooltip="YZVf6u">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;6:&nbsp;Rescue Mission!</a>
+        <a href="/en/main/story/main/1/1/6.html"  onmouseover="showTooltipById(this)" data-tooltip="d774pR">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;6:&nbsp;Rescue Mission!</a>
     
-    <span onclick="showPopupByTooltipId('YZVf6u')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('d774pR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -524,7 +541,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/6.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="HAfMnF"><i>&#91;2&#93;&nbsp;Words of Serika</i></a><span onclick="showPopupByTooltipId('HAfMnF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/6.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="6fVH_2"><i>&#91;2&#93;&nbsp;Words of Serika</i></a><span onclick="showPopupByTooltipId('6fVH_2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -543,9 +560,9 @@
     
 
     
-        <a href="/en/main/story/main/2/1/4.html"  onmouseover="showTooltip(this)" data-tooltip="NRIxG6">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>
+        <a href="/en/main/story/main/2/1/4.html"  onmouseover="showTooltipById(this)" data-tooltip="ekk7bV">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>
     
-    <span onclick="showPopupByTooltipId('NRIxG6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('ekk7bV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -558,7 +575,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Srmyfv"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a><span onclick="showPopupByTooltipId('Srmyfv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="G5R17T"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a><span onclick="showPopupByTooltipId('G5R17T')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -577,9 +594,9 @@
     
 
     
-        <a href="/en/main/story/main/2/1/5.html"  onmouseover="showTooltip(this)" data-tooltip="ECYgfx">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>
+        <a href="/en/main/story/main/2/1/5.html"  onmouseover="showTooltipById(this)" data-tooltip="Ychyjl">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>
     
-    <span onclick="showPopupByTooltipId('ECYgfx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Ychyjl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -592,7 +609,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="RBUDAU"><i>&#91;4&#93;&nbsp;Ending</i></a><span onclick="showPopupByTooltipId('RBUDAU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="jpWAwj"><i>&#91;4&#93;&nbsp;Ending</i></a><span onclick="showPopupByTooltipId('jpWAwj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -611,9 +628,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/20.html"  onmouseover="showTooltip(this)" data-tooltip="vZEg_r">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>
+        <a href="/en/main/story/main/2/2/20.html"  onmouseover="showTooltipById(this)" data-tooltip="ttvUKH">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>
     
-    <span onclick="showPopupByTooltipId('vZEg_r')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('ttvUKH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -626,7 +643,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="BU8K6t"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a><span onclick="showPopupByTooltipId('BU8K6t')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="ZtDQxG"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a><span onclick="showPopupByTooltipId('ZtDQxG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -641,7 +658,7 @@
 
     
     <script>
-        add_tooltip_data({ 'YZVf6u': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rescue Mission!</p><ul><li>When Serika goes incommunicado after parting at the ramen shop, Sensei uses Schale&#x27s authority to triangulate the position of Serika&#x27s cell phone and sets out to rescue her.</li></ul></div>','HAfMnF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Words of Serika</p><p>Serika, who finds herself being kidnapped, feels extremely uneasy, fearing that it will make everyone abandon or mistake her.</p><hr><p>Character:<span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime</span></a></p></div>','NRIxG6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">On That Day, We Met a Girl</p><ul><li>In the abandoned factory, the Game Development Department finds a humanoid robot by the name of Aris. For the sake of the club, Momoi brings Aris back to their club room to induct her as a new member.</li></ul></div>','Srmyfv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Meeting Aris</p><p>In one sinkhole, the three found Aris who was asleep, as well as some text like "AL-1S". Momoi took pity on her and decided to take her back to Millennium. She also gave her own clothes for Aris to wear on. Aris woke up right after the interaction with Sensei.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime</span></a></p></div>','ECYgfx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">I, Aris...</p><ul><li>Aris plays and thoroughly enjoys the Game Development Department&#x27s previous title, Tales Saga Chronicle. The club members are touched by her glowing response.</li></ul></div>','RBUDAU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ending</p><p>With the help of Momoi and Midori, Aris was able to reach the True End within 3 hours. When asked about the comments on the game, Aris thought it was fun. Hearing this, Yuzu stepped out of the wardrobe, thanking Aris sincerely.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/64.html"><span>OST&nbsp;64.&nbsp;Pixel Time</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/21.html"><span>OST&nbsp;21.&nbsp;Midnight Trip</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/44.html"><span>OST&nbsp;44.&nbsp;Walkthrough</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime</span></a></p></div>','vZEg_r': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Gamers and Friends</p><ul><li>The situation seems hopeless and everyone&#x27s morale has hit rock bottom. Yuzu, who had been carefully observing the battle between Neru and Toki, proposes a way to neutralize Abi-Eshuh.</li></ul></div>','BU8K6t': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Sense of Loss</p><p>All retreated into a closer building. Chihiro summarized the current situation: the C&C were not strong enough (with Neru still in coma), the Engineering Department were exhausted, and the combat power of GDD could not even be counted. Everyone thought believed that every method had been used, and the "bad ending", as Midori suggested, had arrived.</p><hr><p>Character:<span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime</span></a></p></div>', });
+        add_tooltip_data({ 'd774pR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rescue Mission!</p><ul><li>When Serika goes incommunicado after parting at the ramen shop, Sensei uses Schale&#x27s authority to triangulate the position of Serika&#x27s cell phone and sets out to rescue her.</li></ul></div>','6fVH_2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Words of Serika</p><p>Serika, who finds herself being kidnapped, feels extremely uneasy, fearing that it will make everyone abandon or mistake her.</p><hr><p>Character:<span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime</span></a></p></div>','ekk7bV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">On That Day, We Met a Girl</p><ul><li>In the abandoned factory, the Game Development Department finds a humanoid robot by the name of Aris. For the sake of the club, Momoi brings Aris back to their club room to induct her as a new member.</li></ul></div>','G5R17T': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Meeting Aris</p><p>In one sinkhole, the three found Aris who was asleep, as well as some text like "AL-1S". Momoi took pity on her and decided to take her back to Millennium. She also gave her own clothes for Aris to wear on. Aris woke up right after the interaction with Sensei.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime</span></a></p></div>','Ychyjl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">I, Aris...</p><ul><li>Aris plays and thoroughly enjoys the Game Development Department&#x27s previous title, Tales Saga Chronicle. The club members are touched by her glowing response.</li></ul></div>','jpWAwj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ending</p><p>With the help of Momoi and Midori, Aris was able to reach the True End within 3 hours. When asked about the comments on the game, Aris thought it was fun. Hearing this, Yuzu stepped out of the wardrobe, thanking Aris sincerely.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/64.html"><span>OST&nbsp;64.&nbsp;Pixel Time</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/21.html"><span>OST&nbsp;21.&nbsp;Midnight Trip</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/44.html"><span>OST&nbsp;44.&nbsp;Walkthrough</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime</span></a></p></div>','ttvUKH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Gamers and Friends</p><ul><li>The situation seems hopeless and everyone&#x27s morale has hit rock bottom. Yuzu, who had been carefully observing the battle between Neru and Toki, proposes a way to neutralize Abi-Eshuh.</li></ul></div>','ZtDQxG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Sense of Loss</p><p>All retreated into a closer building. Chihiro summarized the current situation: the C&C were not strong enough (with Neru still in coma), the Engineering Department were exhausted, and the combat power of GDD could not even be counted. Everyone thought believed that every method had been used, and the "bad ending", as Midori suggested, had arrived.</p><hr><p>Character:<span><span><a href="/en/character/student/chihiro/"><img src="/static/images/student/icon/20013.webp" class="icon-stu"><span>Chihiro</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime</span></a></p></div>', });
     </script>
 
 
@@ -689,12 +706,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="Zi1twd" >
+            <a href="/en/character/student/midori/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="B_g0ni" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Zi1twd')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('B_g0ni')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -716,12 +733,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="0vpftP" >
+            <a href="/en/character/student/momoi/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="aO34LU" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('0vpftP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('aO34LU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -743,12 +760,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="NzYQ5z" >
+            <a href="/en/character/student/aris/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="NP5HnT" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('NzYQ5z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('NP5HnT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -770,12 +787,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="VTPQVm" >
+            <a href="/en/character/student/yuzu/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="RDoUoo" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('VTPQVm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('RDoUoo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -797,12 +814,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/akane/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="4sqavI" >
+            <a href="/en/character/student/akane/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="ES6mPH" >
                 <img src="/static/images/student/icon/13000.webp" class="icon-stu">
                 <span>Akane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('4sqavI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ES6mPH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -824,12 +841,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/asuna/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="pXjuMC" >
+            <a href="/en/character/student/asuna/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="yBbrdj" >
                 <img src="/static/images/student/icon/16001.webp" class="icon-stu">
                 <span>Asuna</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('pXjuMC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('yBbrdj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -851,12 +868,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/chihiro/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="nMWMAf" >
+            <a href="/en/character/student/chihiro/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="K3X9IO" >
                 <img src="/static/images/student/icon/20013.webp" class="icon-stu">
                 <span>Chihiro</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('nMWMAf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('K3X9IO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -878,12 +895,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/karin/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="Sb0FkV" >
+            <a href="/en/character/student/karin/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="tVc9Ja" >
                 <img src="/static/images/student/icon/20001.webp" class="icon-stu">
                 <span>Karin</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Sb0FkV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('tVc9Ja')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -905,12 +922,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/serika/#track-OST_67" onmouseover="showTooltip(this)" data-tooltip="KC0y7q" >
+            <a href="/en/character/student/serika/#track-OST_67" onmouseover="showTooltipById(this)" data-tooltip="ROLv0M" >
                 <img src="/static/images/student/icon/13008.webp" class="icon-stu">
                 <span>Serika</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('KC0y7q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ROLv0M')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -924,22 +941,22 @@
 
     
     <script>
-        add_tooltip_data({ 'Zi1twd': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','0vpftP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','NzYQ5z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','VTPQVm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','4sqavI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','pXjuMC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','nMWMAf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','Sb0FkV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','KC0y7q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;6:&nbsp;Rescue Mission!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/6.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Words of Serika</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/serika_newyear/"><img src="/static/images/student/icon/20011.webp" class="icon-stu"><span>Serika (New Year)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'B_g0ni': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','aO34LU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','NP5HnT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;On That Day, We Met a Girl</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Meeting Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','RDoUoo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;I, Aris...</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Ending</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','ES6mPH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','yBbrdj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','K3X9IO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Chihiro</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','tVc9Ja': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;20:&nbsp;Gamers and Friends</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/20.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;A Sense of Loss</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','ROLv0M': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;6:&nbsp;Rescue Mission!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/6.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Words of Serika</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/serika_newyear/"><img src="/static/images/student/icon/20011.webp" class="icon-stu"><span>Serika (New Year)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -974,13 +991,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -994,17 +1011,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988805.265977)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139640.6475344)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988805.2659853
+Generated time (UTC): 1702139640.647544
 -->
 </body>
 </html>

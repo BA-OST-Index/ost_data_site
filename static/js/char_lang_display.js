@@ -1,52 +1,52 @@
-function set_char_lang_preference(lang_code) {
-    const key_name = "char_lang_" + lang_code;
-    if (localStorage.getItem(key_name) === null) {
-        localStorage.setItem(key_name, "0")
+function setDefaultCharLangPreference(langCode) {
+    const keyName = "char_lang_" + langCode;
+    if (localStorage.getItem(keyName) === null) {
+        localStorage.setItem(keyName, "0")
     }
 }
 
-function set_char_lang_display_status(lang_code, option_element) {
-    const index = option_element.selectedIndex;
-    const key_name = "char_lang_" + lang_code;
-    localStorage.setItem(key_name, index.toString());
+function setCharLangDisplayStatus(langCode, optionElement) {
+    const selectedIndex = optionElement.selectedIndex;
+    const keyName = "char_lang_" + langCode;
+    localStorage.setItem(keyName, selectedIndex.toString());
 
-    display_char_lang_element(lang_code);
+    displayCharLangElement(langCode);
 }
 
-function display_char_lang_element(lang_code) {
-    const key_name = "char_lang_" + lang_code;
+function displayCharLangElement(langCode) {
+    const key_name = "char_lang_" + langCode;
     var preference = localStorage.getItem(key_name);
     if (preference === null) {
-        set_char_lang_preference(lang_code);
+        setDefaultCharLangPreference(langCode);
         preference = localStorage.getItem(key_name).toString();
     }
 
-    if (lang_code === "en") {
+    if (langCode === "en") {
         if (preference === "0") {
-            set_element_display("char-lang-jp", "none");
+            setElementDisplay("char-lang-jp", "none");
         }
         else {
-            set_element_display("char-lang-jp", "inline-block");
+            setElementDisplay("char-lang-jp", "inline-block");
         }
     }
     else {
-        if (lang_code === "zh") {
+        if (langCode === "zh") {
             switch (preference) {
                 case "0":
-                    set_element_display("char-lang-en", "none");
-                    set_element_display("char-lang-jp", "none");
+                    setElementDisplay("char-lang-en", "none");
+                    setElementDisplay("char-lang-jp", "none");
                     break;
                 case "1":
-                    set_element_display("char-lang-en", "inline-block");
-                    set_element_display("char-lang-jp", "none");
+                    setElementDisplay("char-lang-en", "inline-block");
+                    setElementDisplay("char-lang-jp", "none");
                     break;
                 case "2":
-                    set_element_display("char-lang-en", "none");
-                    set_element_display("char-lang-jp", "inline-block");
+                    setElementDisplay("char-lang-en", "none");
+                    setElementDisplay("char-lang-jp", "inline-block");
                     break
                 case "3":
-                    set_element_display("char-lang-en", "inline-block");
-                    set_element_display("char-lang-jp", "inline-block");
+                    setElementDisplay("char-lang-en", "inline-block");
+                    setElementDisplay("char-lang-jp", "inline-block");
                     break;
             }
         }

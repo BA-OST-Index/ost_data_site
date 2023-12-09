@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=dEfXiVI1Euo', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=dEfXiVI1Euo', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=dEfXiVI1Euo)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=4', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=4', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=4)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="3c6a6b9e-1ee3-48c1-a7d1-bc90acbd84ac">
     <div >
-        <img src="/static/images/background/BG_CommitteeRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="L8V9gL">
-        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_CommitteeRoom.jpg.html#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="L8V9gL" target="_blank">BG_CommitteeRoom.jpg</a><span onclick="showPopupByTooltipId('L8V9gL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CommitteeRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0WH2IM">
+        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_CommitteeRoom.jpg.html#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="0WH2IM" target="_blank">BG_CommitteeRoom.jpg</a><span onclick="showPopupByTooltipId('0WH2IM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="8fc42ebd-2aed-492a-b80a-b2beae66b2dd">
     <div >
-        <img src="/static/images/background/BG_RamenYa.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="94Na1T">
-        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_RamenYa.jpg.html#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="94Na1T" target="_blank">BG_RamenYa.jpg</a><span onclick="showPopupByTooltipId('94Na1T')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RamenYa.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="pMw6nn">
+        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_RamenYa.jpg.html#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="pMw6nn" target="_blank">BG_RamenYa.jpg</a><span onclick="showPopupByTooltipId('pMw6nn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="45bcdc91-bc12-47f7-9e6d-1a51ef762fdc">
     <div >
-        <img src="/static/images/background/BG_Auditorium2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1B2YuH">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Auditorium2.jpg.html#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="1B2YuH" target="_blank">BG_Auditorium2.jpg</a><span onclick="showPopupByTooltipId('1B2YuH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Auditorium2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="uOsND6">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Auditorium2.jpg.html#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="uOsND6" target="_blank">BG_Auditorium2.jpg</a><span onclick="showPopupByTooltipId('uOsND6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -425,8 +442,8 @@
 
             <div class="gallery-img" id="cc619b3c-c786-48a6-af07-ab0ab41c5e7e">
     <div >
-        <img src="/static/images/background/BG_CS_Abydos_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="dfIECD">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Abydos_03.jpg.html#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="dfIECD" target="_blank">BG_CS_Abydos_03.jpg</a><span onclick="showPopupByTooltipId('dfIECD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Abydos_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="cePYwn">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Abydos_03.jpg.html#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="cePYwn" target="_blank">BG_CS_Abydos_03.jpg</a><span onclick="showPopupByTooltipId('cePYwn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -440,8 +457,8 @@
 
             <div class="gallery-img" id="0598d297-9977-499a-b23d-9151da2fc774">
     <div >
-        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="nPnodx">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="nPnodx" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('nPnodx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="irNZYu">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="irNZYu" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('irNZYu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -455,8 +472,8 @@
 
             <div class="gallery-img" id="5de15c37-8b87-4167-aa86-7c8aec52de7c">
     <div >
-        <img src="/static/images/background/BG_SchoolFrontGate.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="KWEKSv">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SchoolFrontGate.jpg.html#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="KWEKSv" target="_blank">BG_SchoolFrontGate.jpg</a><span onclick="showPopupByTooltipId('KWEKSv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_SchoolFrontGate.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Q7LKQQ">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SchoolFrontGate.jpg.html#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="Q7LKQQ" target="_blank">BG_SchoolFrontGate.jpg</a><span onclick="showPopupByTooltipId('Q7LKQQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -469,7 +486,7 @@
     
         
     <script>
-        add_tooltip_data({ 'L8V9gL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CommitteeRoom.jpg</p><p>BG_CommitteeRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CommitteeRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol></div>','94Na1T': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RamenYa.jpg</p><p>BG_RamenYa.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RamenYa.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol></div>','1B2YuH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Auditorium2.jpg</p><p>BG_Auditorium2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Auditorium2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/5.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Star of Millennium</i></a></span><span>)</span></li></ol></div>','dfIECD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_03.jpg</p><p>BG_CS_Abydos_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_03.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">Characters in this picture:</p><p><span><span><a href="/en/character/student/shiroko/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/serika/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span></p></div>','nPnodx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/5.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Star of Millennium</i></a></span><span>)</span></li></ol></div>','KWEKSv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolFrontGate.jpg</p><p>BG_SchoolFrontGate.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolFrontGate.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '0WH2IM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CommitteeRoom.jpg</p><p>BG_CommitteeRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CommitteeRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol></div>','pMw6nn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RamenYa.jpg</p><p>BG_RamenYa.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RamenYa.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol></div>','uOsND6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Auditorium2.jpg</p><p>BG_Auditorium2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Auditorium2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/5.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Star of Millennium</i></a></span><span>)</span></li></ol></div>','cePYwn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_03.jpg</p><p>BG_CS_Abydos_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_03.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">Characters in this picture:</p><p><span><span><a href="/en/character/student/shiroko/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/serika/#cc619b3c-c786-48a6-af07-ab0ab41c5e7e-direct"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span></p></div>','irNZYu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/5.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Star of Millennium</i></a></span><span>)</span></li></ol></div>','Q7LKQQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolFrontGate.jpg</p><p>BG_SchoolFrontGate.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolFrontGate.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -494,9 +511,9 @@
     
 
     
-        <a href="/en/main/story/main/1/1/5.html"  onmouseover="showTooltip(this)" data-tooltip="BJwRNj">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>
+        <a href="/en/main/story/main/1/1/5.html"  onmouseover="showTooltipById(this)" data-tooltip="nZDVPR">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>
     
-    <span onclick="showPopupByTooltipId('BJwRNj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('nZDVPR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -509,7 +526,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="WBDJih"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a><span onclick="showPopupByTooltipId('WBDJih')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="S2bzYO"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a><span onclick="showPopupByTooltipId('S2bzYO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -528,9 +545,9 @@
     
 
     
-        <a href="/en/main/story/main/1/1/7.html"  onmouseover="showTooltip(this)" data-tooltip="XQ1H_6">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>
+        <a href="/en/main/story/main/1/1/7.html"  onmouseover="showTooltipById(this)" data-tooltip="OKXGx3">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>
     
-    <span onclick="showPopupByTooltipId('XQ1H_6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('OKXGx3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -543,7 +560,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="ybLEpW"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a><span onclick="showPopupByTooltipId('ybLEpW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="jCGO9i"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a><span onclick="showPopupByTooltipId('jCGO9i')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -562,9 +579,9 @@
     
 
     
-        <a href="/en/main/story/main/1/1/8.html"  onmouseover="showTooltip(this)" data-tooltip="jJdW4v">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>
+        <a href="/en/main/story/main/1/1/8.html"  onmouseover="showTooltipById(this)" data-tooltip="Hpzxef">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>
     
-    <span onclick="showPopupByTooltipId('jJdW4v')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Hpzxef')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -577,7 +594,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="7RZXHT"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a><span onclick="showPopupByTooltipId('7RZXHT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="hVwkFg"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a><span onclick="showPopupByTooltipId('hVwkFg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -589,7 +606,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="6gkj00"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a><span onclick="showPopupByTooltipId('6gkj00')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="HoIArT"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a><span onclick="showPopupByTooltipId('HoIArT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -601,7 +618,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Nh8qQs"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a><span onclick="showPopupByTooltipId('Nh8qQs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="vC7IBz"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a><span onclick="showPopupByTooltipId('vC7IBz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -613,7 +630,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="P3iK4d"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a><span onclick="showPopupByTooltipId('P3iK4d')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="tatrid"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a><span onclick="showPopupByTooltipId('tatrid')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -625,7 +642,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="SCvVCq"><i>&#91;5&#93;&nbsp;Pop Idols</i></a><span onclick="showPopupByTooltipId('SCvVCq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="UyV_EE"><i>&#91;5&#93;&nbsp;Pop Idols</i></a><span onclick="showPopupByTooltipId('UyV_EE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -637,7 +654,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="lsSUaT"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a><span onclick="showPopupByTooltipId('lsSUaT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="js2RIh"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a><span onclick="showPopupByTooltipId('js2RIh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -649,7 +666,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="0UWely"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a><span onclick="showPopupByTooltipId('0UWely')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="HK4mM3"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a><span onclick="showPopupByTooltipId('HK4mM3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -680,9 +697,9 @@
     
 
     
-        <a href="/en/main/story/main/1/1/9.html"  onmouseover="showTooltip(this)" data-tooltip="63Jvtu">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>
+        <a href="/en/main/story/main/1/1/9.html"  onmouseover="showTooltipById(this)" data-tooltip="yCIJ2V">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>
     
-    <span onclick="showPopupByTooltipId('63Jvtu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('yCIJ2V')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -695,7 +712,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="q5Tzla"><i>&#91;4&#93;&nbsp;Problem Solver's Failed Attempt</i></a><span onclick="showPopupByTooltipId('q5Tzla')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="TU_ytw"><i>&#91;4&#93;&nbsp;Problem Solver's Failed Attempt</i></a><span onclick="showPopupByTooltipId('TU_ytw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -714,9 +731,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/5.html"  onmouseover="showTooltip(this)" data-tooltip="VCZSo4">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>
+        <a href="/en/main/story/main/2/2/5.html"  onmouseover="showTooltipById(this)" data-tooltip="XwCNbG">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>
     
-    <span onclick="showPopupByTooltipId('VCZSo4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('XwCNbG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -729,7 +746,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/5.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="XIhY1C"><i>&#91;1&#93;&nbsp;The Star of Millennium</i></a><span onclick="showPopupByTooltipId('XIhY1C')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/5.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="odpVdO"><i>&#91;1&#93;&nbsp;The Star of Millennium</i></a><span onclick="showPopupByTooltipId('odpVdO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -744,7 +761,7 @@
 
     
     <script>
-        add_tooltip_data({ 'BJwRNj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Day in the Life of Serika</p><ul><li>Sensei and the Foreclosure Task Force trail Serika to her part-time job at a ramen shop. They end up sharing a nice meal with her, but Serika is still quite sullen. On her way back from work, Serika is kidnapped by the Helmet Gang.</li></ul></div>','WBDJih': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Ramen Store</p><p>Sensei brings the rest of the Foreclosure Task Force to the very ramen store that Serika is working for. Though surprised, Serika leads the way to the table; later, Nonomi purposes to pay with her cards, but Sensei does that with his own at last. After lunch, everyone returns to school under the strong request by the embarrassed Serika.</p><hr><p>Character:<span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/mastershiba/"><span>Master Shiba</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','XQ1H_6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A New Threat?</p><ul><li>Sensei and the task force manage to rescue Serika from the Helmet Gang. Ayane finds signs of contraband among the tank&#x27s wreckage. Meanwhile, the Kaiser PMC that controlled the Helmet Gang decides to enlist the help of Problem Solver 68.</li></ul></div>','ybLEpW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Hidden Story</p><p>Though Serika is rescued, she still falls apart after getting a shot of the anti-air missile. Shiroko brings Serika to the infirmary. Ayane finds out that the Helmet Gang seem to be using illegal weapons in Kivotos, suggesting that there might be a mastermind in the dark.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','jJdW4v': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Might of Problem Solver 68</p><ul><li>The Foreclosure Task Force struggles to come up with ideas on how to pay off the school&#x27s debt. Sensei and the students run into the impoverished employees of Problem Solver 68 while grabbing some ramen after the meeting.</li></ul></div>','7RZXHT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Discussion On The Debts</p><p>The regular meeting for Abydos Foreclosure Task Force begins, as everyone purposes their own way to pay the debt.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','6gkj00': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika Being Deceived</p><p>Serika finds an ad promoting a bracelet that will make everyone luckier. But it is soon discovered to be a Pyramid Scheme by others.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','Nh8qQs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hijack School Buses</p><p>Hoshino points out that the root cause of being unable to pay is because the students left. Therefore it&#x27ll be fine as soon as they hijack students from other schools. Denied by Ayane.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','P3iK4d': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rob a Bank</p><p>Shiroko straights to the plan of robbing a bank, saying that she has found out everything and in that way, they will be able to earn 100 million in just five minutes. Criminal as it is, it is denied by Ayane and Serika.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','SCvVCq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Pop Idols</p><p>Nonomi proposes that everyone should become pop idols, but is denied by multiples.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','lsSUaT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Choice by Sensei</p><p>As the dispute erupts, Sensei is forced to make a choice. But even Sensei&#x27s choice disappoints Ayane and makes her overturn the table angrily. Everyone is under a good lecture later.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','0UWely': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Ramen Store and Problem Solver 68</p><p>Everyone decides to take Ayane to that ramen store to have a meal, and it&#x27s there that they meets the Problem Solver 68. Having spent all the money hiring the mercenaries, they can only afford the cheapest ramen; the owner takes pity on them and gives them extra ramen. Aru talks with the Foreclosure Task Force, completely unaware of their identities.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/haruka/"><img src="/static/images/student/icon/16000.webp" class="icon-stu"><span>Haruka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/mutsuki/"><img src="/static/images/student/icon/13006.webp" class="icon-stu"><span>Mutsuki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aru/"><img src="/static/images/student/icon/10000.webp" class="icon-stu"><span>Aru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kayoko/"><img src="/static/images/student/icon/13005.webp" class="icon-stu"><span>Kayoko</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/mastershiba/"><span>Master Shiba</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/5.html"><span>OST&nbsp;5.&nbsp;Colorful Mess</span></a></p></div>','63Jvtu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Unrelenting Blood Feud</p><ul><li>Aru grapples with her feelings after realizing that the ones who treated her to a bowl of ramen were actually Abydos students. She resolves anew to attack Abydos High School with her hired guns.</li><li>Thanks to the work of the Foreclosure Task Force, Aru and Problem Solver are forced to withdraw.</li></ul></div>','q5Tzla': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Problem Solver&#x27s Failed Attempt</p><p>Unsurprisingly, the Problem Solver 68 is defeated completely. As the off-work time arrives, the Problem Solver 68 lose their backup and are forced to retreat.</p><hr><p>Character:<span><span><a href="/en/character/student/aru/"><img src="/static/images/student/icon/10000.webp" class="icon-stu"><span>Aru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/haruka/"><img src="/static/images/student/icon/16000.webp" class="icon-stu"><span>Haruka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/mutsuki/"><img src="/static/images/student/icon/13006.webp" class="icon-stu"><span>Mutsuki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','VCZSo4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Guided by Aris 2</p><ul><li>Aris meets with Millennium students who cheer her on, and discusses the Sword of Light with members of the Engineering Department. She enjoys every moment of it. Afterwards, Aris runs into Neru and they visit an arcade to enjoy some video games together. Though they were once enemies against each other, Aris is now proud to declare Neru as her party member.</li></ul></div>','XIhY1C': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Star of Millennium</p><p>Aris met other Millennium students at the school square and she was welcomed and greeted with great delight. Aris was even given some "side quests" and received some snacks as the "mission" reward.</p><hr><p>Character:<span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>', });
+        add_tooltip_data({ 'nZDVPR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Day in the Life of Serika</p><ul><li>Sensei and the Foreclosure Task Force trail Serika to her part-time job at a ramen shop. They end up sharing a nice meal with her, but Serika is still quite sullen. On her way back from work, Serika is kidnapped by the Helmet Gang.</li></ul></div>','S2bzYO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Ramen Store</p><p>Sensei brings the rest of the Foreclosure Task Force to the very ramen store that Serika is working for. Though surprised, Serika leads the way to the table; later, Nonomi purposes to pay with her cards, but Sensei does that with his own at last. After lunch, everyone returns to school under the strong request by the embarrassed Serika.</p><hr><p>Character:<span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/mastershiba/"><span>Master Shiba</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','OKXGx3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A New Threat?</p><ul><li>Sensei and the task force manage to rescue Serika from the Helmet Gang. Ayane finds signs of contraband among the tank&#x27s wreckage. Meanwhile, the Kaiser PMC that controlled the Helmet Gang decides to enlist the help of Problem Solver 68.</li></ul></div>','jCGO9i': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Hidden Story</p><p>Though Serika is rescued, she still falls apart after getting a shot of the anti-air missile. Shiroko brings Serika to the infirmary. Ayane finds out that the Helmet Gang seem to be using illegal weapons in Kivotos, suggesting that there might be a mastermind in the dark.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','Hpzxef': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Might of Problem Solver 68</p><ul><li>The Foreclosure Task Force struggles to come up with ideas on how to pay off the school&#x27s debt. Sensei and the students run into the impoverished employees of Problem Solver 68 while grabbing some ramen after the meeting.</li></ul></div>','hVwkFg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Discussion On The Debts</p><p>The regular meeting for Abydos Foreclosure Task Force begins, as everyone purposes their own way to pay the debt.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','HoIArT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika Being Deceived</p><p>Serika finds an ad promoting a bracelet that will make everyone luckier. But it is soon discovered to be a Pyramid Scheme by others.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','vC7IBz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hijack School Buses</p><p>Hoshino points out that the root cause of being unable to pay is because the students left. Therefore it&#x27ll be fine as soon as they hijack students from other schools. Denied by Ayane.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','tatrid': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rob a Bank</p><p>Shiroko straights to the plan of robbing a bank, saying that she has found out everything and in that way, they will be able to earn 100 million in just five minutes. Criminal as it is, it is denied by Ayane and Serika.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','UyV_EE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Pop Idols</p><p>Nonomi proposes that everyone should become pop idols, but is denied by multiples.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','js2RIh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Choice by Sensei</p><p>As the dispute erupts, Sensei is forced to make a choice. But even Sensei&#x27s choice disappoints Ayane and makes her overturn the table angrily. Everyone is under a good lecture later.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','HK4mM3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Ramen Store and Problem Solver 68</p><p>Everyone decides to take Ayane to that ramen store to have a meal, and it&#x27s there that they meets the Problem Solver 68. Having spent all the money hiring the mercenaries, they can only afford the cheapest ramen; the owner takes pity on them and gives them extra ramen. Aru talks with the Foreclosure Task Force, completely unaware of their identities.</p><hr><p>Character:<span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/haruka/"><img src="/static/images/student/icon/16000.webp" class="icon-stu"><span>Haruka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/mutsuki/"><img src="/static/images/student/icon/13006.webp" class="icon-stu"><span>Mutsuki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aru/"><img src="/static/images/student/icon/10000.webp" class="icon-stu"><span>Aru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kayoko/"><img src="/static/images/student/icon/13005.webp" class="icon-stu"><span>Kayoko</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/mastershiba/"><span>Master Shiba</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/5.html"><span>OST&nbsp;5.&nbsp;Colorful Mess</span></a></p></div>','yCIJ2V': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Unrelenting Blood Feud</p><ul><li>Aru grapples with her feelings after realizing that the ones who treated her to a bowl of ramen were actually Abydos students. She resolves anew to attack Abydos High School with her hired guns.</li><li>Thanks to the work of the Foreclosure Task Force, Aru and Problem Solver are forced to withdraw.</li></ul></div>','TU_ytw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Problem Solver&#x27s Failed Attempt</p><p>Unsurprisingly, the Problem Solver 68 is defeated completely. As the off-work time arrives, the Problem Solver 68 lose their backup and are forced to retreat.</p><hr><p>Character:<span><span><a href="/en/character/student/aru/"><img src="/static/images/student/icon/10000.webp" class="icon-stu"><span>Aru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/haruka/"><img src="/static/images/student/icon/16000.webp" class="icon-stu"><span>Haruka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/mutsuki/"><img src="/static/images/student/icon/13006.webp" class="icon-stu"><span>Mutsuki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>','XwCNbG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Guided by Aris 2</p><ul><li>Aris meets with Millennium students who cheer her on, and discusses the Sword of Light with members of the Engineering Department. She enjoys every moment of it. Afterwards, Aris runs into Neru and they visit an arcade to enjoy some video games together. Though they were once enemies against each other, Aris is now proud to declare Neru as her party member.</li></ul></div>','odpVdO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Star of Millennium</p><p>Aris met other Millennium students at the school square and she was welcomed and greeted with great delight. Aris was even given some "side quests" and received some snacks as the "mission" reward.</p><hr><p>Character:<span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/4.html"><span>OST&nbsp;4.&nbsp;Lovely Picnic</span></a></p></div>', });
     </script>
 
 
@@ -792,12 +809,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/ayane/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="A_F78X" >
+            <a href="/en/character/student/ayane/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="8wCirZ" >
                 <img src="/static/images/student/icon/23005.webp" class="icon-stu">
                 <span>Ayane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('A_F78X')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('8wCirZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -819,12 +836,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hoshino/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="AMuiKw" >
+            <a href="/en/character/student/hoshino/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="eV2UmY" >
                 <img src="/static/images/student/icon/10005.webp" class="icon-stu">
                 <span>Hoshino</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('AMuiKw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('eV2UmY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -846,12 +863,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/nonomi/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="jllsnt" >
+            <a href="/en/character/student/nonomi/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="wPS0Ox" >
                 <img src="/static/images/student/icon/13004.webp" class="icon-stu">
                 <span>Nonomi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('jllsnt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('wPS0Ox')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -873,12 +890,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/serika/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="eTjMai" >
+            <a href="/en/character/student/serika/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="daB2RI" >
                 <img src="/static/images/student/icon/13008.webp" class="icon-stu">
                 <span>Serika</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('eTjMai')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('daB2RI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -900,12 +917,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/shiroko/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="s__yCn" >
+            <a href="/en/character/student/shiroko/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="GevE8d" >
                 <img src="/static/images/student/icon/10010.webp" class="icon-stu">
                 <span>Shiroko</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('s__yCn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GevE8d')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -927,12 +944,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aru/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="rWcXRp" >
+            <a href="/en/character/student/aru/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="KZh9HT" >
                 <img src="/static/images/student/icon/10000.webp" class="icon-stu">
                 <span>Aru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('rWcXRp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('KZh9HT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Problem Solver 68]</span>
@@ -954,12 +971,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/haruka/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="Z2wYF7" >
+            <a href="/en/character/student/haruka/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="GMKIre" >
                 <img src="/static/images/student/icon/16000.webp" class="icon-stu">
                 <span>Haruka</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Z2wYF7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GMKIre')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Problem Solver 68]</span>
@@ -976,10 +993,10 @@
 
             <li id="186a48d4-0c7c-4a64-92f5-1897843fd5a2"><span>【2】</span>
     
-        <a href="/en/character/npc/mastershiba/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="82zDbM" >
+        <a href="/en/character/npc/mastershiba/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="nai9mj" >
             <span>Master Shiba</span>
         </a>
-        <span onclick="showPopupByTooltipId('82zDbM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('nai9mj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -996,12 +1013,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/mutsuki/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="K3Ltz1" >
+            <a href="/en/character/student/mutsuki/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="KO3cyr" >
                 <img src="/static/images/student/icon/13006.webp" class="icon-stu">
                 <span>Mutsuki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('K3Ltz1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('KO3cyr')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Problem Solver 68]</span>
@@ -1023,12 +1040,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="hIXPxj" >
+            <a href="/en/character/student/aris/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="4nrAvB" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('hIXPxj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('4nrAvB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1050,12 +1067,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kayoko/#track-OST_4" onmouseover="showTooltip(this)" data-tooltip="pHzBpt" >
+            <a href="/en/character/student/kayoko/#track-OST_4" onmouseover="showTooltipById(this)" data-tooltip="Tye8yB" >
                 <img src="/static/images/student/icon/13005.webp" class="icon-stu">
                 <span>Kayoko</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('pHzBpt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Tye8yB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Problem Solver 68]</span>
@@ -1069,22 +1086,22 @@
 
     
     <script>
-        add_tooltip_data({ 'A_F78X': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ayane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span>Ayane (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','AMuiKw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span>Hoshino (Swimsuit)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/blacksuit/"><span>The Black Suit</span></a></p></div>','jllsnt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Nonomi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/nonomi_swimsuit/"><img src="/static/images/student/icon/10044.webp" class="icon-stu"><span>Nonomi (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','eTjMai': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/serika_newyear/"><img src="/static/images/student/icon/20011.webp" class="icon-stu"><span>Serika (New Year)</span></a></span></p><p>Other Characters: </p></div>','s__yCn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shiroko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><span><a href="/en/character/student/shiroko_cycling/"><img src="/static/images/student/icon/10024.webp" class="icon-stu"><span>Shiroko (Cycling)</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko_swimsuit/"><img src="/static/images/student/icon/20027.webp" class="icon-stu"><span>Shiroko (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','rWcXRp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aru_newyear/"><img src="/static/images/student/icon/10031.webp" class="icon-stu"><span>Aru (New Year)</span></a></span></p><p>Other Characters: </p></div>','Z2wYF7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Haruka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/haruka_newyear/"><img src="/static/images/student/icon/20025.webp" class="icon-stu"><span>Haruka (New Year)</span></a></span></p><p>Other Characters: </p></div>','82zDbM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Master Shiba</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','K3Ltz1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Mutsuki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/mutsuki_newyear/"><img src="/static/images/student/icon/10032.webp" class="icon-stu"><span>Mutsuki (New Year)</span></a></span></p><p>Other Characters: </p></div>','hIXPxj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/5.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Star of Millennium</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','pHzBpt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kayoko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kayoko_newyear/"><img src="/static/images/student/icon/10064.webp" class="icon-stu"><span>Kayoko (New Year)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ '8wCirZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ayane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span>Ayane (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','eV2UmY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span>Hoshino (Swimsuit)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/blacksuit/"><span>The Black Suit</span></a></p></div>','wPS0Ox': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Nonomi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/nonomi_swimsuit/"><img src="/static/images/student/icon/10044.webp" class="icon-stu"><span>Nonomi (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','daB2RI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/serika_newyear/"><img src="/static/images/student/icon/20011.webp" class="icon-stu"><span>Serika (New Year)</span></a></span></p><p>Other Characters: </p></div>','GevE8d': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shiroko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/7.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;7:&nbsp;A New Threat?</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/7.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Hidden Story</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussion On The Debts</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Serika Being Deceived</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Hijack School Buses</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Rob a Bank</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Pop Idols</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;The Choice by Sensei</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><span><a href="/en/character/student/shiroko_cycling/"><img src="/static/images/student/icon/10024.webp" class="icon-stu"><span>Shiroko (Cycling)</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko_swimsuit/"><img src="/static/images/student/icon/20027.webp" class="icon-stu"><span>Shiroko (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','KZh9HT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aru_newyear/"><img src="/static/images/student/icon/10031.webp" class="icon-stu"><span>Aru (New Year)</span></a></span></p><p>Other Characters: </p></div>','GMKIre': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Haruka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/haruka_newyear/"><img src="/static/images/student/icon/20025.webp" class="icon-stu"><span>Haruka (New Year)</span></a></span></p><p>Other Characters: </p></div>','nai9mj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Master Shiba</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;5:&nbsp;A Day in the Life of Serika</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/5.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Ramen Store</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','KO3cyr': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Mutsuki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/1/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;9:&nbsp;Unrelenting Blood Feud</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/9.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Problem Solver&#x27s Failed Attempt</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/mutsuki_newyear/"><img src="/static/images/student/icon/10032.webp" class="icon-stu"><span>Mutsuki (New Year)</span></a></span></p><p>Other Characters: </p></div>','4nrAvB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Guided by Aris 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/5.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Star of Millennium</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','Tye8yB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kayoko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;8:&nbsp;The Might of Problem Solver 68</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/8.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Ramen Store and Problem Solver 68</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kayoko_newyear/"><img src="/static/images/student/icon/10064.webp" class="icon-stu"><span>Kayoko (New Year)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -1119,13 +1136,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -1139,17 +1156,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988810.1041262)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139631.9719071)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988810.1041343
+Generated time (UTC): 1702139631.971916
 -->
 </body>
 </html>

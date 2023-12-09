@@ -1,33 +1,33 @@
-function set_listen_char_desc_preference() {
-    const radio_inputs = document.getElementsByName("desc_enable");
-    for (let i = 0, max = radio_inputs.length; i < max; i++) {
-        radio_inputs[i].onclick = function () {
-            display_char_desc_element(radio_inputs[i].value);
+function setListenerOnCharDescPreference() {
+    const radioInputs = document.getElementsByName("desc_enable");
+    for (let i = 0, max = radioInputs.length; i < max; i++) {
+        radioInputs[i].onclick = function () {
+            display_char_desc_element(radioInputs[i].value);
         };
     }
 }
 
-function set_char_desc_default() {
+function setCharDescDefault() {
     let _temp = localStorage.getItem("char_desc");
     if (_temp === null) {
         localStorage.setItem("char_desc", "1");
     }
 }
 
-function check_char_desc_radio() {
-    set_char_desc_default();
-    const element_id = "char_desc_radio_" + localStorage.getItem("char_desc");
-    document.getElementById(element_id).checked = true;
+function displayCharDescRadioStatus() {
+    setCharDescDefault();
+    const targetElementId = "char_desc_radio_" + localStorage.getItem("char_desc");
+    document.getElementById(targetElementId).checked = true;
 }
 
 function display_char_desc_element(value) {
-    let flag_value;
-    const set_value = function (value) {
+    let flagValue;
+    const setValue = function (value) {
         localStorage.setItem("char_desc", value);
     }
 
     // get value
-    set_char_desc_default();
+    setCharDescDefault();
     let value_;
     if (value === void 0 || value === null) {
         value_ = localStorage.getItem("char_desc");
@@ -40,18 +40,18 @@ function display_char_desc_element(value) {
         case null:
         case "enable":
         case "1":
-            flag_value = 1;
+            flagValue = 1;
             break;
         case "disable":
         case "0":
-            flag_value = 0;
+            flagValue = 0;
             break;
     }
-    set_value(flag_value.toString());
+    setValue(flagValue.toString());
 
-    if (flag_value === 1) {
-        set_element_display("stu-list-desc", "inline-block");
+    if (flagValue === 1) {
+        setElementDisplay("stu-list-desc", "inline-block");
     } else {
-        set_element_display("stu-list-desc", "none");
+        setElementDisplay("stu-list-desc", "none");
     }
 }

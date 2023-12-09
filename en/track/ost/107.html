@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=VjxfInALNFY', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=VjxfInALNFY', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=VjxfInALNFY)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1MV4y1r7bB/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1MV4y1r7bB/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1MV4y1r7bB/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="21b39f46-82bb-437f-8d11-e6dc672f63e3">
     <div >
-        <img src="/static/images/background/BG_Broadcastingroom_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="YAyIGp">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Broadcastingroom_Off.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="YAyIGp" target="_blank">BG_Broadcastingroom_Off.jpg</a><span onclick="showPopupByTooltipId('YAyIGp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Broadcastingroom_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FTgMCZ">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Broadcastingroom_Off.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="FTgMCZ" target="_blank">BG_Broadcastingroom_Off.jpg</a><span onclick="showPopupByTooltipId('FTgMCZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="f5d6dba1-b77c-4df0-88d5-7d8fd2600421">
     <div >
-        <img src="/static/images/background/BG_CS_PV3_55.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="3ehvEu">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PV3_55.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="3ehvEu" target="_blank">BG_CS_PV3_55.jpg</a><span onclick="showPopupByTooltipId('3ehvEu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PV3_55.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="tpBmFa">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PV3_55.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="tpBmFa" target="_blank">BG_CS_PV3_55.jpg</a><span onclick="showPopupByTooltipId('tpBmFa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="1f9226f6-1b74-49a9-883d-162a36074c03">
     <div >
-        <img src="/static/images/background/BG_CS_PV3_57.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="n0Nee5">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PV3_57.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="n0Nee5" target="_blank">BG_CS_PV3_57.jpg</a><span onclick="showPopupByTooltipId('n0Nee5')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PV3_57.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="lhT3Vb">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PV3_57.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="lhT3Vb" target="_blank">BG_CS_PV3_57.jpg</a><span onclick="showPopupByTooltipId('lhT3Vb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -425,8 +442,8 @@
 
             <div class="gallery-img" id="be2dc383-1390-4ffe-b899-9c507f0d592f">
     <div >
-        <img src="/static/images/background/BG_CS_PV3_60.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="J9j5sz">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PV3_60.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="J9j5sz" target="_blank">BG_CS_PV3_60.jpg</a><span onclick="showPopupByTooltipId('J9j5sz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PV3_60.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="F_ndDf">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PV3_60.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="F_ndDf" target="_blank">BG_CS_PV3_60.jpg</a><span onclick="showPopupByTooltipId('F_ndDf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -440,8 +457,8 @@
 
             <div class="gallery-img" id="1ddf3b64-e1c2-418f-bed4-ea723bdebf81">
     <div >
-        <img src="/static/images/background/BG_KivotosStadium.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ejT5G4">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_KivotosStadium.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="ejT5G4" target="_blank">BG_KivotosStadium.jpg</a><span onclick="showPopupByTooltipId('ejT5G4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_KivotosStadium.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="pMoWyr">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_KivotosStadium.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="pMoWyr" target="_blank">BG_KivotosStadium.jpg</a><span onclick="showPopupByTooltipId('pMoWyr')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -454,7 +471,7 @@
     
         
     <script>
-        add_tooltip_data({ 'YAyIGp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Broadcastingroom_Off.jpg</p><p>BG_Broadcastingroom_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Broadcastingroom_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol></div>','3ehvEu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_55.jpg</p><p>BG_CS_PV3_55.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_55.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol></div>','n0Nee5': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_57.jpg</p><p>BG_CS_PV3_57.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_57.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol></div>','J9j5sz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_60.jpg</p><p>BG_CS_PV3_60.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_60.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol></div>','ejT5G4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_KivotosStadium.jpg</p><p>BG_KivotosStadium.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_KivotosStadium.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Making a Vow</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'FTgMCZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Broadcastingroom_Off.jpg</p><p>BG_Broadcastingroom_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Broadcastingroom_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol></div>','tpBmFa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_55.jpg</p><p>BG_CS_PV3_55.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_55.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol></div>','lhT3Vb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_57.jpg</p><p>BG_CS_PV3_57.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_57.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol></div>','F_ndDf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_60.jpg</p><p>BG_CS_PV3_60.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_60.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol></div>','pMoWyr': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_KivotosStadium.jpg</p><p>BG_KivotosStadium.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_KivotosStadium.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Making a Vow</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -479,9 +496,9 @@
     
 
     
-        <a href="/en/event/818/story/1.html"  onmouseover="showTooltip(this)" data-tooltip="P3Tal_"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>
+        <a href="/en/event/818/story/1.html"  onmouseover="showTooltipById(this)" data-tooltip="wQzfOV"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>
     
-    <span onclick="showPopupByTooltipId('P3Tal_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('wQzfOV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -494,7 +511,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="KYatN4"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a><span onclick="showPopupByTooltipId('KYatN4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="NFa4yM"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a><span onclick="showPopupByTooltipId('NFa4yM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -506,7 +523,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/event/818/story/1.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="JbcIoB"><i>&#91;2&#93;&nbsp;Making a Vow</i></a><span onclick="showPopupByTooltipId('JbcIoB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/event/818/story/1.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="W1Ohd_"><i>&#91;2&#93;&nbsp;Making a Vow</i></a><span onclick="showPopupByTooltipId('W1Ohd_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -523,7 +540,7 @@
 
     
     <script>
-        add_tooltip_data({ 'P3Tal_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Fiery Opening Ceremony</p><ul><li>The Kivotos Halo Festival opens with Hanako and Ayane&#x27s recital of the festival&#x27s oath.</li></ul></div>','KYatN4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Opening Ceremony</p><p>Two students from the Kronos School&#x27s News Club introduced everyone watching the live stream about the "Kivotos Halo Festival" hosted by the Millennium Science School. The two highlighted that Sensei from Schale participated in the arrangement of this sports meeting.</p><hr><p>Character:<a href="/en/character/npc/mai/"><span>Mai</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/107.html"><span>OST&nbsp;107.&nbsp;NERINERI CHALLENGE</span></a></p></div>','JbcIoB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Making a Vow</p><p>Okusora Ayane from Abydos High School and Urawa Hanako from Trinity General School, two students made a vow altogether. During the process however, Hanako started talking about the dirty words. The signal was cut immediately.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hanako/"><img src="/static/images/student/icon/23007.webp" class="icon-stu"><span>Hanako</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/107.html"><span>OST&nbsp;107.&nbsp;NERINERI CHALLENGE</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/7.html"><span>OST&nbsp;7.&nbsp;Unwelcome School</span></a></p></div>', });
+        add_tooltip_data({ 'wQzfOV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Fiery Opening Ceremony</p><ul><li>The Kivotos Halo Festival opens with Hanako and Ayane&#x27s recital of the festival&#x27s oath.</li></ul></div>','NFa4yM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Opening Ceremony</p><p>Two students from the Kronos School&#x27s News Club introduced everyone watching the live stream about the "Kivotos Halo Festival" hosted by the Millennium Science School. The two highlighted that Sensei from Schale participated in the arrangement of this sports meeting.</p><hr><p>Character:<a href="/en/character/npc/mai/"><span>Mai</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/107.html"><span>OST&nbsp;107.&nbsp;NERINERI CHALLENGE</span></a></p></div>','W1Ohd_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Making a Vow</p><p>Okusora Ayane from Abydos High School and Urawa Hanako from Trinity General School, two students made a vow altogether. During the process however, Hanako started talking about the dirty words. The signal was cut immediately.</p><hr><p>Character:<span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hanako/"><img src="/static/images/student/icon/23007.webp" class="icon-stu"><span>Hanako</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/107.html"><span>OST&nbsp;107.&nbsp;NERINERI CHALLENGE</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/7.html"><span>OST&nbsp;7.&nbsp;Unwelcome School</span></a></p></div>', });
     </script>
 
 
@@ -571,12 +588,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/ayane/#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="YrJK9a" >
+            <a href="/en/character/student/ayane/#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="WMBRaz" >
                 <img src="/static/images/student/icon/23005.webp" class="icon-stu">
                 <span>Ayane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('YrJK9a')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('WMBRaz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -598,12 +615,12 @@
             <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hanako/#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="JfaZGM" >
+            <a href="/en/character/student/hanako/#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="tzV3gP" >
                 <img src="/static/images/student/icon/23007.webp" class="icon-stu">
                 <span>Hanako</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('JfaZGM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('tzV3gP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Make-Up Work Club]</span>
@@ -620,10 +637,10 @@
 
             <li id="cf5b0087-5b4d-41cc-b007-db4468ac2fac"><span>【1】</span>
     
-        <a href="/en/character/npc/mai/#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="iOSU_D" >
+        <a href="/en/character/npc/mai/#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="3cjkdQ" >
             <span>Mai</span>
         </a>
-        <span onclick="showPopupByTooltipId('iOSU_D')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('3cjkdQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -635,10 +652,10 @@
 
             <li id="cf5b0087-5b4d-41cc-b007-db4468ac2fac"><span>【1】</span>
     
-        <a href="/en/character/npc/shinon/#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="97ch5K" >
+        <a href="/en/character/npc/shinon/#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="g0jcQl" >
             <span>Shinon</span>
         </a>
-        <span onclick="showPopupByTooltipId('97ch5K')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('g0jcQl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -647,22 +664,22 @@
 
     
     <script>
-        add_tooltip_data({ 'YrJK9a': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ayane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Making a Vow</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span>Ayane (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','JfaZGM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hanako</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Making a Vow</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hanako_swimsuit/"><img src="/static/images/student/icon/10074.webp" class="icon-stu"><span>Hanako (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','iOSU_D': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Mai</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','97ch5K': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shinon</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'WMBRaz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ayane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Making a Vow</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span>Ayane (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','tzV3gP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hanako</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Making a Vow</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hanako_swimsuit/"><img src="/static/images/student/icon/10074.webp" class="icon-stu"><span>Hanako (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','3cjkdQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Mai</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','g0jcQl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shinon</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Opening Ceremony</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -697,13 +714,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -717,17 +734,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988820.3184612)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139617.0611904)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988820.3184686
+Generated time (UTC): 1702139617.0611985
 -->
 </body>
 </html>

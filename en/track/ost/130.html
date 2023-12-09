@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -298,12 +308,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=cpqv73Xekr0', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=cpqv73Xekr0', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=cpqv73Xekr0)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV11h41157aa/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV11h41157aa/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV11h41157aa/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -370,6 +380,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -392,8 +409,8 @@
 
             <div class="gallery-img" id="21b39f46-82bb-437f-8d11-e6dc672f63e3">
     <div >
-        <img src="/static/images/background/BG_Broadcastingroom_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="cfxwHw">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Broadcastingroom_Off.jpg.html#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="cfxwHw" target="_blank">BG_Broadcastingroom_Off.jpg</a><span onclick="showPopupByTooltipId('cfxwHw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Broadcastingroom_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="5UrEi9">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Broadcastingroom_Off.jpg.html#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="5UrEi9" target="_blank">BG_Broadcastingroom_Off.jpg</a><span onclick="showPopupByTooltipId('5UrEi9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -407,8 +424,8 @@
 
             <div class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="lfLQmN">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="lfLQmN" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('lfLQmN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="eFXAVS">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="eFXAVS" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('eFXAVS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -422,8 +439,8 @@
 
             <div class="gallery-img" id="0598d297-9977-499a-b23d-9151da2fc774">
     <div >
-        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="WpMvkJ">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="WpMvkJ" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('WpMvkJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Je6pkh">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="Je6pkh" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('Je6pkh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -436,7 +453,7 @@
     
         
     <script>
-        add_tooltip_data({ 'cfxwHw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Broadcastingroom_Off.jpg</p><p>BG_Broadcastingroom_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Broadcastingroom_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Afterwards</i></a></span><span>)</span></li></ol></div>','lfLQmN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li></ol></div>','WpMvkJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '5UrEi9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Broadcastingroom_Off.jpg</p><p>BG_Broadcastingroom_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Broadcastingroom_Off.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Afterwards</i></a></span><span>)</span></li></ol></div>','eFXAVS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li></ol></div>','Je6pkh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -461,9 +478,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/3.html"  onmouseover="showTooltip(this)" data-tooltip="rpfw68">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>
+        <a href="/en/main/story/main/2/2/3.html"  onmouseover="showTooltipById(this)" data-tooltip="27RkBD">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>
     
-    <span onclick="showPopupByTooltipId('rpfw68')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('27RkBD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -476,7 +493,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="mN1tN_"><i>&#91;1&#93;&nbsp;The Meeting</i></a><span onclick="showPopupByTooltipId('mN1tN_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="5KmVCV"><i>&#91;1&#93;&nbsp;The Meeting</i></a><span onclick="showPopupByTooltipId('5KmVCV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -495,9 +512,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/12.html"  onmouseover="showTooltip(this)" data-tooltip="3iq5KU">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>
+        <a href="/en/main/story/main/2/2/12.html"  onmouseover="showTooltipById(this)" data-tooltip="T2eUBP">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>
     
-    <span onclick="showPopupByTooltipId('3iq5KU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('T2eUBP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -510,7 +527,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="QaZKbz"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a><span onclick="showPopupByTooltipId('QaZKbz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="segxI9"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a><span onclick="showPopupByTooltipId('segxI9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -535,9 +552,9 @@
     
 
     
-        <a href="/en/event/818/story/1.html"  onmouseover="showTooltip(this)" data-tooltip="ONn5Ni"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>
+        <a href="/en/event/818/story/1.html"  onmouseover="showTooltipById(this)" data-tooltip="Hk2Q9G"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>
     
-    <span onclick="showPopupByTooltipId('ONn5Ni')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Hk2Q9G')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -550,7 +567,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/event/818/story/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="kG9dhb"><i>&#91;3&#93;&nbsp;Afterwards</i></a><span onclick="showPopupByTooltipId('kG9dhb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/event/818/story/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="wznQkp"><i>&#91;3&#93;&nbsp;Afterwards</i></a><span onclick="showPopupByTooltipId('wznQkp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -565,7 +582,7 @@
 
     
     <script>
-        add_tooltip_data({ 'rpfw68': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris Goes on an Adventure! </p><ul><li>The Game Development Department and Sensei put their heads together to come up with ideas for their new game. When Momoi and Midori fail to find common ground, they decide to settle things once and for all using a method passed down in the Game Development Department through generations. Meanwhile, Yuzu gives Aris a quest to help her find inspiration. Aris ponders how to proceed with the quest when she decides to go on an adventure at the school with Sensei.</li></ul></div>','mN1tN_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Meeting</p><p>The Game Development Department started discussing about the game. From the mechanics of the dungeon, to the weapon and arsenal, as well as the art and manifestations. Midori was in great dissatisfaction due to how much emphasis did Momoi put on art. And with the fact that she often changed ideas, many art resources were discarded too. The twins forced Sensei to make a decision.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/64.html"><span>OST&nbsp;64.&nbsp;Pixel Time</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/130.html"><span>OST&nbsp;130.&nbsp;Foolish Days</span></a></p></div>','3iq5KU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Strategy Meeting</p><ul><li>The Game Development Department and others search for Aris&#x27 whereabouts. With the help of Noa and Yuuka, they learn that Aris is headed to Eridu, a fortified city that Rio built. Before infiltrating Eridu, Neru proposes a plan.</li></ul></div>','QaZKbz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Infiltration Plan</p><p>The Engineering Department believed that the construction materials of the city should be sent from the Millennium, so it is only necessary to find the unmanned transport vehicles heading to the city and replace them with goods. Sensei wondered why the Engineering Department would be willing to participate in this matter, and Utaha said that the "Sword of Light" that the president took away from Aris was already exceeding his authority. In a sense, it was a declaration of war on them.</p><hr><p>Character:<span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/130.html"><span>OST&nbsp;130.&nbsp;Foolish Days</span></a></p></div>','ONn5Ni': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Fiery Opening Ceremony</p><ul><li>The Kivotos Halo Festival opens with Hanako and Ayane&#x27s recital of the festival&#x27s oath.</li></ul></div>','kG9dhb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Afterwards</p><p>Back at the studio, though surprised by Hanako&#x27s remarks, Mai and Shinon still tried to seize the chance of exclusive coverage, which was denied right away.</p><hr><p>Character:<a href="/en/character/npc/mai/"><span>Mai</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/130.html"><span>OST&nbsp;130.&nbsp;Foolish Days</span></a></p></div>', });
+        add_tooltip_data({ '27RkBD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris Goes on an Adventure! </p><ul><li>The Game Development Department and Sensei put their heads together to come up with ideas for their new game. When Momoi and Midori fail to find common ground, they decide to settle things once and for all using a method passed down in the Game Development Department through generations. Meanwhile, Yuzu gives Aris a quest to help her find inspiration. Aris ponders how to proceed with the quest when she decides to go on an adventure at the school with Sensei.</li></ul></div>','5KmVCV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Meeting</p><p>The Game Development Department started discussing about the game. From the mechanics of the dungeon, to the weapon and arsenal, as well as the art and manifestations. Midori was in great dissatisfaction due to how much emphasis did Momoi put on art. And with the fact that she often changed ideas, many art resources were discarded too. The twins forced Sensei to make a decision.</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/64.html"><span>OST&nbsp;64.&nbsp;Pixel Time</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/130.html"><span>OST&nbsp;130.&nbsp;Foolish Days</span></a></p></div>','T2eUBP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Strategy Meeting</p><ul><li>The Game Development Department and others search for Aris&#x27 whereabouts. With the help of Noa and Yuuka, they learn that Aris is headed to Eridu, a fortified city that Rio built. Before infiltrating Eridu, Neru proposes a plan.</li></ul></div>','segxI9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Infiltration Plan</p><p>The Engineering Department believed that the construction materials of the city should be sent from the Millennium, so it is only necessary to find the unmanned transport vehicles heading to the city and replace them with goods. Sensei wondered why the Engineering Department would be willing to participate in this matter, and Utaha said that the "Sword of Light" that the president took away from Aris was already exceeding his authority. In a sense, it was a declaration of war on them.</p><hr><p>Character:<span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/68.html"><span>OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange)</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/130.html"><span>OST&nbsp;130.&nbsp;Foolish Days</span></a></p></div>','Hk2Q9G': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Fiery Opening Ceremony</p><ul><li>The Kivotos Halo Festival opens with Hanako and Ayane&#x27s recital of the festival&#x27s oath.</li></ul></div>','wznQkp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Afterwards</p><p>Back at the studio, though surprised by Hanako&#x27s remarks, Mai and Shinon still tried to seize the chance of exclusive coverage, which was denied right away.</p><hr><p>Character:<a href="/en/character/npc/mai/"><span>Mai</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/130.html"><span>OST&nbsp;130.&nbsp;Foolish Days</span></a></p></div>', });
     </script>
 
 
@@ -613,12 +630,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="vmEGXy" >
+            <a href="/en/character/student/midori/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="cLjK4k" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('vmEGXy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('cLjK4k')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -640,12 +657,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="eMmlVN" >
+            <a href="/en/character/student/momoi/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="oPP_yI" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('eMmlVN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('oPP_yI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -667,12 +684,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="5cAAB3" >
+            <a href="/en/character/student/aris/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="ws_zJt" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('5cAAB3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ws_zJt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -694,12 +711,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hibiki/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="CIwRsn" >
+            <a href="/en/character/student/hibiki/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="tnWNeA" >
                 <img src="/static/images/student/icon/20000.webp" class="icon-stu">
                 <span>Hibiki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('CIwRsn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('tnWNeA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -721,12 +738,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotori/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="Va3Q3Z" >
+            <a href="/en/character/student/kotori/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="4RJupg" >
                 <img src="/static/images/student/icon/16002.webp" class="icon-stu">
                 <span>Kotori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Va3Q3Z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('4RJupg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -743,10 +760,10 @@
 
             <li id="cf5b0087-5b4d-41cc-b007-db4468ac2fac"><span>【1】</span>
     
-        <a href="/en/character/npc/mai/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="ZWYqmb" >
+        <a href="/en/character/npc/mai/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="HowX6R" >
             <span>Mai</span>
         </a>
-        <span onclick="showPopupByTooltipId('ZWYqmb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('HowX6R')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -758,10 +775,10 @@
 
             <li id="cf5b0087-5b4d-41cc-b007-db4468ac2fac"><span>【1】</span>
     
-        <a href="/en/character/npc/shinon/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="Bg7p_q" >
+        <a href="/en/character/npc/shinon/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="VxX6QQ" >
             <span>Shinon</span>
         </a>
-        <span onclick="showPopupByTooltipId('Bg7p_q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('VxX6QQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -778,12 +795,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/toki/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="NHY6LC" >
+            <a href="/en/character/student/toki/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="JCheeq" >
                 <img src="/static/images/student/icon/10062.webp" class="icon-stu">
                 <span>Toki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('NHY6LC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('JCheeq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -805,12 +822,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/utaha/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="Em7RHM" >
+            <a href="/en/character/student/utaha/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="neOVZW" >
                 <img src="/static/images/student/icon/23004.webp" class="icon-stu">
                 <span>Utaha</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Em7RHM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('neOVZW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -832,12 +849,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_130" onmouseover="showTooltip(this)" data-tooltip="1R0l1n" >
+            <a href="/en/character/student/yuzu/#track-OST_130" onmouseover="showTooltipById(this)" data-tooltip="B27aI6" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('1R0l1n')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('B27aI6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -851,22 +868,22 @@
 
     
     <script>
-        add_tooltip_data({ 'vmEGXy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','eMmlVN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','5cAAB3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','CIwRsn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','Va3Q3Z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','ZWYqmb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Mai</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Afterwards</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','Bg7p_q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shinon</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Afterwards</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','NHY6LC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','Em7RHM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','1R0l1n': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'cLjK4k': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','oPP_yI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','ws_zJt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','tnWNeA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','4RJupg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','HowX6R': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Mai</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Afterwards</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','VxX6QQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shinon</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/event/818/story/1.html"><span>Event&nbsp;Get Set, Go! Kivotos Halo Festival!&nbsp;Story&nbsp;1:&nbsp;A Fiery Opening Ceremony</span></a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/event/818/story/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Afterwards</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','JCheeq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','neOVZW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Infiltration Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','B27aI6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/3.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;3:&nbsp;Aris Goes on an Adventure! </a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/3.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Meeting</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -901,13 +918,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -921,17 +938,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988821.8324788)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139629.6312854)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988821.832487
+Generated time (UTC): 1702139629.6312933
 -->
 </body>
 </html>

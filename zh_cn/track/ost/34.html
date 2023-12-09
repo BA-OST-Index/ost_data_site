@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -84,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -133,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -179,11 +188,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -310,12 +320,12 @@
 
         <h3>原版</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=Oeedwk9oQLk', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=Oeedwk9oQLk', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=Oeedwk9oQLk)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=34', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=34', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩 (https://www.bilibili.com/video/BV1Jh411d7kd/?p=34)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -382,6 +392,13 @@
         </tbody>
     </table>
 
+    <h3>回忆大厅角色</h3>
+    <p>以下角色的回忆大厅使用了本音乐。</p>
+    
+    
+
+    
+
 
     <h2>使用信息</h2>
     <p>此处显示引用了这首曲子的实例。</p>
@@ -416,8 +433,8 @@
 
             <div class="gallery-img" id="44739776-1194-4fa5-8609-e1552e692f04">
     <div >
-        <img src="/static/images/background/BG_CS_Abydos_01_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ertAD_">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_01_Letter.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="ertAD_" target="_blank">BG_CS_Abydos_01_Letter.jpg</a><span onclick="showPopupByTooltipId('ertAD_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Abydos_01_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="7tHO_S">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_01_Letter.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="7tHO_S" target="_blank">BG_CS_Abydos_01_Letter.jpg</a><span onclick="showPopupByTooltipId('7tHO_S')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -431,8 +448,8 @@
 
             <div class="gallery-img" id="a7f429b1-8f89-4acc-a4bb-d69ba7762ce2">
     <div >
-        <img src="/static/images/background/BG_CS_Gehenna_01_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="28qiFA">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Gehenna_01_Letter.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="28qiFA" target="_blank">BG_CS_Gehenna_01_Letter.jpg</a><span onclick="showPopupByTooltipId('28qiFA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Gehenna_01_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="7X1Ska">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Gehenna_01_Letter.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="7X1Ska" target="_blank">BG_CS_Gehenna_01_Letter.jpg</a><span onclick="showPopupByTooltipId('7X1Ska')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -446,8 +463,8 @@
 
             <div class="gallery-img" id="b8f3aad9-1daa-4562-ba47-7c0bce0cbbd2">
     <div >
-        <img src="/static/images/background/BG_CS_Gehenna_02_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="kLH5Ni">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Gehenna_02_Letter.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="kLH5Ni" target="_blank">BG_CS_Gehenna_02_Letter.jpg</a><span onclick="showPopupByTooltipId('kLH5Ni')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Gehenna_02_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="kznMsD">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Gehenna_02_Letter.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="kznMsD" target="_blank">BG_CS_Gehenna_02_Letter.jpg</a><span onclick="showPopupByTooltipId('kznMsD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -461,8 +478,8 @@
 
             <div class="gallery-img" id="efbf6160-6e18-4439-91dc-5f6a8bab2178">
     <div >
-        <img src="/static/images/background/BG_CS_Gehenna_03_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="9LhosW">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Gehenna_03_Letter.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="9LhosW" target="_blank">BG_CS_Gehenna_03_Letter.jpg</a><span onclick="showPopupByTooltipId('9LhosW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Gehenna_03_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Kqp31O">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Gehenna_03_Letter.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="Kqp31O" target="_blank">BG_CS_Gehenna_03_Letter.jpg</a><span onclick="showPopupByTooltipId('Kqp31O')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -476,8 +493,8 @@
 
             <div class="gallery-img" id="e637f543-d8cb-4927-8ca7-fe806c3c0aea">
     <div >
-        <img src="/static/images/background/BG_CS_PR_00.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Buymsb">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_00.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="Buymsb" target="_blank">BG_CS_PR_00.jpg</a><span onclick="showPopupByTooltipId('Buymsb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_00.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="BmKY9d">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_00.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="BmKY9d" target="_blank">BG_CS_PR_00.jpg</a><span onclick="showPopupByTooltipId('BmKY9d')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -491,8 +508,8 @@
 
             <div class="gallery-img" id="212821a5-7ed4-4565-ab20-fb8195e78126">
     <div >
-        <img src="/static/images/background/BG_CS_PR_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Z1LfQS">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_01.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="Z1LfQS" target="_blank">BG_CS_PR_01.jpg</a><span onclick="showPopupByTooltipId('Z1LfQS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="MP7xV2">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_01.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="MP7xV2" target="_blank">BG_CS_PR_01.jpg</a><span onclick="showPopupByTooltipId('MP7xV2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -506,8 +523,8 @@
 
             <div class="gallery-img" id="19086cc5-c837-481a-884a-bfd1fdbeff3e">
     <div >
-        <img src="/static/images/background/BG_CS_PR_07.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0rz4sj">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_07.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="0rz4sj" target="_blank">BG_CS_PR_07.jpg</a><span onclick="showPopupByTooltipId('0rz4sj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_07.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ikQvHt">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_07.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="ikQvHt" target="_blank">BG_CS_PR_07.jpg</a><span onclick="showPopupByTooltipId('ikQvHt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -521,8 +538,8 @@
 
             <div class="gallery-img" id="f122880b-c6fa-4f16-aea4-02a6aacaa80b">
     <div >
-        <img src="/static/images/background/BG_CS_PR_08.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Mlisme">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_08.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="Mlisme" target="_blank">BG_CS_PR_08.jpg</a><span onclick="showPopupByTooltipId('Mlisme')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_08.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="R1lq4W">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_08.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="R1lq4W" target="_blank">BG_CS_PR_08.jpg</a><span onclick="showPopupByTooltipId('R1lq4W')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -536,8 +553,8 @@
 
             <div class="gallery-img" id="ee5e6cbb-9145-44b4-b8ce-59501393aec2">
     <div >
-        <img src="/static/images/background/BG_CS_PR_09.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="XFIWke">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_09.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="XFIWke" target="_blank">BG_CS_PR_09.jpg</a><span onclick="showPopupByTooltipId('XFIWke')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_09.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0eox1H">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_09.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="0eox1H" target="_blank">BG_CS_PR_09.jpg</a><span onclick="showPopupByTooltipId('0eox1H')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -551,8 +568,8 @@
 
             <div class="gallery-img" id="a469d355-d4a4-46db-92bb-c943de495e56">
     <div >
-        <img src="/static/images/background/BG_CS_PR_12.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FJ1gIS">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_12.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="FJ1gIS" target="_blank">BG_CS_PR_12.jpg</a><span onclick="showPopupByTooltipId('FJ1gIS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_12.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="SIq3Iv">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_12.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="SIq3Iv" target="_blank">BG_CS_PR_12.jpg</a><span onclick="showPopupByTooltipId('SIq3Iv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -566,8 +583,8 @@
 
             <div class="gallery-img" id="bbb3aa54-53a4-44ba-b3b8-38d5f2be4ed3">
     <div >
-        <img src="/static/images/background/BG_CS_PR_19.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Rp43EE">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_19.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="Rp43EE" target="_blank">BG_CS_PR_19.jpg</a><span onclick="showPopupByTooltipId('Rp43EE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_19.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="A8xuQb">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PR_19.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="A8xuQb" target="_blank">BG_CS_PR_19.jpg</a><span onclick="showPopupByTooltipId('A8xuQb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -581,8 +598,8 @@
 
             <div class="gallery-img" id="161cc9d7-a908-47e3-90ad-1e5f94cca982">
     <div >
-        <img src="/static/images/background/BG_CS_Trinity_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="H8H5Pw">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Trinity_01.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="H8H5Pw" target="_blank">BG_CS_Trinity_01.jpg</a><span onclick="showPopupByTooltipId('H8H5Pw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Trinity_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="4m12wN">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Trinity_01.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="4m12wN" target="_blank">BG_CS_Trinity_01.jpg</a><span onclick="showPopupByTooltipId('4m12wN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -596,8 +613,8 @@
 
             <div class="gallery-img" id="49d6edd5-54a3-40a4-86fc-523dec2c6ea1">
     <div >
-        <img src="/static/images/background/BG_CityDowntown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="9CYgeE">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CityDowntown.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="9CYgeE" target="_blank">BG_CityDowntown.jpg</a><span onclick="showPopupByTooltipId('9CYgeE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CityDowntown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="KpByze">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CityDowntown.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="KpByze" target="_blank">BG_CityDowntown.jpg</a><span onclick="showPopupByTooltipId('KpByze')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -611,8 +628,8 @@
 
             <div class="gallery-img" id="04e4f041-399e-4f46-b3b3-f10ed53c4966">
     <div >
-        <img src="/static/images/background/BG_CityOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="xzs7Ad">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CityOffice.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="xzs7Ad" target="_blank">BG_CityOffice.jpg</a><span onclick="showPopupByTooltipId('xzs7Ad')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CityOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FuwR09">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CityOffice.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="FuwR09" target="_blank">BG_CityOffice.jpg</a><span onclick="showPopupByTooltipId('FuwR09')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -626,8 +643,8 @@
 
             <div class="gallery-img" id="f4ec740d-161a-454b-a3b4-47ce1318d9d1">
     <div >
-        <img src="/static/images/background/BG_DesertResidence_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="In2YAP">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_DesertResidence_Night.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="In2YAP" target="_blank">BG_DesertResidence_Night.jpg</a><span onclick="showPopupByTooltipId('In2YAP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_DesertResidence_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="6V0sMt">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_DesertResidence_Night.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="6V0sMt" target="_blank">BG_DesertResidence_Night.jpg</a><span onclick="showPopupByTooltipId('6V0sMt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -641,8 +658,8 @@
 
             <div class="gallery-img" id="01bd09a3-e7c9-4e44-b031-cbf4a005021f">
     <div >
-        <img src="/static/images/background/BG_SchoolRooftop.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ZkiiUi">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_SchoolRooftop.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="ZkiiUi" target="_blank">BG_SchoolRooftop.jpg</a><span onclick="showPopupByTooltipId('ZkiiUi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_SchoolRooftop.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="8koiCG">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_SchoolRooftop.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="8koiCG" target="_blank">BG_SchoolRooftop.jpg</a><span onclick="showPopupByTooltipId('8koiCG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -656,8 +673,8 @@
 
             <div class="gallery-img" id="93684786-09cc-441e-8615-77ab3bd20494">
     <div >
-        <img src="/static/images/background/BG_View_Kivotos.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="_qNXjR">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_View_Kivotos.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="_qNXjR" target="_blank">BG_View_Kivotos.jpg</a><span onclick="showPopupByTooltipId('_qNXjR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_View_Kivotos.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="elwYmy">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_View_Kivotos.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="elwYmy" target="_blank">BG_View_Kivotos.jpg</a><span onclick="showPopupByTooltipId('elwYmy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -671,8 +688,8 @@
 
             <div class="gallery-img" id="a1bfd244-8f93-4bd6-9ae1-04f96b1bac32">
     <div >
-        <img src="/static/images/background/BG_Wilderness_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="83NOTQ">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_Wilderness_Night.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="83NOTQ" target="_blank">BG_Wilderness_Night.jpg</a><span onclick="showPopupByTooltipId('83NOTQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Wilderness_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="U_qzBN">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_Wilderness_Night.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="U_qzBN" target="_blank">BG_Wilderness_Night.jpg</a><span onclick="showPopupByTooltipId('U_qzBN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -685,7 +702,7 @@
     
         
     <script>
-        add_tooltip_data({ 'ertAD_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_01_Letter.jpg</p><p>BG_CS_Abydos_01_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_01_Letter.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/ayane/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/shiroko/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/serika/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茜香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/hoshino/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/nonomi/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','28qiFA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_01_Letter.jpg</p><p>BG_CS_Gehenna_01_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_01_Letter.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','kLH5Ni': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_02_Letter.jpg</p><p>BG_CS_Gehenna_02_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_02_Letter.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','9LhosW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_03_Letter.jpg</p><p>BG_CS_Gehenna_03_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_03_Letter.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Buymsb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_00.jpg</p><p>BG_CS_PR_00.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_00.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Z1LfQS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_01.jpg</p><p>BG_CS_PR_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','0rz4sj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_07.jpg</p><p>BG_CS_PR_07.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_07.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Mlisme': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_08.jpg</p><p>BG_CS_PR_08.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_08.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','XFIWke': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_09.jpg</p><p>BG_CS_PR_09.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_09.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','FJ1gIS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_12.jpg</p><p>BG_CS_PR_12.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_12.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Rp43EE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_19.jpg</p><p>BG_CS_PR_19.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_19.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','H8H5Pw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Trinity_01.jpg</p><p>BG_CS_Trinity_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Trinity_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','9CYgeE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityDowntown.jpg</p><p>BG_CityDowntown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityDowntown.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','xzs7Ad': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityOffice.jpg</p><p>BG_CityOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityOffice.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','In2YAP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_DesertResidence_Night.jpg</p><p>BG_DesertResidence_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_DesertResidence_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','ZkiiUi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolRooftop.jpg</p><p>BG_SchoolRooftop.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolRooftop.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','_qNXjR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Kivotos.jpg</p><p>BG_View_Kivotos.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Kivotos.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','83NOTQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Wilderness_Night.jpg</p><p>BG_Wilderness_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Wilderness_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '7tHO_S': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_01_Letter.jpg</p><p>BG_CS_Abydos_01_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_01_Letter.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/ayane/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/shiroko/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/serika/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茜香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/hoshino/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/nonomi/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','7X1Ska': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_01_Letter.jpg</p><p>BG_CS_Gehenna_01_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_01_Letter.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','kznMsD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_02_Letter.jpg</p><p>BG_CS_Gehenna_02_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_02_Letter.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Kqp31O': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_03_Letter.jpg</p><p>BG_CS_Gehenna_03_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_03_Letter.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','BmKY9d': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_00.jpg</p><p>BG_CS_PR_00.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_00.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','MP7xV2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_01.jpg</p><p>BG_CS_PR_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','ikQvHt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_07.jpg</p><p>BG_CS_PR_07.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_07.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','R1lq4W': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_08.jpg</p><p>BG_CS_PR_08.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_08.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','0eox1H': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_09.jpg</p><p>BG_CS_PR_09.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_09.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','SIq3Iv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_12.jpg</p><p>BG_CS_PR_12.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_12.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','A8xuQb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_19.jpg</p><p>BG_CS_PR_19.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_19.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','4m12wN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Trinity_01.jpg</p><p>BG_CS_Trinity_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Trinity_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','KpByze': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityDowntown.jpg</p><p>BG_CityDowntown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityDowntown.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','FuwR09': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityOffice.jpg</p><p>BG_CityOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityOffice.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','6V0sMt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_DesertResidence_Night.jpg</p><p>BG_DesertResidence_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_DesertResidence_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','8koiCG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolRooftop.jpg</p><p>BG_SchoolRooftop.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolRooftop.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','elwYmy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Kivotos.jpg</p><p>BG_View_Kivotos.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Kivotos.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','U_qzBN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Wilderness_Night.jpg</p><p>BG_Wilderness_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Wilderness_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -710,9 +727,9 @@
     
 
     
-        <a href="/zh_cn/main/story/other/1/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="kcClNO">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/other/1/1/1.html"  onmouseover="showTooltipById(this)" data-tooltip="dsJoF3">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('kcClNO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('dsJoF3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -725,7 +742,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="59f0RI"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('59f0RI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="RvzFfi"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('RvzFfi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -740,7 +757,7 @@
 
     
     <script>
-        add_tooltip_data({ 'kcClNO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往沙勒社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往夏莱社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往夏莱社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','59f0RI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/34.html"><span>OST&nbsp;34.&nbsp;Aoharu (青春)</span></a></p></div>', });
+        add_tooltip_data({ 'dsJoF3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往沙勒社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往夏莱社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往夏莱社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','RvzFfi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/34.html"><span>OST&nbsp;34.&nbsp;Aoharu (青春)</span></a></p></div>', });
     </script>
 
 
@@ -787,17 +804,17 @@
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -832,13 +849,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -852,17 +869,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989145.4820306)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702140034.8573182)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989145.4820373
+Generated time (UTC): 1702140034.857326
 -->
 </body>
 </html>

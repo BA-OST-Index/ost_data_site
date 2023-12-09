@@ -1,17 +1,21 @@
 var currentTooltip = void 0;
 
-function showTooltip(obj, data_key) {
+function showTooltip(obj, content, params) {
     if (currentTooltip !== void 0) {
         currentTooltip.destroy();
     }
 
-    if (data_key === void 0) {
-        data_key = obj.dataset.tooltip;
+    currentTooltip = tippy(obj, Object.assign({}, {content: content}, params));
+    currentTooltip.show();
+    displayZhcnString();
+}
+
+function showTooltipById(obj, dataKeyname) {
+    if (dataKeyname === void 0) {
+        dataKeyname = obj.dataset.tooltip;
     }
 
-    currentTooltip = tippy(obj, {content: tooltip_data[data_key], interactive: true, allowHTML: true, maxWidth: "40em", placement: "top"});
-    currentTooltip.show();
-    display_zhcn_element();
+    showTooltip(obj, tooltip_data[dataKeyname], {interactive: true, allowHTML: true, maxWidth: "40em", placement: "top"})
 }
 
 function showTooltipGallerySmall(obj) {

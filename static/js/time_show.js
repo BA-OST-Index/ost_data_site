@@ -2,7 +2,7 @@ function addLeadingContent(obj, max_length, content) {
     return obj.toString().padStart(2, content)
 }
 
-function calculateTimeDifference(designatedTimestamp) {
+function calculateTimeDifferenceFromNow(designatedTimestamp) {
     // the variable should be in ms
     const now = new Date();
     const difference = now.getTime() - designatedTimestamp;
@@ -22,7 +22,7 @@ function calculateTimeDifference(designatedTimestamp) {
     }
 }
 
-function setHtmlElementById(elementId, html) {
+function setInnerHtmlContentById(elementId, html) {
     const element = document.getElementById(elementId);
     element.innerHTML = html;
 }
@@ -30,12 +30,12 @@ function setHtmlElementById(elementId, html) {
 function showProjectTime() {
     // first time when the parser is created
     const designatedTimestamp = 1686061916000;
-    const result = calculateTimeDifference(designatedTimestamp);
+    const result = calculateTimeDifferenceFromNow(designatedTimestamp);
 
-    setHtmlElementById("project-time-day", result.days);
-    setHtmlElementById("project-time-hour", result.hours);
-    setHtmlElementById("project-time-minute", result.minutes);
-    setHtmlElementById("project-time-second", result.seconds);
+    setInnerHtmlContentById("project-time-day", result.days);
+    setInnerHtmlContentById("project-time-hour", result.hours);
+    setInnerHtmlContentById("project-time-minute", result.minutes);
+    setInnerHtmlContentById("project-time-second", result.seconds);
 }
 
 function showTimestampInLocalTime(timestamp) {

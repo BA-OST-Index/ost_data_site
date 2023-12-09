@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -84,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -133,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -179,11 +188,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -298,12 +308,12 @@
 
         <h3>原版</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=m6qyju6JaR4', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=m6qyju6JaR4', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=m6qyju6JaR4)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=45', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=45', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩 (https://www.bilibili.com/video/BV1Jh411d7kd/?p=45)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -370,6 +380,13 @@
         </tbody>
     </table>
 
+    <h3>回忆大厅角色</h3>
+    <p>以下角色的回忆大厅使用了本音乐。</p>
+    
+    
+
+    
+
 
     <h2>使用信息</h2>
     <p>此处显示引用了这首曲子的实例。</p>
@@ -392,8 +409,8 @@
 
             <div class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="UeL4ud">
-        <p class="gallery-caption"><span>【2】</span><span><a href="/zh_cn/background/BG_GameDevRoom.jpg.html#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="UeL4ud" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('UeL4ud')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="LIWxv2">
+        <p class="gallery-caption"><span>【2】</span><span><a href="/zh_cn/background/BG_GameDevRoom.jpg.html#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="LIWxv2" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('LIWxv2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -407,8 +424,8 @@
 
             <div class="gallery-img" id="bc785215-ff90-466c-8e76-11b324772146">
     <div >
-        <img src="/static/images/background/BG_ClassCorridor.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="yMFYPN">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_ClassCorridor.jpg.html#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="yMFYPN" target="_blank">BG_ClassCorridor.jpg</a><span onclick="showPopupByTooltipId('yMFYPN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ClassCorridor.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="W62amj">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_ClassCorridor.jpg.html#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="W62amj" target="_blank">BG_ClassCorridor.jpg</a><span onclick="showPopupByTooltipId('W62amj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -422,8 +439,8 @@
 
             <div class="gallery-img" id="b2d075f4-e507-4079-b6ce-d2d7e0a3f255">
     <div >
-        <img src="/static/images/background/BG_ClassRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="IPyoSJ">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_ClassRoom.jpg.html#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="IPyoSJ" target="_blank">BG_ClassRoom.jpg</a><span onclick="showPopupByTooltipId('IPyoSJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ClassRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="SGZSl2">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_ClassRoom.jpg.html#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="SGZSl2" target="_blank">BG_ClassRoom.jpg</a><span onclick="showPopupByTooltipId('SGZSl2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -437,8 +454,8 @@
 
             <div class="gallery-img" id="d64504df-ec0f-4a1f-9ae8-c5b7a41d6d0b">
     <div >
-        <img src="/static/images/background/BG_MilleniumCampus.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="TVSC69">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_MilleniumCampus.jpg.html#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="TVSC69" target="_blank">BG_MilleniumCampus.jpg</a><span onclick="showPopupByTooltipId('TVSC69')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MilleniumCampus.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Et0oS7">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_MilleniumCampus.jpg.html#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="Et0oS7" target="_blank">BG_MilleniumCampus.jpg</a><span onclick="showPopupByTooltipId('Et0oS7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -451,7 +468,7 @@
     
         
     <script>
-        add_tooltip_data({ 'UeL4ud': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/2/2/3.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第3话：<span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/3.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','yMFYPN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassCorridor.jpg</p><p>BG_ClassCorridor.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassCorridor.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','IPyoSJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassRoom.jpg</p><p>BG_ClassRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassRoom.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','TVSC69': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCampus.jpg</p><p>BG_MilleniumCampus.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCampus.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/3.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第3话：<span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/3.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'LIWxv2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/2/2/3.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第3话：<span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/3.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','W62amj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassCorridor.jpg</p><p>BG_ClassCorridor.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassCorridor.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','SGZSl2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassRoom.jpg</p><p>BG_ClassRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassRoom.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Et0oS7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCampus.jpg</p><p>BG_MilleniumCampus.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCampus.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/3.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第3话：<span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/3.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -476,9 +493,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/1/2/4.html"  onmouseover="showTooltip(this)" data-tooltip="fPMZg2">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/1/2/4.html"  onmouseover="showTooltipById(this)" data-tooltip="MM9oAD">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('fPMZg2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('MM9oAD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -491,7 +508,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="BWisRK"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('BWisRK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="6vlMx6"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('6vlMx6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -510,9 +527,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/2/1/5.html"  onmouseover="showTooltip(this)" data-tooltip="89sJmS">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/2/1/5.html"  onmouseover="showTooltipById(this)" data-tooltip="t4IjeJ">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('89sJmS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('t4IjeJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -525,7 +542,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="cTTDOy"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('cTTDOy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="VG4JkR"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('VG4JkR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -544,9 +561,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/2/2/3.html"  onmouseover="showTooltip(this)" data-tooltip="gSnmCT">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第3话：<span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/2/2/3.html"  onmouseover="showTooltipById(this)" data-tooltip="cFbc3p">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第3话：<span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('gSnmCT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('cFbc3p')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -559,7 +576,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/2/2/3.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="0U__ya"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('0U__ya')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/2/2/3.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="QdmBYa"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('QdmBYa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -574,7 +591,7 @@
 
     
     <script>
-        add_tooltip_data({ 'fPMZg2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">大伙们再次到社团室集合整理情况。绫音和芹香翻找行政文档，把阿拜多斯的自治区大部分都落入凯萨之手的事告诉大家。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大伙们再次到社团室集合整理情况。绫音和茜香翻找行政文档，把阿拜多斯的自治区大部分都落入凯萨之手的事告诉大家。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大伙们再次到社团室集合整理情况。绫音和芹香翻找行政文档，把阿拜多斯的自治区大部分都落入凯萨之手的事告诉大家。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','BWisRK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野宫和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野宫表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野宫还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野乃美和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野乃美表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野乃美还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野宫和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野宫表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野宫还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/44.html"><span>OST&nbsp;44.&nbsp;Walkthrough ()</span></a></p></div>','89sJmS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">爱丽丝开心地玩着游戏开发部的前作<传说年代记>。游戏开发部全员看她玩得这么开心都大受感动。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝开心地玩着游戏开发部的前作<传说年代记>。游戏开发部全员看她玩得这么开心都大受感动。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝开心地玩着游戏开发部的前作<传说年代记>。游戏开发部全员看她玩得这么开心都大受感动。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','cTTDOy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">在桃和绿两人的帮助下，爱丽丝在三小时内通关了True End。两人问及爱丽丝对游戏的评价时，爱丽丝认为游戏很有意思，听到此言的柚子终于从柜子里出来了。柚子真诚地对爱丽丝道了谢。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在桃井和绿两人的帮助下，爱丽丝在三小时内通关了True End。两人问及爱丽丝对游戏的评价时，爱丽丝认为游戏很有意思，听到此言的柚子终于从柜子里出来了。柚子真诚地对爱丽丝道了谢。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在桃井和绿两人的帮助下，爱丽丝在三小时内通关了True End。两人问及爱丽丝对游戏的评价时，爱丽丝认为游戏很有意思，听到此言的柚子终于从柜子里出来了。柚子真诚地对爱丽丝道了谢。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/64.html"><span>OST&nbsp;64.&nbsp;Pixel Time (像素时间)</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/21.html"><span>OST&nbsp;21.&nbsp;Midnight Trip (午夜之旅)</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/44.html"><span>OST&nbsp;44.&nbsp;Walkthrough ()</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime (某天，某刻)</span></a></p></div>','gSnmCT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">游戏开发部和老师正在苦思要加入游戏新作的创意。桃和绿的意见发生分歧，两人为了做出最后的结论，于是决定使用游戏开发部代代相传的方式决胜负。另一方面，柚子为了让爱丽丝能获得特别的灵感，于是给了她任务。苦思该如何运行任务的爱丽丝决定先和老师一起去学园冒险。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部和老师正在苦思要加入游戏新作的创意。桃井和绿的意见发生分歧，两人为了做出最后的结论，于是决定使用游戏开发部代代相传的方式决胜负。另一方面，柚子为了让爱丽丝能获得特别的灵感，于是给了她任务。苦思该如何运行任务的爱丽丝决定先和老师一起去学园冒险。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部和老师正在苦思要加入游戏新作的创意。桃井和绿的意见发生分歧，两人为了做出最后的结论，于是决定使用游戏开发部代代相传的方式决胜负。另一方面，柚子为了让爱丽丝能获得特别的灵感，于是给了她任务。苦思该如何运行任务的爱丽丝决定先和老师一起去学园冒险。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','0U__ya': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">爱丽丝与老师来到了千年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝与老师来到了千年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃井试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝与老师来到了千禧年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃井试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/44.html"><span>OST&nbsp;44.&nbsp;Walkthrough ()</span></a></p></div>', });
+        add_tooltip_data({ 'MM9oAD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">大伙们再次到社团室集合整理情况。绫音和芹香翻找行政文档，把阿拜多斯的自治区大部分都落入凯萨之手的事告诉大家。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大伙们再次到社团室集合整理情况。绫音和茜香翻找行政文档，把阿拜多斯的自治区大部分都落入凯萨之手的事告诉大家。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大伙们再次到社团室集合整理情况。绫音和芹香翻找行政文档，把阿拜多斯的自治区大部分都落入凯萨之手的事告诉大家。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','6vlMx6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野宫和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野宫表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野宫还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野乃美和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野乃美表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野乃美还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野宫和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野宫表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野宫还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/44.html"><span>OST&nbsp;44.&nbsp;Walkthrough ()</span></a></p></div>','t4IjeJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">爱丽丝开心地玩着游戏开发部的前作<传说年代记>。游戏开发部全员看她玩得这么开心都大受感动。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝开心地玩着游戏开发部的前作<传说年代记>。游戏开发部全员看她玩得这么开心都大受感动。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝开心地玩着游戏开发部的前作<传说年代记>。游戏开发部全员看她玩得这么开心都大受感动。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','VG4JkR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">在桃和绿两人的帮助下，爱丽丝在三小时内通关了True End。两人问及爱丽丝对游戏的评价时，爱丽丝认为游戏很有意思，听到此言的柚子终于从柜子里出来了。柚子真诚地对爱丽丝道了谢。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在桃井和绿两人的帮助下，爱丽丝在三小时内通关了True End。两人问及爱丽丝对游戏的评价时，爱丽丝认为游戏很有意思，听到此言的柚子终于从柜子里出来了。柚子真诚地对爱丽丝道了谢。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在桃井和绿两人的帮助下，爱丽丝在三小时内通关了True End。两人问及爱丽丝对游戏的评价时，爱丽丝认为游戏很有意思，听到此言的柚子终于从柜子里出来了。柚子真诚地对爱丽丝道了谢。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/64.html"><span>OST&nbsp;64.&nbsp;Pixel Time (像素时间)</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/21.html"><span>OST&nbsp;21.&nbsp;Midnight Trip (午夜之旅)</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/44.html"><span>OST&nbsp;44.&nbsp;Walkthrough ()</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/67.html"><span>OST&nbsp;67.&nbsp;someday, sometime (某天，某刻)</span></a></p></div>','cFbc3p': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">游戏开发部和老师正在苦思要加入游戏新作的创意。桃和绿的意见发生分歧，两人为了做出最后的结论，于是决定使用游戏开发部代代相传的方式决胜负。另一方面，柚子为了让爱丽丝能获得特别的灵感，于是给了她任务。苦思该如何运行任务的爱丽丝决定先和老师一起去学园冒险。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部和老师正在苦思要加入游戏新作的创意。桃井和绿的意见发生分歧，两人为了做出最后的结论，于是决定使用游戏开发部代代相传的方式决胜负。另一方面，柚子为了让爱丽丝能获得特别的灵感，于是给了她任务。苦思该如何运行任务的爱丽丝决定先和老师一起去学园冒险。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部和老师正在苦思要加入游戏新作的创意。桃井和绿的意见发生分歧，两人为了做出最后的结论，于是决定使用游戏开发部代代相传的方式决胜负。另一方面，柚子为了让爱丽丝能获得特别的灵感，于是给了她任务。苦思该如何运行任务的爱丽丝决定先和老师一起去学园冒险。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','QdmBYa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">爱丽丝与老师来到了千年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝与老师来到了千年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃井试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝与老师来到了千禧年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃井试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/44.html"><span>OST&nbsp;44.&nbsp;Walkthrough ()</span></a></p></div>', });
     </script>
 
 
@@ -622,12 +639,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/aris/#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="6x66KM" >
+            <a href="/zh_cn/character/student/aris/#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="rlPxmR" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('6x66KM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('rlPxmR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -649,12 +666,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/hoshino/#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="DeEKqn" >
+            <a href="/zh_cn/character/student/hoshino/#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="oUD6X4" >
                 <img src="/static/images/student/icon/10005.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('DeEKqn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('oUD6X4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -676,12 +693,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/midori/#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="iYVMA0" >
+            <a href="/zh_cn/character/student/midori/#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="sfSsdb" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('iYVMA0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('sfSsdb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -703,12 +720,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/momoi/#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="IRdcPj" >
+            <a href="/zh_cn/character/student/momoi/#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="xPYZ0v" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('IRdcPj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('xPYZ0v')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -730,12 +747,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/nonomi/#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="wZLVHX" >
+            <a href="/zh_cn/character/student/nonomi/#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="w6EUeT" >
                 <img src="/static/images/student/icon/13004.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('wZLVHX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('w6EUeT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -757,12 +774,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/shiroko/#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="vp_hvT" >
+            <a href="/zh_cn/character/student/shiroko/#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="slgnvg" >
                 <img src="/static/images/student/icon/10010.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('vp_hvT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('slgnvg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -784,12 +801,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/yuzu/#track-OST_44" onmouseover="showTooltip(this)" data-tooltip="E38xEv" >
+            <a href="/zh_cn/character/student/yuzu/#track-OST_44" onmouseover="showTooltipById(this)" data-tooltip="uAUOHp" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('E38xEv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('uAUOHp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -803,22 +820,22 @@
 
     
     <script>
-        add_tooltip_data({ '6x66KM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/2/2/3.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第3话：<span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/3.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <span><a href="/zh_cn/character/npc/ariskey/"><span><span class="lang-zh-cn-cn">Key</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Key</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Key</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a> &nbsp;|&nbsp;</span><a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','DeEKqn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <a href="/zh_cn/character/npc/blacksuit/"><span><span class="lang-zh-cn-cn">黑色西服人</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">黑色西服人</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">黑色西服人</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','iYVMA0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','IRdcPj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','wZLVHX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/nonomi_swimsuit/"><img src="/static/images/student/icon/10044.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">野宫(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','vp_hvT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><span><a href="/zh_cn/character/student/shiroko_cycling/"><img src="/static/images/student/icon/10024.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子(单车)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子(单车)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子(单车)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/shiroko_swimsuit/"><img src="/static/images/student/icon/20027.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','E38xEv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>', });
+        add_tooltip_data({ 'rlPxmR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/2/2/3.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第3话：<span class="lang-zh-cn-cn">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">～爱丽丝，冒险开始！～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/3.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">冒险开始</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <span><a href="/zh_cn/character/npc/ariskey/"><span><span class="lang-zh-cn-cn">Key</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Key</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Key</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a> &nbsp;|&nbsp;</span><a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','oUD6X4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <a href="/zh_cn/character/npc/blacksuit/"><span><span class="lang-zh-cn-cn">黑色西服人</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">黑色西服人</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">黑色西服人</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','sfSsdb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','xPYZ0v': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">桃</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','w6EUeT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/nonomi_swimsuit/"><img src="/static/images/student/icon/10044.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">野宫(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','slgnvg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/4.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第4话：<span class="lang-zh-cn-cn">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/4.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">争吵声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><span><a href="/zh_cn/character/student/shiroko_cycling/"><img src="/static/images/student/icon/10024.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子(单车)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子(单车)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子(单车)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/shiroko_swimsuit/"><img src="/static/images/student/icon/20027.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','uAUOHp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/1/5.html">主线故事&nbsp;第2篇&nbsp;第1章&nbsp;第5话：<span class="lang-zh-cn-cn">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我叫爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/1/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尾声</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -853,13 +870,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -873,17 +890,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989133.6989982)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702140024.8498816)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989133.6990068
+Generated time (UTC): 1702140024.8498898
 -->
 </body>
 </html>

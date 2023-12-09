@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -163,11 +172,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -299,12 +309,12 @@
 
         <h3>Two-Minute Version</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=lsQrEl4znzo', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=lsQrEl4znzo', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=lsQrEl4znzo)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=U-KM10P73c4', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=U-KM10P73c4', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=U-KM10P73c4)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -314,7 +324,7 @@
 
         <h3>Full Version</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=sGYH4nbDtu8', 'track-video-2-1')" id="track-video-2-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=sGYH4nbDtu8', 'track-video-2-1')" id="track-video-2-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=sGYH4nbDtu8)</p>
             </div>
             <div id="track-video-2-1-container"></div>
@@ -381,6 +391,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -403,8 +420,8 @@
 
             <div class="gallery-img" id="da76a8d2-a979-4258-b219-738727e7b181">
     <div >
-        <img src="/static/images/background/BG_RuinCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="PO3XpI">
-        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_RuinCenter.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="PO3XpI" target="_blank">BG_RuinCenter.jpg</a><span onclick="showPopupByTooltipId('PO3XpI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1GB7c3">
+        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_RuinCenter.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="1GB7c3" target="_blank">BG_RuinCenter.jpg</a><span onclick="showPopupByTooltipId('1GB7c3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -418,8 +435,8 @@
 
             <div class="gallery-img" id="82a031e0-ce48-4e3c-8798-5e9f1d1fabf1">
     <div >
-        <img src="/static/images/background/BG_BigSisterRoom2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="5p8VWI">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom2.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="5p8VWI" target="_blank">BG_BigSisterRoom2.jpg</a><span onclick="showPopupByTooltipId('5p8VWI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_BigSisterRoom2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="viPwbu">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom2.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="viPwbu" target="_blank">BG_BigSisterRoom2.jpg</a><span onclick="showPopupByTooltipId('viPwbu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -433,8 +450,8 @@
 
             <div class="gallery-img" id="a3e94a00-a487-4e4f-b6fd-c60d66f7f4db">
     <div >
-        <img src="/static/images/background/BG_BigSisterRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="tMEvZu">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom_Night.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="tMEvZu" target="_blank">BG_BigSisterRoom_Night.jpg</a><span onclick="showPopupByTooltipId('tMEvZu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_BigSisterRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ZZ6VoF">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom_Night.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="ZZ6VoF" target="_blank">BG_BigSisterRoom_Night.jpg</a><span onclick="showPopupByTooltipId('ZZ6VoF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -448,8 +465,8 @@
 
             <div class="gallery-img" id="ae919de8-ad33-444a-beb1-a72f0ba51fa2">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="_hiQXN">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_03.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="_hiQXN" target="_blank">BG_CS_Millenium_03.jpg</a><span onclick="showPopupByTooltipId('_hiQXN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_03.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="d7nprE">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_03.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="d7nprE" target="_blank">BG_CS_Millenium_03.jpg</a><span onclick="showPopupByTooltipId('d7nprE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -463,8 +480,8 @@
 
             <div class="gallery-img" id="2fdc6df4-0e8b-4658-8c29-3bfcdfe53aab">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="lWRTf6">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_04.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="lWRTf6" target="_blank">BG_CS_Millenium_04.jpg</a><span onclick="showPopupByTooltipId('lWRTf6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="bWgcaa">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_04.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="bWgcaa" target="_blank">BG_CS_Millenium_04.jpg</a><span onclick="showPopupByTooltipId('bWgcaa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -478,8 +495,8 @@
 
             <div class="gallery-img" id="1a7b4eb0-42d9-4354-841e-79a9e0909c61">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_05.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Vy7GNs">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_05.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="Vy7GNs" target="_blank">BG_CS_Millenium_05.jpg</a><span onclick="showPopupByTooltipId('Vy7GNs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_05.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="eUQQ_I">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_05.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="eUQQ_I" target="_blank">BG_CS_Millenium_05.jpg</a><span onclick="showPopupByTooltipId('eUQQ_I')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -493,8 +510,8 @@
 
             <div class="gallery-img" id="5a21c5d5-c464-4fd3-870a-e147e4e9a503">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_11.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="UTYKNj">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_11.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="UTYKNj" target="_blank">BG_CS_Millenium_11.jpg</a><span onclick="showPopupByTooltipId('UTYKNj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_11.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Rigmb7">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_11.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="Rigmb7" target="_blank">BG_CS_Millenium_11.jpg</a><span onclick="showPopupByTooltipId('Rigmb7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -508,8 +525,8 @@
 
             <div class="gallery-img" id="e13977d2-c44c-4a9e-a8b8-426b066e74d5">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_13.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="2L2xfv">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_13.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="2L2xfv" target="_blank">BG_CS_Millenium_13.jpg</a><span onclick="showPopupByTooltipId('2L2xfv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_13.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="LwEKG3">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_13.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="LwEKG3" target="_blank">BG_CS_Millenium_13.jpg</a><span onclick="showPopupByTooltipId('LwEKG3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -523,8 +540,8 @@
 
             <div class="gallery-img" id="f5c6fe16-2bb5-4d19-b9bc-d3617fbc29ba">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_14.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="wga5vU">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_14.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="wga5vU" target="_blank">BG_CS_Millenium_14.jpg</a><span onclick="showPopupByTooltipId('wga5vU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_14.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="T5AFxG">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_14.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="T5AFxG" target="_blank">BG_CS_Millenium_14.jpg</a><span onclick="showPopupByTooltipId('T5AFxG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -538,8 +555,8 @@
 
             <div class="gallery-img" id="98ace42c-f7ae-4c48-892d-371d99447494">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_15.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="vBREoG">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_15.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="vBREoG" target="_blank">BG_CS_Millenium_15.jpg</a><span onclick="showPopupByTooltipId('vBREoG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_15.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ksjFfR">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_15.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="ksjFfR" target="_blank">BG_CS_Millenium_15.jpg</a><span onclick="showPopupByTooltipId('ksjFfR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -553,8 +570,8 @@
 
             <div class="gallery-img" id="ebb4774b-a99d-46e6-aef1-bbe82bd639be">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_16.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="GYOYsx">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_16.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="GYOYsx" target="_blank">BG_CS_Millenium_16.jpg</a><span onclick="showPopupByTooltipId('GYOYsx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_16.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="TMXZOc">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_16.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="TMXZOc" target="_blank">BG_CS_Millenium_16.jpg</a><span onclick="showPopupByTooltipId('TMXZOc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -568,8 +585,8 @@
 
             <div class="gallery-img" id="d5f19186-e706-4086-ab27-cce5ebbbb7c6">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_18.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="4SGPuX">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_18.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="4SGPuX" target="_blank">BG_CS_Millenium_18.jpg</a><span onclick="showPopupByTooltipId('4SGPuX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_18.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Qi6vZI">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_18.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="Qi6vZI" target="_blank">BG_CS_Millenium_18.jpg</a><span onclick="showPopupByTooltipId('Qi6vZI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -583,8 +600,8 @@
 
             <div class="gallery-img" id="add2105b-5821-4f9d-892f-2243e1fc245f">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_51.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="EGEkZa">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_51.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="EGEkZa" target="_blank">BG_CS_Millenium_51.jpg</a><span onclick="showPopupByTooltipId('EGEkZa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_51.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="a4iI2S">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_51.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="a4iI2S" target="_blank">BG_CS_Millenium_51.jpg</a><span onclick="showPopupByTooltipId('a4iI2S')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -598,8 +615,8 @@
 
             <div class="gallery-img" id="8c37f6f7-7e10-48e1-a92b-ad997ace1c05">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_52.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="lwtfBS">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_52.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="lwtfBS" target="_blank">BG_CS_Millenium_52.jpg</a><span onclick="showPopupByTooltipId('lwtfBS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_52.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="89kcAy">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_52.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="89kcAy" target="_blank">BG_CS_Millenium_52.jpg</a><span onclick="showPopupByTooltipId('89kcAy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -613,8 +630,8 @@
 
             <div class="gallery-img" id="dac8c9a1-4d0c-4aca-bd6d-2e385aedeb69">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_53.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="xRQSt6">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_53.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="xRQSt6" target="_blank">BG_CS_Millenium_53.jpg</a><span onclick="showPopupByTooltipId('xRQSt6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_53.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="5eSPSX">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_53.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="5eSPSX" target="_blank">BG_CS_Millenium_53.jpg</a><span onclick="showPopupByTooltipId('5eSPSX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -628,8 +645,8 @@
 
             <div class="gallery-img" id="347b33a4-879d-4d31-940e-109b1ffc7e7f">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_54.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="x_UQs2">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_54.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="x_UQs2" target="_blank">BG_CS_Millenium_54.jpg</a><span onclick="showPopupByTooltipId('x_UQs2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_54.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="y8dSIn">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_54.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="y8dSIn" target="_blank">BG_CS_Millenium_54.jpg</a><span onclick="showPopupByTooltipId('y8dSIn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -643,8 +660,8 @@
 
             <div class="gallery-img" id="02ebb0c1-b0ee-4b33-b1df-680bea9c5de2">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_55.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="7itxz8">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_55.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="7itxz8" target="_blank">BG_CS_Millenium_55.jpg</a><span onclick="showPopupByTooltipId('7itxz8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_55.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="arztji">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_55.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="arztji" target="_blank">BG_CS_Millenium_55.jpg</a><span onclick="showPopupByTooltipId('arztji')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -658,8 +675,8 @@
 
             <div class="gallery-img" id="0f840fb2-bb3b-4d35-96cc-1b830d6fdf53">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_56.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="mDIRiS">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_56.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="mDIRiS" target="_blank">BG_CS_Millenium_56.jpg</a><span onclick="showPopupByTooltipId('mDIRiS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_56.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="zD42Qp">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_56.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="zD42Qp" target="_blank">BG_CS_Millenium_56.jpg</a><span onclick="showPopupByTooltipId('zD42Qp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -673,8 +690,8 @@
 
             <div class="gallery-img" id="d02084c0-32f5-4dcb-9ba4-79e63611415f">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_57.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="BIhWnl">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_57.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="BIhWnl" target="_blank">BG_CS_Millenium_57.jpg</a><span onclick="showPopupByTooltipId('BIhWnl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_57.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0btI6P">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_57.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="0btI6P" target="_blank">BG_CS_Millenium_57.jpg</a><span onclick="showPopupByTooltipId('0btI6P')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -688,8 +705,8 @@
 
             <div class="gallery-img" id="2bc03bc5-3975-4ff0-9508-558ff7485777">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_58.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="dh6Q1e">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_58.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="dh6Q1e" target="_blank">BG_CS_Millenium_58.jpg</a><span onclick="showPopupByTooltipId('dh6Q1e')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_58.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="SDLRMw">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Millenium_58.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="SDLRMw" target="_blank">BG_CS_Millenium_58.jpg</a><span onclick="showPopupByTooltipId('SDLRMw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -703,8 +720,8 @@
 
             <div class="gallery-img" id="1af03085-120c-4f02-aa27-2b95083396d3">
     <div >
-        <img src="/static/images/background/BG_CS_PV3_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ZvibXm">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PV3_02.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="ZvibXm" target="_blank">BG_CS_PV3_02.jpg</a><span onclick="showPopupByTooltipId('ZvibXm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PV3_02.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1c_cz7">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PV3_02.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="1c_cz7" target="_blank">BG_CS_PV3_02.jpg</a><span onclick="showPopupByTooltipId('1c_cz7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -718,8 +735,8 @@
 
             <div class="gallery-img" id="04e4f041-399e-4f46-b3b3-f10ed53c4966">
     <div >
-        <img src="/static/images/background/BG_CityOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="oJqqdn">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CityOffice.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="oJqqdn" target="_blank">BG_CityOffice.jpg</a><span onclick="showPopupByTooltipId('oJqqdn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CityOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="BfVddL">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CityOffice.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="BfVddL" target="_blank">BG_CityOffice.jpg</a><span onclick="showPopupByTooltipId('BfVddL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -733,8 +750,8 @@
 
             <div class="gallery-img" id="7b6d39d3-a1b2-48f0-9a96-fa610580aa73">
     <div >
-        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="IGb1TD">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="IGb1TD" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('IGb1TD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduCityTown_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="gZsOOb">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduCityTown_Night.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="gZsOOb" target="_blank">BG_EriduCityTown_Night.jpg</a><span onclick="showPopupByTooltipId('gZsOOb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -748,8 +765,8 @@
 
             <div class="gallery-img" id="66d35fae-5396-484b-ac3e-42c94a574259">
     <div >
-        <img src="/static/images/background/BG_EriduTowerEntrance_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="OOuO0a">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduTowerEntrance_Night.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="OOuO0a" target="_blank">BG_EriduTowerEntrance_Night.jpg</a><span onclick="showPopupByTooltipId('OOuO0a')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduTowerEntrance_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="oV8hYg">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduTowerEntrance_Night.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="oV8hYg" target="_blank">BG_EriduTowerEntrance_Night.jpg</a><span onclick="showPopupByTooltipId('oV8hYg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -763,8 +780,8 @@
 
             <div class="gallery-img" id="36d60710-4608-43be-b176-984097019e38">
     <div >
-        <img src="/static/images/background/BG_EriduTowerInside_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="gR8Cjz">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduTowerInside_Night.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="gR8Cjz" target="_blank">BG_EriduTowerInside_Night.jpg</a><span onclick="showPopupByTooltipId('gR8Cjz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_EriduTowerInside_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="icRuhv">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_EriduTowerInside_Night.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="icRuhv" target="_blank">BG_EriduTowerInside_Night.jpg</a><span onclick="showPopupByTooltipId('icRuhv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -778,8 +795,8 @@
 
             <div class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="XIISke">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="XIISke" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('XIISke')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0lG02N">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="0lG02N" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('0lG02N')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -793,8 +810,8 @@
 
             <div class="gallery-img" id="55657b32-ab5d-4c67-b755-07ba3d15432b">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="mHo12S">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="mHo12S" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('mHo12S')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="4oUGQj">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="4oUGQj" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('4oUGQj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -808,8 +825,8 @@
 
             <div class="gallery-img" id="c688a187-7d77-4f6f-8d0d-6f3a22ef7427">
     <div >
-        <img src="/static/images/background/BG_MainOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="M8RN3q">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MainOffice.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="M8RN3q" target="_blank">BG_MainOffice.jpg</a><span onclick="showPopupByTooltipId('M8RN3q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MainOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="pFUo2Q">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MainOffice.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="pFUo2Q" target="_blank">BG_MainOffice.jpg</a><span onclick="showPopupByTooltipId('pFUo2Q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -823,8 +840,8 @@
 
             <div class="gallery-img" id="d64504df-ec0f-4a1f-9ae8-c5b7a41d6d0b">
     <div >
-        <img src="/static/images/background/BG_MilleniumCampus.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="f4hTO7">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCampus.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="f4hTO7" target="_blank">BG_MilleniumCampus.jpg</a><span onclick="showPopupByTooltipId('f4hTO7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MilleniumCampus.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="VFUqV8">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCampus.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="VFUqV8" target="_blank">BG_MilleniumCampus.jpg</a><span onclick="showPopupByTooltipId('VFUqV8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -838,8 +855,8 @@
 
             <div class="gallery-img" id="0598d297-9977-499a-b23d-9151da2fc774">
     <div >
-        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="jYSHtg">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="jYSHtg" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('jYSHtg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="gdB5bQ">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="gdB5bQ" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('gdB5bQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -853,8 +870,8 @@
 
             <div class="gallery-img" id="72775c80-da0c-45ee-9319-6a3d7354ca14">
     <div >
-        <img src="/static/images/background/BG_RuinCenter_Aris.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="t0CFpa">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCenter_Aris.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="t0CFpa" target="_blank">BG_RuinCenter_Aris.jpg</a><span onclick="showPopupByTooltipId('t0CFpa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinCenter_Aris.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="eGD6XH">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinCenter_Aris.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="eGD6XH" target="_blank">BG_RuinCenter_Aris.jpg</a><span onclick="showPopupByTooltipId('eGD6XH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -868,8 +885,8 @@
 
             <div class="gallery-img" id="2cb781ab-2579-4bfc-abeb-1c6270bba949">
     <div >
-        <img src="/static/images/background/BG_RuinUndergroundPassage.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="NlLkdD">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="NlLkdD" target="_blank">BG_RuinUndergroundPassage.jpg</a><span onclick="showPopupByTooltipId('NlLkdD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinUndergroundPassage.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="D7XH4_">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="D7XH4_" target="_blank">BG_RuinUndergroundPassage.jpg</a><span onclick="showPopupByTooltipId('D7XH4_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -883,8 +900,8 @@
 
             <div class="gallery-img" id="289a6561-30cc-4355-9518-40fd4987efb2">
     <div >
-        <img src="/static/images/background/BG_View_Sky.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="xl8dbv">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Sky.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="xl8dbv" target="_blank">BG_View_Sky.jpg</a><span onclick="showPopupByTooltipId('xl8dbv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_View_Sky.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="_Mrd0F">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Sky.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="_Mrd0F" target="_blank">BG_View_Sky.jpg</a><span onclick="showPopupByTooltipId('_Mrd0F')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -898,8 +915,8 @@
 
             <div class="gallery-img" id="369bc218-ee51-433e-a92d-baad7e728dff">
     <div >
-        <img src="/static/images/background/BG_White.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="VfgR9g">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_White.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="VfgR9g" target="_blank">BG_White.jpg</a><span onclick="showPopupByTooltipId('VfgR9g')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_White.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="3cTUgU">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_White.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="3cTUgU" target="_blank">BG_White.jpg</a><span onclick="showPopupByTooltipId('3cTUgU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -913,8 +930,8 @@
 
             <div class="gallery-img" id="93966bf2-8161-4b05-9c38-39d99fffb491">
     <div >
-        <img src="/static/images/background/Unknown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="G5fHRB">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/Unknown.jpg.html#track-short_1" onmouseover="showTooltip(this)" data-tooltip="G5fHRB" target="_blank">Unknown.jpg</a><span onclick="showPopupByTooltipId('G5fHRB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/Unknown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="TOgTab">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/Unknown.jpg.html#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="TOgTab" target="_blank">Unknown.jpg</a><span onclick="showPopupByTooltipId('TOgTab')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -927,7 +944,7 @@
     
         
     <script>
-        add_tooltip_data({ 'PO3XpI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter.jpg</p><p>BG_RuinCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','5p8VWI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom2.jpg</p><p>BG_BigSisterRoom2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','tMEvZu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom_Night.jpg</p><p>BG_BigSisterRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','_hiQXN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_03.jpg</p><p>BG_CS_Millenium_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_03.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','lWRTf6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_04.jpg</p><p>BG_CS_Millenium_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_04.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','Vy7GNs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_05.jpg</p><p>BG_CS_Millenium_05.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_05.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','UTYKNj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_11.jpg</p><p>BG_CS_Millenium_11.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_11.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','2L2xfv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_13.jpg</p><p>BG_CS_Millenium_13.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_13.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','wga5vU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_14.jpg</p><p>BG_CS_Millenium_14.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_14.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','vBREoG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_15.jpg</p><p>BG_CS_Millenium_15.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_15.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','GYOYsx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_16.jpg</p><p>BG_CS_Millenium_16.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_16.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','4SGPuX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_18.jpg</p><p>BG_CS_Millenium_18.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_18.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','EGEkZa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_51.jpg</p><p>BG_CS_Millenium_51.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_51.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','lwtfBS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_52.jpg</p><p>BG_CS_Millenium_52.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_52.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','xRQSt6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_53.jpg</p><p>BG_CS_Millenium_53.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_53.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','x_UQs2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_54.jpg</p><p>BG_CS_Millenium_54.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_54.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','7itxz8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_55.jpg</p><p>BG_CS_Millenium_55.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_55.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','mDIRiS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_56.jpg</p><p>BG_CS_Millenium_56.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_56.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','BIhWnl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_57.jpg</p><p>BG_CS_Millenium_57.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_57.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','dh6Q1e': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_58.jpg</p><p>BG_CS_Millenium_58.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_58.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','ZvibXm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_02.jpg</p><p>BG_CS_PV3_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_02.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','oJqqdn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityOffice.jpg</p><p>BG_CityOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityOffice.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','IGb1TD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','OOuO0a': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerEntrance_Night.jpg</p><p>BG_EriduTowerEntrance_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerEntrance_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','gR8Cjz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerInside_Night.jpg</p><p>BG_EriduTowerInside_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerInside_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','XIISke': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','mHo12S': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','M8RN3q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MainOffice.jpg</p><p>BG_MainOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MainOffice.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','f4hTO7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCampus.jpg</p><p>BG_MilleniumCampus.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCampus.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','jYSHtg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','t0CFpa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter_Aris.jpg</p><p>BG_RuinCenter_Aris.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter_Aris.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','NlLkdD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage.jpg</p><p>BG_RuinUndergroundPassage.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','xl8dbv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Sky.jpg</p><p>BG_View_Sky.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Sky.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','VfgR9g': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_White.jpg</p><p>BG_White.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_White.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','G5fHRB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Unknown.jpg</p><p>Unknown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/Unknown.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '1GB7c3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter.jpg</p><p>BG_RuinCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','viPwbu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom2.jpg</p><p>BG_BigSisterRoom2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom2.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','ZZ6VoF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom_Night.jpg</p><p>BG_BigSisterRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','d7nprE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_03.jpg</p><p>BG_CS_Millenium_03.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_03.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','bWgcaa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_04.jpg</p><p>BG_CS_Millenium_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_04.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','eUQQ_I': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_05.jpg</p><p>BG_CS_Millenium_05.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_05.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','Rigmb7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_11.jpg</p><p>BG_CS_Millenium_11.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_11.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','LwEKG3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_13.jpg</p><p>BG_CS_Millenium_13.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_13.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','T5AFxG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_14.jpg</p><p>BG_CS_Millenium_14.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_14.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','ksjFfR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_15.jpg</p><p>BG_CS_Millenium_15.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_15.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','TMXZOc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_16.jpg</p><p>BG_CS_Millenium_16.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_16.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','Qi6vZI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_18.jpg</p><p>BG_CS_Millenium_18.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_18.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','a4iI2S': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_51.jpg</p><p>BG_CS_Millenium_51.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_51.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','89kcAy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_52.jpg</p><p>BG_CS_Millenium_52.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_52.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','5eSPSX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_53.jpg</p><p>BG_CS_Millenium_53.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_53.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','y8dSIn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_54.jpg</p><p>BG_CS_Millenium_54.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_54.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','arztji': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_55.jpg</p><p>BG_CS_Millenium_55.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_55.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','zD42Qp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_56.jpg</p><p>BG_CS_Millenium_56.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_56.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','0btI6P': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_57.jpg</p><p>BG_CS_Millenium_57.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_57.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>)</span></li></ol></div>','SDLRMw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_58.jpg</p><p>BG_CS_Millenium_58.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_58.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','1c_cz7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_02.jpg</p><p>BG_CS_PV3_02.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_02.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','BfVddL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityOffice.jpg</p><p>BG_CityOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityOffice.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','gZsOOb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduCityTown_Night.jpg</p><p>BG_EriduCityTown_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduCityTown_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','oV8hYg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerEntrance_Night.jpg</p><p>BG_EriduTowerEntrance_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerEntrance_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','icRuhv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_EriduTowerInside_Night.jpg</p><p>BG_EriduTowerInside_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_EriduTowerInside_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','0lG02N': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','4oUGQj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','pFUo2Q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MainOffice.jpg</p><p>BG_MainOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MainOffice.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','VFUqV8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCampus.jpg</p><p>BG_MilleniumCampus.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCampus.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','gdB5bQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','eGD6XH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinCenter_Aris.jpg</p><p>BG_RuinCenter_Aris.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinCenter_Aris.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','D7XH4_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage.jpg</p><p>BG_RuinUndergroundPassage.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','_Mrd0F': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Sky.jpg</p><p>BG_View_Sky.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Sky.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>','3cTUgU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_White.jpg</p><p>BG_White.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_White.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol></div>','TOgTab': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Unknown.jpg</p><p>Unknown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/Unknown.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -952,9 +969,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/24.html"  onmouseover="showTooltip(this)" data-tooltip="w_glU6">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>
+        <a href="/en/main/story/main/2/2/24.html"  onmouseover="showTooltipById(this)" data-tooltip="ZpRMAm">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>
     
-    <span onclick="showPopupByTooltipId('w_glU6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('ZpRMAm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -967,7 +984,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="OIAjUe"><i>&#91;5&#93;&nbsp;Aris' True Words</i></a><span onclick="showPopupByTooltipId('OIAjUe')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="hnz9AT"><i>&#91;5&#93;&nbsp;Aris' True Words</i></a><span onclick="showPopupByTooltipId('hnz9AT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -979,7 +996,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Sn0JM3"><i>&#91;6&#93;&nbsp;A Heroine's Choice</i></a><span onclick="showPopupByTooltipId('Sn0JM3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="D3ADXx"><i>&#91;6&#93;&nbsp;A Heroine's Choice</i></a><span onclick="showPopupByTooltipId('D3ADXx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -991,7 +1008,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="9wQFlj"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a><span onclick="showPopupByTooltipId('9wQFlj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="VsDaU0"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a><span onclick="showPopupByTooltipId('VsDaU0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -1014,9 +1031,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/25.html"  onmouseover="showTooltip(this)" data-tooltip="AE6sOW">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>
+        <a href="/en/main/story/main/2/2/25.html"  onmouseover="showTooltipById(this)" data-tooltip="RmrruT">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>
     
-    <span onclick="showPopupByTooltipId('AE6sOW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('RmrruT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -1029,7 +1046,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="iw24l6"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a><span onclick="showPopupByTooltipId('iw24l6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="sEpqbP"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a><span onclick="showPopupByTooltipId('sEpqbP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -1044,7 +1061,7 @@
 
     
     <script>
-        add_tooltip_data({ 'w_glU6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">What You Want to Be</p><ul><li>The Game Development Department and Sensei finally find Aris. Calling herself a demon lord, Aris is hesitant to return for fear of hurting others. Encouraged by everyone&#x27s supportive words that it&#x27s up to her to decide who she wants to be, Aris finally draws the proof of a warrior: Supernova, the Sword of Light.</li></ul></div>','OIAjUe': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris&#x27 True Words</p><p>Everyone wanted to hear Aris&#x27 own true words. Being accused as a "demon lord", Aris thought that she would not be able to return to the club, to live and go out adventures with others - but Sensei denied it. Aris hesitated a little, said that she wanted to be a hero, that she dreamed of continuing adventures with GDD and Sensei. Everyone agreed and just said: "Of course. Because we are the Game Development Department!"</p><hr><p>Character:<span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/short/1.html"><span>Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span></a></p></div>','Sn0JM3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Heroine&#x27s Choice</p><p>Encouraged by everyone, Aris pulled out the Sword of Light stuck in the stone, returning to be a hero. Key looked at Aris in astonishment, hoping that Aris could perform her duties as the "princess". Aris didn&#x27t listen, and blew up Key with her Sword of Light.</p><hr><p>Character:<span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/ariskey/"><span>Key</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/short/1.html"><span>Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span></a></p></div>','9wQFlj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Longing Return of Aris</p><p>As Key was suppressed in Aris&#x27 consciousness, the Divi: Sion army in the city began to disappear, and the Eridu control center was back at normal. Rio was surprised that Sensei and the GDD actually did it, but Sensei only replied that, it was something that GDD could make. Eventually, the three at GDD reunited with Aris.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/short/1.html"><span>Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span></a></p></div>','AE6sOW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','iw24l6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Watashitachi No Quest (Our Quest)</p><p>&#91;An MV is playing in this part. The BGM was the ending song for the short animation "beautiful day dreamer" about the Game Development Department. Considering that most images in the videos are actually a part of the in-game backgrounds, therefore we&#x27ll be listing as much as backgrounds as we can.&#93;</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/short/1.html"><span>Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span></a></p></div>', });
+        add_tooltip_data({ 'ZpRMAm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">What You Want to Be</p><ul><li>The Game Development Department and Sensei finally find Aris. Calling herself a demon lord, Aris is hesitant to return for fear of hurting others. Encouraged by everyone&#x27s supportive words that it&#x27s up to her to decide who she wants to be, Aris finally draws the proof of a warrior: Supernova, the Sword of Light.</li></ul></div>','hnz9AT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris&#x27 True Words</p><p>Everyone wanted to hear Aris&#x27 own true words. Being accused as a "demon lord", Aris thought that she would not be able to return to the club, to live and go out adventures with others - but Sensei denied it. Aris hesitated a little, said that she wanted to be a hero, that she dreamed of continuing adventures with GDD and Sensei. Everyone agreed and just said: "Of course. Because we are the Game Development Department!"</p><hr><p>Character:<span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/short/1.html"><span>Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span></a></p></div>','D3ADXx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Heroine&#x27s Choice</p><p>Encouraged by everyone, Aris pulled out the Sword of Light stuck in the stone, returning to be a hero. Key looked at Aris in astonishment, hoping that Aris could perform her duties as the "princess". Aris didn&#x27t listen, and blew up Key with her Sword of Light.</p><hr><p>Character:<span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/ariskey/"><span>Key</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/short/1.html"><span>Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span></a></p></div>','VsDaU0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Longing Return of Aris</p><p>As Key was suppressed in Aris&#x27 consciousness, the Divi: Sion army in the city began to disappear, and the Eridu control center was back at normal. Rio was surprised that Sensei and the GDD actually did it, but Sensei only replied that, it was something that GDD could make. Eventually, the three at GDD reunited with Aris.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/short/1.html"><span>Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span></a></p></div>','RmrruT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Millennium Science School</p><ul><li>The situation is finally resolved. Rio vanishes, the C&C welcomes a new member, and the Game Development Department resumes development of their new project. Peace returns to Millennium.</li></ul></div>','sEpqbP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Watashitachi No Quest (Our Quest)</p><p>&#91;An MV is playing in this part. The BGM was the ending song for the short animation "beautiful day dreamer" about the Game Development Department. Considering that most images in the videos are actually a part of the in-game backgrounds, therefore we&#x27ll be listing as much as backgrounds as we can.&#93;</p><hr><p>Character:<span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/short/1.html"><span>Short Animation&nbsp;1.&nbsp;Watashitachi No Quest (Our Quest)</span></a></p></div>', });
     </script>
 
 
@@ -1092,12 +1109,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-short_1" onmouseover="showTooltip(this)" data-tooltip="pI39vO" >
+            <a href="/en/character/student/aris/#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="vWQVZ5" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('pI39vO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('vWQVZ5')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1119,12 +1136,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-short_1" onmouseover="showTooltip(this)" data-tooltip="RRyuu2" >
+            <a href="/en/character/student/midori/#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="U1drkv" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('RRyuu2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('U1drkv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1146,12 +1163,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-short_1" onmouseover="showTooltip(this)" data-tooltip="fcJzM_" >
+            <a href="/en/character/student/momoi/#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="bqW3Yq" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('fcJzM_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('bqW3Yq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1173,12 +1190,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-short_1" onmouseover="showTooltip(this)" data-tooltip="PrnVvX" >
+            <a href="/en/character/student/yuzu/#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="YumEum" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('PrnVvX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('YumEum')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1195,10 +1212,10 @@
 
             <li id="0a1f1737-f7ea-4c10-8aec-c4d4ce0c1e6f"><span>【1】</span>
     
-        <a href="/en/character/npc/ariskey/#track-short_1" onmouseover="showTooltip(this)" data-tooltip="2NRPXr" >
+        <a href="/en/character/npc/ariskey/#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="Uxggul" >
             <span>Key</span>
         </a>
-        <span onclick="showPopupByTooltipId('2NRPXr')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Uxggul')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -1210,10 +1227,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【1】</span>
     
-        <a href="/en/character/npc/rio/#track-short_1" onmouseover="showTooltip(this)" data-tooltip="CLUiOY" >
+        <a href="/en/character/npc/rio/#track-short_1" onmouseover="showTooltipById(this)" data-tooltip="pyjcJm" >
             <span>Rio</span>
         </a>
-        <span onclick="showPopupByTooltipId('CLUiOY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('pyjcJm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -1222,22 +1239,22 @@
 
     
     <script>
-        add_tooltip_data({ 'pI39vO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','RRyuu2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','fcJzM_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','PrnVvX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','2NRPXr': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p></div>','CLUiOY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>', });
+        add_tooltip_data({ 'vWQVZ5': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','U1drkv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','bqW3Yq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','YumEum': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Aris&#x27 True Words</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/25.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;25:&nbsp;Millennium Science School</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/25.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;Watashitachi No Quest (Our Quest)</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','Uxggul': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Key</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;A Heroine&#x27s Choice</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p></div>','pyjcJm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/24.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;24:&nbsp;What You Want to Be</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/24.html#story-part-7-seg-1" class="text-primary"><i>&#91;7&#93;&nbsp;The Longing Return of Aris</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -1268,13 +1285,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -1288,17 +1305,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988788.9148886)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139647.1188247)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988788.9148967
+Generated time (UTC): 1702139647.1188328
 -->
 </body>
 </html>

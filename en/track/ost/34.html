@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -298,12 +308,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=Oeedwk9oQLk', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=Oeedwk9oQLk', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=Oeedwk9oQLk)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=34', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=34', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=34)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -370,6 +380,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -404,8 +421,8 @@
 
             <div class="gallery-img" id="44739776-1194-4fa5-8609-e1552e692f04">
     <div >
-        <img src="/static/images/background/BG_CS_Abydos_01_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="28rLq1">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Abydos_01_Letter.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="28rLq1" target="_blank">BG_CS_Abydos_01_Letter.jpg</a><span onclick="showPopupByTooltipId('28rLq1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Abydos_01_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="zfxFc1">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Abydos_01_Letter.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="zfxFc1" target="_blank">BG_CS_Abydos_01_Letter.jpg</a><span onclick="showPopupByTooltipId('zfxFc1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -419,8 +436,8 @@
 
             <div class="gallery-img" id="a7f429b1-8f89-4acc-a4bb-d69ba7762ce2">
     <div >
-        <img src="/static/images/background/BG_CS_Gehenna_01_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="F9oSiP">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Gehenna_01_Letter.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="F9oSiP" target="_blank">BG_CS_Gehenna_01_Letter.jpg</a><span onclick="showPopupByTooltipId('F9oSiP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Gehenna_01_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="maaBo5">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Gehenna_01_Letter.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="maaBo5" target="_blank">BG_CS_Gehenna_01_Letter.jpg</a><span onclick="showPopupByTooltipId('maaBo5')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -434,8 +451,8 @@
 
             <div class="gallery-img" id="b8f3aad9-1daa-4562-ba47-7c0bce0cbbd2">
     <div >
-        <img src="/static/images/background/BG_CS_Gehenna_02_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="sUbt0C">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Gehenna_02_Letter.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="sUbt0C" target="_blank">BG_CS_Gehenna_02_Letter.jpg</a><span onclick="showPopupByTooltipId('sUbt0C')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Gehenna_02_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="9BxEb6">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Gehenna_02_Letter.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="9BxEb6" target="_blank">BG_CS_Gehenna_02_Letter.jpg</a><span onclick="showPopupByTooltipId('9BxEb6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -449,8 +466,8 @@
 
             <div class="gallery-img" id="efbf6160-6e18-4439-91dc-5f6a8bab2178">
     <div >
-        <img src="/static/images/background/BG_CS_Gehenna_03_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="42Guy1">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Gehenna_03_Letter.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="42Guy1" target="_blank">BG_CS_Gehenna_03_Letter.jpg</a><span onclick="showPopupByTooltipId('42Guy1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Gehenna_03_Letter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="h6nfXG">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Gehenna_03_Letter.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="h6nfXG" target="_blank">BG_CS_Gehenna_03_Letter.jpg</a><span onclick="showPopupByTooltipId('h6nfXG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -464,8 +481,8 @@
 
             <div class="gallery-img" id="e637f543-d8cb-4927-8ca7-fe806c3c0aea">
     <div >
-        <img src="/static/images/background/BG_CS_PR_00.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="6IY97e">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_00.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="6IY97e" target="_blank">BG_CS_PR_00.jpg</a><span onclick="showPopupByTooltipId('6IY97e')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_00.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="pTuzRx">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_00.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="pTuzRx" target="_blank">BG_CS_PR_00.jpg</a><span onclick="showPopupByTooltipId('pTuzRx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -479,8 +496,8 @@
 
             <div class="gallery-img" id="212821a5-7ed4-4565-ab20-fb8195e78126">
     <div >
-        <img src="/static/images/background/BG_CS_PR_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="jzGwRO">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_01.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="jzGwRO" target="_blank">BG_CS_PR_01.jpg</a><span onclick="showPopupByTooltipId('jzGwRO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="n1Q1oo">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_01.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="n1Q1oo" target="_blank">BG_CS_PR_01.jpg</a><span onclick="showPopupByTooltipId('n1Q1oo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -494,8 +511,8 @@
 
             <div class="gallery-img" id="19086cc5-c837-481a-884a-bfd1fdbeff3e">
     <div >
-        <img src="/static/images/background/BG_CS_PR_07.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="G8PYzc">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_07.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="G8PYzc" target="_blank">BG_CS_PR_07.jpg</a><span onclick="showPopupByTooltipId('G8PYzc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_07.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="DW7Y5Q">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_07.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="DW7Y5Q" target="_blank">BG_CS_PR_07.jpg</a><span onclick="showPopupByTooltipId('DW7Y5Q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -509,8 +526,8 @@
 
             <div class="gallery-img" id="f122880b-c6fa-4f16-aea4-02a6aacaa80b">
     <div >
-        <img src="/static/images/background/BG_CS_PR_08.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="NffE_l">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_08.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="NffE_l" target="_blank">BG_CS_PR_08.jpg</a><span onclick="showPopupByTooltipId('NffE_l')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_08.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="99ENS7">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_08.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="99ENS7" target="_blank">BG_CS_PR_08.jpg</a><span onclick="showPopupByTooltipId('99ENS7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -524,8 +541,8 @@
 
             <div class="gallery-img" id="ee5e6cbb-9145-44b4-b8ce-59501393aec2">
     <div >
-        <img src="/static/images/background/BG_CS_PR_09.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="T4LhP1">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_09.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="T4LhP1" target="_blank">BG_CS_PR_09.jpg</a><span onclick="showPopupByTooltipId('T4LhP1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_09.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="tMBjG6">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_09.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="tMBjG6" target="_blank">BG_CS_PR_09.jpg</a><span onclick="showPopupByTooltipId('tMBjG6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -539,8 +556,8 @@
 
             <div class="gallery-img" id="a469d355-d4a4-46db-92bb-c943de495e56">
     <div >
-        <img src="/static/images/background/BG_CS_PR_12.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Aj5IDR">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_12.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="Aj5IDR" target="_blank">BG_CS_PR_12.jpg</a><span onclick="showPopupByTooltipId('Aj5IDR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_12.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="LNnxFu">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_12.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="LNnxFu" target="_blank">BG_CS_PR_12.jpg</a><span onclick="showPopupByTooltipId('LNnxFu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -554,8 +571,8 @@
 
             <div class="gallery-img" id="bbb3aa54-53a4-44ba-b3b8-38d5f2be4ed3">
     <div >
-        <img src="/static/images/background/BG_CS_PR_19.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0bSYYL">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_19.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="0bSYYL" target="_blank">BG_CS_PR_19.jpg</a><span onclick="showPopupByTooltipId('0bSYYL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PR_19.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="whHEGm">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_PR_19.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="whHEGm" target="_blank">BG_CS_PR_19.jpg</a><span onclick="showPopupByTooltipId('whHEGm')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -569,8 +586,8 @@
 
             <div class="gallery-img" id="161cc9d7-a908-47e3-90ad-1e5f94cca982">
     <div >
-        <img src="/static/images/background/BG_CS_Trinity_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="gLp3yy">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Trinity_01.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="gLp3yy" target="_blank">BG_CS_Trinity_01.jpg</a><span onclick="showPopupByTooltipId('gLp3yy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Trinity_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="61ft6t">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CS_Trinity_01.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="61ft6t" target="_blank">BG_CS_Trinity_01.jpg</a><span onclick="showPopupByTooltipId('61ft6t')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -584,8 +601,8 @@
 
             <div class="gallery-img" id="49d6edd5-54a3-40a4-86fc-523dec2c6ea1">
     <div >
-        <img src="/static/images/background/BG_CityDowntown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="YYtenh">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CityDowntown.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="YYtenh" target="_blank">BG_CityDowntown.jpg</a><span onclick="showPopupByTooltipId('YYtenh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CityDowntown.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ynBfSo">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CityDowntown.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="ynBfSo" target="_blank">BG_CityDowntown.jpg</a><span onclick="showPopupByTooltipId('ynBfSo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -599,8 +616,8 @@
 
             <div class="gallery-img" id="04e4f041-399e-4f46-b3b3-f10ed53c4966">
     <div >
-        <img src="/static/images/background/BG_CityOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="j4hb17">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CityOffice.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="j4hb17" target="_blank">BG_CityOffice.jpg</a><span onclick="showPopupByTooltipId('j4hb17')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CityOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="NFw7s0">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CityOffice.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="NFw7s0" target="_blank">BG_CityOffice.jpg</a><span onclick="showPopupByTooltipId('NFw7s0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -614,8 +631,8 @@
 
             <div class="gallery-img" id="f4ec740d-161a-454b-a3b4-47ce1318d9d1">
     <div >
-        <img src="/static/images/background/BG_DesertResidence_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="5AgmrJ">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_DesertResidence_Night.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="5AgmrJ" target="_blank">BG_DesertResidence_Night.jpg</a><span onclick="showPopupByTooltipId('5AgmrJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_DesertResidence_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="oG63Cp">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_DesertResidence_Night.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="oG63Cp" target="_blank">BG_DesertResidence_Night.jpg</a><span onclick="showPopupByTooltipId('oG63Cp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -629,8 +646,8 @@
 
             <div class="gallery-img" id="01bd09a3-e7c9-4e44-b031-cbf4a005021f">
     <div >
-        <img src="/static/images/background/BG_SchoolRooftop.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="3qVk0q">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SchoolRooftop.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="3qVk0q" target="_blank">BG_SchoolRooftop.jpg</a><span onclick="showPopupByTooltipId('3qVk0q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_SchoolRooftop.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0ANZvq">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SchoolRooftop.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="0ANZvq" target="_blank">BG_SchoolRooftop.jpg</a><span onclick="showPopupByTooltipId('0ANZvq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -644,8 +661,8 @@
 
             <div class="gallery-img" id="93684786-09cc-441e-8615-77ab3bd20494">
     <div >
-        <img src="/static/images/background/BG_View_Kivotos.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="QHVpTa">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Kivotos.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="QHVpTa" target="_blank">BG_View_Kivotos.jpg</a><span onclick="showPopupByTooltipId('QHVpTa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_View_Kivotos.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="cvXv_d">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Kivotos.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="cvXv_d" target="_blank">BG_View_Kivotos.jpg</a><span onclick="showPopupByTooltipId('cvXv_d')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -659,8 +676,8 @@
 
             <div class="gallery-img" id="a1bfd244-8f93-4bd6-9ae1-04f96b1bac32">
     <div >
-        <img src="/static/images/background/BG_Wilderness_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="ZOQx3z">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Wilderness_Night.jpg.html#track-OST_34" onmouseover="showTooltip(this)" data-tooltip="ZOQx3z" target="_blank">BG_Wilderness_Night.jpg</a><span onclick="showPopupByTooltipId('ZOQx3z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Wilderness_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="60zdiR">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Wilderness_Night.jpg.html#track-OST_34" onmouseover="showTooltipById(this)" data-tooltip="60zdiR" target="_blank">BG_Wilderness_Night.jpg</a><span onclick="showPopupByTooltipId('60zdiR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -673,7 +690,7 @@
     
         
     <script>
-        add_tooltip_data({ '28rLq1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_01_Letter.jpg</p><p>BG_CS_Abydos_01_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_01_Letter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">Characters in this picture:</p><p><span><span><a href="/en/character/student/ayane/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p></div>','F9oSiP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_01_Letter.jpg</p><p>BG_CS_Gehenna_01_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_01_Letter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','sUbt0C': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_02_Letter.jpg</p><p>BG_CS_Gehenna_02_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_02_Letter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','42Guy1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_03_Letter.jpg</p><p>BG_CS_Gehenna_03_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_03_Letter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','6IY97e': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_00.jpg</p><p>BG_CS_PR_00.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_00.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','jzGwRO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_01.jpg</p><p>BG_CS_PR_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_01.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','G8PYzc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_07.jpg</p><p>BG_CS_PR_07.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_07.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','NffE_l': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_08.jpg</p><p>BG_CS_PR_08.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_08.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','T4LhP1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_09.jpg</p><p>BG_CS_PR_09.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_09.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','Aj5IDR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_12.jpg</p><p>BG_CS_PR_12.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_12.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','0bSYYL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_19.jpg</p><p>BG_CS_PR_19.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_19.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','gLp3yy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Trinity_01.jpg</p><p>BG_CS_Trinity_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Trinity_01.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','YYtenh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityDowntown.jpg</p><p>BG_CityDowntown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityDowntown.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','j4hb17': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityOffice.jpg</p><p>BG_CityOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityOffice.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','5AgmrJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_DesertResidence_Night.jpg</p><p>BG_DesertResidence_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_DesertResidence_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','3qVk0q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolRooftop.jpg</p><p>BG_SchoolRooftop.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolRooftop.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','QHVpTa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Kivotos.jpg</p><p>BG_View_Kivotos.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Kivotos.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','ZOQx3z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Wilderness_Night.jpg</p><p>BG_Wilderness_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Wilderness_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'zfxFc1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_01_Letter.jpg</p><p>BG_CS_Abydos_01_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_01_Letter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">Characters in this picture:</p><p><span><span><a href="/en/character/student/ayane/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/shiroko/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hoshino/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/nonomi/#44739776-1194-4fa5-8609-e1552e692f04-direct"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span></p></div>','maaBo5': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_01_Letter.jpg</p><p>BG_CS_Gehenna_01_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_01_Letter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','9BxEb6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_02_Letter.jpg</p><p>BG_CS_Gehenna_02_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_02_Letter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','h6nfXG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Gehenna_03_Letter.jpg</p><p>BG_CS_Gehenna_03_Letter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Gehenna_03_Letter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','pTuzRx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_00.jpg</p><p>BG_CS_PR_00.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_00.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','n1Q1oo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_01.jpg</p><p>BG_CS_PR_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_01.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','DW7Y5Q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_07.jpg</p><p>BG_CS_PR_07.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_07.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','99ENS7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_08.jpg</p><p>BG_CS_PR_08.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_08.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','tMBjG6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_09.jpg</p><p>BG_CS_PR_09.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_09.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','LNnxFu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_12.jpg</p><p>BG_CS_PR_12.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_12.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','whHEGm': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PR_19.jpg</p><p>BG_CS_PR_19.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PR_19.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','61ft6t': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Trinity_01.jpg</p><p>BG_CS_Trinity_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Trinity_01.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','ynBfSo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityDowntown.jpg</p><p>BG_CityDowntown.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityDowntown.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','NFw7s0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CityOffice.jpg</p><p>BG_CityOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CityOffice.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','oG63Cp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_DesertResidence_Night.jpg</p><p>BG_DesertResidence_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_DesertResidence_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','0ANZvq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolRooftop.jpg</p><p>BG_SchoolRooftop.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolRooftop.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','cvXv_d': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Kivotos.jpg</p><p>BG_View_Kivotos.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Kivotos.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>','60zdiR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Wilderness_Night.jpg</p><p>BG_Wilderness_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Wilderness_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/other/1/1/1.html">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Entering System</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -698,9 +715,9 @@
     
 
     
-        <a href="/en/main/story/other/1/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="SkLtzh">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>
+        <a href="/en/main/story/other/1/1/1.html"  onmouseover="showTooltipById(this)" data-tooltip="bVyM5I">Other&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Prologue 1-1</a>
     
-    <span onclick="showPopupByTooltipId('SkLtzh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('bVyM5I')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -713,7 +730,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="sFehfs"><i>&#91;1&#93;&nbsp;Entering System</i></a><span onclick="showPopupByTooltipId('sFehfs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="6yKvuj"><i>&#91;1&#93;&nbsp;Entering System</i></a><span onclick="showPopupByTooltipId('6yKvuj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -728,7 +745,7 @@
 
     
     <script>
-        add_tooltip_data({ 'SkLtzh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Prologue 1-1</p><ul><li>Sensei wakes from a bizarre dream and learns from Nanagami Rin that the General Student Council president is missing. The Academy City, Kivotos, is in chaos. Sensei heads to Schale to try to resolve the situation.</li></ul></div>','sFehfs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Entering System</p><p>The welcome screen of the system. Multiple stories were flashing by.</p><hr><p><span>No characters to display!</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/34.html"><span>OST&nbsp;34.&nbsp;Aoharu</span></a></p></div>', });
+        add_tooltip_data({ 'bVyM5I': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Prologue 1-1</p><ul><li>Sensei wakes from a bizarre dream and learns from Nanagami Rin that the General Student Council president is missing. The Academy City, Kivotos, is in chaos. Sensei heads to Schale to try to resolve the situation.</li></ul></div>','6yKvuj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Entering System</p><p>The welcome screen of the system. Multiple stories were flashing by.</p><hr><p><span>No characters to display!</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/34.html"><span>OST&nbsp;34.&nbsp;Aoharu</span></a></p></div>', });
     </script>
 
 
@@ -775,17 +792,17 @@
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -820,13 +837,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -840,17 +857,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988818.636572)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139640.1926494)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988818.6365783
+Generated time (UTC): 1702139640.1926558
 -->
 </body>
 </html>

@@ -1,30 +1,30 @@
-function lang_switch() {
-    let select_ele = document.getElementById("lang_switcher");
+function switchToLanguage() {
+    let selectElement = document.getElementById("lang_switcher");
 
-    let current_value = select_ele.value;
-    let url_value = get_url_lang(document.URL);
+    let selectedLangcode = selectElement.value;
+    let urlLangcode = getCurrentLangcode(document.URL);
 
-    if (current_value !== url_value) {
-        let url_a = document.createElement("a");
-        url_a.href = document.URL;
-        let pathname_list = url_a.pathname.split("/");
-        pathname_list[1] = current_value;
-        url_a.pathname = pathname_list.join("/");
+    if (selectedLangcode !== urlLangcode) {
+        let urlAnchorObject = document.createElement("a");
+        urlAnchorObject.href = document.URL;
+        let pathnameList = urlAnchorObject.pathname.split("/");
+        pathnameList[1] = selectedLangcode;
+        urlAnchorObject.pathname = pathnameList.join("/");
 
         // go to another lang page
-        window.location.href = url_a.href;
+        window.location.href = urlAnchorObject.href;
     }
 }
 
-function get_url_lang(url) {
-    let url_a = document.createElement("a");
-    url_a.href = url;
-    return url_a.pathname.split("/")[1];
+function getCurrentLangcode(url) {
+    let urlAnchorObject = document.createElement("a");
+    urlAnchorObject.href = url;
+    return urlAnchorObject.pathname.split("/")[1];
 }
 
-function lang_switch_show() {
-    let select_ele = document.getElementById("lang_switcher");
+function showLangSwitchStatus() {
+    let selectElement = document.getElementById("lang_switcher");
 
     // set value
-    select_ele.value = get_url_lang(document.URL);
+    selectElement.value = getCurrentLangcode(document.URL);
 }

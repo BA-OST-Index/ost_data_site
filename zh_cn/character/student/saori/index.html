@@ -36,27 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
+    <script>var tooltip_data = {};
+
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
     
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -82,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -131,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -180,11 +191,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     <h1>学生/<span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></h1>
     
 
@@ -329,8 +341,8 @@
 
             <div class="gallery-img" id="46eeb80d-1694-4864-bad2-9fb8bac8e750-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arius_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Py0ja8">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arius_01.jpg.html#Saori-direct" onmouseover="showTooltip(this)" data-tooltip="Py0ja8" target="_blank">BG_CS_Arius_01.jpg</a><span onclick="showPopupByTooltipId('Py0ja8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arius_01.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="l68K8q">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arius_01.jpg.html#Saori-direct" onmouseover="showTooltipById(this)" data-tooltip="l68K8q" target="_blank">BG_CS_Arius_01.jpg</a><span onclick="showPopupByTooltipId('l68K8q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -344,8 +356,8 @@
 
             <div class="gallery-img" id="30d8d702-0962-49c5-9d14-e2f0ff36276a-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arius_13.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="8t8js3">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arius_13.jpg.html#Saori-direct" onmouseover="showTooltip(this)" data-tooltip="8t8js3" target="_blank">BG_CS_Arius_13.jpg</a><span onclick="showPopupByTooltipId('8t8js3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arius_13.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="wmzHly">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arius_13.jpg.html#Saori-direct" onmouseover="showTooltipById(this)" data-tooltip="wmzHly" target="_blank">BG_CS_Arius_13.jpg</a><span onclick="showPopupByTooltipId('wmzHly')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -359,8 +371,8 @@
 
             <div class="gallery-img" id="90ca0e8d-48e7-4651-99d1-a3ef74607195-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arius_13_2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="KjAE2r">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arius_13_2.jpg.html#Saori-direct" onmouseover="showTooltip(this)" data-tooltip="KjAE2r" target="_blank">BG_CS_Arius_13_2.jpg</a><span onclick="showPopupByTooltipId('KjAE2r')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arius_13_2.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="fuehPL">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arius_13_2.jpg.html#Saori-direct" onmouseover="showTooltipById(this)" data-tooltip="fuehPL" target="_blank">BG_CS_Arius_13_2.jpg</a><span onclick="showPopupByTooltipId('fuehPL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -374,8 +386,8 @@
 
             <div class="gallery-img" id="ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct">
     <div >
-        <img src="/static/images/background/BG_CS_Arius_14.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="2xXYZ2">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arius_14.jpg.html#Saori-direct" onmouseover="showTooltip(this)" data-tooltip="2xXYZ2" target="_blank">BG_CS_Arius_14.jpg</a><span onclick="showPopupByTooltipId('2xXYZ2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Arius_14.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="vk4iCp">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Arius_14.jpg.html#Saori-direct" onmouseover="showTooltipById(this)" data-tooltip="vk4iCp" target="_blank">BG_CS_Arius_14.jpg</a><span onclick="showPopupByTooltipId('vk4iCp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -388,7 +400,7 @@
     
         
     <script>
-        add_tooltip_data({ 'Py0ja8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arius_01.jpg</p><p>BG_CS_Arius_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arius_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><a href="/zh_cn/character/student/saori/#46eeb80d-1694-4864-bad2-9fb8bac8e750-direct"><img src="/static/images/student/icon/10048.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','8t8js3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arius_13.jpg</p><p>BG_CS_Arius_13.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arius_13.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/atsuko/#30d8d702-0962-49c5-9d14-e2f0ff36276a-direct"><img src="/static/images/student/icon/10042.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">敦子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/saori/#30d8d702-0962-49c5-9d14-e2f0ff36276a-direct"><img src="/static/images/student/icon/10048.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','KjAE2r': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arius_13_2.jpg</p><p>BG_CS_Arius_13_2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arius_13_2.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/atsuko/#90ca0e8d-48e7-4651-99d1-a3ef74607195-direct"><img src="/static/images/student/icon/10042.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">敦子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/saori/#90ca0e8d-48e7-4651-99d1-a3ef74607195-direct"><img src="/static/images/student/icon/10048.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','2xXYZ2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arius_14.jpg</p><p>BG_CS_Arius_14.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arius_14.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/saori/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/10048.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/azusa/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/10019.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">梓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">梓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">梓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/atsuko/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/10042.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">敦子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/hiyori/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/20017.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">日和</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">日和</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日和</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/misaki/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/10041.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">美咲</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">美咲</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">美咲</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>', });
+        add_tooltip_data({ 'l68K8q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arius_01.jpg</p><p>BG_CS_Arius_01.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arius_01.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><a href="/zh_cn/character/student/saori/#46eeb80d-1694-4864-bad2-9fb8bac8e750-direct"><img src="/static/images/student/icon/10048.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','wmzHly': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arius_13.jpg</p><p>BG_CS_Arius_13.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arius_13.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/atsuko/#30d8d702-0962-49c5-9d14-e2f0ff36276a-direct"><img src="/static/images/student/icon/10042.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">敦子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/saori/#30d8d702-0962-49c5-9d14-e2f0ff36276a-direct"><img src="/static/images/student/icon/10048.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','fuehPL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arius_13_2.jpg</p><p>BG_CS_Arius_13_2.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arius_13_2.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/atsuko/#90ca0e8d-48e7-4651-99d1-a3ef74607195-direct"><img src="/static/images/student/icon/10042.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">敦子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/saori/#90ca0e8d-48e7-4651-99d1-a3ef74607195-direct"><img src="/static/images/student/icon/10048.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','vk4iCp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Arius_14.jpg</p><p>BG_CS_Arius_14.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Arius_14.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/saori/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/10048.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">沙织</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">纱织</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/azusa/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/10019.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">梓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">梓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">梓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/atsuko/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/10042.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">敦子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚津子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/hiyori/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/20017.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">日和</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">日和</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日和</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/misaki/#ce502b67-c27f-44c3-bf47-ebdfcfb2c16d-direct"><img src="/static/images/student/icon/10041.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">美咲</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">美咲</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">美咲</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>', });
     </script>
 
     
@@ -467,17 +479,17 @@
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -515,13 +527,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -535,17 +547,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989239.5807333)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139968.9764364)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989239.5807393
+Generated time (UTC): 1702139968.9764423
 -->
 </body>
 </html>

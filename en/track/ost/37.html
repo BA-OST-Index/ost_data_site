@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=68DmAFofrlw', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=68DmAFofrlw', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=68DmAFofrlw)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=38', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=38', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=38)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="e809455b-e0ce-435a-b50a-76de0dbca391">
     <div >
-        <img src="/static/images/background/BG_ClassCorridor_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="hc0Xd6">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ClassCorridor_Night.jpg.html#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="hc0Xd6" target="_blank">BG_ClassCorridor_Night.jpg</a><span onclick="showPopupByTooltipId('hc0Xd6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ClassCorridor_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="jsOCgo">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ClassCorridor_Night.jpg.html#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="jsOCgo" target="_blank">BG_ClassCorridor_Night.jpg</a><span onclick="showPopupByTooltipId('jsOCgo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="690d7bf6-7cee-4e73-b896-21a17ae338c3">
     <div >
-        <img src="/static/images/background/BG_ClassStairs_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="o0Fm0S">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ClassStairs_Night.jpg.html#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="o0Fm0S" target="_blank">BG_ClassStairs_Night.jpg</a><span onclick="showPopupByTooltipId('o0Fm0S')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ClassStairs_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="aL2Bes">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ClassStairs_Night.jpg.html#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="aL2Bes" target="_blank">BG_ClassStairs_Night.jpg</a><span onclick="showPopupByTooltipId('aL2Bes')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="XdvQoB">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="XdvQoB" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('XdvQoB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="vrbsqY">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="vrbsqY" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('vrbsqY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -424,7 +441,7 @@
     
         
     <script>
-        add_tooltip_data({ 'hc0Xd6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassCorridor_Night.jpg</p><p>BG_ClassCorridor_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassCorridor_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Like Towards School</i></a></span><span>)</span></li></ol></div>','o0Fm0S': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassStairs_Night.jpg</p><p>BG_ClassStairs_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassStairs_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Like Towards School</i></a></span><span>)</span></li></ol></div>','XdvQoB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'jsOCgo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassCorridor_Night.jpg</p><p>BG_ClassCorridor_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassCorridor_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Like Towards School</i></a></span><span>)</span></li></ol></div>','aL2Bes': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ClassStairs_Night.jpg</p><p>BG_ClassStairs_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ClassStairs_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Like Towards School</i></a></span><span>)</span></li></ol></div>','vrbsqY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -449,9 +466,9 @@
     
 
     
-        <a href="/en/main/story/main/1/2/12.html"  onmouseover="showTooltip(this)" data-tooltip="S8RobR">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>
+        <a href="/en/main/story/main/1/2/12.html"  onmouseover="showTooltipById(this)" data-tooltip="CucUIN">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>
     
-    <span onclick="showPopupByTooltipId('S8RobR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('CucUIN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -464,7 +481,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/2/12.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="5SxJ3W"><i>&#91;4&#93;&nbsp;A Like Towards School</i></a><span onclick="showPopupByTooltipId('5SxJ3W')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/2/12.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="TAj0XV"><i>&#91;4&#93;&nbsp;A Like Towards School</i></a><span onclick="showPopupByTooltipId('TAj0XV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -483,9 +500,9 @@
     
 
     
-        <a href="/en/main/story/main/2/1/20.html"  onmouseover="showTooltip(this)" data-tooltip="oMA2L2">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>
+        <a href="/en/main/story/main/2/1/20.html"  onmouseover="showTooltipById(this)" data-tooltip="tMtow6">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>
     
-    <span onclick="showPopupByTooltipId('oMA2L2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('tMtow6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -498,7 +515,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="0RBiU6"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a><span onclick="showPopupByTooltipId('0RBiU6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="r0CE15"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a><span onclick="showPopupByTooltipId('r0CE15')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -513,7 +530,7 @@
 
     
     <script>
-        add_tooltip_data({ 'S8RobR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Secrets</p><ul><li>After sending her enraged underclassmen home, Hoshino reveals to Sensei the secret deal she was offered by the man in the black suit. Sensei tries to console her, but the next day finds no trace of Hoshino, save for her resignation letter.</li></ul></div>','5SxJ3W': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Like Towards School</p><p>The sandstorm brings much dust into the school corridors. Hoshino coughs a few times and apologizes for the lack of manpower. Hoshino then mutters a few words. Sensei says that Hoshino seems to be really liking Abydos, but gets denied by the latter. Then, Hoshino tells Sensei about the "deal".</p><hr><p>Character:<span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/37.html"><span>OST&nbsp;37.&nbsp;Aira</span></a></p></div>','oMA2L2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Millennium Prize</p><ul><li>The Millennium Prize, which gives recognition to the Millennium School&#x27s best inventions, awards the Game Development Department a special prize for the development of Tales Saga Chronicle 2. Thanks to this, the club is saved from getting shut down. In the midst of everyone&#x27s celebrations, the gaming device installed with the G.BIBLE starts to operate on its own.</li></ul></div>','0RBiU6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Crisis Lifted</p><p>The GDD got rid of the crisis of being closed. Yuuka and Maki expressed their appreciation. The two most upvote comments were nothing but the praise for TSC2. Yuuka announced the decision to postpone the closure and apologized to Momoi. Aris become the member of the GDD formally.</p><hr><p>Character:<span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/39.html"><span>OST&nbsp;39.&nbsp;Water Drop</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/37.html"><span>OST&nbsp;37.&nbsp;Aira</span></a></p></div>', });
+        add_tooltip_data({ 'CucUIN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Secrets</p><ul><li>After sending her enraged underclassmen home, Hoshino reveals to Sensei the secret deal she was offered by the man in the black suit. Sensei tries to console her, but the next day finds no trace of Hoshino, save for her resignation letter.</li></ul></div>','TAj0XV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Like Towards School</p><p>The sandstorm brings much dust into the school corridors. Hoshino coughs a few times and apologizes for the lack of manpower. Hoshino then mutters a few words. Sensei says that Hoshino seems to be really liking Abydos, but gets denied by the latter. Then, Hoshino tells Sensei about the "deal".</p><hr><p>Character:<span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/37.html"><span>OST&nbsp;37.&nbsp;Aira</span></a></p></div>','tMtow6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Millennium Prize</p><ul><li>The Millennium Prize, which gives recognition to the Millennium School&#x27s best inventions, awards the Game Development Department a special prize for the development of Tales Saga Chronicle 2. Thanks to this, the club is saved from getting shut down. In the midst of everyone&#x27s celebrations, the gaming device installed with the G.BIBLE starts to operate on its own.</li></ul></div>','r0CE15': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Crisis Lifted</p><p>The GDD got rid of the crisis of being closed. Yuuka and Maki expressed their appreciation. The two most upvote comments were nothing but the praise for TSC2. Yuuka announced the decision to postpone the closure and apologized to Momoi. Aris become the member of the GDD formally.</p><hr><p>Character:<span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuuka/"><img src="/static/images/student/icon/13010.webp" class="icon-stu"><span>Yuuka</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/39.html"><span>OST&nbsp;39.&nbsp;Water Drop</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/37.html"><span>OST&nbsp;37.&nbsp;Aira</span></a></p></div>', });
     </script>
 
 
@@ -561,12 +578,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="m_NACA" >
+            <a href="/en/character/student/aris/#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="xJhM6A" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('m_NACA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('xJhM6A')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -588,12 +605,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hoshino/#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="H2ecYw" >
+            <a href="/en/character/student/hoshino/#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="BvwHtX" >
                 <img src="/static/images/student/icon/10005.webp" class="icon-stu">
                 <span>Hoshino</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('H2ecYw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('BvwHtX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -615,12 +632,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/maki/#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="31zSe9" >
+            <a href="/en/character/student/maki/#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="GVBJpB" >
                 <img src="/static/images/student/icon/10007.webp" class="icon-stu">
                 <span>Maki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('31zSe9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GVBJpB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -642,12 +659,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="j4QCx4" >
+            <a href="/en/character/student/midori/#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="nCcfRV" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('j4QCx4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('nCcfRV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -669,12 +686,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="56usOM" >
+            <a href="/en/character/student/momoi/#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="WSiFgN" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('56usOM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('WSiFgN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -696,12 +713,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuuka/#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="WrWZkT" >
+            <a href="/en/character/student/yuuka/#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="GxQyFE" >
                 <img src="/static/images/student/icon/13010.webp" class="icon-stu">
                 <span>Yuuka</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('WrWZkT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('GxQyFE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Seminar]</span>
@@ -723,12 +740,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_37" onmouseover="showTooltip(this)" data-tooltip="fOwFJe" >
+            <a href="/en/character/student/yuzu/#track-OST_37" onmouseover="showTooltipById(this)" data-tooltip="6JIPDe" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('fOwFJe')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('6JIPDe')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -742,22 +759,22 @@
 
     
     <script>
-        add_tooltip_data({ 'm_NACA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','H2ecYw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Like Towards School</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span>Hoshino (Swimsuit)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/blacksuit/"><span>The Black Suit</span></a></p></div>','31zSe9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','j4QCx4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','56usOM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','WrWZkT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>','fOwFJe': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'xJhM6A': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','BvwHtX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Secrets</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Like Towards School</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span>Hoshino (Swimsuit)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/blacksuit/"><span>The Black Suit</span></a></p></div>','GVBJpB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','nCcfRV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','WSiFgN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','GxQyFE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuuka</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuuka_track/"><img src="/static/images/student/icon/10053.webp" class="icon-stu"><span>Yuuka (Track)</span></a></span></p><p>Other Characters: </p></div>','6JIPDe': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Millennium Prize</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Crisis Lifted</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -792,13 +809,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -812,17 +829,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988799.1525416)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139623.375803)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988799.15255
+Generated time (UTC): 1702139623.3758116
 -->
 </body>
 </html>

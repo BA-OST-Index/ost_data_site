@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -84,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -133,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -179,11 +188,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -310,12 +320,12 @@
 
         <h3>原版</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=91wNSrnRC9k', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=91wNSrnRC9k', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=91wNSrnRC9k)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Pu411t7NC/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Pu411t7NC/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩 (https://www.bilibili.com/video/BV1Pu411t7NC/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -382,6 +392,13 @@
         </tbody>
     </table>
 
+    <h3>回忆大厅角色</h3>
+    <p>以下角色的回忆大厅使用了本音乐。</p>
+    
+    
+
+    
+
 
     <h2>使用信息</h2>
     <p>此处显示引用了这首曲子的实例。</p>
@@ -404,8 +421,8 @@
 
             <div class="gallery-img" id="f27267dd-9859-41f7-800a-897b7a201e99">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_20.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="0gM0Un">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_20.jpg.html#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="0gM0Un" target="_blank">BG_CS_Millenium_20.jpg</a><span onclick="showPopupByTooltipId('0gM0Un')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_20.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="GPEmg9">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_20.jpg.html#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="GPEmg9" target="_blank">BG_CS_Millenium_20.jpg</a><span onclick="showPopupByTooltipId('GPEmg9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -419,8 +436,8 @@
 
             <div class="gallery-img" id="ad2f4da5-150d-4c2c-97dd-c2e728afbb3d">
     <div >
-        <img src="/static/images/background/BG_CS_Millenium_21.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="KZ_jVC">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_21.jpg.html#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="KZ_jVC" target="_blank">BG_CS_Millenium_21.jpg</a><span onclick="showPopupByTooltipId('KZ_jVC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Millenium_21.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="jy76ky">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Millenium_21.jpg.html#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="jy76ky" target="_blank">BG_CS_Millenium_21.jpg</a><span onclick="showPopupByTooltipId('jy76ky')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -434,8 +451,8 @@
 
             <div class="gallery-img" id="55657b32-ab5d-4c67-b755-07ba3d15432b">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="CCUHac">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_GameDevRoom_Night.jpg.html#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="CCUHac" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('CCUHac')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="if3Ors">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_GameDevRoom_Night.jpg.html#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="if3Ors" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('if3Ors')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -448,7 +465,7 @@
     
         
     <script>
-        add_tooltip_data({ '0gM0Un': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_20.jpg</p><p>BG_CS_Millenium_20.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_20.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','KZ_jVC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_21.jpg</p><p>BG_CS_Millenium_21.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_21.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','CCUHac': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'GPEmg9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_20.jpg</p><p>BG_CS_Millenium_20.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_20.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','jy76ky': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Millenium_21.jpg</p><p>BG_CS_Millenium_21.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Millenium_21.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','if3Ors': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -473,9 +490,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/2/2/10.html"  onmouseover="showTooltip(this)" data-tooltip="w4MJD_">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/2/2/10.html"  onmouseover="showTooltipById(this)" data-tooltip="BtqAGF">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('w4MJD_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('BtqAGF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -488,7 +505,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="5ga9ez"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('5ga9ez')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="DTvpao"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('DTvpao')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -503,7 +520,7 @@
 
     
     <script>
-        add_tooltip_data({ 'w4MJD_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">击倒AMAS，妮露和时展开了追逐战。但最后妮露却因为遭到时袭击而倒下，绿和柚子也因为突如其来的状况而措手不及。看见这一切情景后，爱丽丝做出重大的决定，并且向在场的所有人宣言。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">击倒AMAS，宁瑠和季展开了追逐战。但最后宁瑠却因为遭到季袭击而倒下，绿和柚子也因为突如其来的状况而措手不及。看见这一切情景后，爱丽丝做出重大的决定，并且向在场的所有人宣言。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">击倒AMAS，尼禄和时展开了追逐战。但最后尼禄却因为遭到时袭击而倒下，绿和柚子也因为突如其来的状况而措手不及。看见这一切情景后，爱丽丝做出重大的决定，并且向在场的所有人宣言。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','5ga9ez': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">莉央强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程部的轨道炮为“勇者”的证明理论，但莉央远程关闭了电源，这一证明被无效化。妮露在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程师部的轨道炮为“勇者”的证明理论，但莉音远程关闭了电源，这一证明被无效化。宁瑠在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程部的轨道炮为“勇者”的证明理论，但莉央远程关闭了电源，这一证明被无效化。尼禄在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/134.html"><span>OST&nbsp;134.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span></a></p></div>', });
+        add_tooltip_data({ 'BtqAGF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">击倒AMAS，妮露和时展开了追逐战。但最后妮露却因为遭到时袭击而倒下，绿和柚子也因为突如其来的状况而措手不及。看见这一切情景后，爱丽丝做出重大的决定，并且向在场的所有人宣言。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">击倒AMAS，宁瑠和季展开了追逐战。但最后宁瑠却因为遭到季袭击而倒下，绿和柚子也因为突如其来的状况而措手不及。看见这一切情景后，爱丽丝做出重大的决定，并且向在场的所有人宣言。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">击倒AMAS，尼禄和时展开了追逐战。但最后尼禄却因为遭到时袭击而倒下，绿和柚子也因为突如其来的状况而措手不及。看见这一切情景后，爱丽丝做出重大的决定，并且向在场的所有人宣言。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','DTvpao': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">莉央强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程部的轨道炮为“勇者”的证明理论，但莉央远程关闭了电源，这一证明被无效化。妮露在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程师部的轨道炮为“勇者”的证明理论，但莉音远程关闭了电源，这一证明被无效化。宁瑠在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程部的轨道炮为“勇者”的证明理论，但莉央远程关闭了电源，这一证明被无效化。尼禄在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/134.html"><span>OST&nbsp;134.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span></a></p></div>', });
     </script>
 
 
@@ -551,12 +568,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/aris/#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="6ITQdF" >
+            <a href="/zh_cn/character/student/aris/#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="5Qa8WT" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('6ITQdF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('5Qa8WT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -578,12 +595,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/midori/#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="HsovAQ" >
+            <a href="/zh_cn/character/student/midori/#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="Oj5OXW" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('HsovAQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Oj5OXW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -605,12 +622,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/neru/#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="lykz1E" >
+            <a href="/zh_cn/character/student/neru/#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="KJWV7o" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('lykz1E')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('KJWV7o')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -627,10 +644,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【1】</span>
     
-        <a href="/zh_cn/character/npc/rio/#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="lZnQ9E" >
+        <a href="/zh_cn/character/npc/rio/#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="HhLdMT" >
             <span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
         </a>
-        <span onclick="showPopupByTooltipId('lZnQ9E')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('HhLdMT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -647,12 +664,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/toki/#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="TwPQO8" >
+            <a href="/zh_cn/character/student/toki/#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="U24tdY" >
                 <img src="/static/images/student/icon/10062.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('TwPQO8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('U24tdY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Cleaning&Clearing</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -674,12 +691,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/yuzu/#track-OST_134" onmouseover="showTooltip(this)" data-tooltip="KUaVVk" >
+            <a href="/zh_cn/character/student/yuzu/#track-OST_134" onmouseover="showTooltipById(this)" data-tooltip="FCvA85" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('KUaVVk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('FCvA85')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -693,22 +710,22 @@
 
     
     <script>
-        add_tooltip_data({ '6ITQdF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <span><a href="/zh_cn/character/npc/ariskey/"><span><span class="lang-zh-cn-cn">Key</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Key</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Key</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a> &nbsp;|&nbsp;</span><a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','HsovAQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','lykz1E': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','lZnQ9E': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它人物： <span><span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','TwPQO8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','KUaVVk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>', });
+        add_tooltip_data({ '5Qa8WT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <span><a href="/zh_cn/character/npc/ariskey/"><span><span class="lang-zh-cn-cn">Key</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Key</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Key</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a> &nbsp;|&nbsp;</span><a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','Oj5OXW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">绿</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','KJWV7o': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">妮露</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">妮露(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','HhLdMT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它人物： <span><span><a href="/zh_cn/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','U24tdY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">时</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">时(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时(兔女郎)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： <a href="/zh_cn/character/npc/rio/"><span><span class="lang-zh-cn-cn">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p></div>','FCvA85': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/2/2/10.html">主线故事&nbsp;第2篇&nbsp;第2章&nbsp;第10话：<span class="lang-zh-cn-cn">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">残酷的真相（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/2/2/10.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">最后的抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">柚子(女仆)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -743,13 +760,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -763,17 +780,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989151.4314823)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702140018.2149856)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989151.4314914
+Generated time (UTC): 1702140018.2149951
 -->
 </body>
 </html>

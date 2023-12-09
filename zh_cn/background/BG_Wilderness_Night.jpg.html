@@ -36,27 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
+    <script>var tooltip_data = {};
+
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
     
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -82,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -131,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -177,11 +188,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     <h1>背景/BG_Wilderness_Night.jpg</h1>
     
@@ -234,9 +246,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/1/2/19.html"  onmouseover="showTooltip(this)" data-tooltip="XKBHDp">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/1/2/19.html"  onmouseover="showTooltipById(this)" data-tooltip="56F2Tf">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('XKBHDp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('56F2Tf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -249,7 +261,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="dX1tF4"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('dX1tF4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="5jpCAM"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('5jpCAM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -274,9 +286,9 @@
     
 
     
-        <a href="/zh_cn/main/story/other/1/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="NP0IcM">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/other/1/1/1.html"  onmouseover="showTooltipById(this)" data-tooltip="uxNIuO">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('NP0IcM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('uxNIuO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -289,7 +301,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="nLUXFB"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('nLUXFB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="gyBzV3"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('gyBzV3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -304,7 +316,7 @@
 
     
     <script>
-        add_tooltip_data({ 'XKBHDp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li><li><span class="lang-zh-cn-cn">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','dX1tF4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/other/1.html"><span>其它&nbsp;1.&nbsp;Target For Love (目标为爱)</span></a></p></div>','NP0IcM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往沙勒社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往夏莱社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往夏莱社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','nLUXFB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/34.html"><span>OST&nbsp;34.&nbsp;Aoharu (青春)</span></a></p></div>', });
+        add_tooltip_data({ '56F2Tf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li><li><span class="lang-zh-cn-cn">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','5jpCAM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/other/1.html"><span>其它&nbsp;1.&nbsp;Target For Love (目标为爱)</span></a></p></div>','uxNIuO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往沙勒社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往夏莱社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">从莫名其妙的梦中醒来之后，老师从联邦学生会的干部七神琳那里听到联邦学生会长消失的消息。由于联邦学生会长失踪，学园城市奇普托斯陷入混乱。为了解决这场混乱，老师和学生会的干部一同前往夏莱社团室。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','gyBzV3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">系统的欢迎界面，快速切换了多个剧情的内容。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/34.html"><span>OST&nbsp;34.&nbsp;Aoharu (青春)</span></a></p></div>', });
     </script>
 
 
@@ -325,10 +337,10 @@
             
 
             <li id="track-OST_34">
-    <a href="/zh_cn/track/ost/34.html#a1bfd244-8f93-4bd6-9ae1-04f96b1bac32" onmouseover="showTooltip(this)" data-tooltip="OXa44f">
+    <a href="/zh_cn/track/ost/34.html#a1bfd244-8f93-4bd6-9ae1-04f96b1bac32" onmouseover="showTooltipById(this)" data-tooltip="tBztLg">
         <span>【1】OST&nbsp;34.&nbsp;Aoharu (青春)</span>
     </a>
-    <span onclick="showPopupByTooltipId('OXa44f')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('tBztLg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
     <div class="track-stats-badge stats-badge"></div>
@@ -345,10 +357,10 @@
             
 
             <li id="track-other_1">
-    <a href="/zh_cn/track/other/1.html#a1bfd244-8f93-4bd6-9ae1-04f96b1bac32" onmouseover="showTooltip(this)" data-tooltip="MEEh7j">
+    <a href="/zh_cn/track/other/1.html#a1bfd244-8f93-4bd6-9ae1-04f96b1bac32" onmouseover="showTooltipById(this)" data-tooltip="aJqQhe">
         <span>【1】其它&nbsp;1.&nbsp;Target For Love (目标为爱)</span>
     </a>
-    <span onclick="showPopupByTooltipId('MEEh7j')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('aJqQhe')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
     <div class="track-stats-badge stats-badge"></div>
@@ -363,7 +375,7 @@
     
         
     <script>
-        add_tooltip_data({ 'OXa44f': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;34.&nbsp;Aoharu <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','MEEh7j': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">其它&nbsp;1.&nbsp;Target For Love <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'tBztLg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;34.&nbsp;Aoharu <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/other/1/1/1.html">其它故事&nbsp;第1篇&nbsp;第1章&nbsp;第1话：<span class="lang-zh-cn-cn">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">序幕1-1</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/other/1/1/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">进入系统</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','aJqQhe': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">其它&nbsp;1.&nbsp;Target For Love <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -408,17 +420,17 @@
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -453,13 +465,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -473,17 +485,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989196.3418016)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139685.7271786)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989196.3418078
+Generated time (UTC): 1702139685.7271843
 -->
 </body>
 </html>

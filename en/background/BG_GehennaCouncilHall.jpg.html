@@ -36,27 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
+    <script>var tooltip_data = {};
+
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
     
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -80,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -119,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -165,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     <h1>Background/BG_GehennaCouncilHall.jpg</h1>
     
@@ -222,9 +234,9 @@
     
 
     
-        <a href="/en/main/story/main/1/2/11.html"  onmouseover="showTooltip(this)" data-tooltip="MF2etf">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>
+        <a href="/en/main/story/main/1/2/11.html"  onmouseover="showTooltipById(this)" data-tooltip="PdQzJj">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>
     
-    <span onclick="showPopupByTooltipId('MF2etf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('PdQzJj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -237,7 +249,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="BjiElN"><i>&#91;1&#93;&nbsp;Ako's Self-Criticism Paper</i></a><span onclick="showPopupByTooltipId('BjiElN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="OuFc2h"><i>&#91;1&#93;&nbsp;Ako's Self-Criticism Paper</i></a><span onclick="showPopupByTooltipId('OuFc2h')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -252,7 +264,7 @@
 
     
     <script>
-        add_tooltip_data({ 'MF2etf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Losing Battle</p><ul><li>The Kaiser board member reveals their ambitions to find a massive treasure buried somewhere in Abydos. Then, using the Foreclosure Task Force&#x27s debt as leverage, the creditor forces them to back down. Hoshino calls for a retreat to the chagrin of the other task force members.</li></ul></div>','BjiElN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ako&#x27s Self-Criticism Paper</p><p>Ako talked big and claimed that she could write 1000 pages, but didn&#x27t expect Hina would actually be doing so. During the break, Ako asks Hina whether she knew about Hoshino. Hina says it&#x27s the first time for her to meet her, and discloses that she&#x27s listed as a potential threat by Gehenna&#x27s Intelligence Agency for her ability; but she also agreed with Ako that Hoshino does seem to be completely different in these two years. Hina also mentions about the battle at then, believing that if Ako continued combating, they could sustain a great loss because of Schale&#x27s assistance. She criticizes Ako for being too impulsive.</p><hr><p>Character:<span><span><a href="/en/character/student/ako/"><img src="/static/images/student/icon/20008.webp" class="icon-stu"><span>Ako</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hina/"><img src="/static/images/student/icon/10004.webp" class="icon-stu"><span>Hina</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/13.html"><span>OST&nbsp;13.&nbsp;Barrier</span></a></p></div>', });
+        add_tooltip_data({ 'PdQzJj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Losing Battle</p><ul><li>The Kaiser board member reveals their ambitions to find a massive treasure buried somewhere in Abydos. Then, using the Foreclosure Task Force&#x27s debt as leverage, the creditor forces them to back down. Hoshino calls for a retreat to the chagrin of the other task force members.</li></ul></div>','OuFc2h': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ako&#x27s Self-Criticism Paper</p><p>Ako talked big and claimed that she could write 1000 pages, but didn&#x27t expect Hina would actually be doing so. During the break, Ako asks Hina whether she knew about Hoshino. Hina says it&#x27s the first time for her to meet her, and discloses that she&#x27s listed as a potential threat by Gehenna&#x27s Intelligence Agency for her ability; but she also agreed with Ako that Hoshino does seem to be completely different in these two years. Hina also mentions about the battle at then, believing that if Ako continued combating, they could sustain a great loss because of Schale&#x27s assistance. She criticizes Ako for being too impulsive.</p><hr><p>Character:<span><span><a href="/en/character/student/ako/"><img src="/static/images/student/icon/20008.webp" class="icon-stu"><span>Ako</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hina/"><img src="/static/images/student/icon/10004.webp" class="icon-stu"><span>Hina</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/13.html"><span>OST&nbsp;13.&nbsp;Barrier</span></a></p></div>', });
     </script>
 
 
@@ -273,10 +285,10 @@
             
 
             <li id="track-OST_13">
-    <a href="/en/track/ost/13.html#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltip(this)" data-tooltip="rEdqdn">
+    <a href="/en/track/ost/13.html#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltipById(this)" data-tooltip="UJAmlS">
         <span>【1】OST&nbsp;13.&nbsp;Barrier</span>
     </a>
-    <span onclick="showPopupByTooltipId('rEdqdn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('UJAmlS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
     <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Cheerful</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
@@ -291,7 +303,7 @@
     
         
     <script>
-        add_tooltip_data({ 'rEdqdn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;13.&nbsp;Barrier <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">InGame</span><span class="badge badge-info badge-tag">Story</span></span></p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Ako&#x27s Self-Criticism Paper</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'UJAmlS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;13.&nbsp;Barrier <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">InGame</span><span class="badge badge-info badge-tag">Story</span></span></p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Ako&#x27s Self-Criticism Paper</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -337,12 +349,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/ako/#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltip(this)" data-tooltip="9Zq4uM" >
+            <a href="/en/character/student/ako/#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltipById(this)" data-tooltip="sdrU8Z" >
                 <img src="/static/images/student/icon/20008.webp" class="icon-stu">
                 <span>Ako</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('9Zq4uM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('sdrU8Z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Prefect Team]</span>
@@ -364,12 +376,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hina/#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltip(this)" data-tooltip="hQLrUs" >
+            <a href="/en/character/student/hina/#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltipById(this)" data-tooltip="JlG5HH" >
                 <img src="/static/images/student/icon/10004.webp" class="icon-stu">
                 <span>Hina</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('hQLrUs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('JlG5HH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Prefect Team]</span>
@@ -383,22 +395,22 @@
 
     
     <script>
-        add_tooltip_data({ '9Zq4uM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ako</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Prefect Team Goes to War!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Chairman Ako</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;1:&nbsp;An Unexpected Alliance</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;An Apology</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Problem Solver&#x27s Motivation</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The Revenge of Problem Solver</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;The True Intent</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;A Lasting Battle</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary"><i>&#91;9&#93;&nbsp;Hina, Arrived!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/2.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;2:&nbsp;The Gehenna Head Prefect</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Hard to Explain</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;Into the Abydos Desert Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/6.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Arrived At The Desert</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Ako&#x27s Self-Criticism Paper</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;That Which One Must Protect</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;The Prefect Team Goes To War!</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','hQLrUs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hina</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;17:&nbsp;The Gathering Storm</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/17.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;1:&nbsp;An Unexpected Alliance</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary"><i>&#91;9&#93;&nbsp;Hina, Arrived!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/2.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;2:&nbsp;The Gehenna Head Prefect</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Hard to Explain</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Negotiation With Hina</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Apology From Hina</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Hina&#x27s Intel</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Everyone Has a Story Part 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Clear Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Ako&#x27s Self-Criticism Paper</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/11.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Hina&#x27s Wonder</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;That Which One Must Protect</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Gehenna Academy</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;The Prefect Team Goes To War!</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hina_swimsuit/"><img src="/static/images/student/icon/10022.webp" class="icon-stu"><span>Hina (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'sdrU8Z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ako</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/20.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;20:&nbsp;The Prefect Team Goes to War!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Chairman Ako</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;1:&nbsp;An Unexpected Alliance</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;An Apology</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Problem Solver&#x27s Motivation</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The Revenge of Problem Solver</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;The True Intent</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;A Lasting Battle</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary"><i>&#91;9&#93;&nbsp;Hina, Arrived!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/2.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;2:&nbsp;The Gehenna Head Prefect</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Hard to Explain</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;Into the Abydos Desert Part 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/6.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Arrived At The Desert</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Ako&#x27s Self-Criticism Paper</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;That Which One Must Protect</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;The Prefect Team Goes To War!</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','JlG5HH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hina</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;17:&nbsp;The Gathering Storm</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/17.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;An Introduction to Prefect Team</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;1:&nbsp;An Unexpected Alliance</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary"><i>&#91;9&#93;&nbsp;Hina, Arrived!</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/2.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;2:&nbsp;The Gehenna Head Prefect</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Hard to Explain</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Negotiation With Hina</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;An Apology From Hina</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/2.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Hina&#x27s Intel</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/5.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;5:&nbsp;Everyone Has a Story Part 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Clear Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;A Losing Battle</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Ako&#x27s Self-Criticism Paper</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/11.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Hina&#x27s Wonder</i></a></span><span>)</span></li><li><a href="/en/main/story/main/1/2/17.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;17:&nbsp;That Which One Must Protect</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Gehenna Academy</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;The Prefect Team Goes To War!</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hina_swimsuit/"><img src="/static/images/student/icon/10022.webp" class="icon-stu"><span>Hina (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -433,13 +445,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -453,17 +465,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988872.1666589)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139410.575897)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988872.166666
+Generated time (UTC): 1702139410.5759056
 -->
 </body>
 </html>

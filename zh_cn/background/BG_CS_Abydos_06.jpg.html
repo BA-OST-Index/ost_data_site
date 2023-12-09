@@ -36,27 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
+    <script>var tooltip_data = {};
+
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
     
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -82,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -131,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -177,11 +188,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     <h1>背景/BG_CS_Abydos_06.jpg</h1>
     
@@ -234,9 +246,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/1/2/13.html"  onmouseover="showTooltip(this)" data-tooltip="P_ucaI">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第13话：<span class="lang-zh-cn-cn">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/1/2/13.html"  onmouseover="showTooltipById(this)" data-tooltip="7QBPO3">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第13话：<span class="lang-zh-cn-cn">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('P_ucaI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('7QBPO3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -249,7 +261,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="YjaPJl"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('YjaPJl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="6EInTi"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('6EInTi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -261,7 +273,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Z3RA0c"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('Z3RA0c')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="eaVubM"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('eaVubM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -273,7 +285,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="fhDknb"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('fhDknb')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="Uhtbuc"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('Uhtbuc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -285,7 +297,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="ZLWB_5"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('ZLWB_5')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="ieXYKQ"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('ieXYKQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -310,9 +322,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/1/2/16.html"  onmouseover="showTooltip(this)" data-tooltip="isSALM">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第16话：<span class="lang-zh-cn-cn">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/1/2/16.html"  onmouseover="showTooltipById(this)" data-tooltip="bX6iLw">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第16话：<span class="lang-zh-cn-cn">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('isSALM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('bX6iLw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -325,7 +337,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/16.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="6m9FtM"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('6m9FtM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/16.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="AjCA3s"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('AjCA3s')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -340,7 +352,7 @@
 
     
     <script>
-        add_tooltip_data({ 'P_ucaI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">星野在信上写说，为了免除阿拜多斯高中的债务，自己已经去当凯萨PMC的佣兵。在其余对策委员会一行人深感混乱之际，PMC兵力为了占领星野消失踪影的阿拜多斯高中而来犯。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野在信上写说，为了免除阿拜多斯高中的债务，自己已经去当凯萨PMC的佣兵。在其余对策委员会一行人深感混乱之际，PMC兵力为了占领星野消失踪影的阿拜多斯高中而来犯。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野在信上写说，为了免除阿拜多斯高中的债务，自己已经去当凯萨PMC的佣兵。在其余对策委员会一行人深感混乱之际，PMC兵力为了占领星野消失踪影的阿拜多斯高中而来犯。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','YjaPJl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野留下了退社书和一封信。在信中，星野向所有人坦白了去PMC做佣兵的事情，并说出了“（黑服）将会承担一半阿拜多斯债务”的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野留下了退社书和一封信。在信中，星野向所有人坦白了去PMC做佣兵的事情，并说出了“（黑服）将会承担一半阿拜多斯债务”的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野留下了退社书和一封信。在信中，星野向所有人坦白了去PMC做佣兵的事情，并说出了“（黑服）将会承担一半阿拜多斯债务”的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/35.html"><span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span></a></p></div>','Z3RA0c': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野表示这是自己应该背负的责任，希望能够减轻对策委员会的压力。信在此终止。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野表示这是自己应该背负的责任，希望能够减轻对策委员会的压力。信在此终止。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野表示这是自己应该背负的责任，希望能够减轻对策委员会的压力。信在此终止。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/35.html"><span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span></a></p></div>','fhDknb': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野在另一封信中坦白，自己并不喜欢大人，也不相信大人。在白子第一次将老师背来时，她甚至有点嫌弃，但最终她信任了老师。她还将白子托付给了老师，希望老师能教导管好白子，不要让她犯错。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野在另一封信中坦白，自己并不喜欢大人，也不相信大人。在白子第一次将老师背来时，她甚至有点嫌弃，但最终她信任了老师。她还将白子托付给了老师，希望老师能教导管好白子，不要让她犯错。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野在另一封信中坦白，自己并不喜欢大人，也不相信大人。在白子第一次将老师背来时，她甚至有点嫌弃，但最终她信任了老师。她还将白子托付给了老师，希望老师能教导管好白子，不要让她犯错。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/35.html"><span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span></a></p></div>','ZLWB_5': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野希望大家能保护好阿拜多斯，并且，如果今后在战场上遇到她的话，能将她的光环破坏掉。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野希望大家能保护好阿拜多斯，并且，如果今后在战场上遇到她的话，能将她的光环破坏掉。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野希望大家能保护好阿拜多斯，并且，如果今后在战场上遇到她的话，能将她的光环破坏掉。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/35.html"><span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span></a></p></div>','isSALM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">黑色西装人为了自己的实验，威胁&#91;USERNAME&#93;老师放弃星野。但是老师不但不放弃，还宣言一定会救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">黑色西装人为了自己的实验，威胁&#91;USERNAME&#93;老师放弃星野。但是老师不但不放弃，还宣言一定会救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">黑色西装人为了自己的实验，威胁&#91;USERNAME&#93;老师放弃星野。但是老师不但不放弃，还宣言一定会救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','6m9FtM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">实际上，申请书上有“顾问”一栏。而作为被从沙勒请来当顾问的老师，不存在老师签名的申请书只是废纸一张，因而星野仍然属于对策委员会，仍然属于阿拜多斯，仍然是自己的学生。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">实际上，申请书上有“顾问”一栏。而作为被从夏莱请来当顾问的老师，不存在老师签名的申请书只是废纸一张，因而星野仍然属于对策委员会，仍然属于阿拜多斯，仍然是自己的学生。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">实际上，申请书上有“顾问”一栏。而作为被从夏莱请来当顾问的老师，不存在老师签名的申请书只是废纸一张，因而星野仍然属于对策委员会，仍然属于阿拜多斯，仍然是自己的学生。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/70.html"><span>OST&nbsp;70.&nbsp;Black Suit (黑色西服人)</span></a></p></div>', });
+        add_tooltip_data({ '7QBPO3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">星野在信上写说，为了免除阿拜多斯高中的债务，自己已经去当凯萨PMC的佣兵。在其余对策委员会一行人深感混乱之际，PMC兵力为了占领星野消失踪影的阿拜多斯高中而来犯。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野在信上写说，为了免除阿拜多斯高中的债务，自己已经去当凯萨PMC的佣兵。在其余对策委员会一行人深感混乱之际，PMC兵力为了占领星野消失踪影的阿拜多斯高中而来犯。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野在信上写说，为了免除阿拜多斯高中的债务，自己已经去当凯萨PMC的佣兵。在其余对策委员会一行人深感混乱之际，PMC兵力为了占领星野消失踪影的阿拜多斯高中而来犯。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','6EInTi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野留下了退社书和一封信。在信中，星野向所有人坦白了去PMC做佣兵的事情，并说出了“（黑服）将会承担一半阿拜多斯债务”的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野留下了退社书和一封信。在信中，星野向所有人坦白了去PMC做佣兵的事情，并说出了“（黑服）将会承担一半阿拜多斯债务”的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野留下了退社书和一封信。在信中，星野向所有人坦白了去PMC做佣兵的事情，并说出了“（黑服）将会承担一半阿拜多斯债务”的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/35.html"><span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span></a></p></div>','eaVubM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野表示这是自己应该背负的责任，希望能够减轻对策委员会的压力。信在此终止。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野表示这是自己应该背负的责任，希望能够减轻对策委员会的压力。信在此终止。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野表示这是自己应该背负的责任，希望能够减轻对策委员会的压力。信在此终止。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/35.html"><span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span></a></p></div>','Uhtbuc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野在另一封信中坦白，自己并不喜欢大人，也不相信大人。在白子第一次将老师背来时，她甚至有点嫌弃，但最终她信任了老师。她还将白子托付给了老师，希望老师能教导管好白子，不要让她犯错。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野在另一封信中坦白，自己并不喜欢大人，也不相信大人。在白子第一次将老师背来时，她甚至有点嫌弃，但最终她信任了老师。她还将白子托付给了老师，希望老师能教导管好白子，不要让她犯错。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野在另一封信中坦白，自己并不喜欢大人，也不相信大人。在白子第一次将老师背来时，她甚至有点嫌弃，但最终她信任了老师。她还将白子托付给了老师，希望老师能教导管好白子，不要让她犯错。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/35.html"><span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span></a></p></div>','ieXYKQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野希望大家能保护好阿拜多斯，并且，如果今后在战场上遇到她的话，能将她的光环破坏掉。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野希望大家能保护好阿拜多斯，并且，如果今后在战场上遇到她的话，能将她的光环破坏掉。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野希望大家能保护好阿拜多斯，并且，如果今后在战场上遇到她的话，能将她的光环破坏掉。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/35.html"><span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span></a></p></div>','bX6iLw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">黑色西装人为了自己的实验，威胁&#91;USERNAME&#93;老师放弃星野。但是老师不但不放弃，还宣言一定会救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">黑色西装人为了自己的实验，威胁&#91;USERNAME&#93;老师放弃星野。但是老师不但不放弃，还宣言一定会救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">黑色西装人为了自己的实验，威胁&#91;USERNAME&#93;老师放弃星野。但是老师不但不放弃，还宣言一定会救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','AjCA3s': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">实际上，申请书上有“顾问”一栏。而作为被从沙勒请来当顾问的老师，不存在老师签名的申请书只是废纸一张，因而星野仍然属于对策委员会，仍然属于阿拜多斯，仍然是自己的学生。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">实际上，申请书上有“顾问”一栏。而作为被从夏莱请来当顾问的老师，不存在老师签名的申请书只是废纸一张，因而星野仍然属于对策委员会，仍然属于阿拜多斯，仍然是自己的学生。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">实际上，申请书上有“顾问”一栏。而作为被从夏莱请来当顾问的老师，不存在老师签名的申请书只是废纸一张，因而星野仍然属于对策委员会，仍然属于阿拜多斯，仍然是自己的学生。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/70.html"><span>OST&nbsp;70.&nbsp;Black Suit (黑色西服人)</span></a></p></div>', });
     </script>
 
 
@@ -361,10 +373,10 @@
             
 
             <li id="track-OST_35">
-    <a href="/zh_cn/track/ost/35.html#ab21ef21-8d99-4dd0-8c5d-4a6c2d707ec2" onmouseover="showTooltip(this)" data-tooltip="zppRDH">
+    <a href="/zh_cn/track/ost/35.html#ab21ef21-8d99-4dd0-8c5d-4a6c2d707ec2" onmouseover="showTooltipById(this)" data-tooltip="Q00DoD">
         <span>【1】OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span>
     </a>
-    <span onclick="showPopupByTooltipId('zppRDH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Q00DoD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
     <div class="track-stats-badge stats-badge"></div>
@@ -381,10 +393,10 @@
             
 
             <li id="track-OST_70">
-    <a href="/zh_cn/track/ost/70.html#ab21ef21-8d99-4dd0-8c5d-4a6c2d707ec2" onmouseover="showTooltip(this)" data-tooltip="Ple_jw">
+    <a href="/zh_cn/track/ost/70.html#ab21ef21-8d99-4dd0-8c5d-4a6c2d707ec2" onmouseover="showTooltipById(this)" data-tooltip="5757jc">
         <span>【1】OST&nbsp;70.&nbsp;Black Suit (黑色西服人)</span>
     </a>
-    <span onclick="showPopupByTooltipId('Ple_jw')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('5757jc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
     <div class="track-stats-badge stats-badge"></div>
@@ -399,7 +411,7 @@
     
         
     <script>
-        add_tooltip_data({ 'zppRDH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;35.&nbsp;Morose Dreamer <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/13.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第13话：<span class="lang-zh-cn-cn">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Ple_jw': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;70.&nbsp;Black Suit <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/16.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第16话：<span class="lang-zh-cn-cn">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/16.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'Q00DoD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;35.&nbsp;Morose Dreamer <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/13.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第13话：<span class="lang-zh-cn-cn">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">错失的东西</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野的退社书</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">为了对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">不相信大人</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/13.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对对策委员会的期盼</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','5757jc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;70.&nbsp;Black Suit <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/16.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第16话：<span class="lang-zh-cn-cn">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">大人的战斗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/16.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">我没签名</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -444,17 +456,17 @@
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -489,13 +501,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -509,17 +521,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989197.331396)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139673.1111019)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989197.3314025
+Generated time (UTC): 1702139673.1111076
 -->
 </body>
 </html>

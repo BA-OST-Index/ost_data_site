@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -84,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -133,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -179,11 +188,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -298,12 +308,12 @@
 
         <h3>原版</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=VjxfInALNFY', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=VjxfInALNFY', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=VjxfInALNFY)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1MV4y1r7bB/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1MV4y1r7bB/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩 (https://www.bilibili.com/video/BV1MV4y1r7bB/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -370,6 +380,13 @@
         </tbody>
     </table>
 
+    <h3>回忆大厅角色</h3>
+    <p>以下角色的回忆大厅使用了本音乐。</p>
+    
+    
+
+    
+
 
     <h2>使用信息</h2>
     <p>此处显示引用了这首曲子的实例。</p>
@@ -392,8 +409,8 @@
 
             <div class="gallery-img" id="21b39f46-82bb-437f-8d11-e6dc672f63e3">
     <div >
-        <img src="/static/images/background/BG_Broadcastingroom_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="QdaSig">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_Broadcastingroom_Off.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="QdaSig" target="_blank">BG_Broadcastingroom_Off.jpg</a><span onclick="showPopupByTooltipId('QdaSig')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Broadcastingroom_Off.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="FKJb4j">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_Broadcastingroom_Off.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="FKJb4j" target="_blank">BG_Broadcastingroom_Off.jpg</a><span onclick="showPopupByTooltipId('FKJb4j')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -407,8 +424,8 @@
 
             <div class="gallery-img" id="f5d6dba1-b77c-4df0-88d5-7d8fd2600421">
     <div >
-        <img src="/static/images/background/BG_CS_PV3_55.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="wHwB7a">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PV3_55.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="wHwB7a" target="_blank">BG_CS_PV3_55.jpg</a><span onclick="showPopupByTooltipId('wHwB7a')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PV3_55.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1o6waX">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PV3_55.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="1o6waX" target="_blank">BG_CS_PV3_55.jpg</a><span onclick="showPopupByTooltipId('1o6waX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -422,8 +439,8 @@
 
             <div class="gallery-img" id="1f9226f6-1b74-49a9-883d-162a36074c03">
     <div >
-        <img src="/static/images/background/BG_CS_PV3_57.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="dfb5WO">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PV3_57.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="dfb5WO" target="_blank">BG_CS_PV3_57.jpg</a><span onclick="showPopupByTooltipId('dfb5WO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PV3_57.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Ps6lFn">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PV3_57.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="Ps6lFn" target="_blank">BG_CS_PV3_57.jpg</a><span onclick="showPopupByTooltipId('Ps6lFn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -437,8 +454,8 @@
 
             <div class="gallery-img" id="be2dc383-1390-4ffe-b899-9c507f0d592f">
     <div >
-        <img src="/static/images/background/BG_CS_PV3_60.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="QHckCh">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PV3_60.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="QHckCh" target="_blank">BG_CS_PV3_60.jpg</a><span onclick="showPopupByTooltipId('QHckCh')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PV3_60.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="iWGJ0U">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PV3_60.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="iWGJ0U" target="_blank">BG_CS_PV3_60.jpg</a><span onclick="showPopupByTooltipId('iWGJ0U')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -452,8 +469,8 @@
 
             <div class="gallery-img" id="1ddf3b64-e1c2-418f-bed4-ea723bdebf81">
     <div >
-        <img src="/static/images/background/BG_KivotosStadium.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="BSMOD4">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_KivotosStadium.jpg.html#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="BSMOD4" target="_blank">BG_KivotosStadium.jpg</a><span onclick="showPopupByTooltipId('BSMOD4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_KivotosStadium.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="R2oz53">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_KivotosStadium.jpg.html#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="R2oz53" target="_blank">BG_KivotosStadium.jpg</a><span onclick="showPopupByTooltipId('R2oz53')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -466,7 +483,7 @@
     
         
     <script>
-        add_tooltip_data({ 'QdaSig': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Broadcastingroom_Off.jpg</p><p>BG_Broadcastingroom_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Broadcastingroom_Off.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','wHwB7a': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_55.jpg</p><p>BG_CS_PV3_55.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_55.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','dfb5WO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_57.jpg</p><p>BG_CS_PV3_57.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_57.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','QHckCh': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_60.jpg</p><p>BG_CS_PV3_60.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_60.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','BSMOD4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_KivotosStadium.jpg</p><p>BG_KivotosStadium.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_KivotosStadium.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'FKJb4j': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Broadcastingroom_Off.jpg</p><p>BG_Broadcastingroom_Off.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Broadcastingroom_Off.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','1o6waX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_55.jpg</p><p>BG_CS_PV3_55.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_55.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Ps6lFn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_57.jpg</p><p>BG_CS_PV3_57.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_57.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','iWGJ0U': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV3_60.jpg</p><p>BG_CS_PV3_60.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV3_60.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','R2oz53': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_KivotosStadium.jpg</p><p>BG_KivotosStadium.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_KivotosStadium.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -491,9 +508,9 @@
     
 
     
-        <a href="/zh_cn/event/818/story/1.html"  onmouseover="showTooltip(this)" data-tooltip="f0CzEx"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>
+        <a href="/zh_cn/event/818/story/1.html"  onmouseover="showTooltipById(this)" data-tooltip="XqpskB"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>
     
-    <span onclick="showPopupByTooltipId('f0CzEx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('XqpskB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -506,7 +523,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="wt4tnr"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('wt4tnr')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="zVERra"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('zVERra')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -518,7 +535,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/zh_cn/event/818/story/1.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="AmqqgH"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('AmqqgH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/event/818/story/1.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="08AB91"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('08AB91')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -535,7 +552,7 @@
 
     
     <script>
-        add_tooltip_data({ 'f0CzEx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">以花子和绫音的宣示为始，奇普托斯晄轮大祭开幕。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">以花子和绫音的宣示为始，奇普托斯晄轮大祭开幕。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">以花子和绫音的宣示为始，奇普托斯晄轮大祭开幕。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','wt4tnr': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了沙勒的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了夏莱的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千禧年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了夏莱的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<a href="/zh_cn/character/npc/mai/"><span><span class="lang-zh-cn-cn">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/107.html"><span>OST&nbsp;107.&nbsp;NERINERI CHALLENGE ()</span></a></p></div>','AmqqgH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">阿拜多斯高中的“奥空绫音”与三一综合学院的“浦和花子”两位学生共同发表了选手宣誓。在宣誓过程中，花子突然就开了黄腔，直播信号随即被切断。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯高中的“奥空绫音”与三一综合学院的“浦和花子”两位学生共同发表了选手宣誓。在宣誓过程中，花子突然就开了黄腔，直播信号随即被切断。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯高中的“奥空绫音”与三一综合学院的“浦和花子”两位学生共同发表了选手宣誓。在宣誓过程中，花子突然就开了黄腔，直播信号随即被切断。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/hanako/"><img src="/static/images/student/icon/23007.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">花子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">花子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/107.html"><span>OST&nbsp;107.&nbsp;NERINERI CHALLENGE ()</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/7.html"><span>OST&nbsp;7.&nbsp;Unwelcome School (不受欢迎的学校)</span></a></p></div>', });
+        add_tooltip_data({ 'XqpskB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">以花子和绫音的宣示为始，奇普托斯晄轮大祭开幕。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">以花子和绫音的宣示为始，奇普托斯晄轮大祭开幕。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">以花子和绫音的宣示为始，奇普托斯晄轮大祭开幕。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','zVERra': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了沙勒的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了夏莱的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千禧年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了夏莱的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<a href="/zh_cn/character/npc/mai/"><span><span class="lang-zh-cn-cn">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/107.html"><span>OST&nbsp;107.&nbsp;NERINERI CHALLENGE ()</span></a></p></div>','08AB91': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">阿拜多斯高中的“奥空绫音”与三一综合学院的“浦和花子”两位学生共同发表了选手宣誓。在宣誓过程中，花子突然就开了黄腔，直播信号随即被切断。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阿拜多斯高中的“奥空绫音”与三一综合学院的“浦和花子”两位学生共同发表了选手宣誓。在宣誓过程中，花子突然就开了黄腔，直播信号随即被切断。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿拜多斯高中的“奥空绫音”与三一综合学院的“浦和花子”两位学生共同发表了选手宣誓。在宣誓过程中，花子突然就开了黄腔，直播信号随即被切断。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/hanako/"><img src="/static/images/student/icon/23007.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">花子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">花子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/107.html"><span>OST&nbsp;107.&nbsp;NERINERI CHALLENGE ()</span></a>&nbsp;|&nbsp;<a href="/zh_cn/track/ost/7.html"><span>OST&nbsp;7.&nbsp;Unwelcome School (不受欢迎的学校)</span></a></p></div>', });
     </script>
 
 
@@ -583,12 +600,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/ayane/#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="bzq7XU" >
+            <a href="/zh_cn/character/student/ayane/#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="viqXCT" >
                 <img src="/static/images/student/icon/23005.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('bzq7XU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('viqXCT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -610,12 +627,12 @@
             <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/hanako/#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="MiRdCW" >
+            <a href="/zh_cn/character/student/hanako/#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="bdsBKa" >
                 <img src="/static/images/student/icon/23007.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">花子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">花子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('MiRdCW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('bdsBKa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">补习部</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">补课部</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">补课部</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -632,10 +649,10 @@
 
             <li id="cf5b0087-5b4d-41cc-b007-db4468ac2fac"><span>【1】</span>
     
-        <a href="/zh_cn/character/npc/mai/#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="hugVAo" >
+        <a href="/zh_cn/character/npc/mai/#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="1azceT" >
             <span><span class="lang-zh-cn-cn">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
         </a>
-        <span onclick="showPopupByTooltipId('hugVAo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('1azceT')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -647,10 +664,10 @@
 
             <li id="cf5b0087-5b4d-41cc-b007-db4468ac2fac"><span>【1】</span>
     
-        <a href="/zh_cn/character/npc/shinon/#track-OST_107" onmouseover="showTooltip(this)" data-tooltip="ELZtpI" >
+        <a href="/zh_cn/character/npc/shinon/#track-OST_107" onmouseover="showTooltipById(this)" data-tooltip="SQpIkd" >
             <span><span class="lang-zh-cn-cn">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
         </a>
-        <span onclick="showPopupByTooltipId('ELZtpI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('SQpIkd')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -659,22 +676,22 @@
 
     
     <script>
-        add_tooltip_data({ 'bzq7XU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绫音(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','MiRdCW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">花子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">花子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/hanako_swimsuit/"><img src="/static/images/student/icon/10074.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">花子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">ハナコ（水着）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','hugVAo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它人物： </p></div>','ELZtpI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它人物： </p></div>', });
+        add_tooltip_data({ 'viqXCT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绫音(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','bdsBKa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">花子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">花子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">选手宣誓</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/hanako_swimsuit/"><img src="/static/images/student/icon/10074.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">花子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">ハナコ（水着）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">花子(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>','1azceT': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">麻衣</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它人物： </p></div>','SQpIkd': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">诗音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/event/818/story/1.html"><span>活动<span class="lang-zh-cn-cn">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">Get Set, Go!　～奇普托斯晄轮大祭～</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>&nbsp;第1个故事：<span class="lang-zh-cn-cn">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">燃烧的开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/event/818/story/1.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">开幕式</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它人物： </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -709,13 +726,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -729,17 +746,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989147.3119776)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702140005.1197278)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989147.3119857
+Generated time (UTC): 1702140005.1197367
 -->
 </body>
 </html>

@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=LC0KM4hb1wo', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=LC0KM4hb1wo', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=LC0KM4hb1wo)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV11d4y1f7cZ/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV11d4y1f7cZ/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV11d4y1f7cZ/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="0598d297-9977-499a-b23d-9151da2fc774">
     <div >
-        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="5GNVzP">
-        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="5GNVzP" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('5GNVzP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MilleniumCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Aw2385">
+        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_MilleniumCenter.jpg.html#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="Aw2385" target="_blank">BG_MilleniumCenter.jpg</a><span onclick="showPopupByTooltipId('Aw2385')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="39174134-e8c0-4c39-bee8-4f2ad2ff05d9">
     <div >
-        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="zTPyxk">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="zTPyxk" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('zTPyxk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_ComputerCenter.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="jL_gA4">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_ComputerCenter.jpg.html#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="jL_gA4" target="_blank">BG_ComputerCenter.jpg</a><span onclick="showPopupByTooltipId('jL_gA4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -409,7 +426,7 @@
     
         
     <script>
-        add_tooltip_data({ '5GNVzP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol></div>','zTPyxk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'Aw2385': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MilleniumCenter.jpg</p><p>BG_MilleniumCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MilleniumCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol></div>','jL_gA4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_ComputerCenter.jpg</p><p>BG_ComputerCenter.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_ComputerCenter.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -434,9 +451,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/6.html"  onmouseover="showTooltip(this)" data-tooltip="FYwVa6">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>
+        <a href="/en/main/story/main/2/2/6.html"  onmouseover="showTooltipById(this)" data-tooltip="Y4NbG3">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>
     
-    <span onclick="showPopupByTooltipId('FYwVa6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Y4NbG3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -449,7 +466,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="hFJnvI"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a><span onclick="showPopupByTooltipId('hFJnvI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="Qdo6B1"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a><span onclick="showPopupByTooltipId('Qdo6B1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -468,9 +485,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/11.html"  onmouseover="showTooltip(this)" data-tooltip="TREA0f">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>
+        <a href="/en/main/story/main/2/2/11.html"  onmouseover="showTooltipById(this)" data-tooltip="TG5VLJ">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>
     
-    <span onclick="showPopupByTooltipId('TREA0f')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('TG5VLJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -483,7 +500,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="_1t0T5"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a><span onclick="showPopupByTooltipId('_1t0T5')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="fhsnF_"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a><span onclick="showPopupByTooltipId('fhsnF_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -502,9 +519,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/12.html"  onmouseover="showTooltip(this)" data-tooltip="uWF6nD">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>
+        <a href="/en/main/story/main/2/2/12.html"  onmouseover="showTooltipById(this)" data-tooltip="ZeQOZW">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>
     
-    <span onclick="showPopupByTooltipId('uWF6nD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('ZeQOZW')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -517,7 +534,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="k1DS6P"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a><span onclick="showPopupByTooltipId('k1DS6P')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="aZRVRG"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a><span onclick="showPopupByTooltipId('aZRVRG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -532,7 +549,7 @@
 
     
     <script>
-        add_tooltip_data({ 'FYwVa6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Strange Machine 1</p><ul><li>One day, Veritas reaches out to Sensei about the discovery of a suspicious machine. On the way to their club room, Sensei joins up with the Game Development Department to investigate the machine, but none of them are able to get to the bottom of its true nature... As if suddenly drawn by an inexplicable force, Aris touches the machine and activates it.</li></ul></div>','hFJnvI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Strange Robot</p><p>The Veritas explained that the robots were from the outskirts of the Millennium, with a number totaling more than 20. Momoi was grealy surprised at the sight of it. Veritas tried to start it but failed every time - when Aris began reacting to the robot.</p><hr><p>Character:<span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/129.html"><span>OST&nbsp;129.&nbsp;Let me think about it</span></a></p></div>','TREA0f': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Be That as It May!</p><ul><li>After Aris&#x27 departure, the students of Millennium are at a loss as to what to do. At that moment, the enfeebled Momoi rouses herself up and declares that they cannot stand idly by, and insists that everyone go to save Aris.</li></ul></div>','_1t0T5': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Reviewing Situation</p><p>Sensei, alongside the Game Development Department, the Engineering Department and C&C, analyzed current situation. Everyone agreed that it was an emergency. Neru couldn&#x27t figure out what happened still, and everyone started to recalling them once again.</p><hr><p>Character:<span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/129.html"><span>OST&nbsp;129.&nbsp;Let me think about it</span></a></p></div>','uWF6nD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Strategy Meeting</p><ul><li>The Game Development Department and others search for Aris&#x27 whereabouts. With the help of Noa and Yuuka, they learn that Aris is headed to Eridu, a fortified city that Rio built. Before infiltrating Eridu, Neru proposes a plan.</li></ul></div>','k1DS6P': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Two-Team Plan</p><p>As the infiltration plan settled, the combat and rescue operations were back on the table. Midori and Yuzu described the situation at the time briefly, saying Toki was as fast and agile as a "cheater". Neru put forward a battle plan, rarely, saying that since the main goal was to rescue Aris, then it would be up to them to attract fires, so that the GDD and the Engineering Department can take that opportunity to rescue. Veritas said they would provide communication support on the back.</p><hr><p>Character:<span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span><span>&nbsp;and more.</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/129.html"><span>OST&nbsp;129.&nbsp;Let me think about it</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/28.html"><span>OST&nbsp;28.&nbsp;Plug and Play</span></a></p></div>', });
+        add_tooltip_data({ 'Y4NbG3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Strange Machine 1</p><ul><li>One day, Veritas reaches out to Sensei about the discovery of a suspicious machine. On the way to their club room, Sensei joins up with the Game Development Department to investigate the machine, but none of them are able to get to the bottom of its true nature... As if suddenly drawn by an inexplicable force, Aris touches the machine and activates it.</li></ul></div>','Qdo6B1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Strange Robot</p><p>The Veritas explained that the robots were from the outskirts of the Millennium, with a number totaling more than 20. Momoi was grealy surprised at the sight of it. Veritas tried to start it but failed every time - when Aris began reacting to the robot.</p><hr><p>Character:<span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/129.html"><span>OST&nbsp;129.&nbsp;Let me think about it</span></a></p></div>','TG5VLJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Be That as It May!</p><ul><li>After Aris&#x27 departure, the students of Millennium are at a loss as to what to do. At that moment, the enfeebled Momoi rouses herself up and declares that they cannot stand idly by, and insists that everyone go to save Aris.</li></ul></div>','fhsnF_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Reviewing Situation</p><p>Sensei, alongside the Game Development Department, the Engineering Department and C&C, analyzed current situation. Everyone agreed that it was an emergency. Neru couldn&#x27t figure out what happened still, and everyone started to recalling them once again.</p><hr><p>Character:<span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/129.html"><span>OST&nbsp;129.&nbsp;Let me think about it</span></a></p></div>','ZeQOZW': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Strategy Meeting</p><ul><li>The Game Development Department and others search for Aris&#x27 whereabouts. With the help of Noa and Yuuka, they learn that Aris is headed to Eridu, a fortified city that Rio built. Before infiltrating Eridu, Neru proposes a plan.</li></ul></div>','aZRVRG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">A Two-Team Plan</p><p>As the infiltration plan settled, the combat and rescue operations were back on the table. Midori and Yuzu described the situation at the time briefly, saying Toki was as fast and agile as a "cheater". Neru put forward a battle plan, rarely, saying that since the main goal was to rescue Aris, then it would be up to them to attract fires, so that the GDD and the Engineering Department can take that opportunity to rescue. Veritas said they would provide communication support on the back.</p><hr><p>Character:<span><span><a href="/en/character/student/akane/"><img src="/static/images/student/icon/13000.webp" class="icon-stu"><span>Akane</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/asuna/"><img src="/static/images/student/icon/16001.webp" class="icon-stu"><span>Asuna</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/karin/"><img src="/static/images/student/icon/20001.webp" class="icon-stu"><span>Karin</span></a></span><span>&nbsp;and more.</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/129.html"><span>OST&nbsp;129.&nbsp;Let me think about it</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/28.html"><span>OST&nbsp;28.&nbsp;Plug and Play</span></a></p></div>', });
     </script>
 
 
@@ -580,12 +597,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hare/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="fGuJ1X" >
+            <a href="/en/character/student/hare/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="CNCsLB" >
                 <img src="/static/images/student/icon/23003.webp" class="icon-stu">
                 <span>Hare</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('fGuJ1X')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('CNCsLB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -607,12 +624,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotama/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="IiTTyD" >
+            <a href="/en/character/student/kotama/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="9SHZMG" >
                 <img src="/static/images/student/icon/26001.webp" class="icon-stu">
                 <span>Kotama</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('IiTTyD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('9SHZMG')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -634,12 +651,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/maki/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="iFATNN" >
+            <a href="/en/character/student/maki/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="RKD8cn" >
                 <img src="/static/images/student/icon/10007.webp" class="icon-stu">
                 <span>Maki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('iFATNN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('RKD8cn')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -661,12 +678,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/akane/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="ftonZf" >
+            <a href="/en/character/student/akane/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="ail1Px" >
                 <img src="/static/images/student/icon/13000.webp" class="icon-stu">
                 <span>Akane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ftonZf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('ail1Px')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -688,12 +705,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/asuna/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="hR7aEk" >
+            <a href="/en/character/student/asuna/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="0hR6_0" >
                 <img src="/static/images/student/icon/16001.webp" class="icon-stu">
                 <span>Asuna</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('hR7aEk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('0hR6_0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -715,12 +732,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/karin/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="e9K_Uz" >
+            <a href="/en/character/student/karin/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="eViU1s" >
                 <img src="/static/images/student/icon/20001.webp" class="icon-stu">
                 <span>Karin</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('e9K_Uz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('eViU1s')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -742,12 +759,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="OtBGIS" >
+            <a href="/en/character/student/midori/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="IWIBRA" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('OtBGIS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('IWIBRA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -769,12 +786,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="uHfQx4" >
+            <a href="/en/character/student/momoi/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="Wjf4HV" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('uHfQx4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('Wjf4HV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -796,12 +813,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/neru/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="Ye_6V3" >
+            <a href="/en/character/student/neru/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="5wbDOR" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span>Neru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Ye_6V3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('5wbDOR')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -823,12 +840,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="AOGNhF" >
+            <a href="/en/character/student/yuzu/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="XKtU5D" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('AOGNhF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('XKtU5D')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -850,12 +867,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="csEfsd" >
+            <a href="/en/character/student/aris/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="gxzVIa" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('csEfsd')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('gxzVIa')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -877,12 +894,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/utaha/#track-OST_129" onmouseover="showTooltip(this)" data-tooltip="EaeZyF" >
+            <a href="/en/character/student/utaha/#track-OST_129" onmouseover="showTooltipById(this)" data-tooltip="g1xDUN" >
                 <img src="/static/images/student/icon/23004.webp" class="icon-stu">
                 <span>Utaha</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('EaeZyF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('g1xDUN')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -896,22 +913,22 @@
 
     
     <script>
-        add_tooltip_data({ 'fGuJ1X': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','IiTTyD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','iFATNN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','ftonZf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','hR7aEk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','e9K_Uz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','OtBGIS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','uHfQx4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','Ye_6V3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','AOGNhF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','csEfsd': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','EaeZyF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'CNCsLB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','9SHZMG': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','RKD8cn': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','ail1Px': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Akane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/akane_bunny/"><img src="/static/images/student/icon/20019.webp" class="icon-stu"><span>Akane (Bunny)</span></a></span></p><p>Other Characters: </p></div>','0hR6_0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Asuna</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/asuna_bunny/"><img src="/static/images/student/icon/10028.webp" class="icon-stu"><span>Asuna (Bunny)</span></a></span></p><p>Other Characters: </p></div>','eViU1s': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Karin</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/karin_bunny/"><img src="/static/images/student/icon/10027.webp" class="icon-stu"><span>Karin (Bunny)</span></a></span></p><p>Other Characters: </p></div>','IWIBRA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','Wjf4HV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','5wbDOR': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/11.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;11:&nbsp;Be That as It May!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Reviewing Situation</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','XKtU5D': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','gxzVIa': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/6.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;6:&nbsp;A Strange Machine 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/6.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;A Strange Robot</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','g1xDUN': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/12.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;12:&nbsp;Strategy Meeting</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/12.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;A Two-Team Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -946,13 +963,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -966,17 +983,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988804.841397)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139612.433831)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988804.841405
+Generated time (UTC): 1702139612.433839
 -->
 </body>
 </html>

@@ -36,27 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
+    <script>var tooltip_data = {};
+
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
     
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -82,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -131,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -177,11 +188,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     <h1>背景/BG_GehennaCouncilHall.jpg</h1>
     
@@ -234,9 +246,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/1/2/11.html"  onmouseover="showTooltip(this)" data-tooltip="HxHliv">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第11话：<span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/1/2/11.html"  onmouseover="showTooltipById(this)" data-tooltip="1eQc4y">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第11话：<span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('HxHliv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('1eQc4y')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -249,7 +261,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="SKHb98"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('SKHb98')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="VOXiMv"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('VOXiMv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -264,7 +276,7 @@
 
     
     <script>
-        add_tooltip_data({ 'HxHliv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">凯萨的干部表明自己在找寻埋在阿拜多斯某处的宝物的野心，而且还利用债券压迫对策委员会。星野带着气愤的对策委员会一行人暂时撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">凯萨的干部表明自己在找寻埋在阿拜多斯某处的宝物的野心，而且还利用债券压迫对策委员会。星野带着气愤的对策委员会一行人暂时撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">凯萨的干部表明自己在找寻埋在阿拜多斯某处的宝物的野心，而且还利用债券压迫对策委员会。星野带着气愤的对策委员会一行人暂时撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','SKHb98': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">亚子说大话，称自己能写1000页，结果阳奈真的按她说的做了。间隙，亚子询问阳奈是否对星野知情。阳奈表示自己也是第一次见她，并说她曾经因能力被格黑娜情报机构列为潜在威胁对象；但又同意亚子的看法，星野这两年来的确判若两人。阳奈之后又提到了当时的战斗，认为如果继续战斗，在沙勒等的支援下，很可能会损失惨重，批评亚子过于冲动。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子说大话，称自己能写1000页，结果阳奈真的按她说的做了。间隙，亚子询问阳奈是否对星野知情。阳奈表示自己也是第一次见她，并说她曾经因能力被格黑娜情报机构列为潜在威胁对象；但又同意亚子的看法，星野这两年来的确判若两人。阳奈之后又提到了当时的战斗，认为如果继续战斗，在夏莱等的支援下，很可能会损失惨重，批评亚子过于冲动。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子说大话，称自己能写1000页，结果阳奈真的按她说的做了。间隙，亚子询问阳奈是否对星野知情。阳奈表示自己也是第一次见她，并说她曾经因能力被歌赫娜情报机构列为潜在威胁对象；但又同意亚子的看法，星野这两年来的确判若两人。阳奈之后又提到了当时的战斗，认为如果继续战斗，在夏莱等的支援下，很可能会损失惨重，批评亚子过于冲动。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/ako/"><img src="/static/images/student/icon/20008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/hina/"><img src="/static/images/student/icon/10004.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/13.html"><span>OST&nbsp;13.&nbsp;Barrier (障碍)</span></a></p></div>', });
+        add_tooltip_data({ '1eQc4y': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">凯萨的干部表明自己在找寻埋在阿拜多斯某处的宝物的野心，而且还利用债券压迫对策委员会。星野带着气愤的对策委员会一行人暂时撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">凯萨的干部表明自己在找寻埋在阿拜多斯某处的宝物的野心，而且还利用债券压迫对策委员会。星野带着气愤的对策委员会一行人暂时撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">凯萨的干部表明自己在找寻埋在阿拜多斯某处的宝物的野心，而且还利用债券压迫对策委员会。星野带着气愤的对策委员会一行人暂时撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','VOXiMv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">亚子说大话，称自己能写1000页，结果阳奈真的按她说的做了。间隙，亚子询问阳奈是否对星野知情。阳奈表示自己也是第一次见她，并说她曾经因能力被格黑娜情报机构列为潜在威胁对象；但又同意亚子的看法，星野这两年来的确判若两人。阳奈之后又提到了当时的战斗，认为如果继续战斗，在沙勒等的支援下，很可能会损失惨重，批评亚子过于冲动。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子说大话，称自己能写1000页，结果阳奈真的按她说的做了。间隙，亚子询问阳奈是否对星野知情。阳奈表示自己也是第一次见她，并说她曾经因能力被格黑娜情报机构列为潜在威胁对象；但又同意亚子的看法，星野这两年来的确判若两人。阳奈之后又提到了当时的战斗，认为如果继续战斗，在夏莱等的支援下，很可能会损失惨重，批评亚子过于冲动。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子说大话，称自己能写1000页，结果阳奈真的按她说的做了。间隙，亚子询问阳奈是否对星野知情。阳奈表示自己也是第一次见她，并说她曾经因能力被歌赫娜情报机构列为潜在威胁对象；但又同意亚子的看法，星野这两年来的确判若两人。阳奈之后又提到了当时的战斗，认为如果继续战斗，在夏莱等的支援下，很可能会损失惨重，批评亚子过于冲动。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p>人物：<span><span><a href="/zh_cn/character/student/ako/"><img src="/static/images/student/icon/20008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/hina/"><img src="/static/images/student/icon/10004.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/ost/13.html"><span>OST&nbsp;13.&nbsp;Barrier (障碍)</span></a></p></div>', });
     </script>
 
 
@@ -285,10 +297,10 @@
             
 
             <li id="track-OST_13">
-    <a href="/zh_cn/track/ost/13.html#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltip(this)" data-tooltip="alctQV">
+    <a href="/zh_cn/track/ost/13.html#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltipById(this)" data-tooltip="7cfY3_">
         <span>【1】OST&nbsp;13.&nbsp;Barrier (障碍)</span>
     </a>
-    <span onclick="showPopupByTooltipId('alctQV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('7cfY3_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
     <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">欢快</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
@@ -303,7 +315,7 @@
     
         
     <script>
-        add_tooltip_data({ 'alctQV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;13.&nbsp;Barrier <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/11.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第11话：<span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '7cfY3_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">OST&nbsp;13.&nbsp;Barrier <span class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">游戏内</span><span class="badge badge-info badge-tag">故事曲</span></span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/11.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第11话：<span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -349,12 +361,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/ako/#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltip(this)" data-tooltip="ZrZjmq" >
+            <a href="/zh_cn/character/student/ako/#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltipById(this)" data-tooltip="HWnUiZ" >
                 <img src="/static/images/student/icon/20008.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('ZrZjmq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('HWnUiZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -376,12 +388,12 @@
             <img src="/static/images/schoolicon/School_Icon_GEHENNA_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/zh_cn/character/student/hina/#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltip(this)" data-tooltip="EYehpP" >
+            <a href="/zh_cn/character/student/hina/#643b2a90-3bdf-4622-b77f-5aa8a4bb9716" onmouseover="showTooltipById(this)" data-tooltip="_raVcl" >
                 <img src="/static/images/student/icon/10004.webp" class="icon-stu">
                 <span><span class="lang-zh-cn-cn">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('EYehpP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('_raVcl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[<span class="lang-zh-cn-cn">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
@@ -395,22 +407,22 @@
 
     
     <script>
-        add_tooltip_data({ 'ZrZjmq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/1/20.html">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第20话：<span class="lang-zh-cn-cn">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">亚子委员长</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子委员长</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子委员长</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/1.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第1话：<span class="lang-zh-cn-cn">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">一声道歉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一声道歉</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一声道歉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">便利屋的动机</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">便利屋的动机</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">便利屋的动机</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">便利屋的复仇</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">便利屋的复仇</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">便利屋的复仇</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;<span class="lang-zh-cn-cn">真实目的</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">真实目的</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">真实目的</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;<span class="lang-zh-cn-cn">卷土重来</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">卷土重来</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">卷土重来</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary"><i>&#91;9&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/2.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第2话：<span class="lang-zh-cn-cn">格黑娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">格黑娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">歌赫娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/6.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第6话：<span class="lang-zh-cn-cn">前往阿拜多斯沙漠（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">前往阿拜多斯沙漠（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">前往阿拜多斯沙漠（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/6.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">到达沙漠</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">到达沙漠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">到达沙漠</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/11.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第11话：<span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/17.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第17话：<span class="lang-zh-cn-cn">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;<span class="lang-zh-cn-cn">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','EYehpP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/1/17.html">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第17话：<span class="lang-zh-cn-cn">乌云密布</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">乌云密布</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">乌云密布</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/17.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">风纪委员会简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/1.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第1话：<span class="lang-zh-cn-cn">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary"><i>&#91;9&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/2.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第2话：<span class="lang-zh-cn-cn">格黑娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">格黑娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">歌赫娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">与阳奈的交涉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">与阳奈的交涉</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">与阳奈的交涉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈的道歉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈的道歉</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈的道歉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈的情报</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈的情报</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈的情报</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/5.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第5话：<span class="lang-zh-cn-cn">各自的故事（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">情况明朗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">情况明朗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">情况明朗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/11.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第11话：<span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈的疑惑</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈的疑惑</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈的疑惑</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/17.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第17话：<span class="lang-zh-cn-cn">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">格黑娜学院</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">格黑娜学院</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">歌赫娜学院</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;<span class="lang-zh-cn-cn">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/hina_swimsuit/"><img src="/static/images/student/icon/10022.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">日奈(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日奈(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>', });
+        add_tooltip_data({ 'HWnUiZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/1/20.html">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第20话：<span class="lang-zh-cn-cn">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/20.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">亚子委员长</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子委员长</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子委员长</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/1.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第1话：<span class="lang-zh-cn-cn">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">一声道歉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一声道歉</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一声道歉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">便利屋的动机</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">便利屋的动机</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">便利屋的动机</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">便利屋的复仇</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">便利屋的复仇</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">便利屋的复仇</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;<span class="lang-zh-cn-cn">真实目的</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">真实目的</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">真实目的</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;<span class="lang-zh-cn-cn">卷土重来</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">卷土重来</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">卷土重来</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary"><i>&#91;9&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/2.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第2话：<span class="lang-zh-cn-cn">格黑娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">格黑娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">歌赫娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/6.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第6话：<span class="lang-zh-cn-cn">前往阿拜多斯沙漠（1）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">前往阿拜多斯沙漠（1）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">前往阿拜多斯沙漠（1）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/6.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">到达沙漠</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">到达沙漠</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">到达沙漠</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/11.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第11话：<span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/17.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第17话：<span class="lang-zh-cn-cn">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;<span class="lang-zh-cn-cn">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： </p><p>其它人物： </p></div>','_raVcl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日奈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/1/17.html">主线故事&nbsp;第1篇&nbsp;第1章&nbsp;第17话：<span class="lang-zh-cn-cn">乌云密布</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">乌云密布</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">乌云密布</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/1/17.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">风纪委员会简介</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会简介</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会简介</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/1.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第1话：<span class="lang-zh-cn-cn">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">预料之外的同盟</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/1.html#story-part-9-seg-1" class="text-primary"><i>&#91;9&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈驾到</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/2.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第2话：<span class="lang-zh-cn-cn">格黑娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">格黑娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">歌赫娜风纪委员长</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一口难辩</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">与阳奈的交涉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">与阳奈的交涉</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">与阳奈的交涉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈的道歉</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈的道歉</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈的道歉</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/2.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈的情报</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈的情报</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈的情报</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/5.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第5话：<span class="lang-zh-cn-cn">各自的故事（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">各自的故事（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">各自的故事（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/5.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;<span class="lang-zh-cn-cn">情况明朗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">情况明朗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">情况明朗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/11.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第11话：<span class="lang-zh-cn-cn">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">打不赢的仗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">亚子的检讨</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/11.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;<span class="lang-zh-cn-cn">阳奈的疑惑</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈的疑惑</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阳奈的疑惑</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li><li><a href="/zh_cn/main/story/main/1/2/17.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第17话：<span class="lang-zh-cn-cn">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">想守护的事物</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/17.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;<span class="lang-zh-cn-cn">格黑娜学院</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">格黑娜学院</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">歌赫娜学院</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>,&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/17.html#story-part-8-seg-1" class="text-primary"><i>&#91;8&#93;&nbsp;<span class="lang-zh-cn-cn">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">风纪委员会，参战！</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">相关人物：</p><p>其它版本： <span><a href="/zh_cn/character/student/hina_swimsuit/"><img src="/static/images/student/icon/10022.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">日奈(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳奈(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日奈(泳装)</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p><p>其它人物： </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -445,13 +457,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -465,17 +477,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989217.304489)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139720.3619542)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989217.3044975
+Generated time (UTC): 1702139720.3619618
 -->
 </body>
 </html>

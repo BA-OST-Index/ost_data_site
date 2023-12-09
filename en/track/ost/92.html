@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=uICPvVIcYlI', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=uICPvVIcYlI', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=uICPvVIcYlI)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1zs4y1Q7DG/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1zs4y1Q7DG/', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1zs4y1Q7DG/)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="55657b32-ab5d-4c67-b755-07ba3d15432b">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="TvaKzi">
-        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="TvaKzi" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('TvaKzi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="f_FRuP">
+        <p class="gallery-caption"><span>【2】</span><span><a href="/en/background/BG_GameDevRoom_Night.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="f_FRuP" target="_blank">BG_GameDevRoom_Night.jpg</a><span onclick="showPopupByTooltipId('f_FRuP')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="84c92419-ac9a-4d21-bf2a-96a1d9c63c74">
     <div >
-        <img src="/static/images/background/BG_Arcade.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="NfLjDl">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Arcade.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="NfLjDl" target="_blank">BG_Arcade.jpg</a><span onclick="showPopupByTooltipId('NfLjDl')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Arcade.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="GJ_C3u">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Arcade.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="GJ_C3u" target="_blank">BG_Arcade.jpg</a><span onclick="showPopupByTooltipId('GJ_C3u')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="8b0f151a-e874-444b-9424-be3e2360fa1d">
     <div >
-        <img src="/static/images/background/BG_BigSisterRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Ji8E0O">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="Ji8E0O" target="_blank">BG_BigSisterRoom.jpg</a><span onclick="showPopupByTooltipId('Ji8E0O')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_BigSisterRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="mRfwg6">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BigSisterRoom.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="mRfwg6" target="_blank">BG_BigSisterRoom.jpg</a><span onclick="showPopupByTooltipId('mRfwg6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -425,8 +442,8 @@
 
             <div class="gallery-img" id="3b0d0cb9-0d69-4730-acb4-93f75e3cf8dc">
     <div >
-        <img src="/static/images/background/BG_BuildingCorridor.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="_JTp74">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BuildingCorridor.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="_JTp74" target="_blank">BG_BuildingCorridor.jpg</a><span onclick="showPopupByTooltipId('_JTp74')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_BuildingCorridor.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Fb0YCU">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_BuildingCorridor.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="Fb0YCU" target="_blank">BG_BuildingCorridor.jpg</a><span onclick="showPopupByTooltipId('Fb0YCU')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -440,8 +457,8 @@
 
             <div class="gallery-img" id="067df8ba-9a64-419c-a41b-ccded567db8b">
     <div >
-        <img src="/static/images/background/BG_Prison.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="PJ5a6u">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Prison.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="PJ5a6u" target="_blank">BG_Prison.jpg</a><span onclick="showPopupByTooltipId('PJ5a6u')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Prison.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="qP5YYD">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_Prison.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="qP5YYD" target="_blank">BG_Prison.jpg</a><span onclick="showPopupByTooltipId('qP5YYD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -455,8 +472,8 @@
 
             <div class="gallery-img" id="094de1f9-477e-416e-8146-9ce233539cbe">
     <div >
-        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="9xLhT7">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="9xLhT7" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('9xLhT7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="MNiQF4">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_RuinUndergroundPassage_Night.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="MNiQF4" target="_blank">BG_RuinUndergroundPassage_Night.jpg</a><span onclick="showPopupByTooltipId('MNiQF4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -470,8 +487,8 @@
 
             <div class="gallery-img" id="de6fa644-f0a9-4b13-a228-ebb7dcd7213b">
     <div >
-        <img src="/static/images/background/BG_SubwayHall.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="C1urf7">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SubwayHall.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="C1urf7" target="_blank">BG_SubwayHall.jpg</a><span onclick="showPopupByTooltipId('C1urf7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_SubwayHall.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="1J8Qi3">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SubwayHall.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="1J8Qi3" target="_blank">BG_SubwayHall.jpg</a><span onclick="showPopupByTooltipId('1J8Qi3')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -485,8 +502,8 @@
 
             <div class="gallery-img" id="26860b2c-8f4b-405f-887e-e853deea089a">
     <div >
-        <img src="/static/images/background/BG_SubwayHall_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Ku5WAp">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SubwayHall_Night.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="Ku5WAp" target="_blank">BG_SubwayHall_Night.jpg</a><span onclick="showPopupByTooltipId('Ku5WAp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_SubwayHall_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="wyHW4m">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_SubwayHall_Night.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="wyHW4m" target="_blank">BG_SubwayHall_Night.jpg</a><span onclick="showPopupByTooltipId('wyHW4m')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -500,8 +517,8 @@
 
             <div class="gallery-img" id="345542a5-ed43-439d-9c9f-1f0bbedd9dc9">
     <div >
-        <img src="/static/images/background/BG_View_Eridu.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="nJ16pH">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Eridu.jpg.html#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="nJ16pH" target="_blank">BG_View_Eridu.jpg</a><span onclick="showPopupByTooltipId('nJ16pH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_View_Eridu.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="VZyaQ2">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_View_Eridu.jpg.html#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="VZyaQ2" target="_blank">BG_View_Eridu.jpg</a><span onclick="showPopupByTooltipId('VZyaQ2')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -514,7 +531,7 @@
     
         
     <script>
-        add_tooltip_data({ 'TvaKzi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li></ol></div>','NfLjDl': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Arcade.jpg</p><p>neru aris arcade game store shop indoor artificial light room</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Arcade.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li></ol></div>','Ji8E0O': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom.jpg</p><p>BG_BigSisterRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol></div>','_JTp74': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BuildingCorridor.jpg</p><p>BG_BuildingCorridor.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BuildingCorridor.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>)</span></li></ol></div>','PJ5a6u': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Prison.jpg</p><p>BG_Prison.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Prison.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol></div>','9xLhT7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol></div>','C1urf7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SubwayHall.jpg</p><p>BG_SubwayHall.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SubwayHall.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li></ol></div>','Ku5WAp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SubwayHall_Night.jpg</p><p>BG_SubwayHall_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SubwayHall_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol></div>','nJ16pH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Eridu.jpg</p><p>BG_View_Eridu.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Eridu.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'f_FRuP': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom_Night.jpg</p><p>BG_GameDevRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li></ol></div>','GJ_C3u': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Arcade.jpg</p><p>neru aris arcade game store shop indoor artificial light room</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Arcade.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li></ol></div>','mRfwg6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BigSisterRoom.jpg</p><p>BG_BigSisterRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BigSisterRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol></div>','Fb0YCU': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_BuildingCorridor.jpg</p><p>BG_BuildingCorridor.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_BuildingCorridor.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>)</span></li></ol></div>','qP5YYD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Prison.jpg</p><p>BG_Prison.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Prison.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol></div>','MNiQF4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_RuinUndergroundPassage_Night.jpg</p><p>BG_RuinUndergroundPassage_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_RuinUndergroundPassage_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol></div>','1J8Qi3': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SubwayHall.jpg</p><p>BG_SubwayHall.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SubwayHall.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li></ol></div>','wyHW4m': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SubwayHall_Night.jpg</p><p>BG_SubwayHall_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SubwayHall_Night.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol></div>','VZyaQ2': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_View_Eridu.jpg</p><p>BG_View_Eridu.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_View_Eridu.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -539,9 +556,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/8.html"  onmouseover="showTooltip(this)" data-tooltip="mdeGvA">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>
+        <a href="/en/main/story/main/2/2/8.html"  onmouseover="showTooltipById(this)" data-tooltip="t1yd37">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>
     
-    <span onclick="showPopupByTooltipId('mdeGvA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('t1yd37')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -554,7 +571,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="9h37dx"><i>&#91;4&#93;&nbsp;The President Rio</i></a><span onclick="showPopupByTooltipId('9h37dx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="7a4h3Z"><i>&#91;4&#93;&nbsp;The President Rio</i></a><span onclick="showPopupByTooltipId('7a4h3Z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -573,9 +590,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/9.html"  onmouseover="showTooltip(this)" data-tooltip="KWsqHK">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>
+        <a href="/en/main/story/main/2/2/9.html"  onmouseover="showTooltipById(this)" data-tooltip="Q9AiA9">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>
     
-    <span onclick="showPopupByTooltipId('KWsqHK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('Q9AiA9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -588,7 +605,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="FbBwBg"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a><span onclick="showPopupByTooltipId('FbBwBg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="8TJHwq"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a><span onclick="showPopupByTooltipId('8TJHwq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -607,9 +624,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/10.html"  onmouseover="showTooltip(this)" data-tooltip="uyNZSH">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>
+        <a href="/en/main/story/main/2/2/10.html"  onmouseover="showTooltipById(this)" data-tooltip="CY5wHp">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>
     
-    <span onclick="showPopupByTooltipId('uyNZSH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('CY5wHp')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -622,7 +639,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="feSzQs"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a><span onclick="showPopupByTooltipId('feSzQs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="XsLefv"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a><span onclick="showPopupByTooltipId('XsLefv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -634,7 +651,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="CuL9AL"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a><span onclick="showPopupByTooltipId('CuL9AL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="o19sCV"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a><span onclick="showPopupByTooltipId('o19sCV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -655,9 +672,9 @@
     
 
     
-        <a href="/en/main/story/main/2/2/13.html"  onmouseover="showTooltip(this)" data-tooltip="Wiwo3b">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>
+        <a href="/en/main/story/main/2/2/13.html"  onmouseover="showTooltipById(this)" data-tooltip="29QPyo">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>
     
-    <span onclick="showPopupByTooltipId('Wiwo3b')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('29QPyo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -670,7 +687,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="qUoGW0"><i>&#91;1&#93;&nbsp;Himari's Reproach</i></a><span onclick="showPopupByTooltipId('qUoGW0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="v6e4Wt"><i>&#91;1&#93;&nbsp;Himari's Reproach</i></a><span onclick="showPopupByTooltipId('v6e4Wt')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -682,7 +699,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="0g1iD9"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a><span onclick="showPopupByTooltipId('0g1iD9')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="jE1N0R"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a><span onclick="showPopupByTooltipId('jE1N0R')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -699,7 +716,7 @@
 
     
     <script>
-        add_tooltip_data({ 'mdeGvA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Daily Life Destroyed</p><ul><li>While tending to an unconscious Momoi, Sensei is contacted by Midori and heads to the Game Development Department where Aris has shut herself in. In spite of Sensei&#x27s placating words, Aris reproaches herself for putting Momoi in danger. At that moment, an unexpected visitor arrives with an unsettling revelation.</li></ul></div>','9h37dx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The President Rio</p><p>When Aris was having great trouble speaking, Rio suddenly broke into the room. She claimed that she would tell everyone the true behind all of these.</p><hr><p>Character:<span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','KWsqHK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','FbBwBg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth</p><p>Rio recalled the recent destructive event and told everyone the true identity of Aris: she&#x27s not some students, but the commander of the Army "Divi: Sion," the princess of the Nameless Gods AL-1S. No one could accept that explanation, and Rio made a simile with games: Aris was in fact the demon lord that was born to destroy the world.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','uyNZSH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 2</p><ul><li>After defeating the AMAS, Neru engages in a fearsome game of cat and mouse with Toki. Neru is eventually pinned down by Toki&#x27s ambush, and neither Midori or Yuzu are able to deal with the unexpected situation. Aris, who had been watching this all take place, makes an important decision.</li></ul></div>','feSzQs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Retrival & Questioning</p><p>After suppressing Neru, Rio instructed AMAS to retrieve Aris. Yuzu and Midori attempted to stop but received harsh warnings from Rio. Sensei demanded Rio to stop, but got questioned instead that, "Shouldn&#x27t the adults understand her better?" Sensei argued that he should "protect the students" but got questioned more seriously instead.</p><hr><p>Character:<span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','CuL9AL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Gone For Aris</p><p>Not until Rio&#x27s left could anyone even move a finger. Everyone was crashed with a feeling of powerlessness. Aris, had since gone long.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','Wiwo3b': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Big Sister</p><ul><li>Himari is imprisoned by Rio, and the two are still unable to find common ground. Meanwhile, after infiltrating Eridu to rescue Aris, the Game Development Department and the Engineering Department encounter an AMAS built by Rio.</li><li>The C&C members blast their way through the AMAS as planned, but their relentless determination is stopped by none other than the C&C&#x27s fifth member, Toki.</li></ul></div>','qUoGW0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari&#x27s Reproach</p><p>Himari was sick of the fact that Rio kidnapped Aris just to destroy her halo. Rio still hoped that Himari could understand her, and said it does no difference for her however they resist. Meantime, the security system of the city had discovered Sensei and the others.</p><hr><p>Character:<span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','0g1iD9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Arriving Eridu</p><p>The Engineering Department, Game Development Department and Sensei arrived at the city&#x27s underground freight passage safely, and was surprised to witness the ability that Veritas possessed. Right at this moment a group of AMAS blocked their way and they started engaging.</p><hr><p>Character:<span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>', });
+        add_tooltip_data({ 't1yd37': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Daily Life Destroyed</p><ul><li>While tending to an unconscious Momoi, Sensei is contacted by Midori and heads to the Game Development Department where Aris has shut herself in. In spite of Sensei&#x27s placating words, Aris reproaches herself for putting Momoi in danger. At that moment, an unexpected visitor arrives with an unsettling revelation.</li></ul></div>','7a4h3Z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The President Rio</p><p>When Aris was having great trouble speaking, Rio suddenly broke into the room. She claimed that she would tell everyone the true behind all of these.</p><hr><p>Character:<span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','Q9AiA9': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 1</p><ul><li>The visitor at the Game Development Department is none other than Rio, the president of Seminar. Rio explains that Aris is actually a "princess of the Nameless Gods," and refers to her as a demon lord. Everyone in the room is outraged, and Rio dispassionately describes what kind of future Aris will bring about. Tensions are about to explode, when the fifth member of C&C arrives.</li></ul></div>','8TJHwq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth</p><p>Rio recalled the recent destructive event and told everyone the true identity of Aris: she&#x27s not some students, but the commander of the Army "Divi: Sion," the princess of the Nameless Gods AL-1S. No one could accept that explanation, and Rio made a simile with games: Aris was in fact the demon lord that was born to destroy the world.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','CY5wHp': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Harsh Truth 2</p><ul><li>After defeating the AMAS, Neru engages in a fearsome game of cat and mouse with Toki. Neru is eventually pinned down by Toki&#x27s ambush, and neither Midori or Yuzu are able to deal with the unexpected situation. Aris, who had been watching this all take place, makes an important decision.</li></ul></div>','XsLefv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Retrival & Questioning</p><p>After suppressing Neru, Rio instructed AMAS to retrieve Aris. Yuzu and Midori attempted to stop but received harsh warnings from Rio. Sensei demanded Rio to stop, but got questioned instead that, "Shouldn&#x27t the adults understand her better?" Sensei argued that he should "protect the students" but got questioned more seriously instead.</p><hr><p>Character:<span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','o19sCV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Gone For Aris</p><p>Not until Rio&#x27s left could anyone even move a finger. Everyone was crashed with a feeling of powerlessness. Aris, had since gone long.</p><hr><p>Character:<span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/neru/"><img src="/static/images/student/icon/10008.webp" class="icon-stu"><span>Neru</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/yuzu/"><img src="/static/images/student/icon/10018.webp" class="icon-stu"><span>Yuzu</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','29QPyo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Big Sister</p><ul><li>Himari is imprisoned by Rio, and the two are still unable to find common ground. Meanwhile, after infiltrating Eridu to rescue Aris, the Game Development Department and the Engineering Department encounter an AMAS built by Rio.</li><li>The C&C members blast their way through the AMAS as planned, but their relentless determination is stopped by none other than the C&C&#x27s fifth member, Toki.</li></ul></div>','v6e4Wt': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari&#x27s Reproach</p><p>Himari was sick of the fact that Rio kidnapped Aris just to destroy her halo. Rio still hoped that Himari could understand her, and said it does no difference for her however they resist. Meantime, the security system of the city had discovered Sensei and the others.</p><hr><p>Character:<span><span><a href="/en/character/student/himari/"><img src="/static/images/student/icon/20020.webp" class="icon-stu"><span>Himari</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/npc/rio/"><span>Rio</span></a> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>','jE1N0R': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Arriving Eridu</p><p>The Engineering Department, Game Development Department and Sensei arrived at the city&#x27s underground freight passage safely, and was surprised to witness the ability that Veritas possessed. Right at this moment a group of AMAS blocked their way and they started engaging.</p><hr><p>Character:<span><span><a href="/en/character/student/utaha/"><img src="/static/images/student/icon/23004.webp" class="icon-stu"><span>Utaha</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hibiki/"><img src="/static/images/student/icon/20000.webp" class="icon-stu"><span>Hibiki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotori/"><img src="/static/images/student/icon/16002.webp" class="icon-stu"><span>Kotori</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/hare/"><img src="/static/images/student/icon/23003.webp" class="icon-stu"><span>Hare</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/maki/"><img src="/static/images/student/icon/10007.webp" class="icon-stu"><span>Maki</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/kotama/"><img src="/static/images/student/icon/26001.webp" class="icon-stu"><span>Kotama</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/92.html"><span>OST&nbsp;92.&nbsp;Crucial Issue</span></a></p></div>', });
     </script>
 
 
@@ -747,12 +764,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="c6RRgi" >
+            <a href="/en/character/student/midori/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="IfFiPg" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('c6RRgi')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('IfFiPg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -769,10 +786,10 @@
 
             <li id="df42ec1b-33ae-49e7-87cb-8d1b42b72cb5"><span>【4】</span>
     
-        <a href="/en/character/npc/rio/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="tntZfL" >
+        <a href="/en/character/npc/rio/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="E_9Y5Z" >
             <span>Rio</span>
         </a>
-        <span onclick="showPopupByTooltipId('tntZfL')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('E_9Y5Z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -789,12 +806,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/yuzu/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="liFAYM" >
+            <a href="/en/character/student/yuzu/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="VKxTjY" >
                 <img src="/static/images/student/icon/10018.webp" class="icon-stu">
                 <span>Yuzu</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('liFAYM')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('VKxTjY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -816,12 +833,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/aris/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="Waiqzf" >
+            <a href="/en/character/student/aris/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="oyHoZC" >
                 <img src="/static/images/student/icon/10015.webp" class="icon-stu">
                 <span>Aris</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Waiqzf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('oyHoZC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -843,12 +860,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/toki/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="Fr1eEv" >
+            <a href="/en/character/student/toki/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="eqd7uZ" >
                 <img src="/static/images/student/icon/10062.webp" class="icon-stu">
                 <span>Toki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Fr1eEv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('eqd7uZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -870,12 +887,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hare/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="8R2x74" >
+            <a href="/en/character/student/hare/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="BACxhC" >
                 <img src="/static/images/student/icon/23003.webp" class="icon-stu">
                 <span>Hare</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('8R2x74')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('BACxhC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -897,12 +914,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hibiki/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="nzvERj" >
+            <a href="/en/character/student/hibiki/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="BPBads" >
                 <img src="/static/images/student/icon/20000.webp" class="icon-stu">
                 <span>Hibiki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('nzvERj')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('BPBads')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -924,12 +941,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/himari/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="OYPDqQ" >
+            <a href="/en/character/student/himari/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="9ciTbX" >
                 <img src="/static/images/student/icon/20020.webp" class="icon-stu">
                 <span>Himari</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('OYPDqQ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('9ciTbX')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Super Phenomenon Task Force]</span>
@@ -951,12 +968,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotama/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="Bzb44q" >
+            <a href="/en/character/student/kotama/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="WNha_n" >
                 <img src="/static/images/student/icon/26001.webp" class="icon-stu">
                 <span>Kotama</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Bzb44q')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('WNha_n')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -978,12 +995,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/kotori/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="LPTTj6" >
+            <a href="/en/character/student/kotori/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="1IQ10U" >
                 <img src="/static/images/student/icon/16002.webp" class="icon-stu">
                 <span>Kotori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('LPTTj6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('1IQ10U')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -1005,12 +1022,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/maki/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="Ou7FNH" >
+            <a href="/en/character/student/maki/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="siL8u0" >
                 <img src="/static/images/student/icon/10007.webp" class="icon-stu">
                 <span>Maki</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('Ou7FNH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('siL8u0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Veritas]</span>
@@ -1032,12 +1049,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="fU72BF" >
+            <a href="/en/character/student/momoi/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="VkffgI" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('fU72BF')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('VkffgI')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -1059,12 +1076,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/neru/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="p665nA" >
+            <a href="/en/character/student/neru/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="bw9WkO" >
                 <img src="/static/images/student/icon/10008.webp" class="icon-stu">
                 <span>Neru</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('p665nA')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('bw9WkO')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Cleaning & Clearing]</span>
@@ -1086,12 +1103,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/utaha/#track-OST_92" onmouseover="showTooltip(this)" data-tooltip="KQVSf6" >
+            <a href="/en/character/student/utaha/#track-OST_92" onmouseover="showTooltipById(this)" data-tooltip="kh5K26" >
                 <img src="/static/images/student/icon/23004.webp" class="icon-stu">
                 <span>Utaha</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('KQVSf6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('kh5K26')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Engineering Department]</span>
@@ -1105,22 +1122,22 @@
 
     
     <script>
-        add_tooltip_data({ 'c6RRgi': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','tntZfL': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','liFAYM': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','Waiqzf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','Fr1eEv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','8R2x74': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','nzvERj': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','OYPDqQ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','Bzb44q': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','LPTTj6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','Ou7FNH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','fU72BF': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','p665nA': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','KQVSf6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'IfFiPg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','E_9Y5Z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Rio</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: <span><span><a href="/en/character/student/aris/"><img src="/static/images/student/icon/10015.webp" class="icon-stu"><span>Aris</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/toki/"><img src="/static/images/student/icon/10062.webp" class="icon-stu"><span>Toki</span></a></span></p></div>','VKxTjY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Yuzu</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/8.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;8:&nbsp;Daily Life Destroyed</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/8.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;The President Rio</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/yuzu_maid/"><img src="/static/images/student/icon/26009.webp" class="icon-stu"><span>Yuzu (Maid)</span></a></span></p><p>Other Characters: </p></div>','oyHoZC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Aris</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/9.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;9:&nbsp;The Harsh Truth 1</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/9.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;The Harsh Truth</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/aris_maid/"><img src="/static/images/student/icon/10066.webp" class="icon-stu"><span>Aris (Maid)</span></a></span></p><p>Other Characters: <span><a href="/en/character/npc/ariskey/"><span>Key</span></a> &nbsp;|&nbsp;</span><a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','eqd7uZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Toki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Retrival & Questioning</i></a></span><span>,&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/toki_bunny/"><img src="/static/images/student/icon/10067.webp" class="icon-stu"><span>Toki (Bunny)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/rio/"><span>Rio</span></a></p></div>','BACxhC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hare</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','BPBads': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hibiki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hibiki_cheerleader/"><img src="/static/images/student/icon/16010.webp" class="icon-stu"><span>Hibiki (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','9ciTbX': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Himari</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Himari&#x27s Reproach</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','WNha_n': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotama</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','1IQ10U': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Kotori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/kotori_cheerleader/"><img src="/static/images/student/icon/10076.webp" class="icon-stu"><span>Kotori (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>','siL8u0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Maki</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','VkffgI': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','bw9WkO': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Neru</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/10.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;10:&nbsp;The Harsh Truth 2</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/10.html#story-part-5-seg-1" class="text-primary"><i>&#91;5&#93;&nbsp;Gone For Aris</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/neru_bunny/"><img src="/static/images/student/icon/10026.webp" class="icon-stu"><span>Neru (Bunny)</span></a></span></p><p>Other Characters: </p></div>','kh5K26': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Utaha</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/2/13.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;2&nbsp;Episode&nbsp;13:&nbsp;Big Sister</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/2/13.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;Arriving Eridu</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/utaha_cheerleader/"><img src="/static/images/student/icon/10051.webp" class="icon-stu"><span>Utaha (Cheer Squad)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -1155,13 +1172,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -1175,17 +1192,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988793.7321153)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139613.5697758)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988793.7321236
+Generated time (UTC): 1702139613.5697846
 -->
 </body>
 </html>

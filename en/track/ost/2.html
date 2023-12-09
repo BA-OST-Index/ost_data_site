@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="en">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
     <button class="w3-button w3-teal" onclick="sidebar_toggle()">☰</button>
     <a href="/en/">
@@ -82,12 +91,12 @@
 
         <div>
             <span>You can switch page language here:</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -121,21 +130,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -167,11 +176,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -286,12 +296,12 @@
 
         <h3>Original</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=D3boxTP-ZG8', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=D3boxTP-ZG8', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=D3boxTP-ZG8)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
-            <div onclick="play_video('https://www.bilibili.com/video/BV1Jh411d7kd/?p=2', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1Jh411d7kd/?p=2', 'track-video-1-2')" id="track-video-1-2" class="track-video-div">
                 <p><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (https://www.bilibili.com/video/BV1Jh411d7kd/?p=2)</p>
             </div>
             <div id="track-video-1-2-container"></div>
@@ -358,6 +368,13 @@
         </tbody>
     </table>
 
+    <h3>Recollection Lobby Characters</h3>
+    <p>The recollection lobbies of the listed characters use this track.</p>
+    
+    
+
+    
+
 
     <h2>Usage Info</h2>
     <p>This section shows instances where the song has been referenced.</p>
@@ -380,8 +397,8 @@
 
             <div class="gallery-img" id="3c6a6b9e-1ee3-48c1-a7d1-bc90acbd84ac">
     <div >
-        <img src="/static/images/background/BG_CommitteeRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="CPvBKH">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CommitteeRoom.jpg.html#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="CPvBKH" target="_blank">BG_CommitteeRoom.jpg</a><span onclick="showPopupByTooltipId('CPvBKH')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CommitteeRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="69Zg7h">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CommitteeRoom.jpg.html#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="69Zg7h" target="_blank">BG_CommitteeRoom.jpg</a><span onclick="showPopupByTooltipId('69Zg7h')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -395,8 +412,8 @@
 
             <div class="gallery-img" id="04966b7a-6e92-4793-ae8d-24224eaf8537">
     <div >
-        <img src="/static/images/background/BG_CommitteeRoom_Night_Blur.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="RfrfC7">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CommitteeRoom_Night_Blur.jpg.html#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="RfrfC7" target="_blank">BG_CommitteeRoom_Night_Blur.jpg</a><span onclick="showPopupByTooltipId('RfrfC7')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CommitteeRoom_Night_Blur.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Opk9in">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_CommitteeRoom_Night_Blur.jpg.html#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="Opk9in" target="_blank">BG_CommitteeRoom_Night_Blur.jpg</a><span onclick="showPopupByTooltipId('Opk9in')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -410,8 +427,8 @@
 
             <div class="gallery-img" id="6ddbb0aa-9073-4782-b8af-ac7cb900c67c">
     <div >
-        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="mySAdS">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="mySAdS" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('mySAdS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_GameDevRoom.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="S0T2Lo">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_GameDevRoom.jpg.html#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="S0T2Lo" target="_blank">BG_GameDevRoom.jpg</a><span onclick="showPopupByTooltipId('S0T2Lo')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -425,8 +442,8 @@
 
             <div class="gallery-img" id="c688a187-7d77-4f6f-8d0d-6f3a22ef7427">
     <div >
-        <img src="/static/images/background/BG_MainOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="irDotq">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MainOffice.jpg.html#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="irDotq" target="_blank">BG_MainOffice.jpg</a><span onclick="showPopupByTooltipId('irDotq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_MainOffice.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="iur9nE">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/en/background/BG_MainOffice.jpg.html#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="iur9nE" target="_blank">BG_MainOffice.jpg</a><span onclick="showPopupByTooltipId('iur9nE')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -439,7 +456,7 @@
     
         
     <script>
-        add_tooltip_data({ 'CPvBKH': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CommitteeRoom.jpg</p><p>BG_CommitteeRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CommitteeRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol></div>','RfrfC7': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CommitteeRoom_Night_Blur.jpg</p><p>BG_CommitteeRoom_Night_Blur.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CommitteeRoom_Night_Blur.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Welcome to the Foreclosure Task Force!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Difficulties at Abydos</i></a></span><span>)</span></li></ol></div>','mySAdS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Game Development Department</i></a></span><span>)</span></li></ol></div>','irDotq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MainOffice.jpg</p><p>BG_MainOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MainOffice.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Receiving the Letter</i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ '69Zg7h': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CommitteeRoom.jpg</p><p>BG_CommitteeRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CommitteeRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol></div>','Opk9in': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CommitteeRoom_Night_Blur.jpg</p><p>BG_CommitteeRoom_Night_Blur.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CommitteeRoom_Night_Blur.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Welcome to the Foreclosure Task Force!</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/1.html#story-part-2-seg-1" class="text-primary"><i>&#91;2&#93;&nbsp;The Difficulties at Abydos</i></a></span><span>)</span></li></ol></div>','S0T2Lo': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_GameDevRoom.jpg</p><p>BG_GameDevRoom.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_GameDevRoom.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Game Development Department</i></a></span><span>)</span></li></ol></div>','iur9nE': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_MainOffice.jpg</p><p>BG_MainOffice.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_MainOffice.jpg" target="_blank">View Full Image</a></button><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Receiving the Letter</i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -464,9 +481,9 @@
     
 
     
-        <a href="/en/main/story/main/1/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="GfMaXS">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Welcome to the Foreclosure Task Force!</a>
+        <a href="/en/main/story/main/1/1/1.html"  onmouseover="showTooltipById(this)" data-tooltip="xX920r">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;Welcome to the Foreclosure Task Force!</a>
     
-    <span onclick="showPopupByTooltipId('GfMaXS')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('xX920r')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -479,7 +496,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/1.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="06PqLq"><i>&#91;2&#93;&nbsp;The Difficulties at Abydos</i></a><span onclick="showPopupByTooltipId('06PqLq')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/1.html#story-part-2-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="OZNB3P"><i>&#91;2&#93;&nbsp;The Difficulties at Abydos</i></a><span onclick="showPopupByTooltipId('OZNB3P')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -498,9 +515,9 @@
     
 
     
-        <a href="/en/main/story/main/1/1/4.html"  onmouseover="showTooltip(this)" data-tooltip="ZVCu45">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force's Predicament</a>
+        <a href="/en/main/story/main/1/1/4.html"  onmouseover="showTooltipById(this)" data-tooltip="4pttNY">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force's Predicament</a>
     
-    <span onclick="showPopupByTooltipId('ZVCu45')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('4pttNY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -513,7 +530,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="L2B7qs"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a><span onclick="showPopupByTooltipId('L2B7qs')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="BTKh9d"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a><span onclick="showPopupByTooltipId('BTKh9d')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -532,9 +549,9 @@
     
 
     
-        <a href="/en/main/story/main/2/1/1.html"  onmouseover="showTooltip(this)" data-tooltip="NTiABZ">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>
+        <a href="/en/main/story/main/2/1/1.html"  onmouseover="showTooltipById(this)" data-tooltip="SuAIL8">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>
     
-    <span onclick="showPopupByTooltipId('NTiABZ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('SuAIL8')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -547,7 +564,7 @@
         <span>(appeared at&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="TouDiz"><i>&#91;3&#93;&nbsp;Receiving the Letter</i></a><span onclick="showPopupByTooltipId('TouDiz')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="p_w2zB"><i>&#91;3&#93;&nbsp;Receiving the Letter</i></a><span onclick="showPopupByTooltipId('p_w2zB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
         
         
@@ -559,7 +576,7 @@
         <span>,&nbsp;</span>
         
 
-        <span><a href="/en/main/story/main/2/1/1.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="Ulxxmf"><i>&#91;4&#93;&nbsp;Game Development Department</i></a><span onclick="showPopupByTooltipId('Ulxxmf')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/en/main/story/main/2/1/1.html#story-part-4-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="cbDmdx"><i>&#91;4&#93;&nbsp;Game Development Department</i></a><span onclick="showPopupByTooltipId('cbDmdx')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -576,7 +593,7 @@
 
     
     <script>
-        add_tooltip_data({ 'GfMaXS': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Welcome to the Foreclosure Task Force!</p><ul><li>Sensei receives a letter from Abydos High School and learns the students there are being bullied by a criminal organization. In a hurry, Sensei heads toward the Abydos district, but gets hopelessly lost in the process.</li></ul></div>','06PqLq': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Difficulties at Abydos</p><p>Sensei reads the letter from Abydos and knows that they are under attack of criminal organizations and facing problems like the ammunition running out. They thus requested help from Schale.</p><hr><p><span>No characters to display!</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory</span></a></p></div>','ZVCu45': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Task Force&#x27s Predicament</p><ul><li>The students explain to Sensei that their school&#x27s over 900 million yen in debt and how difficult it is for them to even keep up with interest payments. When Sensei offers to help, Serika goes off on a tirade about how grown-ups can&#x27t be trusted.</li></ul></div>','L2B7qs': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Discussing About the Battle Plan</p><p>Back at school, everyone thanks Sensei but accidentally slips the "debt" thing. Serika expresses her trust issues on Sensei, unwilling to talk about that topic and leave. Nonomi follows her up.</p><hr><p>Character:<span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/10.html"><span>OST&nbsp;10.&nbsp;Romantic Smile</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory</span></a></p></div>','NTiABZ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Adventure Begins</p><ul><li>After receiving a bizarre letter, Sensei heads over to the Game Development Department and meets Midori and Momoi, two twins hard at work developing video games.</li></ul></div>','TouDiz': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Receiving the Letter</p><p>Sensei received the letter from GDD, knowing that they were going to be closed. Arona made a simple introduction about the Millennium School.</p><hr><p>Character:<a href="/en/character/npc/arona/"><span>Arona</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory</span></a></p></div>','Ulxxmf': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Game Development Department</p><p>Momoi and Midori made an formal self-introduction to Sensei again and proposed to go to the Ruins altogether. She mentioned that the closure was declared by Yuuka - it was at this moment when everyone was interrupted by a familiar voice.</p><hr><p>Character:<span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory</span></a></p></div>', });
+        add_tooltip_data({ 'xX920r': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Welcome to the Foreclosure Task Force!</p><ul><li>Sensei receives a letter from Abydos High School and learns the students there are being bullied by a criminal organization. In a hurry, Sensei heads toward the Abydos district, but gets hopelessly lost in the process.</li></ul></div>','OZNB3P': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Difficulties at Abydos</p><p>Sensei reads the letter from Abydos and knows that they are under attack of criminal organizations and facing problems like the ammunition running out. They thus requested help from Schale.</p><hr><p><span>No characters to display!</span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory</span></a></p></div>','4pttNY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Task Force&#x27s Predicament</p><ul><li>The students explain to Sensei that their school&#x27s over 900 million yen in debt and how difficult it is for them to even keep up with interest payments. When Sensei offers to help, Serika goes off on a tirade about how grown-ups can&#x27t be trusted.</li></ul></div>','BTKh9d': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Discussing About the Battle Plan</p><p>Back at school, everyone thanks Sensei but accidentally slips the "debt" thing. Serika expresses her trust issues on Sensei, unwilling to talk about that topic and leave. Nonomi follows her up.</p><hr><p>Character:<span><span><a href="/en/character/student/shiroko/"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span>Shiroko</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/serika/"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span>Serika</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/nonomi/"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span>Nonomi</span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/en/character/student/ayane/"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span>Ayane</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/hoshino/"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span>Hoshino</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/10.html"><span>OST&nbsp;10.&nbsp;Romantic Smile</span></a>&nbsp;|&nbsp;<a href="/en/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory</span></a></p></div>','SuAIL8': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">The Adventure Begins</p><ul><li>After receiving a bizarre letter, Sensei heads over to the Game Development Department and meets Midori and Momoi, two twins hard at work developing video games.</li></ul></div>','p_w2zB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Receiving the Letter</p><p>Sensei received the letter from GDD, knowing that they were going to be closed. Arona made a simple introduction about the Millennium School.</p><hr><p>Character:<a href="/en/character/npc/arona/"><span>Arona</span></a></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory</span></a></p></div>','cbDmdx': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Game Development Department</p><p>Momoi and Midori made an formal self-introduction to Sensei again and proposed to go to the Ruins altogether. She mentioned that the closure was declared by Yuuka - it was at this moment when everyone was interrupted by a familiar voice.</p><hr><p>Character:<span><span><a href="/en/character/student/midori/"><img src="/static/images/student/icon/10016.webp" class="icon-stu"><span>Midori</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/momoi/"><img src="/static/images/student/icon/13011.webp" class="icon-stu"><span>Momoi</span></a></span></p><hr><p>Track:&nbsp;|&nbsp;<a href="/en/track/ost/2.html"><span>OST&nbsp;2.&nbsp;Luminous Memory</span></a></p></div>', });
     </script>
 
 
@@ -619,10 +636,10 @@
 
             <li id="d5d63772-daed-499e-b301-0ed10434e0fb"><span>【1】</span>
     
-        <a href="/en/character/npc/arona/#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="O7Wh8U" >
+        <a href="/en/character/npc/arona/#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="vU05o_" >
             <span>Arona</span>
         </a>
-        <span onclick="showPopupByTooltipId('O7Wh8U')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('vU05o_')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
 </li>
             
@@ -639,12 +656,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/ayane/#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="hIu46z" >
+            <a href="/en/character/student/ayane/#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="mp4t8D" >
                 <img src="/static/images/student/icon/23005.webp" class="icon-stu">
                 <span>Ayane</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('hIu46z')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('mp4t8D')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -666,12 +683,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/hoshino/#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="qQg2Ug" >
+            <a href="/en/character/student/hoshino/#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="vXl_yk" >
                 <img src="/static/images/student/icon/10005.webp" class="icon-stu">
                 <span>Hoshino</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('qQg2Ug')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('vXl_yk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -693,12 +710,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/midori/#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="_nx1cy" >
+            <a href="/en/character/student/midori/#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="JrgCuJ" >
                 <img src="/static/images/student/icon/10016.webp" class="icon-stu">
                 <span>Midori</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('_nx1cy')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('JrgCuJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -720,12 +737,12 @@
             <img src="/static/images/schoolicon/School_Icon_MILLENNIUM_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/momoi/#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="B0lKUV" >
+            <a href="/en/character/student/momoi/#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="UvTPz4" >
                 <img src="/static/images/student/icon/13011.webp" class="icon-stu">
                 <span>Momoi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('B0lKUV')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('UvTPz4')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Game Development Department]</span>
@@ -747,12 +764,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/nonomi/#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="f6lD6M" >
+            <a href="/en/character/student/nonomi/#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="FpU3QB" >
                 <img src="/static/images/student/icon/13004.webp" class="icon-stu">
                 <span>Nonomi</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('f6lD6M')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('FpU3QB')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -774,12 +791,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/serika/#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="mfWVah" >
+            <a href="/en/character/student/serika/#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="MPcsk6" >
                 <img src="/static/images/student/icon/13008.webp" class="icon-stu">
                 <span>Serika</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('mfWVah')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('MPcsk6')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -801,12 +818,12 @@
             <img src="/static/images/schoolicon/School_Icon_ABYDOS_W.png" class="invert-light schoolicon-p">
         
         <span>
-            <a href="/en/character/student/shiroko/#track-OST_2" onmouseover="showTooltip(this)" data-tooltip="XZ4EZv" >
+            <a href="/en/character/student/shiroko/#track-OST_2" onmouseover="showTooltipById(this)" data-tooltip="5TpcIu" >
                 <img src="/static/images/student/icon/10010.webp" class="icon-stu">
                 <span>Shiroko</span>
             </a>
         </span>
-        <span onclick="showPopupByTooltipId('XZ4EZv')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        <span onclick="showPopupByTooltipId('5TpcIu')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
         
             
                 <span>&nbsp;[Foreclosure Task Force]</span>
@@ -820,22 +837,22 @@
 
     
     <script>
-        add_tooltip_data({ 'O7Wh8U': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Arona</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Receiving the Letter</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','hIu46z': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ayane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span>Ayane (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','qQg2Ug': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span>Hoshino (Swimsuit)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/blacksuit/"><span>The Black Suit</span></a></p></div>','_nx1cy': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Game Development Department</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','B0lKUV': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Game Development Department</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','f6lD6M': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Nonomi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/nonomi_swimsuit/"><img src="/static/images/student/icon/10044.webp" class="icon-stu"><span>Nonomi (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','mfWVah': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/serika_newyear/"><img src="/static/images/student/icon/20011.webp" class="icon-stu"><span>Serika (New Year)</span></a></span></p><p>Other Characters: </p></div>','XZ4EZv': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shiroko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><span><a href="/en/character/student/shiroko_cycling/"><img src="/static/images/student/icon/10024.webp" class="icon-stu"><span>Shiroko (Cycling)</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko_swimsuit/"><img src="/static/images/student/icon/20027.webp" class="icon-stu"><span>Shiroko (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>', });
+        add_tooltip_data({ 'vU05o_': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Arona</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-3-seg-1" class="text-primary"><i>&#91;3&#93;&nbsp;Receiving the Letter</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Characters: </p></div>','mp4t8D': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Ayane</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/ayane_swimsuit/"><img src="/static/images/student/icon/26007.webp" class="icon-stu"><span>Ayane (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','vXl_yk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Hoshino</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/hoshino_swimsuit/"><img src="/static/images/student/icon/10045.webp" class="icon-stu"><span>Hoshino (Swimsuit)</span></a></span></p><p>Other Characters: <a href="/en/character/npc/blacksuit/"><span>The Black Suit</span></a></p></div>','JrgCuJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Midori</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Game Development Department</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','UvTPz4': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Momoi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/2/1/1.html">Main&nbsp;Story&nbsp;Volume&nbsp;2&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;1:&nbsp;The Adventure Begins</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/2/1/1.html#story-part-4-seg-1" class="text-primary"><i>&#91;4&#93;&nbsp;Game Development Department</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: </p><p>Other Characters: </p></div>','FpU3QB': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Nonomi</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/nonomi_swimsuit/"><img src="/static/images/student/icon/10044.webp" class="icon-stu"><span>Nonomi (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>','MPcsk6': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Serika</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><a href="/en/character/student/serika_newyear/"><img src="/static/images/student/icon/20011.webp" class="icon-stu"><span>Serika (New Year)</span></a></span></p><p>Other Characters: </p></div>','5TpcIu': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">Shiroko</p><hr><p class="tooltip-subtitle">Story:</p><ol class="tooltip-ol"><li><a href="/en/main/story/main/1/1/4.html">Main&nbsp;Story&nbsp;Volume&nbsp;1&nbsp;Chapter&nbsp;1&nbsp;Episode&nbsp;4:&nbsp;The Task Force&#x27s Predicament</a>&nbsp;<span>(appeared at&nbsp;</span><span><a href="/en/main/story/main/1/1/4.html#story-part-1-seg-1" class="text-primary"><i>&#91;1&#93;&nbsp;Discussing About the Battle Plan</i></a></span><span>)</span></li></ol><p class="tooltip-subtitle">Related Characters:</p><p>Other Variants: <span><span><a href="/en/character/student/shiroko_cycling/"><img src="/static/images/student/icon/10024.webp" class="icon-stu"><span>Shiroko (Cycling)</span></a></span> &nbsp;|&nbsp;</span><span><a href="/en/character/student/shiroko_swimsuit/"><img src="/static/images/student/icon/20027.webp" class="icon-stu"><span>Shiroko (Swimsuit)</span></a></span></p><p>Other Characters: </p></div>', });
     </script>
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -870,13 +887,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> is a project created by <a href="https://github.com/sctop">sctop</a>.</p>
@@ -890,17 +907,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700988799.5972412)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139623.8498738)})
     </script>
 </footer>
-    <script>display_char_lang_element('en');</script>
+    <script>displayCharLangElement('en');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700988799.5972493
+Generated time (UTC): 1702139623.849882
 -->
 </body>
 </html>

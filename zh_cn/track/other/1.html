@@ -36,29 +36,38 @@
     </style>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/zhcn_switch.js"></script>
-    <script src="/static/js/highlight_element.js"></script>
+    <script src="/static/js/highlightElement.js"></script>
     <script src="/static/js/tooltip.js"></script>
     <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script src="/static/js/cn_popup.js"></script>
+    <script src="/static/js/track_player.js"></script>
+    <script src="/static/js/story_video_player.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-BKTB7R8TC3');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKTB7R8TC3');
     </script>
-    <script>var tooltip_data = {}; function add_tooltip_data(dictionary) {tooltip_data = Object.assign({}, tooltip_data, dictionary)}</script>
-    
-    <script src="/static/js/track_player.js"></script>
+    <script>var tooltip_data = {};
 
+    function add_tooltip_data(dictionary) {
+        tooltip_data = Object.assign({}, tooltip_data, dictionary)
+    }</script>
+    
 </head>
 
 <body style="visibility: visible; opacity: 1;" lang="zh-Hans">
-    <div class="wrapper" id="main-wrapper">
-        
+<div class="wrapper" id="main-wrapper">
+    
     
 
 <div class=" w3-xlarge w3-hide-large" id="git-wiki-mobile-header">
@@ -84,21 +93,21 @@
 
         <div>
             <span>你可在这里快速切换语言：</span>
-            <select id="lang_switcher" onchange="lang_switch()">
+            <select id="lang_switcher" onchange="switchToLanguage()">
                 <option value="en"><span lang="en">English</span></option>
                 <option value="zh_cn" lang="zh-Hans">中文(简体)</option>
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
-            <script>lang_switch_show();</script>
+            <script>showLangSwitchStatus();</script>
             <br />
             <span>根据服务器及个人偏好不同，本站提供三种不同的简体中文名称显示，默认为日服玩家翻译版：</span>
-            <select id="zhcn_switcher" onchange="set_zhcn_status(this)">
+            <select id="zhcn_switcher" onchange="setZhcnStorage(this)">
                 <option value="zh_cn_cn">国服翻译版</option>
                 <option value="zh_cn_jp">日服玩家翻译版</option>
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>display_zhcn_element(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
         </div>
         <br />
 
@@ -133,21 +142,21 @@
     </div>
 </header>
 
-        <script>
-            function sidebar_toggle() {
-                var sidebar = document.getElementById("git-wiki-sidebar");
-                if (sidebar.style.display === "block") {
-                    sidebar.style.display = "none";
-                    sidebar.style.position = "inherit";
-                } else {
-                    $(sidebar).attr('style', 'display: block;');
-                }
+    <script>
+        function sidebar_toggle() {
+            var sidebar = document.getElementById("git-wiki-sidebar");
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = "none";
+                sidebar.style.position = "inherit";
+            } else {
+                $(sidebar).attr('style', 'display: block;');
             }
-        </script>
+        }
+    </script>
 
-        <div class="git-wiki-page">
-            <div id="interpage-navi">
-                
+    <div class="git-wiki-page">
+        <div id="interpage-navi">
+            
         
         
         
@@ -175,11 +184,12 @@
                 
             
         
-    <hr />
-            </div>
+    
+            <hr/>
+        </div>
 
-            <div id="git-wiki-content">
-                
+        <div id="git-wiki-content">
+            
     
     
     
@@ -294,7 +304,7 @@
 
         <h3>原版</h3>
         
-            <div onclick="play_video('https://www.youtube.com/watch?v=aTU-osotD8k', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
+            <div onclick="playEmbeddedVideo('https://www.youtube.com/watch?v=aTU-osotD8k', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
                 <p><img src="/static/images/social/YouTube.png" class="social-logo">YouTube (https://www.youtube.com/watch?v=aTU-osotD8k)</p>
             </div>
             <div id="track-video-1-1-container"></div>
@@ -361,6 +371,13 @@
         </tbody>
     </table>
 
+    <h3>回忆大厅角色</h3>
+    <p>以下角色的回忆大厅使用了本音乐。</p>
+    
+    
+
+    
+
 
     <h2>使用信息</h2>
     <p>此处显示引用了这首曲子的实例。</p>
@@ -383,8 +400,8 @@
 
             <div class="gallery-img" id="a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9">
     <div >
-        <img src="/static/images/background/BG_CS_Abydos_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="HHbQQ1">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_04.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="HHbQQ1" target="_blank">BG_CS_Abydos_04.jpg</a><span onclick="showPopupByTooltipId('HHbQQ1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Abydos_04.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="VjHJcY">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_04.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="VjHJcY" target="_blank">BG_CS_Abydos_04.jpg</a><span onclick="showPopupByTooltipId('VjHJcY')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -398,8 +415,8 @@
 
             <div class="gallery-img" id="9de72ace-5a42-4f86-906c-b228c2a23a15">
     <div >
-        <img src="/static/images/background/BG_CS_Abydos_11.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="X9EsfC">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_11.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="X9EsfC" target="_blank">BG_CS_Abydos_11.jpg</a><span onclick="showPopupByTooltipId('X9EsfC')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Abydos_11.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="rk5ava">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_11.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="rk5ava" target="_blank">BG_CS_Abydos_11.jpg</a><span onclick="showPopupByTooltipId('rk5ava')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -413,8 +430,8 @@
 
             <div class="gallery-img" id="a5437ff0-499c-4e55-8dc5-b3c27463e5ba">
     <div >
-        <img src="/static/images/background/BG_CS_Abydos_12.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="tf49ap">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_12.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="tf49ap" target="_blank">BG_CS_Abydos_12.jpg</a><span onclick="showPopupByTooltipId('tf49ap')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Abydos_12.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="o_7k8p">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_12.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="o_7k8p" target="_blank">BG_CS_Abydos_12.jpg</a><span onclick="showPopupByTooltipId('o_7k8p')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -428,8 +445,8 @@
 
             <div class="gallery-img" id="5636aee0-47d2-4894-b0e9-228c27652091">
     <div >
-        <img src="/static/images/background/BG_CS_Abydos_13.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="mFjUzc">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_13.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="mFjUzc" target="_blank">BG_CS_Abydos_13.jpg</a><span onclick="showPopupByTooltipId('mFjUzc')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_Abydos_13.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="EQrZU1">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_Abydos_13.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="EQrZU1" target="_blank">BG_CS_Abydos_13.jpg</a><span onclick="showPopupByTooltipId('EQrZU1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -443,8 +460,8 @@
 
             <div class="gallery-img" id="9bf4534f-a3b2-4dae-8ffb-a248b726418c">
     <div >
-        <img src="/static/images/background/BG_CS_PV_24.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="8unVOK">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PV_24.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="8unVOK" target="_blank">BG_CS_PV_24.jpg</a><span onclick="showPopupByTooltipId('8unVOK')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CS_PV_24.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="Qvzebe">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CS_PV_24.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="Qvzebe" target="_blank">BG_CS_PV_24.jpg</a><span onclick="showPopupByTooltipId('Qvzebe')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -458,8 +475,8 @@
 
             <div class="gallery-img" id="2027c493-bef2-406c-9b52-e58e32091dd8">
     <div >
-        <img src="/static/images/background/BG_CommitteeRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="q1kKir">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CommitteeRoom_Night.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="q1kKir" target="_blank">BG_CommitteeRoom_Night.jpg</a><span onclick="showPopupByTooltipId('q1kKir')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_CommitteeRoom_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="72IfdD">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_CommitteeRoom_Night.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="72IfdD" target="_blank">BG_CommitteeRoom_Night.jpg</a><span onclick="showPopupByTooltipId('72IfdD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -473,8 +490,8 @@
 
             <div class="gallery-img" id="f47eae80-20a4-4eb7-86f3-b56a4fcdb86b">
     <div >
-        <img src="/static/images/background/BG_FoodCartRamen_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="rkPneg">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_FoodCartRamen_Night.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="rkPneg" target="_blank">BG_FoodCartRamen_Night.jpg</a><span onclick="showPopupByTooltipId('rkPneg')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_FoodCartRamen_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="XnUOul">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_FoodCartRamen_Night.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="XnUOul" target="_blank">BG_FoodCartRamen_Night.jpg</a><span onclick="showPopupByTooltipId('XnUOul')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -488,8 +505,8 @@
 
             <div class="gallery-img" id="4013d0a2-64e5-4cde-b40c-f9cd35cf94a6">
     <div >
-        <img src="/static/images/background/BG_SchoolFrontGate_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="wsjzGk">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_SchoolFrontGate_Night.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="wsjzGk" target="_blank">BG_SchoolFrontGate_Night.jpg</a><span onclick="showPopupByTooltipId('wsjzGk')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_SchoolFrontGate_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="acfj_N">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_SchoolFrontGate_Night.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="acfj_N" target="_blank">BG_SchoolFrontGate_Night.jpg</a><span onclick="showPopupByTooltipId('acfj_N')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -503,8 +520,8 @@
 
             <div class="gallery-img" id="a1bfd244-8f93-4bd6-9ae1-04f96b1bac32">
     <div >
-        <img src="/static/images/background/BG_Wilderness_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="IlWdB1">
-        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_Wilderness_Night.jpg.html#track-other_1" onmouseover="showTooltip(this)" data-tooltip="IlWdB1" target="_blank">BG_Wilderness_Night.jpg</a><span onclick="showPopupByTooltipId('IlWdB1')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
+        <img src="/static/images/background/BG_Wilderness_Night.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="swEiuJ">
+        <p class="gallery-caption"><span>【1】</span><span><a href="/zh_cn/background/BG_Wilderness_Night.jpg.html#track-other_1" onmouseover="showTooltipById(this)" data-tooltip="swEiuJ" target="_blank">BG_Wilderness_Night.jpg</a><span onclick="showPopupByTooltipId('swEiuJ')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -517,7 +534,7 @@
     
         
     <script>
-        add_tooltip_data({ 'HHbQQ1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_04.jpg</p><p>BG_CS_Abydos_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/ayane/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/shiroko/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/serika/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茜香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/nonomi/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/hoshino/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','X9EsfC': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_11.jpg</p><p>BG_CS_Abydos_11.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_11.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><a href="/zh_cn/character/npc/yume/#9de72ace-5a42-4f86-906c-b228c2a23a15-direct"><span><span class="lang-zh-cn-cn">梦前辈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">梦前辈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">梦前辈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/hoshino/#9de72ace-5a42-4f86-906c-b228c2a23a15-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','tf49ap': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_12.jpg</p><p>BG_CS_Abydos_12.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_12.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','mFjUzc': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_13.jpg</p><p>BG_CS_Abydos_13.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_13.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','8unVOK': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV_24.jpg</p><p>BG_CS_PV_24.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV_24.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','q1kKir': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CommitteeRoom_Night.jpg</p><p>BG_CommitteeRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CommitteeRoom_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','rkPneg': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_FoodCartRamen_Night.jpg</p><p>BG_FoodCartRamen_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_FoodCartRamen_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','wsjzGk': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolFrontGate_Night.jpg</p><p>BG_SchoolFrontGate_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolFrontGate_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','IlWdB1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Wilderness_Night.jpg</p><p>BG_Wilderness_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Wilderness_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
+        add_tooltip_data({ 'VjHJcY': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_04.jpg</p><p>BG_CS_Abydos_04.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_04.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><span><a href="/zh_cn/character/student/ayane/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/23005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/shiroko/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/10010.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">白子</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/serika/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/13008.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茜香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><span><a href="/zh_cn/character/student/nonomi/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/13004.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">野乃美</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">野宫</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/hoshino/#a581ddc1-18f9-41b9-8d8b-cd40a0d8d3b9-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','rk5ava': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_11.jpg</p><p>BG_CS_Abydos_11.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_11.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol><hr><p class="tooltip-subtitle">图片中的人物：</p><p><span><a href="/zh_cn/character/npc/yume/#9de72ace-5a42-4f86-906c-b228c2a23a15-direct"><span><span class="lang-zh-cn-cn">梦前辈</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">梦前辈</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">梦前辈</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a> &nbsp;|&nbsp;</span><span><a href="/zh_cn/character/student/hoshino/#9de72ace-5a42-4f86-906c-b228c2a23a15-direct"><img src="/static/images/student/icon/10005.webp" class="icon-stu"><span><span class="lang-zh-cn-cn">星野</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span></a></span></p></div>','o_7k8p': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_12.jpg</p><p>BG_CS_Abydos_12.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_12.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','EQrZU1': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_Abydos_13.jpg</p><p>BG_CS_Abydos_13.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_Abydos_13.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','Qvzebe': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CS_PV_24.jpg</p><p>BG_CS_PV_24.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CS_PV_24.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','72IfdD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_CommitteeRoom_Night.jpg</p><p>BG_CommitteeRoom_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_CommitteeRoom_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','XnUOul': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_FoodCartRamen_Night.jpg</p><p>BG_FoodCartRamen_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_FoodCartRamen_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','acfj_N': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_SchoolFrontGate_Night.jpg</p><p>BG_SchoolFrontGate_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_SchoolFrontGate_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>','swEiuJ': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis">BG_Wilderness_Night.jpg</p><p>BG_Wilderness_Night.jpg Description</p><button type="button" class="btn btn-info"><a href="/static/images/background/BG_Wilderness_Night.jpg" target="_blank">查看完整照片</a></button><hr><p class="tooltip-subtitle">故事：</p><ol class="tooltip-ol"><li><a href="/zh_cn/main/story/main/1/2/19.html">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>&nbsp;<span>(出现于&nbsp;</span><span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a></span><span>)</span></li></ol></div>', });
     </script>
 
     
@@ -542,9 +559,9 @@
     
 
     
-        <a href="/zh_cn/main/story/main/1/2/19.html"  onmouseover="showTooltip(this)" data-tooltip="C9CzXD">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
+        <a href="/zh_cn/main/story/main/1/2/19.html"  onmouseover="showTooltipById(this)" data-tooltip="VJ3B0J">主线故事&nbsp;第1篇&nbsp;第2章&nbsp;第19话：<span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></a>
     
-    <span onclick="showPopupByTooltipId('C9CzXD')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    <span onclick="showPopupByTooltipId('VJ3B0J')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
 &nbsp;
     
         
@@ -557,7 +574,7 @@
         <span>(出现于&nbsp;</span>
         
 
-        <span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltip(this)" data-tooltip="08Ilc0"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('08Ilc0')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
+        <span><a href="/zh_cn/main/story/main/1/2/19.html#story-part-6-seg-1" class="text-primary" onmouseover="showTooltipById(this)" data-tooltip="PaOS3H"><i>&#91;6&#93;&nbsp;<span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></i></a><span onclick="showPopupByTooltipId('PaOS3H')" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span>
     
     <span>)</span>
 </li>
@@ -572,7 +589,7 @@
 
     
     <script>
-        add_tooltip_data({ 'C9CzXD': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li><li><span class="lang-zh-cn-cn">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','08Ilc0': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/other/1.html"><span>其它&nbsp;1.&nbsp;Target For Love (目标为爱)</span></a></p></div>', });
+        add_tooltip_data({ 'VJ3B0J': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">即使如此也未曾放弃的事物（2）</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><ul><li><span class="lang-zh-cn-cn">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会朝着星野被俘虏的堡垒前进。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li><li><span class="lang-zh-cn-cn">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">经过漫长的战斗，对策委员会顺利成功救出星野。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li></ul></div>','PaOS3H': '<div class="tooltip-div"><p class="tooltip-title tooltip-ellipsis"><span class="lang-zh-cn-cn">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">一切如常</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p><span class="lang-zh-cn-cn">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">星野回归后，一切如常。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><hr><p><span>No characters to display!</span></p><hr><p>歌曲：&nbsp;|&nbsp;<a href="/zh_cn/track/other/1.html"><span>其它&nbsp;1.&nbsp;Target For Love (目标为爱)</span></a></p></div>', });
     </script>
 
 
@@ -619,17 +636,17 @@
 
 
 
-            </div>
         </div>
-        <script>
-            display_zhcn_element();
-        </script>
     </div>
+    <script>
+        displayZhcnString();
+    </script>
+</div>
 
-    <div id="interpage-navi-bottom">
-        <div>
-            <div id="interpage-navi-bottom-left">
-                
+<div id="interpage-navi-bottom">
+    <div>
+        <div id="interpage-navi-bottom-left">
+            
     
         
         
@@ -660,13 +677,13 @@
         
     
 
-            </div>
-            <div id="interpage-navi-bottom-right"></div>
         </div>
+        <div id="interpage-navi-bottom-right"></div>
     </div>
+</div>
 
-    <div class="wrapper" id="bottom-wrapper">
-        
+<div class="wrapper" id="bottom-wrapper">
+    
     <footer>
     <div class="git-wiki-copyrights">
         <p><a href="https://github.com/BA-OST-Index">BA OST Index</a> 是一个由 <a href="https://github.com/sctop">sctop</a> 创建的项目。</p>
@@ -680,17 +697,24 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1700989152.6084049)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1702139994.480955)})
     </script>
 </footer>
-    <script>display_char_lang_element('zh');</script>
+    <script>displayCharLangElement('zh');</script>
 
-    </div>
+</div>
+
+<!--全局JS，用于显示跳转到加速站的弹窗-->
+<script>
+    addEventListener("load", function () {
+        checkCnIP();
+    })
+</script>
 
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1700989152.608411
+Generated time (UTC): 1702139994.4809635
 -->
 </body>
 </html>
