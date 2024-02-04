@@ -14,7 +14,7 @@ async function autoCurrentDestruct() {
     removePopup(currentPopup);
 }
 
-function showPopupByTooltipId(tooltip_id) {
+function showPopupByTooltipId(tooltip_id, designatedElementClass) {
     if (currentPopup !== void 0) {
         removePopup(currentPopup);
     }
@@ -29,4 +29,9 @@ function showPopupByTooltipId(tooltip_id) {
     setScrollToNone();
     currentPopup.show();
     displayZhcnString();
+
+    let designatedElementClass_ = designatedElementClass || [];
+    for (let i = 0; i < designatedElementClass_.length; i++) {
+        setElementDisplay(designatedElementClass_[i], "block");
+    }
 }

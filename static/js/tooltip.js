@@ -46,7 +46,7 @@ const tooltipHtmlGenerator = {
     }
 }
 
-function showTooltip(obj, content, params) {
+function showTooltip(obj, content, params, designatedElementClass) {
     if (currentTooltip !== void 0) {
         currentTooltip.destroy();
     }
@@ -54,14 +54,19 @@ function showTooltip(obj, content, params) {
     currentTooltip = tippy(obj, Object.assign({}, {content: content}, params));
     currentTooltip.show();
     displayZhcnString();
+    for (let i = 0; i < designatedElementClass.length; i++) {
+        setElementDisplay(designatedElementClass[i], "block");
+    }
 }
 
-function showTooltipById(obj, dataKeyname) {
-    if (dataKeyname === void 0) {
+function showTooltipById(obj, dataKeyname, designatedElementClass) {
+    if (dataKeyname === void 0 || dataKeyname === "undefined") {
         dataKeyname = obj.dataset.tooltip;
     }
 
-    showTooltip(obj, tooltipData.getData(dataKeyname), {interactive: true, allowHTML: true, maxWidth: "40em", placement: "top"})
+    showTooltip(obj, tooltipData.getData(dataKeyname),
+        {interactive: true, allowHTML: true, maxWidth: "40em", placement: "top"},
+        designatedElementClass)
 }
 
 function showTooltipGallerySmall(obj) {
