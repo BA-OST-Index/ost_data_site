@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -316,9 +324,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">老师在校门口遇到了野宫，询问了下柴大将的身体情况。老师表示他身体情况不错，但被野宫猜出大概还有其他问题。野宫提议先回教室，并表达了对老师这些天来处理事情得感激之情，希望老师能够继续与他们走下去。老师表示了肯定。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师在校门口遇到了野乃美，询问了下柴大将的身体情况。老师表示他身体情况不错，但被野乃美猜出大概还有其他问题。野乃美提议先回教室，并表达了对老师这些天来处理事情得感激之情，希望老师能够继续与他们走下去。老师表示了肯定。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师在校门口遇到了野宫，询问了下柴大将的身体情况。老师表示他身体情况不错，但被野宫猜出大概还有其他问题。野宫提议先回教室，并表达了对老师这些天来处理事情得感激之情，希望老师能够继续与他们走下去。老师表示了肯定。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -370,9 +379,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -386,12 +395,12 @@
 
             <li id="track-OST_10">
     <a href="/zh_cn/track/ost/10.html#story-MAIN_1_2_4" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_10-all">
-        <span>OST&nbsp;10.&nbsp;Romantic Smile (Romantic Smile)</span>
+        <span>OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_10-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Bright</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-primary badge-tag">Dream</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">梦想</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -404,8 +413,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -434,6 +443,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -453,9 +463,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">在校门口，两人还遇见了白子。白子提到了星野前辈，但有些心神不宁。白子先进了教室，野宫与老师紧随其后。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在校门口，两人还遇见了白子。白子提到了星野前辈，但有些心神不宁。白子先进了教室，野乃美与老师紧随其后。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在校门口，两人还遇见了白子。白子提到了星野前辈，但有些心神不宁。白子先进了教室，野宫与老师紧随其后。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -545,9 +556,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -561,12 +572,12 @@
 
             <li id="track-OST_10">
     <a href="/zh_cn/track/ost/10.html#story-MAIN_1_2_4" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_10-all">
-        <span>OST&nbsp;10.&nbsp;Romantic Smile (Romantic Smile)</span>
+        <span>OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_10-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Bright</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-primary badge-tag">Dream</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">梦想</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -579,8 +590,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -609,6 +620,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -628,9 +640,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野宫和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野宫表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野宫还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野乃美和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野乃美表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野乃美还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子似乎在对星野进行着严肃的质问，但星野一问三不知。野宫和老师闻声赶到，但两人之字不提，只是表示“与星野有些事而已”。野宫表示对策委员会间可没有什么好隐藏的，星野于是不得不表示“只是自己睡午觉太多而被白子骂了”而已。尽管如此，野宫还是看出了其中的不真诚。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -758,9 +771,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -792,8 +805,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -837,6 +850,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -856,9 +870,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">芹香和绫音拿到了阿拜多斯全境的土地所有权地图，表示确认了一个紧急情况。起初，包括星野在内的大多数人都认为阿拜多斯当然由学校所有，但从交易记录上来看，显然大多数土地早已由凯撒集团所有。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茜香和绫音拿到了阿拜多斯全境的土地所有权地图，表示确认了一个紧急情况。起初，包括星野在内的大多数人都认为阿拜多斯当然由学校所有，但从交易记录上来看，显然大多数土地早已由凯撒集团所有。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香和绫音拿到了阿拜多斯全境的土地所有权地图，表示确认了一个紧急情况。起初，包括星野在内的大多数人都认为阿拜多斯当然由学校所有，但从交易记录上来看，显然大多数土地早已由凯撒集团所有。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1062,9 +1077,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1078,12 +1093,12 @@
 
             <li id="track-OST_13">
     <a href="/zh_cn/track/ost/13.html#story-MAIN_1_2_4" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_13-all">
-        <span>OST&nbsp;13.&nbsp;Barrier (Barrier)</span>
+        <span>OST&nbsp;13.&nbsp;Barrier (障碍)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_13-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Cheerful</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">欢快</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -1096,8 +1111,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1126,6 +1141,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1209,7 +1225,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656891.922208)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.706976)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1221,6 +1237,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1233,7 +1250,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656891.9222128
+Generated time (UTC): 1711252009.7069812
 -->
 </body>
 </html>

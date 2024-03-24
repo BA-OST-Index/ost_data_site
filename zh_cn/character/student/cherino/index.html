@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -446,12 +454,12 @@
 
             <li id="track-OST_3">
     <a href="/zh_cn/track/ost/3.html#Cherino" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_3-character-Cherino">
-        <span>【1】OST&nbsp;3.&nbsp;Mischievous Step (Mischievous Step)</span>
+        <span>【1】OST&nbsp;3.&nbsp;Mischievous Step (不定的步伐)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_3-character-Cherino', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Relaxing</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">轻松惬意</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -469,7 +477,7 @@
 
             <li id="track-OST_48">
     <a href="/zh_cn/track/ost/48.html#Cherino" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_48-character-Cherino">
-        <span>【1】OST&nbsp;48.&nbsp;Out of Control (Out of Control)</span>
+        <span>【1】OST&nbsp;48.&nbsp;Out of Control (失控)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_48-character-Cherino', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -515,12 +523,12 @@
 
             <li id="track-OST_135">
     <a href="/zh_cn/track/ost/135.html#Cherino" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_135-character-Cherino">
-        <span>【1】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【1】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_135-character-Cherino', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Discouraged</span>&nbsp;<span class="badge badge-danger badge-tag">Sad</span>&nbsp;<span class="badge badge-danger badge-tag">Failure</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">灰心的</span>&nbsp;<span class="badge badge-danger badge-tag">悲伤的</span>&nbsp;<span class="badge badge-danger badge-tag">失败</span>&nbsp;</div>
 </li>
 
 
@@ -1206,7 +1214,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656895.0342298)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252012.5365422)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1218,6 +1226,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1230,7 +1239,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656895.034237
+Generated time (UTC): 1711252012.536548
 -->
 </body>
 </html>

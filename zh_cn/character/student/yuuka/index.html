@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -323,7 +331,7 @@
             
             <big><p>可在该故事中收集到回忆大厅。大厅BGM：
     <a href="/zh_cn/track/ost/17.html" >
-        <span>OST&nbsp;17.&nbsp;Irasshaimase (Irasshaimase)</span>
+        <span>OST&nbsp;17.&nbsp;Irasshaimase (欢迎光临)</span>
     </a>
     
     
@@ -2726,7 +2734,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-character-Yuuka">
-        <span>【6】OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>【6】OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2749,7 +2757,7 @@
 
             <li id="track-OST_76">
     <a href="/zh_cn/track/ost/76.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_76-character-Yuuka">
-        <span>【6】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>【6】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_76-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2795,12 +2803,12 @@
 
             <li id="track-OST_18">
     <a href="/zh_cn/track/ost/18.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_18-character-Yuuka">
-        <span>【4】OST&nbsp;18.&nbsp;Mechanical JUNGLE (Mechanical JUNGLE)</span>
+        <span>【4】OST&nbsp;18.&nbsp;Mechanical JUNGLE (机械迷林)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_18-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Nervous</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-danger badge-tag">Emergency</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">紧张的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-danger badge-tag">紧急</span>&nbsp;</div>
 </li>
 
 
@@ -2818,7 +2826,7 @@
 
             <li id="track-OST_28">
     <a href="/zh_cn/track/ost/28.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_28-character-Yuuka">
-        <span>【4】OST&nbsp;28.&nbsp;Plug and Play (Plug and Play)</span>
+        <span>【4】OST&nbsp;28.&nbsp;Plug and Play (即插即用)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_28-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2841,7 +2849,7 @@
 
             <li id="track-OST_149">
     <a href="/zh_cn/track/ost/149.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_149-character-Yuuka">
-        <span>【4】OST&nbsp;149.&nbsp;Ark in the Blood Sky (Ark in the Blood Sky)</span>
+        <span>【4】OST&nbsp;149.&nbsp;Ark in the Blood Sky (血色天空中的方舟)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_149-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2864,12 +2872,12 @@
 
             <li id="track-OST_3">
     <a href="/zh_cn/track/ost/3.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_3-character-Yuuka">
-        <span>【3】OST&nbsp;3.&nbsp;Mischievous Step (Mischievous Step)</span>
+        <span>【3】OST&nbsp;3.&nbsp;Mischievous Step (不定的步伐)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_3-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Relaxing</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">轻松惬意</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -2892,7 +2900,7 @@
     <span onclick="showPopupByTooltipId('track-OST_101-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-danger badge-tag">Chaos</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-danger badge-tag">混乱</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -2910,12 +2918,12 @@
 
             <li id="track-OST_11">
     <a href="/zh_cn/track/ost/11.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_11-character-Yuuka">
-        <span>【2】OST&nbsp;11.&nbsp;Connected Sky (Connected Sky)</span>
+        <span>【2】OST&nbsp;11.&nbsp;Connected Sky (共同的天空)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_11-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Future</span>&nbsp;<span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-primary badge-tag">可能性</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;</div>
 </li>
 
 
@@ -2933,12 +2941,12 @@
 
             <li id="track-OST_13">
     <a href="/zh_cn/track/ost/13.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_13-character-Yuuka">
-        <span>【2】OST&nbsp;13.&nbsp;Barrier (Barrier)</span>
+        <span>【2】OST&nbsp;13.&nbsp;Barrier (障碍)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_13-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Cheerful</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">欢快</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -2956,12 +2964,12 @@
 
             <li id="track-OST_16">
     <a href="/zh_cn/track/ost/16.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_16-character-Yuuka">
-        <span>【2】OST&nbsp;16.&nbsp;MX Adventure (MX Adventure)</span>
+        <span>【2】OST&nbsp;16.&nbsp;MX Adventure (未知的冒险)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_16-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">可能性</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -2979,12 +2987,12 @@
 
             <li id="track-OST_20">
     <a href="/zh_cn/track/ost/20.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_20-character-Yuuka">
-        <span>【2】OST&nbsp;20.&nbsp;Tech N Tech (Tech N Tech)</span>
+        <span>【2】OST&nbsp;20.&nbsp;Tech N Tech (科技与技术)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_20-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Emergency</span>&nbsp;<span class="badge badge-danger badge-tag">Chaos</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">紧急</span>&nbsp;<span class="badge badge-danger badge-tag">混乱</span>&nbsp;</div>
 </li>
 
 
@@ -3002,7 +3010,7 @@
 
             <li id="track-OST_40">
     <a href="/zh_cn/track/ost/40.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_40-character-Yuuka">
-        <span>【2】OST&nbsp;40.&nbsp;Neo City Dive (Neo City Dive)</span>
+        <span>【2】OST&nbsp;40.&nbsp;Neo City Dive (潜入新城市)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_40-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3025,7 +3033,7 @@
 
             <li id="track-OST_64">
     <a href="/zh_cn/track/ost/64.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_64-character-Yuuka">
-        <span>【2】OST&nbsp;64.&nbsp;Pixel Time (Pixel Time)</span>
+        <span>【2】OST&nbsp;64.&nbsp;Pixel Time (像素时间)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_64-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3048,12 +3056,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-character-Yuuka">
-        <span>【2】OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>【2】OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -3071,7 +3079,7 @@
 
             <li id="track-OST_150">
     <a href="/zh_cn/track/ost/150.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_150-character-Yuuka">
-        <span>【2】OST&nbsp;150.&nbsp;System All Green (System All Green)</span>
+        <span>【2】OST&nbsp;150.&nbsp;System All Green (全系统就绪)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_150-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3094,12 +3102,12 @@
 
             <li id="track-OST_5">
     <a href="/zh_cn/track/ost/5.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_5-character-Yuuka">
-        <span>【1】OST&nbsp;5.&nbsp;Colorful Mess (Colorful Mess)</span>
+        <span>【1】OST&nbsp;5.&nbsp;Colorful Mess (缤纷的混乱)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_5-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-danger badge-tag">Chaos</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-danger badge-tag">混乱</span>&nbsp;</div>
 </li>
 
 
@@ -3122,7 +3130,7 @@
     <span onclick="showPopupByTooltipId('track-OST_6-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -3140,12 +3148,12 @@
 
             <li id="track-OST_7">
     <a href="/zh_cn/track/ost/7.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_7-character-Yuuka">
-        <span>【1】OST&nbsp;7.&nbsp;Unwelcome School (Unwelcome School)</span>
+        <span>【1】OST&nbsp;7.&nbsp;Unwelcome School (不受欢迎的学校)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_7-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Chaos</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">混乱</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -3163,12 +3171,12 @@
 
             <li id="track-OST_8">
     <a href="/zh_cn/track/ost/8.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_8-character-Yuuka">
-        <span>【1】OST&nbsp;8.&nbsp;Shady Girls (Shady Girls)</span>
+        <span>【1】OST&nbsp;8.&nbsp;Shady Girls (鬼鬼祟祟的女孩)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_8-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Naughty</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">调皮的</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -3186,12 +3194,12 @@
 
             <li id="track-OST_10">
     <a href="/zh_cn/track/ost/10.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_10-character-Yuuka">
-        <span>【1】OST&nbsp;10.&nbsp;Romantic Smile (Romantic Smile)</span>
+        <span>【1】OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_10-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Bright</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-primary badge-tag">Dream</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">梦想</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -3209,7 +3217,7 @@
 
             <li id="track-OST_17">
     <a href="/zh_cn/track/ost/17.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_17-character-Yuuka">
-        <span>【1】OST&nbsp;17.&nbsp;Irasshaimase (Irasshaimase)</span>
+        <span>【1】OST&nbsp;17.&nbsp;Irasshaimase (欢迎光临)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_17-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3232,7 +3240,7 @@
 
             <li id="track-OST_22">
     <a href="/zh_cn/track/ost/22.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_22-character-Yuuka">
-        <span>【1】OST&nbsp;22.&nbsp;Daily Routine 24/7 (Daily Routine 24/7)</span>
+        <span>【1】OST&nbsp;22.&nbsp;Daily Routine 24/7 (平常的一天)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_22-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3255,7 +3263,7 @@
 
             <li id="track-OST_23">
     <a href="/zh_cn/track/ost/23.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_23-character-Yuuka">
-        <span>【1】OST&nbsp;23.&nbsp;Party Time (Party Time)</span>
+        <span>【1】OST&nbsp;23.&nbsp;Party Time (派对时间)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_23-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3278,7 +3286,7 @@
 
             <li id="track-OST_29">
     <a href="/zh_cn/track/ost/29.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_29-character-Yuuka">
-        <span>【1】OST&nbsp;29.&nbsp;Alert (Alert)</span>
+        <span>【1】OST&nbsp;29.&nbsp;Alert (警报)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_29-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3301,7 +3309,7 @@
 
             <li id="track-OST_30">
     <a href="/zh_cn/track/ost/30.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_30-character-Yuuka">
-        <span>【1】OST&nbsp;30.&nbsp;Crossfire (Crossfire)</span>
+        <span>【1】OST&nbsp;30.&nbsp;Crossfire (交火)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_30-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3416,7 +3424,7 @@
 
             <li id="track-OST_39">
     <a href="/zh_cn/track/ost/39.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_39-character-Yuuka">
-        <span>【1】OST&nbsp;39.&nbsp;Water Drop (Water Drop)</span>
+        <span>【1】OST&nbsp;39.&nbsp;Water Drop (一滴水)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_39-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3439,7 +3447,7 @@
 
             <li id="track-OST_49">
     <a href="/zh_cn/track/ost/49.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_49-character-Yuuka">
-        <span>【1】OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (Mechanical JUNGLE (High-Tech Full On Mix))</span>
+        <span>【1】OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (机械迷林(High-Tech Full On Mix))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_49-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3485,7 +3493,7 @@
 
             <li id="track-OST_60">
     <a href="/zh_cn/track/ost/60.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_60-character-Yuuka">
-        <span>【1】OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange) (SAKURA PUNCH (Hard Arrange))</span>
+        <span>【1】OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange) (樱花绽放时 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_60-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3508,7 +3516,7 @@
 
             <li id="track-OST_68">
     <a href="/zh_cn/track/ost/68.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_68-character-Yuuka">
-        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange) (Virtual Storm (Hard Arrange))</span>
+        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange) (虚拟风暴 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_68-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3531,7 +3539,7 @@
 
             <li id="track-OST_74">
     <a href="/zh_cn/track/ost/74.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_74-character-Yuuka">
-        <span>【1】OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (Tech N Tech (Hard Arrange))</span>
+        <span>【1】OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_74-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3554,7 +3562,7 @@
 
             <li id="track-OST_75">
     <a href="/zh_cn/track/ost/75.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_75-character-Yuuka">
-        <span>【1】OST&nbsp;75.&nbsp;Alert (Hard Arrange) (Alert (Hard Arrange))</span>
+        <span>【1】OST&nbsp;75.&nbsp;Alert (Hard Arrange) (警报 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_75-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3577,7 +3585,7 @@
 
             <li id="track-OST_100">
     <a href="/zh_cn/track/ost/100.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_100-character-Yuuka">
-        <span>【1】OST&nbsp;100.&nbsp;Undefined Behaviour (Undefined Behaviour)</span>
+        <span>【1】OST&nbsp;100.&nbsp;Undefined Behaviour (未定义行为)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_100-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3600,12 +3608,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-character-Yuuka">
-        <span>【1】OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【1】OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -3623,12 +3631,12 @@
 
             <li id="track-OST_135">
     <a href="/zh_cn/track/ost/135.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_135-character-Yuuka">
-        <span>【1】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【1】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_135-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Discouraged</span>&nbsp;<span class="badge badge-danger badge-tag">Sad</span>&nbsp;<span class="badge badge-danger badge-tag">Failure</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">灰心的</span>&nbsp;<span class="badge badge-danger badge-tag">悲伤的</span>&nbsp;<span class="badge badge-danger badge-tag">失败</span>&nbsp;</div>
 </li>
 
 
@@ -3646,7 +3654,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#Yuuka" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-character-Yuuka">
-        <span>【1】OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>【1】OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-character-Yuuka', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -7149,7 +7157,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656896.573124)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252014.0082781)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -7161,6 +7169,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -7173,7 +7182,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656896.5731318
+Generated time (UTC): 1711252014.008286
 -->
 </body>
 </html>

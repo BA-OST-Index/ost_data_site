@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -316,9 +324,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">妮露表示AMAS不值一提，莉央无奈只能正式让时开始压制。切换了所谓“模式”的时动作达到了前所未有的敏捷，瞬间就将妮露打倒并压制。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠表示AMAS不值一提，莉音无奈只能正式让季开始压制。切换了所谓“模式”的季动作达到了前所未有的敏捷，瞬间就将宁瑠打倒并压制。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄表示AMAS不值一提，莉央无奈只能正式让时开始压制。切换了所谓“模式”的时动作达到了前所未有的敏捷，瞬间就将尼禄打倒并压制。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -510,9 +519,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -544,8 +553,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -574,6 +583,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -593,9 +603,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">妮露被压制后，莉央指示AMAS去回收爱丽丝。柚子和绿试图阻止，但遭莉央严厉警告。老师要求莉央住手，莉央反问老师作为大人更应理解她才对，但老师以“保护学生”为由争论，遭到莉央的强烈质问。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠被压制后，莉音指示AMAS去回收爱丽丝。柚子和绿试图阻止，但遭莉音严厉警告。老师要求莉音住手，莉音反问老师作为大人更应理解她才对，但老师以“保护学生”为由争论，遭到莉音的强烈质问。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄被压制后，莉央指示AMAS去回收爱丽丝。柚子和绿试图阻止，但遭莉央严厉警告。老师要求莉央住手，莉央反问老师作为大人更应理解她才对，但老师以“保护学生”为由争论，遭到莉央的强烈质问。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -787,9 +798,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -803,7 +814,7 @@
 
             <li id="track-OST_92">
     <a href="/zh_cn/track/ost/92.html#story-MAIN_2_2_10" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_92-all">
-        <span>OST&nbsp;92.&nbsp;Crucial Issue (Crucial Issue)</span>
+        <span>OST&nbsp;92.&nbsp;Crucial Issue (严重问题)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_92-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -821,8 +832,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -851,6 +862,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -870,9 +882,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">莉央强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程部的轨道炮为“勇者”的证明理论，但莉央远程关闭了电源，这一证明被无效化。妮露在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">莉音强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程师部的轨道炮为“勇者”的证明理论，但莉音远程关闭了电源，这一证明被无效化。宁瑠在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">莉央强调牺牲一人为其他人的做法是正确的，并且再次申明了爱丽丝的身份。绿试图以工程部的轨道炮为“勇者”的证明理论，但莉央远程关闭了电源，这一证明被无效化。尼禄在一旁督促爱丽丝不要放弃，但最终并未如愿。爱丽丝会想起种种，担心再给大家带来伤害，最后同意与会长走，其他人虽然失落但也毫无他法。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1102,9 +1115,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1118,12 +1131,12 @@
 
             <li id="track-OST_134">
     <a href="/zh_cn/track/ost/134.html#story-MAIN_2_2_10" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_134-all">
-        <span>OST&nbsp;134.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;134.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_134-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Gloomy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;<span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">阴森的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;<span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -1136,8 +1149,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1196,6 +1209,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1215,9 +1229,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">爱丽丝接受了莉央的话，并试图向大家重新解释，希望所有人能够理解她的选择。爱丽丝表达了对众人一直陪伴着她的谢意，表示自己一直以来都很开心。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝接受了莉音的话，并试图向大家重新解释，希望所有人能够理解她的选择。爱丽丝表达了对众人一直陪伴着她的谢意，表示自己一直以来都很开心。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝接受了莉央的话，并试图向大家重新解释，希望所有人能够理解她的选择。爱丽丝表达了对众人一直陪伴着她的谢意，表示自己一直以来都很开心。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1269,9 +1284,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1285,12 +1300,12 @@
 
             <li id="track-OST_140">
     <a href="/zh_cn/track/ost/140.html#story-MAIN_2_2_10" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_140-all">
-        <span>OST&nbsp;140.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;140.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_140-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Discouraged</span>&nbsp;<span class="badge badge-danger badge-tag">Sad</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">灰心的</span>&nbsp;<span class="badge badge-danger badge-tag">悲伤的</span>&nbsp;</div>
 </li>
 
 
@@ -1303,8 +1318,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1378,6 +1393,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1397,9 +1413,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1"><span class="lang-zh-cn-cn">直到莉央走前，所有人都被压制的死死的，一根手指头都动不了。众人被无力感压垮。爱丽丝，就此不见。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">直到莉音走前，所有人都被压制的死死的，一根手指头都动不了。众人被无力感压垮。爱丽丝，就此不见。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">直到莉央走前，所有人都被压制的死死的，一根手指头都动不了。众人被无力感压垮。爱丽丝，就此不见。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1591,9 +1608,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1607,7 +1624,7 @@
 
             <li id="track-OST_92">
     <a href="/zh_cn/track/ost/92.html#story-MAIN_2_2_10" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_92-all">
-        <span>OST&nbsp;92.&nbsp;Crucial Issue (Crucial Issue)</span>
+        <span>OST&nbsp;92.&nbsp;Crucial Issue (严重问题)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_92-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1625,8 +1642,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1655,6 +1672,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1738,7 +1756,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.1467235)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.9197967)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1750,6 +1768,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1762,7 +1781,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.1467295
+Generated time (UTC): 1711252009.919802
 -->
 </body>
 </html>

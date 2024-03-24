@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_en_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -108,6 +109,13 @@
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
             <script>showLangSwitchStatus();</script>
+            <br />
+            <span>Story View Mode: </span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>All</option>
+                <option value="text-only">Desc Only</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -296,9 +304,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">The Game Development Department started discussing about the game. From the mechanics of the dungeon, to the weapon and arsenal, as well as the art and manifestations. Midori was in great dissatisfaction due to how much emphasis did Momoi put on art. And with the fact that she often changed ideas, many art resources were discarded too. The twins forced Sensei to make a decision.</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -464,9 +473,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -516,8 +525,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -546,6 +555,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -560,9 +570,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">Yuzu stopped the twins and said that it should be decided by "that" - playing a game - a tradition in the club. While the two were playing games, Yuzu assigned Aris the task of going outside for a walk, in the hope of some inspirations.</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -728,9 +739,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -780,8 +791,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -810,6 +821,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -824,9 +836,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">Aris and Sensei came to the campus. Aris said that both she and Sensei were "Beginner Heros", due to a small argument in which Momoi tries to put BOSSes right at the beginning of the game and was rejected. Aris wondered how to complete Yuzu's missions, and Sensei advised Aris to just go forward to see if anything happens.</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -878,9 +891,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -912,8 +925,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -957,6 +970,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1040,7 +1054,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656878.9723327)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711251998.0303955)})
     </script>
 </footer>
     <script>displayCharLangElement('en');</script>
@@ -1051,6 +1065,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1063,7 +1078,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656878.9723382
+Generated time (UTC): 1711251998.0304005
 -->
 </body>
 </html>

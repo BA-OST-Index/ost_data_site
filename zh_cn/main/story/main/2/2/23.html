@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -316,9 +324,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">乃爱解释称，优香觉得不插手总感觉哪里不对，于是前来协助。优香呵斥了莉央，说明会严厉追究她的责任。工程部此时也准备就绪，带上了改装好的前卫君MK.2前来协助。Key重启系统，开始重新确保资源并将兵力向中心高塔聚集，受到前卫君和工程部干扰。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">乃爱解释称，优香觉得不插手总感觉哪里不对，于是前来协助。优香呵斥了莉音，说明会严厉追究她的责任。工程师部此时也准备就绪，带上了改装好的前卫君MK.2前来协助。Key重启系统，开始重新确保资源并将兵力向中心高塔聚集，受到前卫君和工程师部干扰。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">乃爱解释称，优香觉得不插手总感觉哪里不对，于是前来协助。优香呵斥了莉央，说明会严厉追究她的责任。工程部此时也准备就绪，带上了改装好的前卫君MK.2前来协助。Key重启系统，开始重新确保资源并将兵力向中心高塔聚集，受到前卫君和工程部干扰。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -688,9 +697,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -704,7 +713,7 @@
 
             <li id="track-OST_76">
     <a href="/zh_cn/track/ost/76.html#story-MAIN_2_2_23" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_76-all">
-        <span>OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_76-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -722,8 +731,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -767,6 +776,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -786,9 +796,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">在Key以为仍有机会时，日鞠突然出现并解释C&C和英美已经将入口堵上，Key无法召集兵力进入高塔。莉央惊讶于日鞠竟未逃走，而日鞠则表示早已对此有所预料。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在Key以为仍有机会时，阳葵突然出现并解释C&C和英美已经将入口堵上，Key无法召集兵力进入高塔。莉音惊讶于阳葵竟未逃走，而阳葵则表示早已对此有所预料。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在Key以为仍有机会时，日鞠突然出现并解释C&C和英美已经将入口堵上，Key无法召集兵力进入高塔。莉央惊讶于日鞠竟未逃走，而日鞠则表示早已对此有所预料。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -866,9 +877,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -882,7 +893,7 @@
 
             <li id="track-OST_40">
     <a href="/zh_cn/track/ost/40.html#story-MAIN_2_2_23" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_40-all">
-        <span>OST&nbsp;40.&nbsp;Neo City Dive (Neo City Dive)</span>
+        <span>OST&nbsp;40.&nbsp;Neo City Dive (潜入新城市)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_40-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -900,8 +911,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -930,6 +941,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -949,9 +961,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">日鞠指出在当前状态下Key有可能会彻底接管爱丽丝的人格，因而目前的最佳方案应当是将爱丽丝唤醒。至于如何唤醒，日鞠提出让游戏开发部和老师一起潜入机器的意识和数据库中，在那找回爱丽丝。莉央指出了其中的危险，但众人义无反顾；在千年几乎全部有生作战力量的保护下，日鞠开始寻找其中的突破口。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳葵指出在当前状态下Key有可能会彻底接管爱丽丝的人格，因而目前的最佳方案应当是将爱丽丝唤醒。至于如何唤醒，阳葵提出让游戏开发部和老师一起潜入机器的意识和数据库中，在那找回爱丽丝。莉音指出了其中的危险，但众人义无反顾；在千年几乎全部有生作战力量的保护下，阳葵开始寻找其中的突破口。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日鞠指出在当前状态下Key有可能会彻底接管爱丽丝的人格，因而目前的最佳方案应当是将爱丽丝唤醒。至于如何唤醒，日鞠提出让游戏开发部和老师一起潜入机器的意识和数据库中，在那找回爱丽丝。莉央指出了其中的危险，但众人义无反顾；在千禧年几乎全部有生作战力量的保护下，日鞠开始寻找其中的突破口。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1701,9 +1714,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1717,7 +1730,7 @@
 
             <li id="track-OST_40">
     <a href="/zh_cn/track/ost/40.html#story-MAIN_2_2_23" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_40-all">
-        <span>OST&nbsp;40.&nbsp;Neo City Dive (Neo City Dive)</span>
+        <span>OST&nbsp;40.&nbsp;Neo City Dive (潜入新城市)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_40-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1735,8 +1748,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1825,6 +1838,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1908,7 +1922,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.1390445)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.9124987)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1920,6 +1934,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1932,7 +1947,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.139051
+Generated time (UTC): 1711252009.9125035
 -->
 </body>
 </html>

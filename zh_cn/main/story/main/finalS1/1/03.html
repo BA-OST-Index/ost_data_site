@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -282,7 +290,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV17V4y1t7m5/?p=3')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -327,9 +335,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">阿拜多斯沙漠，那里驻扎着的PMC士兵似乎挖到了一件大东西。他们立刻联系了PMC将军和联邦学生会的防卫室。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -369,9 +378,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -403,8 +412,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -433,6 +442,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -456,9 +466,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">在路上骑车的白子看到，PMC似乎有大量兵力正在向沙漠地区移动。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -536,9 +547,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -570,8 +581,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -600,6 +611,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -623,9 +635,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">白子向对策委员会众人报告了自己所看见的东西，指出这些天来PMC的军力移动相当奇怪。大家表示同意。星野提出不如大家偷偷溜进去看一眼，但被绫音提醒了之前的事情。这时有人提议询问老师的意见；虽然害怕打扰老师，绫音还是让老师有时间就来阿拜多斯一趟。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -829,9 +842,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -845,12 +858,12 @@
 
             <li id="track-OST_13">
     <a href="/zh_cn/track/ost/13.html#story-MAIN_finalS1_1_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_13-all">
-        <span>OST&nbsp;13.&nbsp;Barrier (Barrier)</span>
+        <span>OST&nbsp;13.&nbsp;Barrier (障碍)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_13-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Cheerful</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">欢快</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -863,8 +876,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -893,6 +906,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -916,9 +930,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">绿不太同意桃在“剑与魔法的RPG”里加上太空战舰这一要素。柚子和爱丽丝都觉得主意不错。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绿不太同意桃井在“剑与魔法的RPG”里加上太空战舰这一要素。柚子和爱丽丝都觉得主意不错。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绿不太同意桃井在“剑与魔法的RPG”里加上太空战舰这一要素。柚子和爱丽丝都觉得主意不错。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1084,9 +1099,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1100,7 +1115,7 @@
 
             <li id="track-OST_64">
     <a href="/zh_cn/track/ost/64.html#story-MAIN_finalS1_1_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_64-all">
-        <span>OST&nbsp;64.&nbsp;Pixel Time (Pixel Time)</span>
+        <span>OST&nbsp;64.&nbsp;Pixel Time (像素时间)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_64-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1118,8 +1133,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1148,6 +1163,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1171,9 +1187,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1"><span class="lang-zh-cn-cn">爱丽丝刚刚接受了工程部和真理会的检查，并被要求要定期来访。真理会没有找到Kei的痕迹，不过爱丽丝表示，下一次见到Kei时，她会更加大力地把她打飞的。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝刚刚接受了工程师部和贝里塔斯的检查，并被要求要定期来访。贝里塔斯没有找到Kei的痕迹，不过爱丽丝表示，下一次见到Kei时，她会更加大力地把她打飞的。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝刚刚接受了工程部和真理社的检查，并被要求要定期来访。真理社没有找到Kei的痕迹，不过爱丽丝表示，下一次见到Kei时，她会更加大力地把她打飞的。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1339,9 +1356,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1355,7 +1372,7 @@
 
             <li id="track-OST_64">
     <a href="/zh_cn/track/ost/64.html#story-MAIN_finalS1_1_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_64-all">
-        <span>OST&nbsp;64.&nbsp;Pixel Time (Pixel Time)</span>
+        <span>OST&nbsp;64.&nbsp;Pixel Time (像素时间)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_64-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1373,8 +1390,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1403,6 +1420,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1426,9 +1444,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1"><span class="lang-zh-cn-cn">爱丽丝觉得“宇宙勇者”这个主意非常棒，畅想自己登上宇宙战舰的那一天。据说工程部正在不断钻研中。最后，桃提出把游戏换成“太空歌剧”为背景的“弹幕射击游戏”，这让绿不是特别开心。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝觉得“宇宙勇者”这个主意非常棒，畅想自己登上宇宙战舰的那一天。据说工程师部正在不断钻研中。最后，桃井提出把游戏换成“太空歌剧”为背景的“弹幕射击游戏”，这让绿不是特别开心。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝觉得“宇宙勇者”这个主意非常棒，畅想自己登上宇宙战舰的那一天。据说工程部正在不断钻研中。最后，桃井提出把游戏换成“太空歌剧”为背景的“弹幕射击游戏”，这让绿不是特别开心。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1594,9 +1613,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1610,7 +1629,7 @@
 
             <li id="track-OST_64">
     <a href="/zh_cn/track/ost/64.html#story-MAIN_finalS1_1_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_64-all">
-        <span>OST&nbsp;64.&nbsp;Pixel Time (Pixel Time)</span>
+        <span>OST&nbsp;64.&nbsp;Pixel Time (像素时间)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_64-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1628,8 +1647,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1658,6 +1677,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1681,9 +1701,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-7-seg-1">Kei一直在暗处看着爱丽丝。Kei理解爱丽丝想要摆脱自己“王女”的身份，但指出命运最终会让她成为那样。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1723,9 +1744,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1739,7 +1760,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_1_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1757,8 +1778,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1787,6 +1808,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1810,9 +1832,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-1"><span class="lang-zh-cn-cn">作为全千年最厉害的黑客，日鞠承担下了对莉央建造的都市的善后工作――虽然更多像是莉央直接推卸了责任。日鞠访问了莉央存储的数据，这才发现她掌握的东西之多，同时也有些理解了她的偏执。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">作为全千年最厉害的黑客，阳葵承担下了对莉音建造的都市的善后工作――虽然更多像是莉音直接推卸了责任。阳葵访问了莉音存储的数据，这才发现她掌握的东西之多，同时也有些理解了她的偏执。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">作为全千禧年最厉害的黑客，日鞠承担下了对莉央建造的都市的善后工作――虽然更多像是莉央直接推卸了责任。日鞠访问了莉央存储的数据，这才发现她掌握的东西之多，同时也有些理解了她的偏执。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1864,9 +1887,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1880,7 +1903,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_1_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1898,8 +1921,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1928,6 +1951,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1951,9 +1975,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-9-seg-1"><span class="lang-zh-cn-cn">英美突然来到日鞠身边，她追问“大姐大”究竟说了什么。日鞠表示具体内容还需要时间，但大概就是要为其他特异现象做好准备，同时基沃托斯要迎来危机之类的。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">英美突然来到阳葵身边，她追问“大姐大”究竟说了什么。阳葵表示具体内容还需要时间，但大概就是要为其他特异现象做好准备，同时基沃托斯要迎来危机之类的。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">英美突然来到日鞠身边，她追问“大姐大”究竟说了什么。日鞠表示具体内容还需要时间，但大概就是要为其他特异现象做好准备，同时基沃托斯要迎来危机之类的。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2043,9 +2068,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2059,7 +2084,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_1_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2077,8 +2102,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2107,6 +2132,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2130,9 +2156,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-10-seg-1"><span class="lang-zh-cn-cn">时突然出现在两人面前，吓到了两人。时表示莉央只跟她说了“以后自由生活吧”云云，但她并不知道怎么做，于是就一直待着这里。日鞠询问时加入C&C的情况，时表示前辈们待她很好，但只是还有隔阂。最后日鞠决定，就此事先联系沙勒请求帮助。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季突然出现在两人面前，吓到了两人。季表示莉音只跟她说了“以后自由生活吧”云云，但她并不知道怎么做，于是就一直待着这里。阳葵询问季加入C&C的情况，季表示前辈们待她很好，但只是还有隔阂。最后阳葵决定，就此事先联系夏莱请求帮助。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时突然出现在两人面前，吓到了两人。时表示莉央只跟她说了“以后自由生活吧”云云，但她并不知道怎么做，于是就一直待着这里。日鞠询问时加入C&C的情况，时表示前辈们待她很好，但只是还有隔阂。最后日鞠决定，就此事先联系夏莱请求帮助。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2260,9 +2287,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2276,7 +2303,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_1_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2294,8 +2321,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2324,12 +2351,13 @@
         
     
 
+            </div>
         </ul>
     
 
 
     <script>
-        add_tooltip_data({ 'story-MAIN_finalS1_1_3-source-1': '<p class="tooltip-title">沙漠地下的东西</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-2': '<p class="tooltip-title">异常的PMC兵力</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=30&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-3': '<p class="tooltip-title">去看一眼沙漠</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=52&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-4': '<p class="tooltip-title">搭上宇宙战舰的勇者</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=124&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-5': '<p class="tooltip-title">定期接受检查的爱丽丝</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=155&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-6': '<p class="tooltip-title">真正登上宇宙战舰的那一天</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=199&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-7': '<p class="tooltip-title">王女无法摆脱的命运</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=240&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-8': '<p class="tooltip-title"><span class="lang-zh-cn-cn">处理烂摊子的日鞠</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">处理烂摊子的阳葵</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">处理烂摊子的日鞠</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=267&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-9': '<p class="tooltip-title">基沃托斯的危机</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=300&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-10': '<p class="tooltip-title"><span class="lang-zh-cn-cn">时的拜访</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季的拜访</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时的拜访</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=329&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
+        add_tooltip_data({ 'story-MAIN_finalS1_1_3-source-1': '<p class="tooltip-title">沙漠地下的东西</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-2': '<p class="tooltip-title">异常的PMC兵力</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=30&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-3': '<p class="tooltip-title">去看一眼沙漠</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=52&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-4': '<p class="tooltip-title">搭上宇宙战舰的勇者</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=124&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-5': '<p class="tooltip-title">定期接受检查的爱丽丝</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=155&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-6': '<p class="tooltip-title">真正登上宇宙战舰的那一天</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=199&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-7': '<p class="tooltip-title">王女无法摆脱的命运</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=240&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-8': '<p class="tooltip-title"><span class="lang-zh-cn-cn">处理烂摊子的日鞠</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">处理烂摊子的阳葵</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">处理烂摊子的日鞠</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=267&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-9': '<p class="tooltip-title">基沃托斯的危机</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=300&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_3-source-10': '<p class="tooltip-title"><span class="lang-zh-cn-cn">时的拜访</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季的拜访</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时的拜访</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=3&t=329&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
     </script>
 
     
@@ -2407,7 +2435,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.3102016)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.0753505)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -2419,6 +2447,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2431,7 +2460,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.310209
+Generated time (UTC): 1711252010.0753562
 -->
 </body>
 </html>

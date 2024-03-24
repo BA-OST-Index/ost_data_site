@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -268,7 +276,7 @@
             
                 <li>
     <a href="/zh_cn/track/ost/115.html" >
-        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (Fall Into The Rabbit Hole)</span>
+        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (坠入兔穴)</span>
     </a>
     
     <span>&nbsp;by&nbsp;Unknown</span>
@@ -294,7 +302,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV17V4y1t7m5/?p=14')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -339,9 +347,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">盖玛特利亚继续会议，整理了当前的混乱情况。黑服最后总结要为各种情况做好准备。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -433,9 +442,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -449,7 +458,7 @@
 
             <li id="track-OST_70">
     <a href="/zh_cn/track/ost/70.html#story-MAIN_finalS1_1_14" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_70-all">
-        <span>OST&nbsp;70.&nbsp;Black Suit (Black Suit)</span>
+        <span>OST&nbsp;70.&nbsp;Black Suit (黑色西服人)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_70-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -467,8 +476,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -497,6 +506,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -520,9 +530,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">就在盖玛特利亚众人谈话时，有一位神秘人到访。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -538,9 +549,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -556,8 +567,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -631,6 +642,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -654,9 +666,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">将军在沙勒内做好了准备。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">将军在夏莱内做好了准备。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">将军在夏莱内做好了准备。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -722,9 +735,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -740,8 +753,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -815,13 +828,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-2"><span class="lang-zh-cn-cn">RABBIT小队开始突入沙勒大楼。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">RABBIT小队开始突入夏莱大楼。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">RABBIT小队开始突入夏莱大楼。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -873,9 +888,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -891,8 +906,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -921,6 +936,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -944,9 +960,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">RABBIT小队与生活安全局的两位共同突入沙勒。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">RABBIT小队与生活安全局的两位共同突入夏莱。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">RABBIT小队与生活安全局的两位共同突入夏莱。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1206,9 +1223,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1222,7 +1239,7 @@
 
             <li id="track-OST_115">
     <a href="/zh_cn/track/ost/115.html#story-MAIN_finalS1_1_14" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_115-all">
-        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (Fall Into The Rabbit Hole)</span>
+        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (坠入兔穴)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_115-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1240,8 +1257,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1257,6 +1274,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1280,9 +1298,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1">PMC节节溃败。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1322,9 +1341,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1338,7 +1357,7 @@
 
             <li id="track-OST_115">
     <a href="/zh_cn/track/ost/115.html#story-MAIN_finalS1_1_14" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_115-all">
-        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (Fall Into The Rabbit Hole)</span>
+        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (坠入兔穴)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_115-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1356,8 +1375,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1416,13 +1435,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-2">RABBIT小队夺取了工艺室。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1500,9 +1521,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1516,7 +1537,7 @@
 
             <li id="track-OST_115">
     <a href="/zh_cn/track/ost/115.html#story-MAIN_finalS1_1_14" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_115-all">
-        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (Fall Into The Rabbit Hole)</span>
+        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (坠入兔穴)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_115-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1534,8 +1555,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1564,13 +1585,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-3">老师救出了琳。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1662,9 +1685,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1678,7 +1701,7 @@
 
             <li id="track-OST_115">
     <a href="/zh_cn/track/ost/115.html#story-MAIN_finalS1_1_14" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_115-all">
-        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (Fall Into The Rabbit Hole)</span>
+        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (坠入兔穴)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_115-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1696,8 +1719,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1726,6 +1749,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1749,9 +1773,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1"><span class="lang-zh-cn-cn">RABBIT小队控制住了PMC将军，但将军以手中的自爆按钮作为威胁。美游从远处狙击并成功。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">RABBIT小队控制住了PMC将军，但将军以手中的自爆按钮作为威胁。美优从远处狙击并成功。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">RABBIT小队控制住了PMC将军，但将军以手中的自爆按钮作为威胁。美游从远处狙击并成功。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1907,9 +1932,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1923,7 +1948,7 @@
 
             <li id="track-OST_115">
     <a href="/zh_cn/track/ost/115.html#story-MAIN_finalS1_1_14" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_115-all">
-        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (Fall Into The Rabbit Hole)</span>
+        <span>OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (坠入兔穴)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_115-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1941,8 +1966,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1971,12 +1996,13 @@
         
     
 
+            </div>
         </ul>
     
 
 
     <script>
-        add_tooltip_data({ 'story-MAIN_finalS1_1_14-source-1': '<p class="tooltip-title">混乱的情况</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-2': '<p class="tooltip-title">神秘人的到访</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=63&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-3': '<p class="tooltip-title"><span class="lang-zh-cn-cn">突入沙勒大楼</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">突入夏莱大楼</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">突入夏莱大楼</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=84&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-4': '<p class="tooltip-title">&#91;战斗&#93; RABBIT小队的战斗</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=108&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-5': '<p class="tooltip-title">被击败的PMC</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=240&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-6': '<p class="tooltip-title">同归于尽</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=287&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
+        add_tooltip_data({ 'story-MAIN_finalS1_1_14-source-1': '<p class="tooltip-title">混乱的情况</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-2': '<p class="tooltip-title">神秘人的到访</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=63&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-3': '<p class="tooltip-title"><span class="lang-zh-cn-cn">突入沙勒大楼</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">突入夏莱大楼</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">突入夏莱大楼</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=84&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-4': '<p class="tooltip-title">&#91;战斗&#93; RABBIT小队的战斗</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=108&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-5': '<p class="tooltip-title">被击败的PMC</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=240&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_14-source-6': '<p class="tooltip-title">同归于尽</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=14&t=287&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
     </script>
 
     
@@ -2054,7 +2080,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.2499552)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.0185304)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -2066,6 +2092,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2078,7 +2105,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.2499623
+Generated time (UTC): 1711252010.0185363
 -->
 </body>
 </html>

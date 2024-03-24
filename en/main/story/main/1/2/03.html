@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_en_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -108,6 +109,13 @@
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
             <script>showLangSwitchStatus();</script>
+            <br />
+            <span>Story View Mode: </span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>All</option>
+                <option value="text-only">Desc Only</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -296,9 +304,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">Due to the inability to pay rent, as well as exposing their location during the fight with the Prefect Team, the Problem Solver has to move their office out of the place. Though saying "Because this is how a badass should be...", Aru is interrupted and commented with "really worries others".</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -464,9 +473,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -498,8 +507,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -528,6 +537,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -542,9 +552,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">Sensei meets all the Problem Solver 68 on move and wishes them a happy trip. Aru says it's a pleasant experience to be a cooperation partner and promises they will come back to Abydos for him, and especially for the ramen. The truck loaded with all the stuff disappears at the cross then.</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -710,9 +721,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -744,8 +755,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -774,6 +785,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -788,9 +800,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">Ayane and Serika visits Master Shiba and expresses their pity on the destruction of the ramen shop. But unexpectedly, Master Shiba says that he has already received a notice to close down the store, which makes the two very surprised. Master Shiba explains that due to the inability to pay the debts, the lands of Abydos are not belong to the school and are bought by Kaiser. Master Shiba also mentions that there is a big bag of money in front of the store, and Sensei suggests that they might be used as a reconstruction fund.</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -906,9 +919,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -958,8 +971,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -988,6 +1001,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1071,7 +1085,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656878.7656775)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711251997.8228014)})
     </script>
 </footer>
     <script>displayCharLangElement('en');</script>
@@ -1082,6 +1096,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1094,7 +1109,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656878.7656827
+Generated time (UTC): 1711251997.8228066
 -->
 </body>
 </html>

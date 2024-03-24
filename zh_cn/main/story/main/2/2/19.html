@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -316,9 +324,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">C&C没对这个机甲造成一点伤害，千寻报告了这点。同时千寻还注意到，都市的全部电力和算力都集中在了这套机甲上，使它几乎甚至可以确定未来。听闻此话的游戏开发部众人纷纷表示“这不和作弊一样？！”老师对此毫无办法，而这时茜突然指出，这套装甲是为地面作战设计。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">C&C没对这个机甲造成一点伤害，千寻报告了这点。同时千寻还注意到，都市的全部电力和算力都集中在了这套机甲上，使它几乎甚至可以确定未来。听闻此话的游戏开发部众人纷纷表示“这不和作弊一样？！”老师对此毫无办法，而这时朱音突然指出，这套装甲是为地面作战设计。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">C&C没对这个机甲造成一点伤害，千寻报告了这点。同时千寻还注意到，都市的全部电力和算力都集中在了这套机甲上，使它几乎甚至可以确定未来。听闻此话的游戏开发部众人纷纷表示“这不和作弊一样？！”老师对此毫无办法，而这时茜突然指出，这套装甲是为地面作战设计。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -598,9 +607,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -614,12 +623,12 @@
 
             <li id="track-OST_137">
     <a href="/zh_cn/track/ost/137.html#story-MAIN_2_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_137-all">
-        <span>OST&nbsp;137.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;137.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_137-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">可能性</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;</div>
 </li>
 
 
@@ -632,8 +641,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -662,6 +671,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -681,9 +691,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">老师突然意识到了什么，命令妮露将战场转移到房顶上。莉央表示转移到楼顶同样没有，但老师笑而不语。时向妮露开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师突然意识到了什么，命令宁瑠将战场转移到房顶上。莉音表示转移到楼顶同样没有，但老师笑而不语。季向宁瑠开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师突然意识到了什么，命令尼禄将战场转移到房顶上。莉央表示转移到楼顶同样没有，但老师笑而不语。时向尼禄开炮，炸掉了房顶，两人从空中摔落。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -799,9 +810,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -815,7 +826,7 @@
 
             <li id="track-OST_75">
     <a href="/zh_cn/track/ost/75.html#story-MAIN_2_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_75-all">
-        <span>OST&nbsp;75.&nbsp;Alert (Hard Arrange) (Alert (Hard Arrange))</span>
+        <span>OST&nbsp;75.&nbsp;Alert (Hard Arrange) (警报 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_75-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -833,7 +844,7 @@
 
             <li id="track-OST_74">
     <a href="/zh_cn/track/ost/74.html#story-MAIN_2_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_74-all">
-        <span>OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (Tech N Tech (Hard Arrange))</span>
+        <span>OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_74-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -851,8 +862,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -911,6 +922,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -930,9 +942,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">老师的意图此时终于表现出来：既然是为地面作战设计，在空中又怎么样呢？事实证明的确如此。虽然只有一瞬间的时间，但柚子已经完全注意到了其弱点所在。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1136,9 +1149,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1152,7 +1165,7 @@
 
             <li id="track-OST_74">
     <a href="/zh_cn/track/ost/74.html#story-MAIN_2_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_74-all">
-        <span>OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (Tech N Tech (Hard Arrange))</span>
+        <span>OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_74-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1170,7 +1183,7 @@
 
             <li id="track-OST_49">
     <a href="/zh_cn/track/ost/49.html#story-MAIN_2_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_49-all">
-        <span>OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (Mechanical JUNGLE (High-Tech Full On Mix))</span>
+        <span>OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (机械迷林(High-Tech Full On Mix))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_49-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1188,8 +1201,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1263,6 +1276,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1282,9 +1296,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">妮露最终还是没能胜利。莉央指示时回收老师，但此时机体却出现了一丝破绽，千寻让桃抓住机会对其攻击，成功让众人先行撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">宁瑠最终还是没能胜利。莉音指示时回收老师，但此时机体却出现了一丝破绽，千寻让桃井抓住机会对其攻击，成功让众人先行撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">尼禄最终还是没能胜利。莉央指示时回收老师，但此时机体却出现了一丝破绽，千寻让桃井抓住机会对其攻击，成功让众人先行撤退。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1476,9 +1491,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1492,12 +1507,12 @@
 
             <li id="track-OST_137">
     <a href="/zh_cn/track/ost/137.html#story-MAIN_2_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_137-all">
-        <span>OST&nbsp;137.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;137.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_137-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">可能性</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;</div>
 </li>
 
 
@@ -1510,8 +1525,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1540,6 +1555,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1623,7 +1639,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.0821376)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.8601532)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1635,6 +1651,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1647,7 +1664,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.0821445
+Generated time (UTC): 1711252009.8601582
 -->
 </body>
 </html>

@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -268,7 +276,7 @@
             
                 <li>
     <a href="/zh_cn/track/ost/76.html" >
-        <span>OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     
     <span>&nbsp;by&nbsp;Mitsukiyo</span>
@@ -328,9 +336,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">就在对策委员会众人以为甩开PMC时，PMC理事突然又挡在他们面前。理事对计划泡汤表示非常可惜和不快，众人立刻开始战斗。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -522,9 +531,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -538,7 +547,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_1_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -556,8 +565,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -586,6 +595,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -605,9 +615,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">【与敌人进行交战】</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -785,9 +796,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -801,7 +812,7 @@
 
             <li id="track-OST_76">
     <a href="/zh_cn/track/ost/76.html#story-MAIN_1_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_76-all">
-        <span>OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_76-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -819,8 +830,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -836,6 +847,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -855,9 +867,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">梦前辈回忆起自己第一次见到星野时的样子。她称赞星野可爱而坚强，说遇到她就像梦一样——这着实是一场奇迹。星野并不认为日常可以被称作为“奇迹”，但前辈否认了她的说法。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -935,9 +948,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -951,7 +964,7 @@
 
             <li id="track-OST_35">
     <a href="/zh_cn/track/ost/35.html#story-MAIN_1_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_35-all">
-        <span>OST&nbsp;35.&nbsp;Morose Dreamer (Morose Dreamer)</span>
+        <span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_35-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -969,8 +982,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -986,6 +999,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1005,9 +1019,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1">对策委员会一行人在外面强行打开了门。星野意识模糊，不知自己的自由和大家的声音是梦还是现实。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1211,9 +1226,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1227,7 +1242,7 @@
 
             <li id="track-OST_35">
     <a href="/zh_cn/track/ost/35.html#story-MAIN_1_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_35-all">
-        <span>OST&nbsp;35.&nbsp;Morose Dreamer (Morose Dreamer)</span>
+        <span>OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_35-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1245,8 +1260,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1275,6 +1290,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1294,9 +1310,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1">星野面前站着的是对策委员会的大家。大家与星野相互欢迎着，而最终星野也说出了那句台词：“我——回——来——了——”</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1500,9 +1517,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1518,8 +1535,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1578,6 +1595,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1597,9 +1615,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1">星野回归后，一切如常。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1615,9 +1634,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1631,7 +1650,7 @@
 
             <li id="track-other_1">
     <a href="/zh_cn/track/other/1.html#story-MAIN_1_2_19" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-other_1-all">
-        <span>其它&nbsp;1.&nbsp;Target For Love (Target For Love)</span>
+        <span>其它&nbsp;1.&nbsp;Target For Love (目标为爱)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-other_1-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1649,8 +1668,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1799,6 +1818,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1882,7 +1902,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656891.8536375)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.6511095)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1894,6 +1914,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1906,7 +1927,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656891.8536456
+Generated time (UTC): 1711252009.651116
 -->
 </body>
 </html>

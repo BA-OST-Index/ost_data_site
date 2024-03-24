@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -288,7 +296,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1Th4y157Ba/?p=7')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -333,9 +341,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">集中的能量造成了方舟各地区的紧急情况。优香断定自爆程序必须启动，否则将再没有机会；然而日鞠表示程序尚不稳定，强行启动可能导致全员丧命。另一边，美食研究会和游戏开发部抵达控制室，阿拜多斯也将支持老师战斗。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">集中的能量造成了方舟各地区的紧急情况。优香断定自爆程序必须启动，否则将再没有机会；然而阳葵表示程序尚不稳定，强行启动可能导致全员丧命。另一边，美食研究会和游戏开发部抵达控制室，阿拜多斯也将支持老师战斗。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">集中的能量造成了方舟各地区的紧急情况。优香断定自爆程序必须启动，否则将再没有机会；然而日鞠表示程序尚不稳定，强行启动可能导致全员丧命。另一边，美食研究会和游戏开发部抵达控制室，阿拜多斯也将支持老师战斗。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -577,9 +586,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -593,7 +602,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-EVENT_991_5" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -611,8 +620,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -641,6 +650,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -664,9 +674,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">在决定按下之前，琳向莉央询问逃脱程序的原理，后者则表示其是能利用方舟的计算使人跃迁到地面上的装置，并已根据人数设定为共能使用23人次——除了必须在爆炸前尽快转移。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在决定按下之前，琳向莉音询问逃脱程序的原理，后者则表示其是能利用方舟的计算使人跃迁到地面上的装置，并已根据人数设定为共能使用23人次——除了必须在爆炸前尽快转移。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在决定按下之前，琳向莉央询问逃脱程序的原理，后者则表示其是能利用方舟的计算使人跃迁到地面上的装置，并已根据人数设定为共能使用23人次——除了必须在爆炸前尽快转移。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -784,9 +795,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -800,7 +811,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-EVENT_991_5" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -818,8 +829,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -848,6 +859,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -871,9 +883,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">琳下令启动方舟自爆程序，并开始转移人员。莉央指出爆炸将可能波及生命守护者号，使其最后一起爆炸。亚子在爆炸中被瓦片击中，佳代子及时救出。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">琳下令启动方舟自爆程序，并开始转移人员。莉音指出爆炸将可能波及生命守护者号，使其最后一起爆炸。亚子在爆炸中被瓦片击中，佳世子及时救出。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">琳下令启动方舟自爆程序，并开始转移人员。莉央指出爆炸将可能波及生命守护者号，使其最后一起爆炸。亚子在爆炸中被瓦片击中，佳代子及时救出。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1181,9 +1194,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1197,7 +1210,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-EVENT_991_5" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1215,8 +1228,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1260,6 +1273,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1283,9 +1297,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">根据安排，亚子、佳代子先行撤离，琳则表示要尽可能协助老师，因而自己将最后撤离。桃可、步随后撤离。在走之前，日鞠向琳表示，自己已经将“光之剑”——也就是爱丽丝所制造的方舟，与生命守护者号相连接，以备不时之需。日鞠、花子之后撤离。优香在将游戏开发部托付给绫音之后撤离。最后，绫音和琳共同支援老师。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">根据安排，亚子、佳世子先行撤离，琳则表示要尽可能协助老师，因而自己将最后撤离。桃香、步随后撤离。在走之前，阳葵向琳表示，自己已经将“光之剑”——也就是爱丽丝所制造的方舟，与生命守护者号相连接，以备不时之需。阳葵、花子之后撤离。优香在将游戏开发部托付给绫音之后撤离。最后，绫音和琳共同支援老师。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">根据安排，亚子、佳代子先行撤离，琳则表示要尽可能协助老师，因而自己将最后撤离。桃香、步随后撤离。在走之前，日鞠向琳表示，自己已经将“光之剑”——也就是爱丽丝所制造的方舟，与生命守护者号相连接，以备不时之需。日鞠、花子之后撤离。优香在将游戏开发部托付给绫音之后撤离。最后，绫音和琳共同支援老师。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1605,9 +1620,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1621,7 +1636,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-EVENT_991_5" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1639,8 +1654,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1669,6 +1684,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1692,9 +1708,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1"><span class="lang-zh-cn-cn">绫音向美食研究会、游戏开发部和对策委员会报告主舰上的撤离情况，督促在场所有人尽快撤离。晴奈提出先让风香同学撤离。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">绫音向美食研究会、游戏开发部和对策委员会报告主舰上的撤离情况，督促在场所有人尽快撤离。羽留奈提出先让风华同学撤离。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">绫音向美食研究会、游戏开发部和对策委员会报告主舰上的撤离情况，督促在场所有人尽快撤离。晴奈提出先让枫香同学撤离。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1822,9 +1839,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1838,7 +1855,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-EVENT_991_5" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1856,8 +1873,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1886,6 +1903,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1909,9 +1927,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1">绫音警告最后一波爆炸即将来临，而琳则注意到能量仍集中在诱骗者身上。不论如何，琳意识到大事不妙，要求老师立刻对峙诱骗者。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1989,9 +2008,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2005,7 +2024,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-EVENT_991_5" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2023,8 +2042,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2053,12 +2072,13 @@
         
     
 
+            </div>
         </ul>
     
 
 
     <script>
-        add_tooltip_data({ 'story-EVENT_991_5-source-1': '<p class="tooltip-title">紧急情况</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1052&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-2': '<p class="tooltip-title">逃脱程序的原理</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1080&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-3': '<p class="tooltip-title">启动自爆程序</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1110&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-4': '<p class="tooltip-title">开始人员撤离</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1153&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-5': '<p class="tooltip-title">尽快撤离</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1272&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-6': '<p class="tooltip-title">聚集的全部能量</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1296&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
+        add_tooltip_data({ 'story-EVENT_991_5-source-1': '<p class="tooltip-title">紧急情况</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1052&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-2': '<p class="tooltip-title">逃脱程序的原理</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1080&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-3': '<p class="tooltip-title">启动自爆程序</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1110&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-4': '<p class="tooltip-title">开始人员撤离</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1153&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-5': '<p class="tooltip-title">尽快撤离</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1272&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-EVENT_991_5-source-6': '<p class="tooltip-title">聚集的全部能量</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1Th4y157Ba/?p=7&t=1296&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
     </script>
 
     
@@ -2146,7 +2166,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656893.147946)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.8478196)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -2158,6 +2178,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2170,7 +2191,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656893.1479516
+Generated time (UTC): 1711252010.8478248
 -->
 </body>
 </html>

@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -268,7 +276,7 @@
             
                 <li>
     <a href="/zh_cn/track/ost/19.html" >
-        <span>OST&nbsp;19.&nbsp;Virtual Storm (Virtual Storm)</span>
+        <span>OST&nbsp;19.&nbsp;Virtual Storm (虚拟风暴)</span>
     </a>
     
     <span>&nbsp;by&nbsp;KARUT</span>
@@ -328,9 +336,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">对策委员会众人来到建筑门口，遭到敌人阻拦。日富美此时接入通讯，向各位表示了情况，并着重提到这些榴弹炮与三一毫无关联。通讯结束后，对策委员会几人开始突破。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">对策委员会众人来到建筑门口，遭到敌人阻拦。日步美此时接入通讯，向各位表示了情况，并着重提到这些榴弹炮与三一毫无关联。通讯结束后，对策委员会几人开始突破。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">对策委员会众人来到建筑门口，遭到敌人阻拦。日富美此时接入通讯，向各位表示了情况，并着重提到这些榴弹炮与三一毫无关联。通讯结束后，对策委员会几人开始突破。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -534,9 +543,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -550,7 +559,7 @@
 
             <li id="track-OST_60">
     <a href="/zh_cn/track/ost/60.html#story-MAIN_1_2_18" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_60-all">
-        <span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange) (SAKURA PUNCH (Hard Arrange))</span>
+        <span>OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange) (樱花绽放时 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_60-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -568,8 +577,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -598,6 +607,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -617,9 +627,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">【与敌人进行交战】</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -797,9 +808,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -813,12 +824,12 @@
 
             <li id="track-OST_19">
     <a href="/zh_cn/track/ost/19.html#story-MAIN_1_2_18" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_19-all">
-        <span>OST&nbsp;19.&nbsp;Virtual Storm (Virtual Storm)</span>
+        <span>OST&nbsp;19.&nbsp;Virtual Storm (虚拟风暴)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_19-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -831,8 +842,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -848,6 +859,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -867,9 +879,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">众人来到了沙漠中央，认出了曾经阿拜多斯学校的踪迹。理事向各位简单介绍了这里的情况，并提到了黑服所称的“实验室”，就在另一边的建筑里。但理事表示必须先过了他这一关，就在这时便利屋68全员赶到，开始支援。对策委员会将应战责任委托给便利屋众人，自己则前往寻找星野。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1213,9 +1226,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1229,7 +1242,7 @@
 
             <li id="track-OST_41">
     <a href="/zh_cn/track/ost/41.html#story-MAIN_1_2_18" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_41-all">
-        <span>OST&nbsp;41.&nbsp;Interface (Interface)</span>
+        <span>OST&nbsp;41.&nbsp;Interface (交接口)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_41-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1247,7 +1260,7 @@
 
             <li id="track-OST_49">
     <a href="/zh_cn/track/ost/49.html#story-MAIN_1_2_18" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_49-all">
-        <span>OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (Mechanical JUNGLE (High-Tech Full On Mix))</span>
+        <span>OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (机械迷林(High-Tech Full On Mix))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_49-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1265,8 +1278,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1295,6 +1308,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1378,7 +1392,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656891.863146)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.6593063)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1390,6 +1404,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1402,7 +1417,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656891.8631527
+Generated time (UTC): 1711252009.6593118
 -->
 </body>
 </html>

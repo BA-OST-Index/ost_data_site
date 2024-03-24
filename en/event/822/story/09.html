@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_en_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -108,6 +109,13 @@
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
             <script>showLangSwitchStatus();</script>
+            <br />
+            <span>Story View Mode: </span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>All</option>
+                <option value="text-only">Desc Only</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -265,7 +273,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1N14y1y7Qs/?p=20')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -303,9 +311,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">最後一個次元引擎佔領成功，方舟的自爆程式隨時都能啟動。貝里塔斯眾人要求大家立刻回到船上，因為自爆一旦啟動便無法取消。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -471,9 +480,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -505,8 +514,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -535,6 +544,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -553,9 +563,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">綾音宣佈安全裝置已被破壞，大門可正常開啟。星野詢問白子的情況，綾音則回答老師已經到達了白子所在地。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -645,9 +656,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -679,8 +690,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -709,6 +720,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -727,9 +739,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">老師開啟被關閉的門，救出了白子。兩人寒暄了幾句，隨後準備撤離。綾音為他們帶路。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -819,9 +832,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -853,8 +866,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -883,6 +896,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -965,7 +979,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656879.5810916)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711251998.601944)})
     </script>
 </footer>
     <script>displayCharLangElement('en');</script>
@@ -976,6 +990,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -988,7 +1003,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656879.5810964
+Generated time (UTC): 1711251998.6019487
 -->
 </body>
 </html>

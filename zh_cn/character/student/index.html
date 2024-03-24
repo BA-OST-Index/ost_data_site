@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>All students- BA OST Index</title>
+    <title>全部学生- BA OST Index</title>
 
     <script defer src="/static/jsdelivr/jquery.min.js"></script>
     <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -116,6 +117,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -182,8 +190,8 @@
 
         <div id="git-wiki-content">
             
-    <h1>All students</h1>
-    <p>This page lists all the students of Blue Archive. The related information is auto generated based on <a href="https://schale.gg/">Schale DB</a> and therefore there might be some data lag (i.e. no data for newly-released characters), advanced data (i.e. characters can not be found in international server due to the half year gap), or even data errors. You're advised to proceed with caution.</p>
+    <h1>全部学生</h1>
+    <p>本页列出所有蔚蓝档案的学生。学生的相关信息基于<a href="https://schale.gg/">Schale DB</a>的数据自动生成，因而可能会出现数据滞后（如刚出的新角色没有数据）、超前（国际服晚半年），以至于是不准确的情况，敬请注意。</p>
     <div>
         <p>选择显示角色名字的模式：
             <select id="char_lang_display" onchange="setCharLangDisplayStatus('zh', this)">
@@ -2938,7 +2946,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656893.2590213)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.9514415)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -2950,6 +2958,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2962,7 +2971,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656893.2590292
+Generated time (UTC): 1711252010.951447
 -->
 </body>
 </html>

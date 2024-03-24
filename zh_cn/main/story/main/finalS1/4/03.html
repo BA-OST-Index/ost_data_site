@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -266,7 +274,7 @@
             
                 <li>
     <a href="/zh_cn/track/ost/157.html" >
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     
     <span>&nbsp;by&nbsp;KARUT</span>
@@ -292,7 +300,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1B94y1x75F/?p=3')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -337,9 +345,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">白子不愿放弃。老师指出就像以前一样，他一定是会来阻止白子的——另一位白子一样同意。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -417,9 +426,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -433,7 +442,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -451,8 +460,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -481,13 +490,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-2">这时A.R.O.N.A.突然说明，圣所显现程序（incarnation）已将圣所从冻结状态中解除，由此加速多次元演绎的计算速度。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -553,9 +564,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -569,12 +580,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -587,8 +598,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -617,6 +628,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -640,9 +652,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">连接抑制时间大幅缩短，真理会众人大为震惊。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">连接抑制时间大幅缩短，贝里塔斯众人大为震惊。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">连接抑制时间大幅缩短，真理社众人大为震惊。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -808,9 +821,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -824,12 +837,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -842,8 +855,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -887,13 +900,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-2"><span class="lang-zh-cn-cn">这时在方舟上的日鞠表示，她观测到了地上有圣所正在出现，虽然无法目视——这时众人才发觉，敌人是将圣所转移到了他们看不见的地方。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">这时在方舟上的阳葵表示，她观测到了地上有圣所正在出现，虽然无法目视——这时众人才发觉，敌人是将圣所转移到了他们看不见的地方。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">这时在方舟上的日鞠表示，她观测到了地上有圣所正在出现，虽然无法目视——这时众人才发觉，敌人是将圣所转移到了他们看不见的地方。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1023,9 +1038,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1039,12 +1054,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -1057,8 +1072,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1087,6 +1102,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1110,9 +1126,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">时与方舟上的日鞠联系，试图表明自己所在的地区出现了圣所，但连接立刻中断，同时还出现了大量敌人。在撤退与应战之间，时认为自己所处的地区非常关键，因而决定应战，帮助方舟上的老师。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季与方舟上的阳葵联系，试图表明自己所在的地区出现了圣所，但连接立刻中断，同时还出现了大量敌人。在撤退与应战之间，季认为自己所处的地区非常关键，因而决定应战，帮助方舟上的老师。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时与方舟上的日鞠联系，试图表明自己所在的地区出现了圣所，但连接立刻中断，同时还出现了大量敌人。在撤退与应战之间，时认为自己所处的地区非常关键，因而决定应战，帮助方舟上的老师。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1164,9 +1181,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1180,12 +1197,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -1198,8 +1215,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1243,6 +1260,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1266,9 +1284,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1">小玉报告抑制时间的减少速度突然恢复正常。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1384,9 +1403,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1400,12 +1419,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -1418,8 +1437,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1448,13 +1467,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-2"><span class="lang-zh-cn-cn">日鞠和莉央正疑惑之际，他们连上了Abi-Eshuh的信号。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳葵和莉音正疑惑之际，他们连上了Abi-Eshuh的信号。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日鞠和莉央正疑惑之际，他们连上了Abi-Eshuh的信号。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1532,9 +1553,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1548,12 +1569,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -1566,8 +1587,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1596,6 +1617,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1619,9 +1641,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1"><span class="lang-zh-cn-cn">日鞠和莉央立刻接入连接，时对能连上装甲一事感到些许惊讶。莉央要求时立刻撤离，停止应战，但时违抗了她的命令，并希望所有人能在她抵抗的这段时间里完成必要的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳葵和莉音立刻接入连接，季对能连上装甲一事感到些许惊讶。莉音要求季立刻撤离，停止应战，但季违抗了她的命令，并希望所有人能在她抵抗的这段时间里完成必要的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日鞠和莉央立刻接入连接，时对能连上装甲一事感到些许惊讶。莉央要求时立刻撤离，停止应战，但时违抗了她的命令，并希望所有人能在她抵抗的这段时间里完成必要的事情。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1737,9 +1760,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1753,12 +1776,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -1771,8 +1794,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1801,6 +1824,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1824,9 +1848,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1">画面转回方舟。亚子在指挥部询问美食研究会的情况。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1878,9 +1903,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1894,12 +1919,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -1912,8 +1937,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1942,13 +1967,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-2"><span class="lang-zh-cn-cn">风香同学全速驾驶着供餐部的小车，敌人紧追不舍。在下一个转角处，风香正准备转过，但通讯中却传来了让人不安的尖叫声。亚子为众人捏了把汗。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风华同学全速驾驶着供给部的小车，敌人紧追不舍。在下一个转角处，风华正准备转过，但通讯中却传来了让人不安的尖叫声。亚子为众人捏了把汗。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">枫香同学全速驾驶着供餐部的小车，敌人紧追不舍。在下一个转角处，枫香正准备转过，但通讯中却传来了让人不安的尖叫声。亚子为众人捏了把汗。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2152,9 +2179,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2168,12 +2195,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-all">
-        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -2186,8 +2213,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2216,6 +2243,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2239,9 +2267,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-7-seg-1">在方舟深处，白子与老师决定继续战斗。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2293,9 +2322,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2311,8 +2340,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2341,6 +2370,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2364,9 +2394,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-1">白子与另一个自己的战斗。但由于诱骗者的支援，白子最终不敌另一个白子。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2421,9 +2452,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2437,7 +2468,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-MAIN_finalS1_4_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2455,8 +2486,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2472,12 +2503,13 @@
         
     
 
+            </div>
         </ul>
     
 
 
     <script>
-        add_tooltip_data({ 'story-MAIN_finalS1_4_3-source-1': '<p class="tooltip-title">不愿放弃</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-2': '<p class="tooltip-title">被反抑制的连接</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=60&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-3': '<p class="tooltip-title"><span class="lang-zh-cn-cn">千年废墟的圣所</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">千年废墟的圣所</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">千禧年废墟的圣所</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=93&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-4': '<p class="tooltip-title">Abi-Eshuh的信号</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=147&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-5': '<p class="tooltip-title"><span class="lang-zh-cn-cn">时的殊死抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季的殊死抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时的殊死抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=165&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-6': '<p class="tooltip-title"><span class="lang-zh-cn-cn">风香的小车</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风华的小车</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">枫香的小车</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=206&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-7': '<p class="tooltip-title">白子的继续战斗</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=236&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-8': '<p class="tooltip-title">面对另一个自己</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=252&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
+        add_tooltip_data({ 'story-MAIN_finalS1_4_3-source-1': '<p class="tooltip-title">不愿放弃</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-2': '<p class="tooltip-title">被反抑制的连接</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=60&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-3': '<p class="tooltip-title"><span class="lang-zh-cn-cn">千年废墟的圣所</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">千年废墟的圣所</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">千禧年废墟的圣所</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=93&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-4': '<p class="tooltip-title">Abi-Eshuh的信号</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=147&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-5': '<p class="tooltip-title"><span class="lang-zh-cn-cn">时的殊死抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">季的殊死抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">时的殊死抵抗</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=165&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-6': '<p class="tooltip-title"><span class="lang-zh-cn-cn">风香的小车</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">风华的小车</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">枫香的小车</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=206&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-7': '<p class="tooltip-title">白子的继续战斗</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=236&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_3-source-8': '<p class="tooltip-title">面对另一个自己</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=3&t=252&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
     </script>
 
     
@@ -2555,7 +2587,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.677553)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.420709)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -2567,6 +2599,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2579,7 +2612,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.6775606
+Generated time (UTC): 1711252010.4207149
 -->
 </body>
 </html>

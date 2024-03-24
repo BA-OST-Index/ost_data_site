@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -846,7 +854,7 @@
     <span onclick="showPopupByTooltipId('track-OST_101-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-danger badge-tag">Chaos</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-danger badge-tag">混乱</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -864,12 +872,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-character-Fubuki">
-        <span>【2】OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>【2】OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -887,12 +895,12 @@
 
             <li id="track-OST_10">
     <a href="/zh_cn/track/ost/10.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_10-character-Fubuki">
-        <span>【1】OST&nbsp;10.&nbsp;Romantic Smile (Romantic Smile)</span>
+        <span>【1】OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_10-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Bright</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-primary badge-tag">Dream</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">梦想</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -910,12 +918,12 @@
 
             <li id="track-OST_12">
     <a href="/zh_cn/track/ost/12.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_12-character-Fubuki">
-        <span>【1】OST&nbsp;12.&nbsp;Shooting Stars (Shooting Stars)</span>
+        <span>【1】OST&nbsp;12.&nbsp;Shooting Stars (流星雨)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_12-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-success badge-tag">Relaxing</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-success badge-tag">轻松惬意</span>&nbsp;</div>
 </li>
 
 
@@ -933,12 +941,12 @@
 
             <li id="track-OST_18">
     <a href="/zh_cn/track/ost/18.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_18-character-Fubuki">
-        <span>【1】OST&nbsp;18.&nbsp;Mechanical JUNGLE (Mechanical JUNGLE)</span>
+        <span>【1】OST&nbsp;18.&nbsp;Mechanical JUNGLE (机械迷林)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_18-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Nervous</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-danger badge-tag">Emergency</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">紧张的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-danger badge-tag">紧急</span>&nbsp;</div>
 </li>
 
 
@@ -956,7 +964,7 @@
 
             <li id="track-OST_68">
     <a href="/zh_cn/track/ost/68.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_68-character-Fubuki">
-        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange) (Virtual Storm (Hard Arrange))</span>
+        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange) (虚拟风暴 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_68-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -979,7 +987,7 @@
 
             <li id="track-OST_74">
     <a href="/zh_cn/track/ost/74.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_74-character-Fubuki">
-        <span>【1】OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (Tech N Tech (Hard Arrange))</span>
+        <span>【1】OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_74-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1002,7 +1010,7 @@
 
             <li id="track-OST_76">
     <a href="/zh_cn/track/ost/76.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_76-character-Fubuki">
-        <span>【1】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>【1】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_76-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1025,7 +1033,7 @@
 
             <li id="track-OST_105">
     <a href="/zh_cn/track/ost/105.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_105-character-Fubuki">
-        <span>【1】OST&nbsp;105.&nbsp;Alkaline Tears (Alkaline Tears)</span>
+        <span>【1】OST&nbsp;105.&nbsp;Alkaline Tears (碱性的泪水)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_105-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1048,7 +1056,7 @@
 
             <li id="track-OST_115">
     <a href="/zh_cn/track/ost/115.html#Fubuki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_115-character-Fubuki">
-        <span>【1】OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (Fall Into The Rabbit Hole)</span>
+        <span>【1】OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (坠入兔穴)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_115-character-Fubuki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2266,7 +2274,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656893.7017677)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252011.3639853)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -2278,6 +2286,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2290,7 +2299,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656893.701775
+Generated time (UTC): 1711252011.363992
 -->
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>All NPCs- BA OST Index</title>
+    <title>全部NPC- BA OST Index</title>
 
     <script defer src="/static/jsdelivr/jquery.min.js"></script>
     <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -116,6 +117,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -182,8 +190,8 @@
 
         <div id="git-wiki-content">
             
-    <h1>All NPCs</h1>
-    <p>This page lists all the NPCs (non-playable characters) of Blue Archive.</p>
+    <h1>全部NPC</h1>
+    <p>本页列出所有蔚蓝档案的NPC（不可游玩角色）。</p>
     <div>
         <p>选择显示角色名字的模式：
             <select id="char_lang_display" onchange="setCharLangDisplayStatus('zh', this)">
@@ -542,7 +550,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656897.4474475)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252014.8255875)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -554,6 +562,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -566,7 +575,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656897.4474542
+Generated time (UTC): 1711252014.8255925
 -->
 </body>
 </html>

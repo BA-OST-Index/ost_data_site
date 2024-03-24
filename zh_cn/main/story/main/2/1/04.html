@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -316,9 +324,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">三人跑进了工厂里，发现机器人不再跟随。就在这时，设施里的系统开始识别三人身份，并认出了老师，给三人发放了通行权限。三人从地板打开的门掉了下去。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -408,9 +417,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -424,12 +433,12 @@
 
             <li id="track-OST_13">
     <a href="/zh_cn/track/ost/13.html#story-MAIN_2_1_4" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_13-all">
-        <span>OST&nbsp;13.&nbsp;Barrier (Barrier)</span>
+        <span>OST&nbsp;13.&nbsp;Barrier (障碍)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_13-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Cheerful</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">欢快</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -460,8 +469,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -490,6 +499,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -509,9 +519,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">三人相继掉了下去，还好老师在底下做了些许缓冲。这时，桃发现了什么东西。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">三人相继掉了下去，还好老师在底下做了些许缓冲。这时，桃井发现了什么东西。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">三人相继掉了下去，还好老师在底下做了些许缓冲。这时，桃井发现了什么东西。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -601,9 +612,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -617,7 +628,7 @@
 
             <li id="track-OST_41">
     <a href="/zh_cn/track/ost/41.html#story-MAIN_2_1_4" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_41-all">
-        <span>OST&nbsp;41.&nbsp;Interface (Interface)</span>
+        <span>OST&nbsp;41.&nbsp;Interface (交接口)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_41-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -635,8 +646,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -665,6 +676,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -684,9 +696,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">三人在废墟的一个天坑里发现了睡着着的爱丽丝，发现了“AL-1S”之类的字样。绿可怜爱丽丝，便决定将她带回千年，还给她穿上了自己的衣服。就在这时，爱丽丝因与老师接触而醒了过来。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">三人在废墟的一个天坑里发现了睡着着的爱丽丝，发现了“AL-1S”之类的字样。绿可怜爱丽丝，便决定将她带回千年，还给她穿上了自己的衣服。就在这时，爱丽丝因与老师接触而醒了过来。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">三人在废墟的一个天坑里发现了睡着着的爱丽丝，发现了“AL-1S”之类的字样。绿可怜爱丽丝，便决定将她带回千禧年，还给她穿上了自己的衣服。就在这时，爱丽丝因与老师接触而醒了过来。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -814,9 +827,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -830,7 +843,7 @@
 
             <li id="track-OST_67">
     <a href="/zh_cn/track/ost/67.html#story-MAIN_2_1_4" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_67-all">
-        <span>OST&nbsp;67.&nbsp;someday, sometime (someday, sometime)</span>
+        <span>OST&nbsp;67.&nbsp;someday, sometime (某天，某刻)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_67-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -848,8 +861,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -938,6 +951,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -957,9 +971,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">桃将爱丽丝带回到社团活动室，绿非常惊诧。爱丽丝因为不懂，开始乱动社团的东西，比如把手柄和游戏机塞进嘴里之类。桃随后说出了自己的计划：她想让爱丽丝伪装成千年的学生加入社团，解决人数不够被废社的问题。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃井将爱丽丝带回到社团活动室，绿非常惊诧。爱丽丝因为不懂，开始乱动社团的东西，比如把手柄和游戏机塞进嘴里之类。桃井随后说出了自己的计划：她想让爱丽丝伪装成千年的学生加入社团，解决人数不够被废社的问题。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃井将爱丽丝带回到社团活动室，绿非常惊诧。爱丽丝因为不懂，开始乱动社团的东西，比如把手柄和游戏机塞进嘴里之类。桃井随后说出了自己的计划：她想让爱丽丝伪装成千禧年的学生加入社团，解决人数不够被废社的问题。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1087,9 +1102,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1103,7 +1118,7 @@
 
             <li id="track-OST_64">
     <a href="/zh_cn/track/ost/64.html#story-MAIN_2_1_4" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_64-all">
-        <span>OST&nbsp;64.&nbsp;Pixel Time (Pixel Time)</span>
+        <span>OST&nbsp;64.&nbsp;Pixel Time (像素时间)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_64-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1121,8 +1136,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1151,6 +1166,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1234,7 +1250,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.0358236)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.816409)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1246,6 +1262,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1258,7 +1275,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.0358293
+Generated time (UTC): 1711252009.816414
 -->
 </body>
 </html>

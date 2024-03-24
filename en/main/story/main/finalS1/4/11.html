@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_en_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -108,6 +109,13 @@
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
             <script>showLangSwitchStatus();</script>
+            <br />
+            <span>Story View Mode: </span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>All</option>
+                <option value="text-only">Desc Only</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -269,7 +277,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1B94y1x75F/?p=13')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -307,9 +315,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">星奈向老師打招呼，表示彩奈前輩很照顧自己。因為彩奈還在睡覺，所以星奈把她叫了起來。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -349,9 +358,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -383,8 +392,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -413,6 +422,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -431,9 +441,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">彩奈睡覺睡過頭，其實已經到中午了。老師最後鼓勵兩人要一併努力，兩人也保證會成為老師的得力助手。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -499,9 +510,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -533,8 +544,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -563,6 +574,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -581,9 +593,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">星奈推測彩奈前輩越來越嗜睡的原因，可能是因為自己在這佔用了算力。星奈很遺憾地發現，聯邦學生會會長同樣不在這個世界裡。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -623,9 +636,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -641,8 +654,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -686,6 +699,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -769,7 +783,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656879.3734968)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711251998.4066854)})
     </script>
 </footer>
     <script>displayCharLangElement('en');</script>
@@ -780,6 +794,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -792,7 +807,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656879.3735018
+Generated time (UTC): 1711251998.4066904
 -->
 </body>
 </html>

@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -316,9 +324,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">游戏开发部众人开始讨论游戏的具体形式。从地牢的机制到武器装备，以及美术和表现形式之类。因为桃过于强调美术而又常常易稿，许多美术资源都被废弃，引来妹妹绿的非常不满。两人强迫老师做出一个选择。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">游戏开发部众人开始讨论游戏的具体形式。从地牢的机制到武器装备，以及美术和表现形式之类。因为桃井过于强调美术而又常常易稿，许多美术资源都被废弃，引来妹妹绿的非常不满。两人强迫老师做出一个选择。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">游戏开发部众人开始讨论游戏的具体形式。从地牢的机制到武器装备，以及美术和表现形式之类。因为桃井过于强调美术而又常常易稿，许多美术资源都被废弃，引来妹妹绿的非常不满。两人强迫老师做出一个选择。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -484,9 +493,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -500,7 +509,7 @@
 
             <li id="track-OST_64">
     <a href="/zh_cn/track/ost/64.html#story-MAIN_2_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_64-all">
-        <span>OST&nbsp;64.&nbsp;Pixel Time (Pixel Time)</span>
+        <span>OST&nbsp;64.&nbsp;Pixel Time (像素时间)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_64-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -518,12 +527,12 @@
 
             <li id="track-OST_130">
     <a href="/zh_cn/track/ost/130.html#story-MAIN_2_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_130-all">
-        <span>OST&nbsp;130.&nbsp;Foolish Days (Foolish Days)</span>
+        <span>OST&nbsp;130.&nbsp;Foolish Days (傻傻的日子)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_130-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -536,8 +545,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -566,6 +575,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -585,9 +595,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">柚子及时拦下了两人，表示要用社团的“那个”——进行游戏对局——来决定。就在两人打游戏的时候，柚子分配给了爱丽丝去外边转几圈的任务，希望能够由此获得一些灵感。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -753,9 +764,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -769,7 +780,7 @@
 
             <li id="track-OST_49">
     <a href="/zh_cn/track/ost/49.html#story-MAIN_2_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_49-all">
-        <span>OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (Mechanical JUNGLE (High-Tech Full On Mix))</span>
+        <span>OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (机械迷林(High-Tech Full On Mix))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_49-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -787,12 +798,12 @@
 
             <li id="track-OST_16">
     <a href="/zh_cn/track/ost/16.html#story-MAIN_2_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_16-all">
-        <span>OST&nbsp;16.&nbsp;MX Adventure (MX Adventure)</span>
+        <span>OST&nbsp;16.&nbsp;MX Adventure (未知的冒险)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_16-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">可能性</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -805,8 +816,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -835,6 +846,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -854,9 +866,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">爱丽丝与老师来到了千年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">爱丽丝与老师来到了千年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃井试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">爱丽丝与老师来到了千禧年校园。爱丽丝说自己和老师都是“见习勇者”，而这源于桃井试图在新手村外放BOSS而被否决一事。爱丽丝对如何进行柚子的任务很苦恼，而老师则建议爱丽丝先前进再说。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -908,9 +921,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -942,8 +955,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -987,6 +1000,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1070,7 +1084,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.142197)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.9154294)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1082,6 +1096,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1094,7 +1109,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.1422021
+Generated time (UTC): 1711252009.9154346
 -->
 </body>
 </html>

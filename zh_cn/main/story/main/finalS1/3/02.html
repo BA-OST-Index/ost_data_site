@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -282,7 +290,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -327,9 +335,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">在色彩袭击后，黑色西服人和玛艾斯托洛受伤严重，后者甚至是黑服临时拼接的。黑服指出色彩似乎看透了一切，夺走了他们所拥有的一切力量。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">在色彩袭击后，黑色西装人和玛艾斯托洛受伤严重，后者甚至是黑服临时拼接的。黑服指出色彩似乎看透了一切，夺走了他们所拥有的一切力量。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">在色彩袭击后，黑色西服人和玛艾斯托洛受伤严重，后者甚至是黑服临时拼接的。黑服指出色彩似乎看透了一切，夺走了他们所拥有的一切力量。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -395,9 +404,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -411,7 +420,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -429,8 +438,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -459,6 +468,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -482,9 +492,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">由于色彩的活动，黑色西服人表示基沃托斯已经不适合他们继续活动。玛艾斯托洛询问这是否意味着基沃托斯的终结，而黑服则提到了老师。黑服突然宣布盖玛特利亚原地解散。之后两人交流了一下其他各成员的情况。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">由于色彩的活动，黑色西装人表示基沃托斯已经不适合他们继续活动。玛艾斯托洛询问这是否意味着基沃托斯的终结，而黑服则提到了老师。黑服突然宣布盖玛特利亚原地解散。之后两人交流了一下其他各成员的情况。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">由于色彩的活动，黑色西服人表示基沃托斯已经不适合他们继续活动。玛艾斯托洛询问这是否意味着基沃托斯的终结，而黑服则提到了老师。黑服突然宣布盖玛特利亚原地解散。之后两人交流了一下其他各成员的情况。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -550,9 +561,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -566,7 +577,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -584,8 +595,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -689,6 +700,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -712,9 +724,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">桃可向琳等人报告，指出基沃托斯上空再次出现了能量浓度极高的能量体。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃香向琳等人报告，指出基沃托斯上空再次出现了能量浓度极高的能量体。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃香向琳等人报告，指出基沃托斯上空再次出现了能量浓度极高的能量体。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -806,9 +819,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -840,8 +853,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -870,6 +883,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -893,9 +907,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">圣娅向对策委员会众人表示，白子应该是接触了色彩才变得那样。众人无法理解这番话的含义。圣娅指出，白子或许是认为自己的世界再无方法改变，于是顺从了所谓命运的指引。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">圣亚向对策委员会众人表示，白子应该是接触了色彩才变得那样。众人无法理解这番话的含义。圣亚指出，白子或许是认为自己的世界再无方法改变，于是顺从了所谓命运的指引。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">圣娅向对策委员会众人表示，白子应该是接触了色彩才变得那样。众人无法理解这番话的含义。圣娅指出，白子或许是认为自己的世界再无方法改变，于是顺从了所谓命运的指引。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1087,9 +1102,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1103,7 +1118,7 @@
 
             <li id="track-OST_55">
     <a href="/zh_cn/track/ost/55.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_55-all">
-        <span>OST&nbsp;55.&nbsp;Moment (Moment)</span>
+        <span>OST&nbsp;55.&nbsp;Moment (那一刻)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_55-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1121,8 +1136,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1151,6 +1166,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1174,9 +1190,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1"><span class="lang-zh-cn-cn">众人理解了圣娅的话，指出这似乎表明全是那“色彩”搞的鬼。圣娅表示目前没有办法能将白子变回来，但老师已经向百鬼夜行请求帮助，自己也在和修女会一同研究。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">众人理解了圣亚的话，指出这似乎表明全是那“色彩”搞的鬼。圣亚表示目前没有办法能将白子变回来，但老师已经向百鬼夜行请求帮助，自己也在和修女会一同研究。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">众人理解了圣娅的话，指出这似乎表明全是那“色彩”搞的鬼。圣娅表示目前没有办法能将白子变回来，但老师已经向百鬼夜行请求帮助，自己也在和姐妹会一同研究。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1330,9 +1347,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1346,7 +1363,7 @@
 
             <li id="track-OST_55">
     <a href="/zh_cn/track/ost/55.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_55-all">
-        <span>OST&nbsp;55.&nbsp;Moment (Moment)</span>
+        <span>OST&nbsp;55.&nbsp;Moment (那一刻)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_55-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1364,8 +1381,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1394,6 +1411,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1417,9 +1435,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1">忍术研究部一行人打开了信件，信中指出，被色彩侵蚀之人没有复原的方法，如同逝者不可再生，是世界的绝对法则。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1547,9 +1566,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1565,8 +1584,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1595,6 +1614,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1618,9 +1638,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-7-seg-1">琳指出这次情况较上次更加不同：这次的能量浓度更高，意味着较上次相比，此次圣所的降临可能会更快――但这时各自治区却还在整理事务中，实在是再坏不过。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1712,9 +1733,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1728,12 +1749,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-all">
-        <span>OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -1746,8 +1767,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1776,6 +1797,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1799,9 +1821,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-1">看不见摸不着的圣所与能量体，意味着众人无法对其从物理层面上打击。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1867,9 +1890,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1883,12 +1906,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-all">
-        <span>OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -1901,8 +1924,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1931,13 +1954,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-2">老师向各位道歉，表示自己早就清楚一切事情――白子的变化、基沃托斯的总结、敌人的警告――如果不是他轻视事情的严重性，一切就可能都不会发生。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1953,9 +1978,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1969,12 +1994,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-all">
-        <span>OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -1987,8 +2012,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2062,13 +2087,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-3">琳表示自己也有过错。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2160,9 +2187,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2176,12 +2203,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-all">
-        <span>OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -2194,8 +2221,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2224,6 +2251,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2247,9 +2275,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-9-seg-1">就在老师和琳自责时，星野从对策委员会的课室接入通讯。她指出他们应对付的是色彩，并且只要把白子带回来就好――如果真的与白子有挂关，把她“抓”回来就好。星野最后安慰老师，让老师乐观些；老师也承诺会将白子带回来。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2415,9 +2444,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2449,8 +2478,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2479,6 +2508,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2502,9 +2532,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-10-seg-1"><span class="lang-zh-cn-cn">琳询问桃可能否最终能量体间的能量流动情况。桃可照做，发现的确有一个能量中心点。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">琳询问桃香能否最终能量体间的能量流动情况。桃香照做，发现的确有一个能量中心点。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">琳询问桃香能否最终能量体间的能量流动情况。桃香照做，发现的确有一个能量中心点。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2596,9 +2627,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2612,7 +2643,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2630,8 +2661,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2675,13 +2706,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-10-seg-2">那是基沃托斯上空75000m的一处地方――那便是，色彩的向导者，“诱骗者”的所在。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2697,9 +2730,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2713,7 +2746,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_3_2" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2731,8 +2764,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2776,12 +2809,13 @@
         
     
 
+            </div>
         </ul>
     
 
 
     <script>
-        add_tooltip_data({ 'story-MAIN_finalS1_3_2-source-1': '<p class="tooltip-title"><span class="lang-zh-cn-cn">黑色西服人与玛艾斯托洛</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">黑色西装人与玛艾斯托洛</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">黑色西服人与玛艾斯托洛</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-2': '<p class="tooltip-title">原地解散</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=47&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-3': '<p class="tooltip-title">能量体再出现</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=115&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-4': '<p class="tooltip-title"><span class="lang-zh-cn-cn">圣娅的解释</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">圣亚的解释</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">圣娅的解释</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=137&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-5': '<p class="tooltip-title">未知的色彩</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=179&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-6': '<p class="tooltip-title">没有复原的方法</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=207&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-7': '<p class="tooltip-title">新的圣所</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=230&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-8': '<p class="tooltip-title">老师的自责</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=292&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-9': '<p class="tooltip-title">只要把白子带回来就好</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=369&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-10': '<p class="tooltip-title">位于75000m的高空</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=461&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
+        add_tooltip_data({ 'story-MAIN_finalS1_3_2-source-1': '<p class="tooltip-title"><span class="lang-zh-cn-cn">黑色西服人与玛艾斯托洛</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">黑色西装人与玛艾斯托洛</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">黑色西服人与玛艾斯托洛</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-2': '<p class="tooltip-title">原地解散</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=47&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-3': '<p class="tooltip-title">能量体再出现</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=115&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-4': '<p class="tooltip-title"><span class="lang-zh-cn-cn">圣娅的解释</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">圣亚的解释</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">圣娅的解释</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=137&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-5': '<p class="tooltip-title">未知的色彩</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=179&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-6': '<p class="tooltip-title">没有复原的方法</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=207&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-7': '<p class="tooltip-title">新的圣所</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=230&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-8': '<p class="tooltip-title">老师的自责</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=292&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-9': '<p class="tooltip-title">只要把白子带回来就好</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=369&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_3_2-source-10': '<p class="tooltip-title">位于75000m的高空</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2&t=461&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
     </script>
 
     
@@ -2859,7 +2893,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.822525)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.5526617)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -2871,6 +2905,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2883,7 +2918,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.8225322
+Generated time (UTC): 1711252010.5526671
 -->
 </body>
 </html>

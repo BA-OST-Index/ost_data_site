@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_en_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -108,6 +109,13 @@
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
             <script>showLangSwitchStatus();</script>
+            <br />
+            <span>Story View Mode: </span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>All</option>
+                <option value="text-only">Desc Only</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -276,7 +284,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1Th4y157Ba/?p=27')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -314,9 +322,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">就在眾人準備對第六聖所進行攻略時，眾人發現其他被破壞了的聖所再次出現極高的能量反應。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -408,9 +417,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -460,8 +469,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -520,6 +529,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -538,9 +548,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">各個聖所所在地再次陷入危機。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -632,9 +643,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -666,8 +677,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -756,6 +767,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -774,9 +786,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">琳下令對五座重新生成的聖所與第六座聖所發動攻擊。此時，活動進入第二階段。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -906,9 +919,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -940,8 +953,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -970,6 +983,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1063,7 +1077,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656879.6276886)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711251998.6471293)})
     </script>
 </footer>
     <script>displayCharLangElement('en');</script>
@@ -1074,6 +1088,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1086,7 +1101,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656879.6276937
+Generated time (UTC): 1711251998.6471343
 -->
 </body>
 </html>

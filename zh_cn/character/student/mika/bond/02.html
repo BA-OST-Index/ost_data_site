@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -317,7 +325,43 @@
 
     <ul>
         
-            <li>无内容可显示！</li>
+            
+
+            
+                
+            
+
+            
+            
+                
+            
+
+            
+                <li >
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/zh_cn/character/student/mika/#story-BOND_MIKA_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-character'])" data-tooltip="character-Mika-all" >
+                <img src="/static/images/student/icon/10059.webp" class="icon-stu">
+                <span ><span class="lang-zh-cn-cn">未花</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">弥香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">未花</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
+            </a>
+        </span>
+        <span onclick="showPopupByTooltipId('character-Mika-all', ['tooltip-variable-content-character'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        
+            
+                <span>&nbsp;[<span class="lang-zh-cn-cn">茶会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茶会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">茶会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+        
+    
+</li>
+            
+
+
+
+
         
     </ul>
 
@@ -327,25 +371,25 @@
 
 <h4>歌曲</h4>
 
-    
-    
-
     <ul>
+        
+            
+            
+        
+
         
             
                 
             
 
-            
-
             <li id="track-OST_10">
-    <a href="/zh_cn/track/ost/10.html#story" >
-        <span>OST&nbsp;10.&nbsp;Romantic Smile (Romantic Smile)</span>
+    <a href="/zh_cn/track/ost/10.html#story-BOND_MIKA_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_10-all">
+        <span>OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span>
     </a>
+    <span onclick="showPopupByTooltipId('track-OST_10-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
-    
-  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Bright</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-primary badge-tag">Dream</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+ 
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">梦想</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -356,16 +400,14 @@
                 
             
 
-            
-
             <li id="track-OST_15">
-    <a href="/zh_cn/track/ost/15.html#story" >
-        <span>OST&nbsp;15.&nbsp;Honey Jam (Honey Jam)</span>
+    <a href="/zh_cn/track/ost/15.html#story-BOND_MIKA_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_15-all">
+        <span>OST&nbsp;15.&nbsp;Honey Jam (蜂蜜果酱)</span>
     </a>
+    <span onclick="showPopupByTooltipId('track-OST_15-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
-    
-  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+ 
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -375,24 +417,26 @@
     </ul>
 
     
+        
+    
 
 <h4>背景</h4>
 
+    
+        
+        
     
 
     <div class="gallery">
         
             
-
-            
                 
             
-            
 
-            <div class="gallery-img" id="ed1c38f2-426a-4dfa-9ef6-2e318b91fdab">
-    <div >
-        <img class="lazyload" data-src="/static/images/background/BG_SchoolGround.jpg" >
-        <p class="gallery-caption"><span><a href="/zh_cn/background/BG_SchoolGround.jpg.html#story-BOND_MIKA_2_3"  target="_blank">BG_SchoolGround.jpg</a></span></p>
+            <div class="gallery-img">
+    <div id="ed1c38f2-426a-4dfa-9ef6-2e318b91fdab">
+        <img class="lazyload" data-src="/static/images/background/BG_SchoolGround.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="background-ed1c38f2-426a-4dfa-9ef6-2e318b91fdab-all">
+        <p class="gallery-caption"><span><a href="/zh_cn/background/BG_SchoolGround.jpg.html#story-BOND_MIKA_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-background'])" data-tooltip="background-ed1c38f2-426a-4dfa-9ef6-2e318b91fdab-all" target="_blank">BG_SchoolGround.jpg</a><span onclick="showPopupByTooltipId('background-ed1c38f2-426a-4dfa-9ef6-2e318b91fdab-all', ['tooltip-variable-content-background'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -401,16 +445,13 @@
 
         
             
-
-            
                 
             
-            
 
-            <div class="gallery-img" id="bfc2f62d-aeb4-42a4-900a-3f0926c98314">
-    <div >
-        <img class="lazyload" data-src="/static/images/background/BG_SchoolGround_Sunset.jpg" >
-        <p class="gallery-caption"><span><a href="/zh_cn/background/BG_SchoolGround_Sunset.jpg.html#story-BOND_MIKA_2_3"  target="_blank">BG_SchoolGround_Sunset.jpg</a></span></p>
+            <div class="gallery-img">
+    <div id="bfc2f62d-aeb4-42a4-900a-3f0926c98314">
+        <img class="lazyload" data-src="/static/images/background/BG_SchoolGround_Sunset.jpg" onmouseover="showTooltipGallerySmall(this)" data-tooltip="background-bfc2f62d-aeb4-42a4-900a-3f0926c98314-all">
+        <p class="gallery-caption"><span><a href="/zh_cn/background/BG_SchoolGround_Sunset.jpg.html#story-BOND_MIKA_2_3" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-background'])" data-tooltip="background-bfc2f62d-aeb4-42a4-900a-3f0926c98314-all" target="_blank">BG_SchoolGround_Sunset.jpg</a><span onclick="showPopupByTooltipId('background-bfc2f62d-aeb4-42a4-900a-3f0926c98314-all', ['tooltip-variable-content-background'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span></span></p>
     </div>
 </div>
 
@@ -420,6 +461,8 @@
         
     </div>
 
+    
+        
     
 
 <h3>部分数据间关联</h3>
@@ -447,6 +490,7 @@
         <ul>
             <li>背景：<code>BG_SchoolGround.jpg</code>、<code>BG_SchoolGround_Sunset.jpg</code>、</li>
             <li>歌曲：<code>OST_10</code>、<code>OST_15</code>、</li>
+            <li>人物：</li>
         </ul>
     
 </ul>
@@ -551,7 +595,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656896.300453)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252013.7627034)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -563,6 +607,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -575,7 +620,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656896.300458
+Generated time (UTC): 1711252013.7627084
 -->
 </body>
 </html>

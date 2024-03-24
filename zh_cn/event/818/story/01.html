@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -300,9 +308,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了沙勒的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了夏莱的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">来自克洛里斯新闻部的两位学生为正在观看直播的观众介绍了此次由千禧年科学学院主办的“晄轮大祭”运动会。在报道中，两人重点提到了夏莱的老师参与了大运动会的比赛安排。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -368,9 +377,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -389,7 +398,7 @@
     <span onclick="showPopupByTooltipId('track-OST_107-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">可能性</span>&nbsp;</div>
 </li>
 
 
@@ -402,8 +411,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -477,6 +486,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -496,9 +506,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">阿拜多斯高中的“奥空绫音”与三一综合学院的“浦和花子”两位学生共同发表了选手宣誓。在宣誓过程中，花子突然就开了黄腔，直播信号随即被切断。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -588,9 +599,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -609,7 +620,7 @@
     <span onclick="showPopupByTooltipId('track-OST_107-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">可能性</span>&nbsp;</div>
 </li>
 
 
@@ -622,12 +633,12 @@
 
             <li id="track-OST_7">
     <a href="/zh_cn/track/ost/7.html#story-EVENT_818_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_7-all">
-        <span>OST&nbsp;7.&nbsp;Unwelcome School (Unwelcome School)</span>
+        <span>OST&nbsp;7.&nbsp;Unwelcome School (不受欢迎的学校)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_7-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Chaos</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">混乱</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -640,8 +651,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -670,6 +681,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -689,9 +701,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">画面转回到演播室，麻衣和诗音两人虽对花子的言论感到震惊，但仍然还是想取得独家报道的机会，不过并未如愿。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -757,9 +770,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -773,12 +786,12 @@
 
             <li id="track-OST_130">
     <a href="/zh_cn/track/ost/130.html#story-EVENT_818_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_130-all">
-        <span>OST&nbsp;130.&nbsp;Foolish Days (Foolish Days)</span>
+        <span>OST&nbsp;130.&nbsp;Foolish Days (傻傻的日子)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_130-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -791,8 +804,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -821,6 +834,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -892,7 +906,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656893.1388307)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.839043)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -904,6 +918,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -916,7 +931,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656893.1388357
+Generated time (UTC): 1711252010.8390477
 -->
 </body>
 </html>

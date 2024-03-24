@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>All videos- BA OST Index</title>
+    <title>全部视频- BA OST Index</title>
 
     <script defer src="/static/jsdelivr/jquery.min.js"></script>
     <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -185,12 +193,12 @@
 
         <div id="git-wiki-content">
             
-    <h1>All videos</h1>
-    <p>This page lists all the videos recorded.</p>
+    <h1>全部视频</h1>
+    <p>本页列出所有本站已收录的视频。</p>
     <ul>
         
             
-            <li><a href="/zh_cn/video/1.html">Blue Archive CN Official Chinese Dub VOL.1 - Abydos</a> 
+            <li><a href="/zh_cn/video/1.html">《蔚蓝档案》中文配音档案VOL.1——阿拜多斯篇</a> 
     <div class="video-stats-badge stats-badge">
     
     
@@ -205,7 +213,7 @@
     
     </div>
 
-                <br />The first character dub preview video released by Blue Archive CN on June 17th, 2023.
+                <br />《蔚蓝档案》国服于2023年6月17日放出的第一篇人物配音视频。
             </li>
         
     </ul>
@@ -255,7 +263,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656887.501739)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252005.8082345)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -267,6 +275,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -279,7 +288,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656887.501745
+Generated time (UTC): 1711252005.8082402
 -->
 </body>
 </html>

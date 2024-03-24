@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -282,7 +290,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1B94y1x75F/?p=1')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -327,9 +335,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">基沃托斯各地的红色天空再度显现。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -345,9 +354,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -361,7 +370,7 @@
 
             <li id="track-OST_149">
     <a href="/zh_cn/track/ost/149.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_149-all">
-        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (Ark in the Blood Sky)</span>
+        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (血色天空中的方舟)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_149-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -379,8 +388,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -499,6 +508,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -522,9 +532,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">优香和日鞠惊讶的发现，生命守卫者舰艇被方舟骇入，并且前者实际上正在协助后者的运算，重新执行“多次元诠释”，同时利用船舰的能量修复次元引擎。日鞠警告说，圣所随时可能出现。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">优香和阳葵惊讶的发现，生命守卫者舰艇被方舟骇入，并且前者实际上正在协助后者的运算，重新执行“多次元诠释”，同时利用船舰的能量修复次元引擎。阳葵警告说，圣所随时可能出现。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">优香和日鞠惊讶的发现，生命守卫者舰艇被方舟骇入，并且前者实际上正在协助后者的运算，重新执行“多次元诠释”，同时利用船舰的能量修复次元引擎。日鞠警告说，圣所随时可能出现。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -614,9 +625,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -630,7 +641,7 @@
 
             <li id="track-OST_149">
     <a href="/zh_cn/track/ost/149.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_149-all">
-        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (Ark in the Blood Sky)</span>
+        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (血色天空中的方舟)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_149-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -648,8 +659,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -693,6 +704,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -716,9 +728,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">就在所有人慌乱之时，生命守卫者的舰上系统提示自爆程序重启完毕，800秒倒计时已启动。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -884,9 +897,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -900,7 +913,7 @@
 
             <li id="track-OST_149">
     <a href="/zh_cn/track/ost/149.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_149-all">
-        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (Ark in the Blood Sky)</span>
+        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (血色天空中的方舟)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_149-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -918,8 +931,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -948,13 +961,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-2"><span class="lang-zh-cn-cn">由于此时系统被骇入，日鞠请求地面上的真理会协助断开连接，但结果出乎所有人的意料：断开请求被拒绝。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">由于此时系统被骇入，阳葵请求地面上的贝里塔斯协助断开连接，但结果出乎所有人的意料：断开请求被拒绝。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">由于此时系统被骇入，日鞠请求地面上的真理社协助断开连接，但结果出乎所有人的意料：断开请求被拒绝。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1120,9 +1135,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1136,7 +1151,7 @@
 
             <li id="track-OST_149">
     <a href="/zh_cn/track/ost/149.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_149-all">
-        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (Ark in the Blood Sky)</span>
+        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (血色天空中的方舟)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_149-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1154,8 +1169,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1214,13 +1229,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-3"><span class="lang-zh-cn-cn">日鞠感慨方舟居然能在毁坏这么严重的情况下仍设法骇入战舰，对其计算能力啧啧称奇。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">阳葵感慨方舟居然能在毁坏这么严重的情况下仍设法骇入战舰，对其计算能力啧啧称奇。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">日鞠感慨方舟居然能在毁坏这么严重的情况下仍设法骇入战舰，对其计算能力啧啧称奇。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1350,9 +1367,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1366,7 +1383,7 @@
 
             <li id="track-OST_149">
     <a href="/zh_cn/track/ost/149.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_149-all">
-        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (Ark in the Blood Sky)</span>
+        <span>OST&nbsp;149.&nbsp;Ark in the Blood Sky (血色天空中的方舟)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_149-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1384,8 +1401,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1414,6 +1431,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1437,9 +1455,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1"><span class="lang-zh-cn-cn">白子见到了诱骗者与另一时间线上的自己，而A.R.O.N.A.肯定了白子的描述。老师感到惊奇，询问A.R.O.N.A.是否就是阿洛娜，而前者给出了“部分肯定”。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">白子见到了诱骗者与另一时间线上的自己，而A.R.O.N.A.肯定了白子的描述。老师感到惊奇，询问A.R.O.N.A.是否就是彩奈，而前者给出了“部分肯定”。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">白子见到了诱骗者与另一时间线上的自己，而A.R.O.N.A.肯定了白子的描述。老师感到惊奇，询问A.R.O.N.A.是否就是阿罗娜，而前者给出了“部分肯定”。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1543,9 +1562,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1559,7 +1578,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1577,8 +1596,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1682,13 +1701,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-2"><span class="lang-zh-cn-cn">阿洛娜对A.R.O.N.A.居然能脱离系统、存在实体形态感到惊讶，而后者则表示这主要是由于环境的混沌不确定性导致，且表示由于其特殊身份能直接与阿洛娜通信。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈对A.R.O.N.A.居然能脱离系统、存在实体形态感到惊讶，而后者则表示这主要是由于环境的混沌不确定性导致，且表示由于其特殊身份能直接与彩奈通信。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜对A.R.O.N.A.居然能脱离系统、存在实体形态感到惊讶，而后者则表示这主要是由于环境的混沌不确定性导致，且表示由于其特殊身份能直接与阿罗娜通信。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1754,9 +1775,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1770,7 +1791,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1788,8 +1809,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1833,6 +1854,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1856,9 +1878,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1">A.R.O.N.A.要求老师——诱骗者——下达命令。老师这才意识到诱骗者实际上就是另一时间线的自己；A.R.O.N.A.虽确认了这一说法，但表示两者有一明显区别。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1924,9 +1947,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1940,7 +1963,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-all">
-        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1958,8 +1981,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1988,13 +2011,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-2"><span class="lang-zh-cn-cn">阿洛娜随后解释，诱骗者形态的老师，已经死亡。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈随后解释，诱骗者形态的老师，已经死亡。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜随后解释，诱骗者形态的老师，已经死亡。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2034,9 +2059,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2052,8 +2077,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2082,6 +2107,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2105,9 +2131,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1">另一时间线上的白子表示肯定，并表示原因就是因为她杀死了老师，之后老师成为了“色彩的向导者”，成了现在这个样子。她表示老师将她引导到了这里，让她毁灭世界。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2211,9 +2238,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2227,7 +2254,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2245,8 +2272,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2290,6 +2317,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2313,9 +2341,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-7-seg-1">白子对自己“杀死”了老师和要“毁灭”世界两件事感到不可接受，开始对另一个自己发起攻击。但另一位在混战中夺下了现在白子的枪，并指出命运的终宿必然让她这么去做——因为砂狼白子就是死神的代表。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2393,9 +2422,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2409,7 +2438,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2427,8 +2456,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2562,6 +2591,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2585,9 +2615,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-1">另一时间线上的白子表示，由于时间线和所经历的事件不同，现在的白子于她而言不是对手。并且指出为了保证能执行计划、稳定地在当前世界活动，她必须要除掉当前时间线的白子，也就是为何要将她绑架于此。之后她对白子表示怜悯，表示如果白子按她所说的做，在其它人就此消失时就不会有任何痛苦。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2691,9 +2722,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2707,7 +2738,7 @@
 
             <li id="track-OST_157">
     <a href="/zh_cn/track/ost/157.html#story-MAIN_finalS1_4_1" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_157-all">
-        <span>OST&nbsp;157.&nbsp;Step of Terror (Step of Terror)</span>
+        <span>OST&nbsp;157.&nbsp;Step of Terror (恐怖的脚步)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_157-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2725,8 +2756,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2770,12 +2801,13 @@
         
     
 
+            </div>
         </ul>
     
 
 
     <script>
-        add_tooltip_data({ 'story-MAIN_finalS1_4_1-source-1': '<p class="tooltip-title">基沃托斯各地</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-2': '<p class="tooltip-title">被骇入的方舟</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=20&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-3': '<p class="tooltip-title">自爆程序的重启</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=41&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-4': '<p class="tooltip-title">白子与另一时间线上的自己</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=112&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-5': '<p class="tooltip-title">老师与另一时间线上的老师</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=214&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-6': '<p class="tooltip-title">杀了老师的人</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=277&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-7': '<p class="tooltip-title">“我不相信！”</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=317&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-8': '<p class="tooltip-title">两个砂狼白子</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=363&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
+        add_tooltip_data({ 'story-MAIN_finalS1_4_1-source-1': '<p class="tooltip-title">基沃托斯各地</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-2': '<p class="tooltip-title">被骇入的方舟</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=20&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-3': '<p class="tooltip-title">自爆程序的重启</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=41&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-4': '<p class="tooltip-title">白子与另一时间线上的自己</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=112&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-5': '<p class="tooltip-title">老师与另一时间线上的老师</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=214&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-6': '<p class="tooltip-title">杀了老师的人</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=277&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-7': '<p class="tooltip-title">“我不相信！”</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=317&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_1-source-8': '<p class="tooltip-title">两个砂狼白子</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=1&t=363&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
     </script>
 
     
@@ -2853,7 +2885,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.6483598)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.3943603)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -2865,6 +2897,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2877,7 +2910,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.648366
+Generated time (UTC): 1711252010.394366
 -->
 </body>
 </html>

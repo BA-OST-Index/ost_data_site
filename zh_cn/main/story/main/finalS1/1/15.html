@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -282,7 +290,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV17V4y1t7m5/?p=15')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -327,9 +335,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1"><span class="lang-zh-cn-cn">桃可和步恢复了通讯，</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃香和步恢复了通讯，</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃香和步恢复了通讯，</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -395,9 +404,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -411,7 +420,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -429,8 +438,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -474,13 +483,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-2"><span class="lang-zh-cn-cn">阿洛娜表示老师在这期间收到了很多消息。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈表示老师在这期间收到了很多消息。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜表示老师在这期间收到了很多消息。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -520,9 +531,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -536,7 +547,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -554,8 +565,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -599,6 +610,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -622,9 +634,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1"><span class="lang-zh-cn-cn">茶会的圣娅报告不明情况。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茶会的圣亚报告不明情况。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">茶会的圣娅报告不明情况。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -664,9 +677,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -680,7 +693,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -698,8 +711,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -728,13 +741,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-2"><span class="lang-zh-cn-cn">修女会的樱子报告不明情况。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">修女会的樱子报告不明情况。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">姐妹会的樱子报告不明情况。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -786,9 +801,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -802,7 +817,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -820,8 +835,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -850,13 +865,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-3"><span class="lang-zh-cn-cn">未花询问老师为何不去参加会议。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">弥香询问老师为何不去参加会议。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">未花询问老师为何不去参加会议。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -908,9 +925,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -924,7 +941,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -942,8 +959,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -972,13 +989,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-4">渚询问老师的近况。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1030,9 +1049,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1046,7 +1065,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1064,8 +1083,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1094,13 +1113,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-5">研讨会的优香说明会长不见了，并发现消息被戒严令限制。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1152,9 +1173,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1168,7 +1189,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1186,8 +1207,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1216,13 +1237,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-6"><span class="lang-zh-cn-cn">补课部的花子报告自己有不好的预感。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">补课部的花子报告自己有不好的预感。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">补习部的花子报告自己有不好的预感。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1274,9 +1297,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1290,7 +1313,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1308,8 +1331,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1338,13 +1361,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-7"><span class="lang-zh-cn-cn">特异现象调查部的日鞠发现通讯恢复。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">特异现象搜查部的阳葵发现通讯恢复。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">超自然现象调查部的日鞠发现通讯恢复。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1396,9 +1421,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1412,7 +1437,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1430,8 +1455,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1460,13 +1485,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-8">联邦学生会的琳询问老师的位置。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1506,9 +1533,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1522,7 +1549,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1540,8 +1567,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1570,13 +1597,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-9">对策委员会的绫音等人报告白子不见了。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1704,9 +1733,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1720,7 +1749,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1738,8 +1767,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1768,13 +1797,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-10"><span class="lang-zh-cn-cn">芹香发现白子只在现场留下了自行车。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茜香发现白子只在现场留下了自行车。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">芹香发现白子只在现场留下了自行车。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1826,9 +1857,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1842,7 +1873,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1860,8 +1891,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1890,13 +1921,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-11"><span class="lang-zh-cn-cn">就在这时沙勒内的警报响起。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">就在这时夏莱内的警报响起。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">就在这时夏莱内的警报响起。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1936,9 +1969,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1952,7 +1985,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1970,8 +2003,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2000,6 +2033,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2023,9 +2057,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1"><span class="lang-zh-cn-cn">桃可发现基沃托斯各地出现紧急情况。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">桃香发现基沃托斯各地出现紧急情况。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">桃香发现基沃托斯各地出现紧急情况。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2065,9 +2100,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2081,7 +2116,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2099,8 +2134,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2129,6 +2164,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2152,9 +2188,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1">PMC总裁获知消息后决定先行撤退。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2220,9 +2257,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2236,7 +2273,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2254,8 +2291,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2284,6 +2321,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2307,9 +2345,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1">位于阿拜多斯沙漠地区的PMC驻军被FOX小队妥善处理后，后者开始撤退。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2453,9 +2492,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2469,7 +2508,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-all">
-        <span>OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2487,8 +2526,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2517,6 +2556,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2540,9 +2580,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1">琳注意到天空变红。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2582,9 +2623,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2600,8 +2641,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2645,13 +2686,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-2">法兰西斯突然到访，指出老师的力量将不再发挥作用，因为老师所处的故事的一切已经被推翻、破坏，老师不再是故事的主角。一切都将不复存在，一切都将成为没有意义而无法理解的世界。他指出老师的故事已经结束，所要发生的将不再是故事。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2691,9 +2734,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2707,7 +2750,7 @@
 
             <li id="track-OST_142">
     <a href="/zh_cn/track/ost/142.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_142-all">
-        <span>OST&nbsp;142.&nbsp;Encroached Sky (Encroached Sky)</span>
+        <span>OST&nbsp;142.&nbsp;Encroached Sky (被侵蚀的天空)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_142-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2725,8 +2768,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2755,6 +2798,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2778,9 +2822,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-7-seg-1">老师回答他根本不管这些，因为无论如何，他们都会克服的。法兰西斯表示将观察老师的表现，随后离开。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2820,9 +2865,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2836,7 +2881,7 @@
 
             <li id="track-OST_59">
     <a href="/zh_cn/track/ost/59.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_59-all">
-        <span>OST&nbsp;59.&nbsp;RE Aoharu (RE Aoharu)</span>
+        <span>OST&nbsp;59.&nbsp;RE Aoharu (青春再重启)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_59-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2854,8 +2899,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -2884,6 +2929,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2907,9 +2953,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-1"><span class="lang-zh-cn-cn">老师让阿洛娜以沙勒身份联络所有人。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">老师让彩奈以夏莱身份联络所有人。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">老师让阿罗娜以夏莱身份联络所有人。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -2949,9 +2996,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -2965,7 +3012,7 @@
 
             <li id="track-OST_59">
     <a href="/zh_cn/track/ost/59.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_59-all">
-        <span>OST&nbsp;59.&nbsp;RE Aoharu (RE Aoharu)</span>
+        <span>OST&nbsp;59.&nbsp;RE Aoharu (青春再重启)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_59-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -2983,8 +3030,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -3103,13 +3150,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-2">另一边，基沃托斯的一切正在被虹色侵蚀。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -3125,9 +3174,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -3141,7 +3190,7 @@
 
             <li id="track-OST_59">
     <a href="/zh_cn/track/ost/59.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_59-all">
-        <span>OST&nbsp;59.&nbsp;RE Aoharu (RE Aoharu)</span>
+        <span>OST&nbsp;59.&nbsp;RE Aoharu (青春再重启)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_59-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3159,8 +3208,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -3249,6 +3298,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -3272,9 +3322,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-9-seg-1">阿努比斯的到来让黑服突然清醒：色彩和无名祭司已经发生了接触。他认出了阿努比斯，认出了他“恐怖”的一面；后者随后开枪。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -3340,9 +3391,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -3356,7 +3407,7 @@
 
             <li id="track-OST_59">
     <a href="/zh_cn/track/ost/59.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_59-all">
-        <span>OST&nbsp;59.&nbsp;RE Aoharu (RE Aoharu)</span>
+        <span>OST&nbsp;59.&nbsp;RE Aoharu (青春再重启)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_59-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3374,8 +3425,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -3419,6 +3470,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -3442,9 +3494,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-10-seg-1"><span class="lang-zh-cn-cn">阿洛娜告诉老师，她已成功联络所有学生。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈告诉老师，她已成功联络所有学生。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜告诉老师，她已成功联络所有学生。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -3484,9 +3537,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -3500,7 +3553,7 @@
 
             <li id="track-OST_59">
     <a href="/zh_cn/track/ost/59.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_59-all">
-        <span>OST&nbsp;59.&nbsp;RE Aoharu (RE Aoharu)</span>
+        <span>OST&nbsp;59.&nbsp;RE Aoharu (青春再重启)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_59-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3518,8 +3571,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -3548,6 +3601,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -3571,9 +3625,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-11-seg-1">黑服说，这出戏剧的演员就此到齐。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -3613,9 +3668,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -3629,7 +3684,7 @@
 
             <li id="track-OST_59">
     <a href="/zh_cn/track/ost/59.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_59-all">
-        <span>OST&nbsp;59.&nbsp;RE Aoharu (RE Aoharu)</span>
+        <span>OST&nbsp;59.&nbsp;RE Aoharu (青春再重启)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_59-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3647,8 +3702,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -3664,13 +3719,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-11-seg-2">下一个要出场的，将是阿努比斯带来的“色彩的向导者”。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -3686,9 +3743,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -3702,7 +3759,7 @@
 
             <li id="track-OST_59">
     <a href="/zh_cn/track/ost/59.html#story-MAIN_finalS1_1_15" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_59-all">
-        <span>OST&nbsp;59.&nbsp;RE Aoharu (RE Aoharu)</span>
+        <span>OST&nbsp;59.&nbsp;RE Aoharu (青春再重启)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_59-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -3720,8 +3777,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -3765,12 +3822,13 @@
         
     
 
+            </div>
         </ul>
     
 
 
     <script>
-        add_tooltip_data({ 'story-MAIN_finalS1_1_15-source-1': '<p class="tooltip-title">通讯恢复</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-2': '<p class="tooltip-title">各自治区情况</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=36&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-3': '<p class="tooltip-title">紧急情况</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=80&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-4': '<p class="tooltip-title">撤退的PMC</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=88&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-5': '<p class="tooltip-title">阿拜多斯沙漠地区的PMC</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=96&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-6': '<p class="tooltip-title">被扭曲的故事</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=130&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-7': '<p class="tooltip-title">老师的破局</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=204&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-8': '<p class="tooltip-title">联络所有人</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=240&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-9': '<p class="tooltip-title">死神阿努比斯</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=291&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-10': '<p class="tooltip-title">联络成功</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=307&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-11': '<p class="tooltip-title">到齐的演员</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=318&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
+        add_tooltip_data({ 'story-MAIN_finalS1_1_15-source-1': '<p class="tooltip-title">通讯恢复</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-2': '<p class="tooltip-title">各自治区情况</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=36&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-3': '<p class="tooltip-title">紧急情况</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=80&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-4': '<p class="tooltip-title">撤退的PMC</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=88&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-5': '<p class="tooltip-title">阿拜多斯沙漠地区的PMC</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=96&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-6': '<p class="tooltip-title">被扭曲的故事</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=130&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-7': '<p class="tooltip-title">老师的破局</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=204&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-8': '<p class="tooltip-title">联络所有人</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=240&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-9': '<p class="tooltip-title">死神阿努比斯</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=291&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-10': '<p class="tooltip-title">联络成功</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=307&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_1_15-source-11': '<p class="tooltip-title">到齐的演员</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV17V4y1t7m5/?p=15&t=318&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
     </script>
 
     
@@ -3848,7 +3906,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.2627592)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.030539)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -3860,6 +3918,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -3872,7 +3931,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.2627664
+Generated time (UTC): 1711252010.0305448
 -->
 </body>
 </html>

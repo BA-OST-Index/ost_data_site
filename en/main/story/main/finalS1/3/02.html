@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_en_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_en_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_en_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -108,6 +109,13 @@
                 <option value="zh_tw" lang="zh-Hant">中文(繁體)</option>
             </select>
             <script>showLangSwitchStatus();</script>
+            <br />
+            <span>Story View Mode: </span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>All</option>
+                <option value="text-only">Desc Only</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
             <br /><br />
         </div>
 
@@ -269,7 +277,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1N14y1y7Qs/?p=2')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -307,9 +315,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">在色彩襲擊後，黑色西裝人和瑪艾斯托洛受傷嚴重，後者甚至是黑服臨時拼接的。黑服指出色彩似乎看透了一切，奪走了他們所擁有的一切力量。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -375,9 +384,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -409,8 +418,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -439,6 +448,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -457,9 +467,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">由於色彩的活動，黑色西裝人表示基沃託斯已經不適合他們繼續活動。瑪艾斯托洛詢問這是否意味著基沃託斯的終結，而黑服則提到了老師。黑服突然宣佈蓋瑪特利亞原地解散。之後兩人交流了一下其他各成員的情況。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -525,9 +536,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -559,8 +570,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -664,6 +675,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -682,9 +694,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">桃香向琳等人報告，指出基沃託斯上空再次出現了能量濃度極高的能量體。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -776,9 +789,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -810,8 +823,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -840,6 +853,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -858,9 +872,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1">聖亞向對策委員會眾人表示，白子應該是接觸了色彩才變得那樣。眾人無法理解這番話的含義。聖亞指出，白子或許是認為自己的世界再無方法改變，於是順從了所謂命運的指引。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -1052,9 +1067,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -1086,8 +1101,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -1116,6 +1131,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1134,9 +1150,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1">眾人理解了聖亞的話，指出這似乎表明全是那“色彩”搞的鬼。聖亞表示目前沒有辦法能將白子變回來，但老師已經向百鬼夜行請求幫助，自己也在和修女會一同研究。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -1290,9 +1307,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -1324,8 +1341,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -1354,6 +1371,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1372,9 +1390,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1">忍術研究部一行人打開了信件，信中指出，被色彩侵蝕之人沒有復原的方法，如同逝者不可再生，是世界的絕對法則。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -1502,9 +1521,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -1520,8 +1539,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -1550,6 +1569,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1568,9 +1588,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-7-seg-1">琳指出這次情況較上次更加不同：這次的能量濃度更高，意味著較上次相比，此次聖所的降臨可能會更快――但這時各自治區卻還在整理事務中，實在是再壞不過。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -1662,9 +1683,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -1696,8 +1717,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -1726,6 +1747,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1744,9 +1766,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-1">看不見摸不著的聖所與能量體，意味著眾人無法對其從物理層面上打擊。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -1812,9 +1835,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -1846,8 +1869,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -1876,13 +1899,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-2">老師向各位道歉，表示自己早就清楚一切事情――白子的變化、基沃託斯的總結、敵人的警告――如果不是他輕視事情的嚴重性，一切就可能都不會發生。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -1898,9 +1923,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -1932,8 +1957,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -2007,13 +2032,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-8-seg-3">琳表示自己也有過錯。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -2105,9 +2132,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -2139,8 +2166,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -2169,6 +2196,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2187,9 +2215,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-9-seg-1">就在老師和琳自責時，星野從對策委員會的課室接入通訊。她指出他們應對付的是色彩，並且只要把白子帶回來就好――如果真的與白子有掛關，把她“抓”回來就好。星野最後安慰老師，讓老師樂觀些；老師也承諾會將白子帶回來。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -2355,9 +2384,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -2389,8 +2418,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -2419,6 +2448,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2437,9 +2467,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-10-seg-1">琳詢問桃香能否最終能量體間的能量流動情況。桃香照做，發現的確有一個能量中心點。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -2531,9 +2562,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -2565,8 +2596,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -2610,13 +2641,15 @@
         
     
 
+            </div>
         </ul>
     
         <ul style="margin: 0;">
             <li id="story-part-10-seg-2">那是基沃託斯上空75000m的一處地方――那便是，色彩的嚮導者，“誘騙者”的所在。</li>
-            <h4>Characters</h4>
-            
+            <div class="story-segment-data">
+                <h4>Characters</h4>
                 
+                    
     
         
         
@@ -2632,9 +2665,9 @@
         
     
 
-            
-            <h4>Tracks</h4>
-            
+                
+                <h4>Tracks</h4>
+                
     <ul>
         
             
@@ -2666,8 +2699,8 @@
         
     
 
-            <h4>Backgrounds</h4>
-            
+                <h4>Backgrounds</h4>
+                
     
         
         
@@ -2711,6 +2744,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -2794,7 +2828,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656879.4413311)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711251998.470145)})
     </script>
 </footer>
     <script>displayCharLangElement('en');</script>
@@ -2805,6 +2839,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -2817,7 +2852,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656879.4413369
+Generated time (UTC): 1711251998.47015
 -->
 </body>
 </html>

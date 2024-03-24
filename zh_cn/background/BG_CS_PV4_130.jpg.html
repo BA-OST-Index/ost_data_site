@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -346,7 +354,7 @@
 
             <li id="track-OST_76">
     <a href="/zh_cn/track/ost/76.html#ab8c7356-b66f-4bb7-8d41-57f43d094092" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_76-background-ab8c7356-b66f-4bb7-8d41-57f43d094092">
-        <span>【1】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>【1】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_76-background-ab8c7356-b66f-4bb7-8d41-57f43d094092', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -369,7 +377,7 @@
 
             <li id="track-OST_149">
     <a href="/zh_cn/track/ost/149.html#ab8c7356-b66f-4bb7-8d41-57f43d094092" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_149-background-ab8c7356-b66f-4bb7-8d41-57f43d094092">
-        <span>【1】OST&nbsp;149.&nbsp;Ark in the Blood Sky (Ark in the Blood Sky)</span>
+        <span>【1】OST&nbsp;149.&nbsp;Ark in the Blood Sky (血色天空中的方舟)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_149-background-ab8c7356-b66f-4bb7-8d41-57f43d094092', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -595,7 +603,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656889.4394515)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252007.5190678)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -607,6 +615,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -619,7 +628,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656889.4394588
+Generated time (UTC): 1711252007.5190728
 -->
 </body>
 </html>

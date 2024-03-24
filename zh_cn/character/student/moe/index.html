@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -776,12 +784,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-character-Moe">
-        <span>【2】OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>【2】OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -799,12 +807,12 @@
 
             <li id="track-OST_13">
     <a href="/zh_cn/track/ost/13.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_13-character-Moe">
-        <span>【1】OST&nbsp;13.&nbsp;Barrier (Barrier)</span>
+        <span>【1】OST&nbsp;13.&nbsp;Barrier (障碍)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_13-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Cheerful</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">欢快</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -822,12 +830,12 @@
 
             <li id="track-OST_18">
     <a href="/zh_cn/track/ost/18.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_18-character-Moe">
-        <span>【1】OST&nbsp;18.&nbsp;Mechanical JUNGLE (Mechanical JUNGLE)</span>
+        <span>【1】OST&nbsp;18.&nbsp;Mechanical JUNGLE (机械迷林)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_18-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Nervous</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-danger badge-tag">Emergency</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">紧张的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-danger badge-tag">紧急</span>&nbsp;</div>
 </li>
 
 
@@ -845,7 +853,7 @@
 
             <li id="track-OST_56">
     <a href="/zh_cn/track/ost/56.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_56-character-Moe">
-        <span>【1】OST&nbsp;56.&nbsp;Fearful Utopia (Fearful Utopia)</span>
+        <span>【1】OST&nbsp;56.&nbsp;Fearful Utopia (令人恐惧的乌托邦)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_56-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -868,7 +876,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-character-Moe">
-        <span>【1】OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>【1】OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -891,7 +899,7 @@
 
             <li id="track-OST_68">
     <a href="/zh_cn/track/ost/68.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_68-character-Moe">
-        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange) (Virtual Storm (Hard Arrange))</span>
+        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange) (虚拟风暴 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_68-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -937,7 +945,7 @@
 
             <li id="track-OST_74">
     <a href="/zh_cn/track/ost/74.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_74-character-Moe">
-        <span>【1】OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (Tech N Tech (Hard Arrange))</span>
+        <span>【1】OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_74-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -960,7 +968,7 @@
 
             <li id="track-OST_76">
     <a href="/zh_cn/track/ost/76.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_76-character-Moe">
-        <span>【1】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>【1】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_76-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -983,7 +991,7 @@
 
             <li id="track-OST_113">
     <a href="/zh_cn/track/ost/113.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_113-character-Moe">
-        <span>【1】OST&nbsp;113.&nbsp;Usagi Flap (Usagi Flap)</span>
+        <span>【1】OST&nbsp;113.&nbsp;Usagi Flap (蹦蹦跳跳的兔子)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_113-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1006,7 +1014,7 @@
 
             <li id="track-OST_115">
     <a href="/zh_cn/track/ost/115.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_115-character-Moe">
-        <span>【1】OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (Fall Into The Rabbit Hole)</span>
+        <span>【1】OST&nbsp;115.&nbsp;Fall Into The Rabbit Hole (坠入兔穴)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_115-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1029,12 +1037,12 @@
 
             <li id="track-OST_135">
     <a href="/zh_cn/track/ost/135.html#Moe" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_135-character-Moe">
-        <span>【1】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【1】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_135-character-Moe', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Discouraged</span>&nbsp;<span class="badge badge-danger badge-tag">Sad</span>&nbsp;<span class="badge badge-danger badge-tag">Failure</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">灰心的</span>&nbsp;<span class="badge badge-danger badge-tag">悲伤的</span>&nbsp;<span class="badge badge-danger badge-tag">失败</span>&nbsp;</div>
 </li>
 
 
@@ -1710,7 +1718,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656896.1531253)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252013.6220272)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1722,6 +1730,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1734,7 +1743,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656896.1531332
+Generated time (UTC): 1711252013.6220345
 -->
 </body>
 </html>

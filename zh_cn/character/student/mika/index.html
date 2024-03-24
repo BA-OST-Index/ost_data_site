@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -312,7 +320,7 @@
             
             <big><p>可在该故事中收集到回忆大厅。大厅BGM：
     <a href="/zh_cn/track/ost/22.html" >
-        <span>OST&nbsp;22.&nbsp;Daily Routine 24/7 (Daily Routine 24/7)</span>
+        <span>OST&nbsp;22.&nbsp;Daily Routine 24/7 (平常的一天)</span>
     </a>
     
     
@@ -796,12 +804,12 @@
 
             <li id="track-OST_135">
     <a href="/zh_cn/track/ost/135.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_135-character-Mika">
-        <span>【3】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【3】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_135-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Discouraged</span>&nbsp;<span class="badge badge-danger badge-tag">Sad</span>&nbsp;<span class="badge badge-danger badge-tag">Failure</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">灰心的</span>&nbsp;<span class="badge badge-danger badge-tag">悲伤的</span>&nbsp;<span class="badge badge-danger badge-tag">失败</span>&nbsp;</div>
 </li>
 
 
@@ -819,12 +827,12 @@
 
             <li id="track-OST_15">
     <a href="/zh_cn/track/ost/15.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_15-character-Mika">
-        <span>【2】OST&nbsp;15.&nbsp;Honey Jam (Honey Jam)</span>
+        <span>【2】OST&nbsp;15.&nbsp;Honey Jam (蜂蜜果酱)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_15-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -842,7 +850,7 @@
 
             <li id="track-OST_76">
     <a href="/zh_cn/track/ost/76.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_76-character-Mika">
-        <span>【2】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>【2】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_76-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -865,12 +873,12 @@
 
             <li id="track-OST_4">
     <a href="/zh_cn/track/ost/4.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_4-character-Mika">
-        <span>【1】OST&nbsp;4.&nbsp;Lovely Picnic (Lovely Picnic)</span>
+        <span>【1】OST&nbsp;4.&nbsp;Lovely Picnic (美好的野餐)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_4-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Bright</span>&nbsp;<span class="badge badge-success badge-tag">Day to Day</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-success badge-tag">Relaxing</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-success badge-tag">日常的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-success badge-tag">轻松惬意</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -888,12 +896,12 @@
 
             <li id="track-OST_7">
     <a href="/zh_cn/track/ost/7.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_7-character-Mika">
-        <span>【1】OST&nbsp;7.&nbsp;Unwelcome School (Unwelcome School)</span>
+        <span>【1】OST&nbsp;7.&nbsp;Unwelcome School (不受欢迎的学校)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_7-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Chaos</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">混乱</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -911,12 +919,12 @@
 
             <li id="track-OST_10">
     <a href="/zh_cn/track/ost/10.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_10-character-Mika">
-        <span>【1】OST&nbsp;10.&nbsp;Romantic Smile (Romantic Smile)</span>
+        <span>【1】OST&nbsp;10.&nbsp;Romantic Smile (浪漫一笑)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_10-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Bright</span>&nbsp;<span class="badge badge-primary badge-tag">Hopeful</span>&nbsp;<span class="badge badge-primary badge-tag">Dream</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">光明的</span>&nbsp;<span class="badge badge-primary badge-tag">充满希望的</span>&nbsp;<span class="badge badge-primary badge-tag">梦想</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -934,7 +942,7 @@
 
             <li id="track-OST_22">
     <a href="/zh_cn/track/ost/22.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_22-character-Mika">
-        <span>【1】OST&nbsp;22.&nbsp;Daily Routine 24/7 (Daily Routine 24/7)</span>
+        <span>【1】OST&nbsp;22.&nbsp;Daily Routine 24/7 (平常的一天)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_22-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -980,7 +988,7 @@
 
             <li id="track-OST_29">
     <a href="/zh_cn/track/ost/29.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_29-character-Mika">
-        <span>【1】OST&nbsp;29.&nbsp;Alert (Alert)</span>
+        <span>【1】OST&nbsp;29.&nbsp;Alert (警报)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_29-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1003,7 +1011,7 @@
 
             <li id="track-OST_35">
     <a href="/zh_cn/track/ost/35.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_35-character-Mika">
-        <span>【1】OST&nbsp;35.&nbsp;Morose Dreamer (Morose Dreamer)</span>
+        <span>【1】OST&nbsp;35.&nbsp;Morose Dreamer (忧郁的幻想家)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_35-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1095,7 +1103,7 @@
 
             <li id="track-OST_47">
     <a href="/zh_cn/track/ost/47.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_47-character-Mika">
-        <span>【1】OST&nbsp;47.&nbsp;Coffee Cats (Coffee Cats)</span>
+        <span>【1】OST&nbsp;47.&nbsp;Coffee Cats (咖啡厅里的小猫)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_47-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1118,7 +1126,7 @@
 
             <li id="track-OST_55">
     <a href="/zh_cn/track/ost/55.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_55-character-Mika">
-        <span>【1】OST&nbsp;55.&nbsp;Moment (Moment)</span>
+        <span>【1】OST&nbsp;55.&nbsp;Moment (那一刻)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_55-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1141,7 +1149,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-character-Mika">
-        <span>【1】OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>【1】OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1169,7 +1177,7 @@
     <span onclick="showPopupByTooltipId('track-OST_101-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-danger badge-tag">Chaos</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-danger badge-tag">混乱</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -1210,12 +1218,12 @@
 
             <li id="track-OST_118">
     <a href="/zh_cn/track/ost/118.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_118-character-Mika">
-        <span>【1】OST&nbsp;118.&nbsp;Agnus Dei (Agnus Dei)</span>
+        <span>【1】OST&nbsp;118.&nbsp;Agnus Dei (羔羊颂)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_118-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Emergency</span>&nbsp;<span class="badge badge-secondary badge-tag">Holy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">紧急</span>&nbsp;<span class="badge badge-secondary badge-tag">神圣的</span>&nbsp;</div>
 </li>
 
 
@@ -1233,12 +1241,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-character-Mika">
-        <span>【1】OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>【1】OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -1256,12 +1264,12 @@
 
             <li id="track-OST_130">
     <a href="/zh_cn/track/ost/130.html#Mika" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_130-character-Mika">
-        <span>【1】OST&nbsp;130.&nbsp;Foolish Days (Foolish Days)</span>
+        <span>【1】OST&nbsp;130.&nbsp;Foolish Days (傻傻的日子)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_130-character-Mika', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -2160,6 +2168,33 @@
             <span >圣亚</span>
         </a>
         <span onclick="showPopupByTooltipId('character-Mika-character-Seia', ['tooltip-variable-content-character'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+    
+</li>
+
+        
+            
+            
+
+            
+
+            <li id="Mika-direct"><span>【4】</span>
+    
+        
+        
+            <img src="/static/images/schoolicon/School_Icon_TRINITY_W.png" class="invert-light schoolicon-p">
+        
+        <span>
+            <a href="/zh_cn/character/student/mika/#Mika-direct" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-character'])" data-tooltip="character-Mika-character-Mika" >
+                <img src="/static/images/student/icon/10059.webp" class="icon-stu">
+                <span ><span class="lang-zh-cn-cn">未花</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">弥香</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">未花</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></span>
+            </a>
+        </span>
+        <span onclick="showPopupByTooltipId('character-Mika-character-Mika', ['tooltip-variable-content-character'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
+        
+            
+                <span>&nbsp;[<span class="lang-zh-cn-cn">茶会</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">茶会</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">茶会</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span>]</span>
+            
+        
     
 </li>
 
@@ -3168,7 +3203,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656896.2882717)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252013.749338)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -3180,6 +3215,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -3192,7 +3228,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656896.2882793
+Generated time (UTC): 1711252013.7493458
 -->
 </body>
 </html>

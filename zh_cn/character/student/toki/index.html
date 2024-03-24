@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -1394,7 +1402,7 @@
 
             <li id="track-OST_49">
     <a href="/zh_cn/track/ost/49.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_49-character-Toki">
-        <span>【4】OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (Mechanical JUNGLE (High-Tech Full On Mix))</span>
+        <span>【4】OST&nbsp;49.&nbsp;Mechanical JUNGLE (High-Tech Full On Mix) (机械迷林(High-Tech Full On Mix))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_49-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1417,7 +1425,7 @@
 
             <li id="track-OST_29">
     <a href="/zh_cn/track/ost/29.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_29-character-Toki">
-        <span>【3】OST&nbsp;29.&nbsp;Alert (Alert)</span>
+        <span>【3】OST&nbsp;29.&nbsp;Alert (警报)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_29-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1440,7 +1448,7 @@
 
             <li id="track-OST_76">
     <a href="/zh_cn/track/ost/76.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_76-character-Toki">
-        <span>【3】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (Crossfire (Hard Arrange))</span>
+        <span>【3】OST&nbsp;76.&nbsp;Crossfire (Hard Arrange) (交火 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_76-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1463,12 +1471,12 @@
 
             <li id="track-OST_137">
     <a href="/zh_cn/track/ost/137.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_137-character-Toki">
-        <span>【3】OST&nbsp;137.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【3】OST&nbsp;137.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_137-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-primary badge-tag">Possibilities</span>&nbsp;<span class="badge badge-primary badge-tag">Future</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-primary badge-tag">可能性</span>&nbsp;<span class="badge badge-primary badge-tag">未来</span>&nbsp;</div>
 </li>
 
 
@@ -1509,7 +1517,7 @@
 
             <li id="track-OST_65">
     <a href="/zh_cn/track/ost/65.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_65-character-Toki">
-        <span>【2】OST&nbsp;65.&nbsp;Accelerator (Accelerator)</span>
+        <span>【2】OST&nbsp;65.&nbsp;Accelerator (加速器)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_65-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1532,7 +1540,7 @@
 
             <li id="track-OST_75">
     <a href="/zh_cn/track/ost/75.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_75-character-Toki">
-        <span>【2】OST&nbsp;75.&nbsp;Alert (Hard Arrange) (Alert (Hard Arrange))</span>
+        <span>【2】OST&nbsp;75.&nbsp;Alert (Hard Arrange) (警报 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_75-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1555,7 +1563,7 @@
 
             <li id="track-OST_92">
     <a href="/zh_cn/track/ost/92.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_92-character-Toki">
-        <span>【2】OST&nbsp;92.&nbsp;Crucial Issue (Crucial Issue)</span>
+        <span>【2】OST&nbsp;92.&nbsp;Crucial Issue (严重问题)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_92-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1578,7 +1586,7 @@
 
             <li id="track-OST_149">
     <a href="/zh_cn/track/ost/149.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_149-character-Toki">
-        <span>【2】OST&nbsp;149.&nbsp;Ark in the Blood Sky (Ark in the Blood Sky)</span>
+        <span>【2】OST&nbsp;149.&nbsp;Ark in the Blood Sky (血色天空中的方舟)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_149-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1601,7 +1609,7 @@
 
             <li id="track-OST_30">
     <a href="/zh_cn/track/ost/30.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_30-character-Toki">
-        <span>【1】OST&nbsp;30.&nbsp;Crossfire (Crossfire)</span>
+        <span>【1】OST&nbsp;30.&nbsp;Crossfire (交火)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_30-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1716,7 +1724,7 @@
 
             <li id="track-OST_58">
     <a href="/zh_cn/track/ost/58.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_58-character-Toki">
-        <span>【1】OST&nbsp;58.&nbsp;SAKURA PUNCH (SAKURA PUNCH)</span>
+        <span>【1】OST&nbsp;58.&nbsp;SAKURA PUNCH (樱花绽放时)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_58-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1739,7 +1747,7 @@
 
             <li id="track-OST_60">
     <a href="/zh_cn/track/ost/60.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_60-character-Toki">
-        <span>【1】OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange) (SAKURA PUNCH (Hard Arrange))</span>
+        <span>【1】OST&nbsp;60.&nbsp;SAKURA PUNCH (Hard Arrange) (樱花绽放时 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_60-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1762,7 +1770,7 @@
 
             <li id="track-OST_68">
     <a href="/zh_cn/track/ost/68.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_68-character-Toki">
-        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange) (Virtual Storm (Hard Arrange))</span>
+        <span>【1】OST&nbsp;68.&nbsp;Virtual Storm (Hard Arrange) (虚拟风暴 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_68-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1785,7 +1793,7 @@
 
             <li id="track-OST_73">
     <a href="/zh_cn/track/ost/73.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_73-character-Toki">
-        <span>【1】OST&nbsp;73.&nbsp;Interface (Hard Arrange) (Interface (Hard Arrange))</span>
+        <span>【1】OST&nbsp;73.&nbsp;Interface (Hard Arrange) (交接口 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_73-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1808,7 +1816,7 @@
 
             <li id="track-OST_74">
     <a href="/zh_cn/track/ost/74.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_74-character-Toki">
-        <span>【1】OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (Tech N Tech (Hard Arrange))</span>
+        <span>【1】OST&nbsp;74.&nbsp;Tech N Tech (Hard Arrange) (科技与技术 (Hard Arrange))</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_74-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1831,7 +1839,7 @@
 
             <li id="track-OST_93">
     <a href="/zh_cn/track/ost/93.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_93-character-Toki">
-        <span>【1】OST&nbsp;93.&nbsp;Formless Dream (Formless Dream)</span>
+        <span>【1】OST&nbsp;93.&nbsp;Formless Dream (无可言说的梦)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_93-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1854,7 +1862,7 @@
 
             <li id="track-OST_96">
     <a href="/zh_cn/track/ost/96.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_96-character-Toki">
-        <span>【1】OST&nbsp;96.&nbsp;OperationD (OperationD)</span>
+        <span>【1】OST&nbsp;96.&nbsp;OperationD (十字行动)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_96-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1882,7 +1890,7 @@
     <span onclick="showPopupByTooltipId('track-OST_101-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;<span class="badge badge-danger badge-tag">Chaos</span>&nbsp;<span class="badge badge-success badge-tag">Cheerful</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;<span class="badge badge-danger badge-tag">混乱</span>&nbsp;<span class="badge badge-success badge-tag">欢快</span>&nbsp;</div>
 </li>
 
 
@@ -1900,12 +1908,12 @@
 
             <li id="track-OST_118">
     <a href="/zh_cn/track/ost/118.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_118-character-Toki">
-        <span>【1】OST&nbsp;118.&nbsp;Agnus Dei (Agnus Dei)</span>
+        <span>【1】OST&nbsp;118.&nbsp;Agnus Dei (羔羊颂)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_118-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Emergency</span>&nbsp;<span class="badge badge-secondary badge-tag">Holy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">紧急</span>&nbsp;<span class="badge badge-secondary badge-tag">神圣的</span>&nbsp;</div>
 </li>
 
 
@@ -1923,12 +1931,12 @@
 
             <li id="track-OST_122">
     <a href="/zh_cn/track/ost/122.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_122-character-Toki">
-        <span>【1】OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【1】OST&nbsp;122.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_122-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -1946,12 +1954,12 @@
 
             <li id="track-OST_129">
     <a href="/zh_cn/track/ost/129.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_129-character-Toki">
-        <span>【1】OST&nbsp;129.&nbsp;Let me think about it (Let me think about it)</span>
+        <span>【1】OST&nbsp;129.&nbsp;Let me think about it (让我先想想)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_129-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;</div>
 </li>
 
 
@@ -1969,12 +1977,12 @@
 
             <li id="track-OST_130">
     <a href="/zh_cn/track/ost/130.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_130-character-Toki">
-        <span>【1】OST&nbsp;130.&nbsp;Foolish Days (Foolish Days)</span>
+        <span>【1】OST&nbsp;130.&nbsp;Foolish Days (傻傻的日子)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_130-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">Naughty</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-primary badge-tag">调皮的</span>&nbsp;</div>
 </li>
 
 
@@ -1992,12 +2000,12 @@
 
             <li id="track-OST_134">
     <a href="/zh_cn/track/ost/134.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_134-character-Toki">
-        <span>【1】OST&nbsp;134.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【1】OST&nbsp;134.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_134-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Gloomy</span>&nbsp;<span class="badge badge-danger badge-tag">Nervous</span>&nbsp;<span class="badge badge-danger badge-tag">Mysterious</span>&nbsp;<span class="badge badge-danger badge-tag">Uneasy</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">阴森的</span>&nbsp;<span class="badge badge-danger badge-tag">紧张的</span>&nbsp;<span class="badge badge-danger badge-tag">神秘的</span>&nbsp;<span class="badge badge-danger badge-tag">令人不安的</span>&nbsp;</div>
 </li>
 
 
@@ -2015,12 +2023,12 @@
 
             <li id="track-OST_135">
     <a href="/zh_cn/track/ost/135.html#Toki" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_135-character-Toki">
-        <span>【1】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; ([UNNAMED])</span>
+        <span>【1】OST&nbsp;135.&nbsp;&#91;UNNAMED&#93; (【未命名】)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_135-character-Toki', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
   
-    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">Discouraged</span>&nbsp;<span class="badge badge-danger badge-tag">Sad</span>&nbsp;<span class="badge badge-danger badge-tag">Failure</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-danger badge-tag">灰心的</span>&nbsp;<span class="badge badge-danger badge-tag">悲伤的</span>&nbsp;<span class="badge badge-danger badge-tag">失败</span>&nbsp;</div>
 </li>
 
 
@@ -3935,7 +3943,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656893.8638296)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252011.4936368)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -3947,6 +3955,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -3959,7 +3968,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656893.863838
+Generated time (UTC): 1711252011.4936445
 -->
 </body>
 </html>

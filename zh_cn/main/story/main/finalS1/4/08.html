@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -282,7 +290,7 @@
         
         <span>
     <a href="javascript: void 0;"  onclick="playEmbeddedStoryVideo('storyinfo-source-player', 'https://www.bilibili.com/video/BV1B94y1x75F/?p=9')">
-        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili ()
+        <img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君)
     </a>
 </span>
     
@@ -327,9 +335,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">会长对老师说的话。她希望老师能将回忆、每时每刻铭记于心；并且表示，珍贵的事物从来不会消失。之后，她邀请老师回到“我们所有奇迹的所在之处”。她最后提到，这一切便是“通过无法理解的他人(事物)，理解自己(彼此)的方法。”</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -369,9 +378,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -385,7 +394,7 @@
 
             <li id="track-OST_152">
     <a href="/zh_cn/track/ost/152.html#story-MAIN_finalS1_4_8" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_152-all">
-        <span>OST&nbsp;152.&nbsp;Aoharu Band Arrange (Aoharu Band Arrange)</span>
+        <span>OST&nbsp;152.&nbsp;Aoharu Band Arrange (青春（乐队合奏版）)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_152-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -403,8 +412,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -508,6 +517,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -531,9 +541,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">两人的奇迹起了效果，老师安全回到了地面上。因为履行完了责任，加上自己大概会与现有的“Arona”冲突，A.R.O.N.A.在沙滩上，向着海的另一边跑去。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -599,9 +610,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -615,7 +626,7 @@
 
             <li id="track-OST_152">
     <a href="/zh_cn/track/ost/152.html#story-MAIN_finalS1_4_8" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_152-all">
-        <span>OST&nbsp;152.&nbsp;Aoharu Band Arrange (Aoharu Band Arrange)</span>
+        <span>OST&nbsp;152.&nbsp;Aoharu Band Arrange (青春（乐队合奏版）)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_152-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -633,8 +644,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -678,6 +689,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -701,9 +713,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">两位白子再次相见。另一位白子表示，因为这世上只能有一个白子，她出现在这里只会造成混乱。而白子只是说，她身上的围巾不能给她，但能给她另外一样重要的东西。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -781,9 +794,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -799,8 +812,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -829,6 +842,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -852,9 +866,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1">白子将与对策委员会抢银行时用的头罩送给了另一位白子，这同样也是一件对她而言，和围巾一样重要的东西。另一位白子感谢了白子，表示非常感激，并说这让她想起了之前的许多事，包括抢联邦学生会的金库。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -932,9 +947,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -948,7 +963,7 @@
 
             <li id="track-OST_162">
     <a href="/zh_cn/track/ost/162.html#story-MAIN_finalS1_4_8" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_162-all">
-        <span>OST&nbsp;162.&nbsp;Welcome School (Welcome School)</span>
+        <span>OST&nbsp;162.&nbsp;Welcome School (受欢迎的学校)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_162-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -966,8 +981,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1041,6 +1056,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1064,9 +1080,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1">临别前，白子向另一位白子表示无需担心，因为这里是大人(老师)守护着的地方，而老师必定能找到方面解决这一切。最后白子邀请另一位改天一起去骑车。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1144,9 +1161,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1160,7 +1177,7 @@
 
             <li id="track-OST_162">
     <a href="/zh_cn/track/ost/162.html#story-MAIN_finalS1_4_8" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_162-all">
-        <span>OST&nbsp;162.&nbsp;Welcome School (Welcome School)</span>
+        <span>OST&nbsp;162.&nbsp;Welcome School (受欢迎的学校)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_162-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1178,8 +1195,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1208,6 +1225,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1231,9 +1249,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1"><span class="lang-zh-cn-cn">阿洛娜请求A.R.O.N.A.留下来，一同住在箱子里协助老师。阿洛娜为了防止老师叫错，还贴心地给A.R.O.N.A.找好了一个新名字：星奈/Plana，源于“星象仪”（Planetarium）一词。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈请求A.R.O.N.A.留下来，一同住在箱子里协助老师。彩奈为了防止老师叫错，还贴心地给A.R.O.N.A.找好了一个新名字：星奈/Plana，源于“星象仪”（Planetarium）一词。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜请求A.R.O.N.A.留下来，一同住在箱子里协助老师。阿罗娜为了防止老师叫错，还贴心地给A.R.O.N.A.找好了一个新名字：星奈/Plana，源于“星象仪”（Planetarium）一词。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1299,9 +1318,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1315,7 +1334,7 @@
 
             <li id="track-OST_152">
     <a href="/zh_cn/track/ost/152.html#story-MAIN_finalS1_4_8" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_152-all">
-        <span>OST&nbsp;152.&nbsp;Aoharu Band Arrange (Aoharu Band Arrange)</span>
+        <span>OST&nbsp;152.&nbsp;Aoharu Band Arrange (青春（乐队合奏版）)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_152-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1333,8 +1352,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1378,6 +1397,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1401,9 +1421,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-7-seg-1"><span class="lang-zh-cn-cn">与上一次星奈主动向阿洛娜伸手合作不同，这一次，阿洛娜主动向星奈伸出了手，邀请她一同回家——故事的起点，Blue Archive。阿洛娜还叫她“姐姐”，虽然很快被纠正为“前辈”。</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">与上一次星奈主动向彩奈伸手合作不同，这一次，彩奈主动向星奈伸出了手，邀请她一同回家——故事的起点，Blue Archive。彩奈还叫她“姐姐”，虽然很快被纠正为“前辈”。</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">与上一次星奈主动向阿罗娜伸手合作不同，这一次，阿罗娜主动向星奈伸出了手，邀请她一同回家——故事的起点，Blue Archive。阿罗娜还叫她“姐姐”，虽然很快被纠正为“前辈”。</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1469,9 +1490,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1485,7 +1506,7 @@
 
             <li id="track-OST_152">
     <a href="/zh_cn/track/ost/152.html#story-MAIN_finalS1_4_8" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_152-all">
-        <span>OST&nbsp;152.&nbsp;Aoharu Band Arrange (Aoharu Band Arrange)</span>
+        <span>OST&nbsp;152.&nbsp;Aoharu Band Arrange (青春（乐队合奏版）)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_152-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1503,8 +1524,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1683,12 +1704,13 @@
         
     
 
+            </div>
         </ul>
     
 
 
     <script>
-        add_tooltip_data({ 'story-MAIN_finalS1_4_8-source-1': '<p class="tooltip-title">会长的话</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-2': '<p class="tooltip-title">A.R.O.N.A.的离开</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=91&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-3': '<p class="tooltip-title">两位白子的再相见</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=126&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-4': '<p class="tooltip-title">欢迎回到学校</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=200&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-5': '<p class="tooltip-title">两个白子的共存</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=247&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-6': '<p class="tooltip-title"><span class="lang-zh-cn-cn">阿洛娜的劝阻</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈的劝阻</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜的劝阻</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=288&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-7': '<p class="tooltip-title">牵手回家吧！</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=354&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili () </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
+        add_tooltip_data({ 'story-MAIN_finalS1_4_8-source-1': '<p class="tooltip-title">会长的话</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=0&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-2': '<p class="tooltip-title">A.R.O.N.A.的离开</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=91&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-3': '<p class="tooltip-title">两位白子的再相见</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=126&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-4': '<p class="tooltip-title">欢迎回到学校</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=200&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-5': '<p class="tooltip-title">两个白子的共存</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=247&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-6': '<p class="tooltip-title"><span class="lang-zh-cn-cn">阿洛娜的劝阻</span><span class="lang-zh-cn-splitter">(zh_cn_cn)&nbsp;/&nbsp;</span><span class="lang-zh-cn-tw">彩奈的劝阻</span><span class="lang-zh-cn-splitter">(zh_cn_tw)&nbsp;/&nbsp;</span><span class="lang-zh-cn-jp">阿罗娜的劝阻</span><span class="lang-zh-cn-splitter">(zh_cn_jp)&nbsp;</span></p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=288&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>','story-MAIN_finalS1_4_8-source-7': '<p class="tooltip-title">牵手回家吧！</p><p>以下列出所有可用来源。</p><ul><li>英语： <span>无内容可显示！</span></li><li>中文繁体： <span><a href="javascript: void 0;" onclick="playEmbeddedStoryPartVideo(&#x27storypart-source-player&#x27, &#x27https://www.bilibili.com/video/BV1B94y1x75F/?p=9&t=354&#x27)"><img src="/static/images/social/bilibili.png" class="social-logo">bilibili (墨德君) </a></span></li><li>中文简体（国服）： <span>无内容可显示！</span></li><li>中文简体（日服）： <span>无内容可显示！</span></li></ul><div id="storypart-source-player"></div><div id="tooltip-width-detect"></div>', });
     </script>
 
     
@@ -1766,7 +1788,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656892.729547)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.4680197)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1778,6 +1800,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1790,7 +1813,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656892.7295542
+Generated time (UTC): 1711252010.468025
 -->
 </body>
 </html>

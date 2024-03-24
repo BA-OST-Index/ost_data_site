@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -316,9 +324,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-1-seg-1">星野记起了和以前那位学生会会长的事情。那位会长对未来的一切充满希望，认定阿拜多斯的未来并非如此，还将以前庆典的一张海报给了星野。但星野打断并否定了她，还撕烂了手中的海报。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -396,9 +405,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -412,7 +421,7 @@
 
             <li id="track-OST_55">
     <a href="/zh_cn/track/ost/55.html#story-MAIN_1_2_12" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_55-all">
-        <span>OST&nbsp;55.&nbsp;Moment (Moment)</span>
+        <span>OST&nbsp;55.&nbsp;Moment (那一刻)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_55-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -430,8 +439,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -447,6 +456,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -466,9 +476,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-2-seg-1">众人还是不理解PMC究竟在找什么，毕竟石油之类的高价值物品已被探明并不存在。白子想先去调查一下，但被绫音识出可能实为去抢银行，遭到阻止。星野让大家冷静下来，先行回去休息。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -672,9 +683,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -688,12 +699,12 @@
 
             <li id="track-OST_13">
     <a href="/zh_cn/track/ost/13.html#story-MAIN_1_2_12" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_13-all">
-        <span>OST&nbsp;13.&nbsp;Barrier (Barrier)</span>
+        <span>OST&nbsp;13.&nbsp;Barrier (障碍)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_13-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Cheerful</span>&nbsp;<span class="badge badge-primary badge-tag">Naughty</span>&nbsp;<span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">欢快</span>&nbsp;<span class="badge badge-primary badge-tag">调皮的</span>&nbsp;<span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -706,8 +717,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -736,6 +747,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -755,9 +767,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-3-seg-1">白子和老师等到很晚才离开。星野因疲劳打发走了白子，但老师并未离开。老师拿出了星野的退社信，星野想把问题转移到白子上，但老师紧追不放。星野同意向老师讲述情况，但得出去到走廊上。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -847,9 +860,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -863,12 +876,12 @@
 
             <li id="track-OST_15">
     <a href="/zh_cn/track/ost/15.html#story-MAIN_1_2_12" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_15-all">
-        <span>OST&nbsp;15.&nbsp;Honey Jam (Honey Jam)</span>
+        <span>OST&nbsp;15.&nbsp;Honey Jam (蜂蜜果酱)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_15-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
  
-    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">Energetic</span>&nbsp;</div>
+    <div class="track-stats-badge stats-badge"><span class="badge badge-success badge-tag">超有活力</span>&nbsp;</div>
 </li>
 
 
@@ -881,8 +894,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -911,6 +924,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -930,9 +944,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-4-seg-1">因为风沙太大，积尘严重，星野咳了几声，表示学校人手实在不够。星野之后又嘀咕了几句。老师说星野看上去非常喜欢阿拜多斯，后者则表示了否定。之后，星野向老师讲出了那个“请求”。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -984,9 +999,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1018,8 +1033,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1063,6 +1078,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1082,9 +1098,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-5-seg-1">原来那个请求便是，如果星野加入PMC（成为佣兵），那么黑服将愿意承担他们学校一半的债务。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1162,9 +1179,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1196,8 +1213,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1256,6 +1273,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1275,9 +1293,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-6-seg-1">星野推测PMC（尤其是黑服）似乎是在招募一些能手。星野表示她从没在基沃托斯见过他那样的人，而且似乎凯撒集团的理事也很怕他。至于退社信，星野表示只是脑袋一时糊涂，在老师面前撕掉了它。星野还表示明天会和大家说清楚，但又觉得接受那个请求似乎唯一无二。星野走前，老师承诺会想出解决方案。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1329,9 +1348,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1363,7 +1382,7 @@
 
             <li id="track-OST_46">
     <a href="/zh_cn/track/ost/46.html#story-MAIN_1_2_12" onmouseover="showTooltipById(this, 'undefined', ['tooltip-variable-content-track'])" data-tooltip="track-OST_46-all">
-        <span>OST&nbsp;46.&nbsp;Sugar Story (Sugar Story)</span>
+        <span>OST&nbsp;46.&nbsp;Sugar Story (甜蜜的故事)</span>
     </a>
     <span onclick="showPopupByTooltipId('track-OST_46-all', ['tooltip-variable-content-track'])" style="display: inline-block"><img src="/static/images/site/circle-info.svg" class="popup-icon"></span>
     
@@ -1381,8 +1400,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1411,6 +1430,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1430,9 +1450,10 @@
     
         <ul style="margin: 0;">
             <li id="story-part-7-seg-1">绫音第一个来到对策委员会的活动室，发现没有人在。随后，绫音发现了一个惊天动人的消息。</li>
-            <h4>人物</h4>
-            
+            <div class="story-segment-data">
+                <h4>人物</h4>
                 
+                    
     
         
         
@@ -1484,9 +1505,9 @@
         
     
 
-            
-            <h4>歌曲</h4>
-            
+                
+                <h4>歌曲</h4>
+                
     <ul>
         
             
@@ -1502,8 +1523,8 @@
         
     
 
-            <h4>背景</h4>
-            
+                <h4>背景</h4>
+                
     
         
         
@@ -1547,6 +1568,7 @@
         
     
 
+            </div>
         </ul>
     
 
@@ -1630,7 +1652,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656891.918811)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252009.7037423)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -1642,6 +1664,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -1654,7 +1677,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656891.9188166
+Generated time (UTC): 1711252009.7037475
 -->
 </body>
 </html>

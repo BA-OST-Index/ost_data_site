@@ -46,6 +46,7 @@
     <script src="/static/js/track_player.js"></script>
     <script src="/static/js/story_video_player.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
+    <script src="/static/js/story_view_mode.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -68,11 +69,11 @@
         })(window, document, "clarity", "script", "kdlc104n0n");
     </script>
     
-    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1710656729443799871.js"></script>
-    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1710656729443799871.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_album_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_background_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_character_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_track_1711251851264651818.js"></script>
+    <script async src="/static/js/auto/tooltip/data_zh_cn_story_1711251851264651818.js"></script>
 
 </head>
 
@@ -119,6 +120,13 @@
                 <option value="all">三版均显示</option>
             </select>
             <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <br />
+            <span>故事查看模式：</span>
+            <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
+                <option value="all" selected>全部数据</option>
+                <option value="text-only">仅概述文字</option>
+            </select>
+            <script>setStoryViewModeSwitchStatus();</script>
         </div>
         <br />
 
@@ -196,7 +204,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/H1.html">第1个任务 (挑战)</a> DU Stop 2</li>
+            <li><a href="/zh_cn/event/810/battle/H1.html">第1个任务 (挑战)</a> D.U.2号车站</li>
         
             
 
@@ -204,7 +212,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/H2.html">第2个任务 (挑战)</a> DU Zone 51</li>
+            <li><a href="/zh_cn/event/810/battle/H2.html">第2个任务 (挑战)</a> D.U.51区域</li>
         
             
 
@@ -212,7 +220,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N1.html">第1个任务 (普通)</a> DU Central Road</li>
+            <li><a href="/zh_cn/event/810/battle/N1.html">第1个任务 (普通)</a> D.U.中央大道</li>
         
             
 
@@ -220,7 +228,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N2.html">第2个任务 (普通)</a> KV Highway Zone 2</li>
+            <li><a href="/zh_cn/event/810/battle/N2.html">第2个任务 (普通)</a> KV高速公路第2区域</li>
         
             
 
@@ -228,7 +236,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N3.html">第3个任务 (普通)</a> DU Zone 427</li>
+            <li><a href="/zh_cn/event/810/battle/N3.html">第3个任务 (普通)</a> D.U.427区域</li>
         
             
 
@@ -236,7 +244,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N4.html">第4个任务 (普通)</a> KV Highway Zone 4</li>
+            <li><a href="/zh_cn/event/810/battle/N4.html">第4个任务 (普通)</a> KV高速公路第4区域</li>
         
             
 
@@ -244,7 +252,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N5.html">第5个任务 (普通)</a> In Front of the DU City Library</li>
+            <li><a href="/zh_cn/event/810/battle/N5.html">第5个任务 (普通)</a> D.U.图书馆前</li>
         
             
 
@@ -252,7 +260,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N6.html">第6个任务 (普通)</a> KV Highway Zone 13</li>
+            <li><a href="/zh_cn/event/810/battle/N6.html">第6个任务 (普通)</a> KV高速公路第13区域</li>
         
             
 
@@ -260,7 +268,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N7.html">第7个任务 (普通)</a> DU Shopping District Entrance</li>
+            <li><a href="/zh_cn/event/810/battle/N7.html">第7个任务 (普通)</a> D.U.商店街入口</li>
         
             
 
@@ -268,7 +276,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N8.html">第8个任务 (普通)</a> KV Highway Zone 26</li>
+            <li><a href="/zh_cn/event/810/battle/N8.html">第8个任务 (普通)</a> KV高速公路第26区域</li>
         
             
 
@@ -276,7 +284,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N9.html">第9个任务 (普通)</a> DU Stop 7</li>
+            <li><a href="/zh_cn/event/810/battle/N9.html">第9个任务 (普通)</a> D.U.7号车站</li>
         
             
 
@@ -284,7 +292,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N10.html">第10个任务 (普通)</a> KV Highway Zone 37</li>
+            <li><a href="/zh_cn/event/810/battle/N10.html">第10个任务 (普通)</a> KV高度公路第37区域</li>
         
             
 
@@ -292,7 +300,7 @@
                 
             
 
-            <li><a href="/zh_cn/event/810/battle/N11.html">第11个任务 (普通)</a> DU Subway Exit</li>
+            <li><a href="/zh_cn/event/810/battle/N11.html">第11个任务 (普通)</a> D.U.地铁出口</li>
         
     </ul>
 
@@ -341,7 +349,7 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1710656893.0762937)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711252010.7799778)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
@@ -353,6 +361,7 @@
 <script>
     addEventListener("DOMContentLoaded", function () {
         checkCnIP();
+        showStoryByViewMode();
     });
     addEventListener("load", function () {
         interpageBottomAdjust();
@@ -365,7 +374,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1710656893.0762992
+Generated time (UTC): 1711252010.7799828
 -->
 </body>
 </html>
