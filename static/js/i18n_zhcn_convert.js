@@ -6,8 +6,6 @@ function initZhcnConversionDB() {
         function (result) {
             ZHCN_CONVERSION_DB = result;
             console.log(result);
-
-            convertZhcn();
         }
     );
 }
@@ -17,7 +15,6 @@ function convertZhcn() {
 
     if (ZHCN_CONVERSION_DB === undefined) {
         initZhcnConversionDB();
-        return;
     }
 
     for (let i = 0; i < allZhcnElements.length; i++) {
