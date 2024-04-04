@@ -7,12 +7,12 @@
 
     <title>视频/《蔚蓝档案》中文配音档案VOL.1——阿拜多斯篇- BA OST Index</title>
 
-    <script defer src="/static/jsdelivr/jquery.min.js"></script>
+    <script async src="/static/jsdelivr/jquery.min.js"></script>
     <link rel="stylesheet" href="/static/jsdelivr/tippy.light.min.css">
-    <script defer src="/static/jsdelivr/popper.min.js"></script>
-    <script defer src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
-    <script defer src="/static/jsdelivr/popup-js.min.js"></script>
-    <script defer src="/static/jsdelivr/lazysizes.min.js"></script>
+    <script async src="/static/jsdelivr/popper.min.js"></script>
+    <script async src="/static/jsdelivr/tippy-bundle.umd.min.js"></script>
+    <script async src="/static/jsdelivr/popup-js.min.js"></script>
+    <script async src="/static/jsdelivr/lazysizes.min.js"></script>
 
     <link rel="stylesheet" href="/static/css/git-wiki-style.css">
     <link rel="stylesheet" href="/static/css/wikipedialize.css">
@@ -36,17 +36,16 @@
         }
     </style>
     <script src="/static/js/common.js"></script>
-    <script src="/static/js/zhcn_switch.js"></script>
+    <script src="/static/js/all_lang_switch.js"></script>
     <script src="/static/js/highlight_element.js"></script>
     <script defer src="/static/js/tooltip.js"></script>
-    <script src="/static/js/lang_switch.js"></script>
     <script src="/static/js/time_show.js"></script>
     <script defer src="/static/js/popup.js"></script>
     <script defer src="/static/js/cn_popup.js"></script>
     <script src="/static/js/track_player.js"></script>
-    <script src="/static/js/story_video_player.js"></script>
+    <script src="/static/js/all_story.js"></script>
     <script src="/static/js/interpage_bottom.js"></script>
-    <script src="/static/js/story_view_mode.js"></script>
+    <script src="/static/js/i18n_zhcn_convert.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKTB7R8TC3"></script>
     <script>
@@ -115,7 +114,7 @@
                 <option value="zh_cn_tw">台服繁中版</option>
                 <option value="all">三版均显示</option>
             </select>
-            <script>displayZhcnString(); document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
+            <script>document.getElementById("zhcn_switcher").value = localStorage.getItem("zh_cn");</script>
             <br />
             <span>故事查看模式：</span>
             <select id="story-view-mode-switcher" onchange="setStoryViewMode(this)">
@@ -172,34 +171,34 @@
     <div class="git-wiki-page">
         <div id="interpage-navi">
             
-        
-        
-        
-
-        
-            <p class="navi-p"><a href=".">&lt;-- 返回到上一级目录</a></p>
+    
+    
         
 
+    
+        <p class="navi-p"><a href=".">&lt;-- 返回到上一级目录</a></p>
+    
+
+    
+
+    
+        
+            
+
+            
+                <p class="navi-p">未找到上一页</p>
+            
         
 
         
             
-                
-
-                
-                    <p class="navi-p">未找到上一页</p>
-                
-            
 
             
-                
-
-                
-                    <p class="navi-p">未找到下一页</p>
-                
+                <p class="navi-p">未找到下一页</p>
             
         
     
+
             <hr/>
         </div>
 
@@ -270,10 +269,10 @@
     
         
 
-        <h3>官方</h3>
+        <h3><span class="i18n-zhcn-text">官方</span></h3>
         
             <div onclick="playEmbeddedVideo('https://www.bilibili.com/video/BV1DM4y1J79H/', 'track-video-1-1')" id="track-video-1-1" class="track-video-div">
-                <p><img src="/static/images/social/bilibili.png" class="social-logo">哔哩哔哩 (https://www.bilibili.com/video/BV1DM4y1J79H/)</p>
+                <p><img src="/static/images/social/bilibili.png" class="social-logo"><span class="i18n-zhcn-text">哔哩哔哩</span> (https://www.bilibili.com/video/BV1DM4y1J79H/)</p>
             </div>
             <div id="track-video-1-1-container"></div>
         
@@ -335,35 +334,35 @@
     <div>
         <div id="interpage-navi-bottom-left">
             
+
+    
     
         
-        
-        
 
-        
-            <p class="navi-p"><a href=".">&lt;-- 返回到上一级目录</a></p>
-        
+    
+        <p class="navi-p"><a href=".">&lt;-- 返回到上一级目录</a></p>
+    
 
+    
+
+    
+        
+            
+
+            
+                <p class="navi-p">未找到上一页</p>
+            
         
 
         
             
-                
-
-                
-                    <p class="navi-p">未找到上一页</p>
-                
-            
 
             
-                
-
-                
-                    <p class="navi-p">未找到下一页</p>
-                
+                <p class="navi-p">未找到下一页</p>
             
         
     
+
 
         </div>
         <div id="interpage-navi-bottom-right"></div>
@@ -385,11 +384,16 @@
     </div>
     <script>
         addEventListener("load", function () {showProjectTime(); setInterval(showProjectTime, 1000);})
-        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1711897546.6372762)})
+        addEventListener("load", function () {document.getElementById("page-generation-time").innerText = showTimestampInLocalTime(1712256240.9842072)})
     </script>
 </footer>
     <script>displayCharLangElement('zh');</script>
-    <script>displayZhcnString();</script>
+    <script>
+        addEventListener("load", function () {
+            initZhcnConversionDB();
+            displayZhcnString();
+        });
+    </script>
 
 </div>
 
@@ -410,7 +414,7 @@
 <!--
 This page is generated with Jinja2 by Python 3.
 For more information about this project: https://github.com/BA-OST-Index/
-Generated time (UTC): 1711897546.6372845
+Generated time (UTC): 1712256240.984215
 -->
 </body>
 </html>

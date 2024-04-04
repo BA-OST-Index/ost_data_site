@@ -1,7 +1,3 @@
-function addLeadingContent(obj, max_length, content) {
-    return obj.toString().padStart(2, content)
-}
-
 function calculateTimeDifferenceFromNow(designatedTimestamp) {
     // the variable should be in ms
     const now = new Date();
