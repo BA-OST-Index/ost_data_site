@@ -19,8 +19,9 @@ function showPopupByTooltipId(tooltip_id, designatedElementClass) {
         removePopup(currentPopup);
     }
 
+    let content = tooltipData.getData(tooltip_id);
     currentPopup = new Popup({"title": "  ",
-        "content": tooltipData.getData(tooltip_id),
+        "content": content,
         hideCallback: () => {
             setScrollToSmooth();
             autoCurrentDestruct();

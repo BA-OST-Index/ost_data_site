@@ -15,6 +15,7 @@ function convertZhcn() {
 
     if (ZHCN_CONVERSION_DB === undefined) {
         initZhcnConversionDB();
+        return;
     }
 
     for (let i = 0; i < allZhcnElements.length; i++) {
@@ -23,7 +24,9 @@ function convertZhcn() {
         // save the original content to a data attribute if not
         // (e.g. first time being inited)
         if (currElement.dataset.text === undefined) {
-            currElement.dataset.text = currElement.innerHTML;
+            let _innerHTML = currElement.innerHTML;
+            _innerHTML = _innerHTML.replaceAll("'", "[single_quote]");
+            currElement.dataset.text = encodeURIComponent(_innerHTML);
         }
 
         // ChatGPT generated the following code from here
@@ -46,8 +49,9 @@ function convertZhcn() {
                 _mode = 0;
         }
 
-        let temp = currElement.dataset.text;
+        let temp = decodeURIComponent(currElement.dataset.text);
         temp = temp.replaceAll("&amp;", "&");
+        temp = temp.replaceAll("[single_quote]", "'");
 
         for (const [key, values] of Object.entries(ZHCN_CONVERSION_DB)) {
             for (const entry of values) {
