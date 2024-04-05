@@ -20,6 +20,7 @@ function showPopupByTooltipId(tooltip_id, designatedElementClass) {
     }
 
     let content = tooltipData.getData(tooltip_id);
+    content = content.replaceAll("{", "&#123;").replaceAll("}", "&#125;");
     currentPopup = new Popup({"title": "  ",
         "content": content,
         hideCallback: () => {
